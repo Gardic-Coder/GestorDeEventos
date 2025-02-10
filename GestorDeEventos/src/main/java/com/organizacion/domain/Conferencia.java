@@ -9,5 +9,7 @@ package main.java.com.organizacion.domain;
  * @author juanm
  */
 public class Conferencia {
-    
+    public void Mensaje(){
+        System.out.println("Hola, esta es una prueba");
+    }
 }
