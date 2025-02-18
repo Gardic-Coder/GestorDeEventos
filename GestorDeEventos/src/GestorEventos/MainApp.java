@@ -1,20 +1,22 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
-package GestorEventos;
 
+package GestorEventos;
+import main.java.com.organizacion.infrastructure.gui.MainWindow;
 /**
  *
  * @author juanm
  */
 public class MainApp {
+//Mensaje de Alejandro
+//MainWindows parece tener otro tipo de main, que se compila de manera predeterminada. No se si esta parte del codigo quedo obsoleta
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+         MainWindow paginainicial = new MainWindow();
+         paginainicial.setVisible(true);
+         paginainicial.setLocationRelativeTo(null);
+         
     }
     
 }
