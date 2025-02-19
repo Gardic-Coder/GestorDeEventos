@@ -1,6 +1,6 @@
 
 package GestorEventos;
-import main.java.com.organizacion.infrastructure.gui.MainWindow;
+import Ventanasemergentes.MainWindow;
 /**
  *
  * @author juanm

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package main.java.com.organizacion.infrastructure.gui;
+package Ventanasemergentes;
 
 /**
  *
@@ -214,7 +214,11 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_terceraopcionActionPerformed
 
     private void segundaopcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_segundaopcionActionPerformed
-        // TODO add your handling code here:
+        Participante creador = new Participante();
+        creador.setVisible(true);
+        creador.setLocationRelativeTo(null);
+        this.dispose();
+        
     }//GEN-LAST:event_segundaopcionActionPerformed
 
     /**
