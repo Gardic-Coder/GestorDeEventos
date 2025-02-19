@@ -13,10 +13,26 @@ public class Participante extends javax.swing.JFrame {
     /**
      * Creates new form Participante
      */
+    public void ocultar(){ //Oculta todos los campos y labels existentes
+        campocargo.setVisible(false);
+        campozona.setVisible(false);
+        cargoevento.setVisible(false);
+        zonaencargada.setVisible(false);
+        campoempresa.setVisible(false);
+        empresa.setVisible(false);
+        cargoempresa.setVisible(false);
+        campocargoempresa.setVisible(false);
+        temaconferencia.setVisible(false);
+        campotemaconferencia.setVisible(false);
+    }
+    
+    
     public Participante() {
         initComponents();
+        setTitle("Registro de Participantes");
+        ocultar();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,21 +42,440 @@ public class Participante extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        padre = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        camponombre = new javax.swing.JTextField();
+        campocorreo = new javax.swing.JTextField();
+        campotlf = new javax.swing.JTextField();
+        campocedula = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        selecciontipoparticipante = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        cargoevento = new javax.swing.JLabel();
+        zonaencargada = new javax.swing.JLabel();
+        empresa = new javax.swing.JLabel();
+        camponombre1 = new javax.swing.JTextField();
+        campocargo = new javax.swing.JTextField();
+        campoempresa = new javax.swing.JTextField();
+        campozona = new javax.swing.JTextField();
+        campotemaconferencia = new javax.swing.JTextField();
+        campocargoempresa = new javax.swing.JTextField();
+        cargoempresa = new javax.swing.JLabel();
+        temaconferencia = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(255, 204, 204));
+
+        jLabel6.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/Participante/add-task.png"))); // NOI18N
+        jLabel6.setText("Registro del Participante ");
+        jLabel6.setFocusable(false);
+        jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(39, Short.MAX_VALUE)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 654, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel6)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel2.setBackground(new java.awt.Color(255, 228, 228));
+
+        jPanel3.setBackground(new java.awt.Color(255, 204, 204));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 93, Short.MAX_VALUE)
+        );
+
+        camponombre.setBackground(new java.awt.Color(253, 239, 239));
+        camponombre.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        camponombre.setToolTipText("");
+        camponombre.setActionCommand("<Not Set>");
+        camponombre.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        camponombre.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        camponombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                camponombreActionPerformed(evt);
+            }
+        });
+
+        campocorreo.setBackground(new java.awt.Color(253, 239, 239));
+        campocorreo.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        campocorreo.setToolTipText("");
+        campocorreo.setActionCommand("<Not Set>");
+        campocorreo.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        campocorreo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        campocorreo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campocorreoActionPerformed(evt);
+            }
+        });
+
+        campotlf.setBackground(new java.awt.Color(253, 239, 239));
+        campotlf.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        campotlf.setToolTipText("");
+        campotlf.setActionCommand("<Not Set>");
+        campotlf.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        campotlf.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        campotlf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campotlfActionPerformed(evt);
+            }
+        });
+
+        campocedula.setBackground(new java.awt.Color(253, 239, 239));
+        campocedula.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        campocedula.setToolTipText("");
+        campocedula.setActionCommand("<Not Set>");
+        campocedula.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        campocedula.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        campocedula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campocedulaActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        jLabel1.setText("Nombre");
+
+        selecciontipoparticipante.setBackground(new java.awt.Color(255, 204, 204));
+        selecciontipoparticipante.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        selecciontipoparticipante.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Asistente", "Conferencista", "Instructor", "Ponente" }));
+        selecciontipoparticipante.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        selecciontipoparticipante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selecciontipoparticipanteActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        jLabel3.setText("Correo");
+
+        jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        jLabel4.setText("Cedula");
+
+        jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        jLabel5.setText("Telefono");
+
+        cargoevento.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        cargoevento.setText("Cargo en el evento");
+
+        zonaencargada.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        zonaencargada.setText("Zona encargada");
+
+        empresa.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        empresa.setText("Empresa");
+
+        camponombre1.setBackground(new java.awt.Color(253, 239, 239));
+        camponombre1.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        camponombre1.setToolTipText("");
+        camponombre1.setActionCommand("<Not Set>");
+        camponombre1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        camponombre1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        camponombre1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                camponombre1ActionPerformed(evt);
+            }
+        });
+
+        campocargo.setBackground(new java.awt.Color(253, 239, 239));
+        campocargo.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        campocargo.setToolTipText("");
+        campocargo.setActionCommand("<Not Set>");
+        campocargo.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        campocargo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        campocargo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campocargoActionPerformed(evt);
+            }
+        });
+
+        campoempresa.setBackground(new java.awt.Color(253, 239, 239));
+        campoempresa.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        campoempresa.setToolTipText("");
+        campoempresa.setActionCommand("<Not Set>");
+        campoempresa.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        campoempresa.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        campoempresa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoempresaActionPerformed(evt);
+            }
+        });
+
+        campozona.setBackground(new java.awt.Color(253, 239, 239));
+        campozona.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        campozona.setToolTipText("");
+        campozona.setActionCommand("<Not Set>");
+        campozona.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        campozona.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        campozona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campozonaActionPerformed(evt);
+            }
+        });
+
+        campotemaconferencia.setBackground(new java.awt.Color(253, 239, 239));
+        campotemaconferencia.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        campotemaconferencia.setToolTipText("");
+        campotemaconferencia.setActionCommand("<Not Set>");
+        campotemaconferencia.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        campotemaconferencia.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        campotemaconferencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campotemaconferenciaActionPerformed(evt);
+            }
+        });
+
+        campocargoempresa.setBackground(new java.awt.Color(253, 239, 239));
+        campocargoempresa.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        campocargoempresa.setToolTipText("");
+        campocargoempresa.setActionCommand("<Not Set>");
+        campocargoempresa.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        campocargoempresa.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        campocargoempresa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campocargoempresaActionPerformed(evt);
+            }
+        });
+
+        cargoempresa.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        cargoempresa.setText("Cargo");
+
+        temaconferencia.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        temaconferencia.setText("Tema a Exponer");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(272, 272, 272)
+                .addComponent(camponombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(67, 67, 67)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(camponombre, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(campocedula, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(276, 276, 276)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(campocorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(campotlf, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(campocargo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(selecciontipoparticipante, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cargoevento)
+                                    .addComponent(empresa, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(zonaencargada, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(campozona, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cargoempresa, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(campocargoempresa, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(84, 84, 84))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(campotemaconferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(campoempresa, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(temaconferencia))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(camponombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campocedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel5))
+                .addGap(8, 8, 8)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(campotlf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campocorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addComponent(selecciontipoparticipante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cargoevento)
+                    .addComponent(zonaencargada))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(campocargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campozona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cargoempresa)
+                    .addComponent(empresa))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(campoempresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campocargoempresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(temaconferencia)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(campotemaconferencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(77, 77, 77)
+                .addComponent(camponombre1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        javax.swing.GroupLayout padreLayout = new javax.swing.GroupLayout(padre);
+        padre.setLayout(padreLayout);
+        padreLayout.setHorizontalGroup(
+            padreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(padreLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
+        );
+        padreLayout.setVerticalGroup(
+            padreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(padreLayout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(padre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(padre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void selecciontipoparticipanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selecciontipoparticipanteActionPerformed
+        String opcionseleccionada = (String) selecciontipoparticipante.getSelectedItem();
+        // Ocultar todos los campos al inicio
+        ocultar();
+        // Mostrar los campos según la opción seleccionada
+        switch (opcionseleccionada){
+            case "Asistente":
+                campocargo.setVisible(true);
+                campozona.setVisible(true);
+                cargoevento.setVisible(true);
+                zonaencargada.setVisible(true);
+                break;
+            case "Conferencista":
+                campoempresa.setVisible(true);
+                empresa.setVisible(true);
+                cargoempresa.setVisible(true);
+                campocargoempresa.setVisible(true);
+                temaconferencia.setVisible(true);
+                campotemaconferencia.setVisible(true);
+                break;
+            case "Instructor":
+           
+                break;
+            case "Ponente":
+                
+                break;
+
+        }
+            
+            
+            
+
+        // Actualizar la interfaz gráfica
+        revalidate();
+        repaint();
+
+    }//GEN-LAST:event_selecciontipoparticipanteActionPerformed
+
+    private void campozonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campozonaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campozonaActionPerformed
+
+    private void campocargoempresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campocargoempresaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campocargoempresaActionPerformed
+
+    private void campoempresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoempresaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoempresaActionPerformed
+
+    private void camponombre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_camponombre1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_camponombre1ActionPerformed
+
+    private void campotemaconferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campotemaconferenciaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campotemaconferenciaActionPerformed
+
+    private void campocargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campocargoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campocargoActionPerformed
+
+    private void campotlfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campotlfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campotlfActionPerformed
+
+    private void campocedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campocedulaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campocedulaActionPerformed
+
+    private void camponombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_camponombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_camponombreActionPerformed
+
+    private void campocorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campocorreoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campocorreoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +513,30 @@ public class Participante extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField campocargo;
+    private javax.swing.JTextField campocargoempresa;
+    private javax.swing.JTextField campocedula;
+    private javax.swing.JTextField campocorreo;
+    private javax.swing.JTextField campoempresa;
+    private javax.swing.JTextField camponombre;
+    private javax.swing.JTextField camponombre1;
+    private javax.swing.JTextField campotemaconferencia;
+    private javax.swing.JTextField campotlf;
+    private javax.swing.JTextField campozona;
+    private javax.swing.JLabel cargoempresa;
+    private javax.swing.JLabel cargoevento;
+    private javax.swing.JLabel empresa;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel padre;
+    private javax.swing.JComboBox<String> selecciontipoparticipante;
+    private javax.swing.JLabel temaconferencia;
+    private javax.swing.JLabel zonaencargada;
     // End of variables declaration//GEN-END:variables
 }

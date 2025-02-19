@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Ventanasemergentes;
+import java.awt.Color; //Defino colores personalizados (Tecnologia Hover)
 
 /**
  *
@@ -17,6 +18,7 @@ public class MainWindow extends javax.swing.JFrame {
         initComponents();
         setTitle("Gestion de Eventos");
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -101,17 +103,42 @@ public class MainWindow extends javax.swing.JFrame {
         jLabel6.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         primeraopcion.setBackground(new java.awt.Color(252, 186, 186));
-        primeraopcion.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        primeraopcion.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         primeraopcion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/mainwindow/location.png"))); // NOI18N
-        primeraopcion.setText("Organizar un Evento");
-        primeraopcion.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        primeraopcion.setCursor(new java.awt.Cursor(java.awt.Cursor.MOVE_CURSOR));
+        primeraopcion.setText("   Organizar un Evento");
+        primeraopcion.setBorder(null);
+        primeraopcion.setFocusPainted(false);
+        primeraopcion.setOpaque(true);
+        primeraopcion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                primeraopcionMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                primeraopcionMouseExited(evt);
+            }
+        });
+        primeraopcion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                primeraopcionActionPerformed(evt);
+            }
+        });
 
         segundaopcion.setBackground(new java.awt.Color(252, 186, 186));
-        segundaopcion.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        segundaopcion.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         segundaopcion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/mainwindow/user.png"))); // NOI18N
-        segundaopcion.setText("Registrar participante");
-        segundaopcion.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        segundaopcion.setText("  Registrar participante");
+        segundaopcion.setBorder(null);
+        segundaopcion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                segundaopcionMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                segundaopcionMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                segundaopcionMouseExited(evt);
+            }
+        });
         segundaopcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 segundaopcionActionPerformed(evt);
@@ -119,10 +146,18 @@ public class MainWindow extends javax.swing.JFrame {
         });
 
         terceraopcion.setBackground(new java.awt.Color(252, 186, 186));
-        terceraopcion.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        terceraopcion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/mainwindow/search.png"))); // NOI18N
-        terceraopcion.setText("Acerca de...");
-        terceraopcion.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        terceraopcion.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        terceraopcion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/mainwindow/register.png"))); // NOI18N
+        terceraopcion.setText("    Acerca de...");
+        terceraopcion.setBorder(null);
+        terceraopcion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                terceraopcionMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                terceraopcionMouseExited(evt);
+            }
+        });
         terceraopcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 terceraopcionActionPerformed(evt);
@@ -130,10 +165,23 @@ public class MainWindow extends javax.swing.JFrame {
         });
 
         cuartaopcion.setBackground(new java.awt.Color(252, 186, 186));
-        cuartaopcion.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        cuartaopcion.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         cuartaopcion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/mainwindow/folder.png"))); // NOI18N
         cuartaopcion.setText("Reportes");
-        cuartaopcion.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        cuartaopcion.setBorder(null);
+        cuartaopcion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cuartaopcionMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cuartaopcionMouseExited(evt);
+            }
+        });
+        cuartaopcion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cuartaopcionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout izquierdaprincipalLayout = new javax.swing.GroupLayout(izquierdaprincipal);
         izquierdaprincipal.setLayout(izquierdaprincipalLayout);
@@ -146,15 +194,16 @@ public class MainWindow extends javax.swing.JFrame {
                         .addComponent(jLabel5))
                     .addGroup(izquierdaprincipalLayout.createSequentialGroup()
                         .addGap(48, 48, 48)
-                        .addGroup(izquierdaprincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cuartaopcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(terceraopcion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(primeraopcion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(segundaopcion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(izquierdaprincipalLayout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                        .addComponent(jLabel6)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap(35, Short.MAX_VALUE))
+            .addGroup(izquierdaprincipalLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addGroup(izquierdaprincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cuartaopcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(terceraopcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(segundaopcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(primeraopcion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         izquierdaprincipalLayout.setVerticalGroup(
             izquierdaprincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,15 +212,15 @@ public class MainWindow extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
-                .addGap(42, 42, 42)
-                .addComponent(primeraopcion)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
-                .addComponent(segundaopcion)
-                .addGap(80, 80, 80)
-                .addComponent(terceraopcion)
-                .addGap(85, 85, 85)
-                .addComponent(cuartaopcion)
-                .addGap(113, 113, 113))
+                .addGap(47, 47, 47)
+                .addComponent(primeraopcion, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(segundaopcion, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(terceraopcion, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(cuartaopcion, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(104, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout padreLayout = new javax.swing.GroupLayout(padre);
@@ -210,16 +259,62 @@ public class MainWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void terceraopcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_terceraopcionActionPerformed
-        // TODO add your handling code here:
+        
+// TODO add your handling code here:
     }//GEN-LAST:event_terceraopcionActionPerformed
 
     private void segundaopcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_segundaopcionActionPerformed
+        
         Participante creador = new Participante();
         creador.setVisible(true);
         creador.setLocationRelativeTo(null);
         this.dispose();
         
     }//GEN-LAST:event_segundaopcionActionPerformed
+
+    private void primeraopcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_primeraopcionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_primeraopcionActionPerformed
+
+    private void cuartaopcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cuartaopcionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cuartaopcionActionPerformed
+
+    private void primeraopcionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_primeraopcionMouseEntered
+        primeraopcion.setBackground(new Color(255, 151, 151));
+    }//GEN-LAST:event_primeraopcionMouseEntered
+
+    private void primeraopcionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_primeraopcionMouseExited
+        primeraopcion.setBackground(new Color(252,186,186));
+    }//GEN-LAST:event_primeraopcionMouseExited
+
+    private void segundaopcionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_segundaopcionMouseEntered
+        segundaopcion.setBackground(new Color(255, 151, 151));
+    }//GEN-LAST:event_segundaopcionMouseEntered
+
+    private void segundaopcionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_segundaopcionMouseExited
+        segundaopcion.setBackground(new Color(252,186,186));
+    }//GEN-LAST:event_segundaopcionMouseExited
+
+    private void terceraopcionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_terceraopcionMouseEntered
+        terceraopcion.setBackground(new Color(255, 151, 151));
+    }//GEN-LAST:event_terceraopcionMouseEntered
+
+    private void terceraopcionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_terceraopcionMouseExited
+        terceraopcion.setBackground(new Color(252,186,186));
+    }//GEN-LAST:event_terceraopcionMouseExited
+
+    private void cuartaopcionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cuartaopcionMouseEntered
+        cuartaopcion.setBackground(new Color(255, 151, 151));
+    }//GEN-LAST:event_cuartaopcionMouseEntered
+
+    private void cuartaopcionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cuartaopcionMouseExited
+        cuartaopcion.setBackground(new Color (252,186,186));
+    }//GEN-LAST:event_cuartaopcionMouseExited
+
+    private void segundaopcionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_segundaopcionMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_segundaopcionMouseClicked
 
     /**
      * @param args the command line arguments
