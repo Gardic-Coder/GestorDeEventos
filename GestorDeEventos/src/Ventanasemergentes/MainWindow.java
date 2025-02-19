@@ -43,6 +43,7 @@ public class MainWindow extends javax.swing.JFrame {
         cuartaopcion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         derechaprincipal.setBackground(new java.awt.Color(246, 246, 246));
 
@@ -107,6 +108,7 @@ public class MainWindow extends javax.swing.JFrame {
         primeraopcion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/mainwindow/location.png"))); // NOI18N
         primeraopcion.setText("   Organizar un Evento");
         primeraopcion.setBorder(null);
+        primeraopcion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         primeraopcion.setFocusPainted(false);
         primeraopcion.setOpaque(true);
         primeraopcion.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -128,6 +130,7 @@ public class MainWindow extends javax.swing.JFrame {
         segundaopcion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/mainwindow/user.png"))); // NOI18N
         segundaopcion.setText("  Registrar participante");
         segundaopcion.setBorder(null);
+        segundaopcion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         segundaopcion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 segundaopcionMouseClicked(evt);
@@ -150,6 +153,7 @@ public class MainWindow extends javax.swing.JFrame {
         terceraopcion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/mainwindow/register.png"))); // NOI18N
         terceraopcion.setText("    Acerca de...");
         terceraopcion.setBorder(null);
+        terceraopcion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         terceraopcion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 terceraopcionMouseEntered(evt);
@@ -169,6 +173,7 @@ public class MainWindow extends javax.swing.JFrame {
         cuartaopcion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/mainwindow/folder.png"))); // NOI18N
         cuartaopcion.setText("Reportes");
         cuartaopcion.setBorder(null);
+        cuartaopcion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cuartaopcion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 cuartaopcionMouseEntered(evt);
@@ -188,22 +193,18 @@ public class MainWindow extends javax.swing.JFrame {
         izquierdaprincipalLayout.setHorizontalGroup(
             izquierdaprincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(izquierdaprincipalLayout.createSequentialGroup()
-                .addGroup(izquierdaprincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(izquierdaprincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(izquierdaprincipalLayout.createSequentialGroup()
                         .addGap(43, 43, 43)
                         .addComponent(jLabel5))
                     .addGroup(izquierdaprincipalLayout.createSequentialGroup()
                         .addGap(48, 48, 48)
-                        .addComponent(jLabel6)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(jLabel6)))
                 .addContainerGap(35, Short.MAX_VALUE))
-            .addGroup(izquierdaprincipalLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addGroup(izquierdaprincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cuartaopcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(terceraopcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(segundaopcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(primeraopcion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addComponent(cuartaopcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(terceraopcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(segundaopcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(primeraopcion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         izquierdaprincipalLayout.setVerticalGroup(
             izquierdaprincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
