@@ -105,7 +105,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         primeraopcion.setBackground(new java.awt.Color(252, 186, 186));
         primeraopcion.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        primeraopcion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/mainwindow/location.png"))); // NOI18N
+        primeraopcion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/mainwindow/eventos.png"))); // NOI18N
         primeraopcion.setText("   Organizar un Evento");
         primeraopcion.setBorder(null);
         primeraopcion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -127,7 +127,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         segundaopcion.setBackground(new java.awt.Color(252, 186, 186));
         segundaopcion.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        segundaopcion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/mainwindow/user.png"))); // NOI18N
+        segundaopcion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/mainwindow/agregar-usuario.png"))); // NOI18N
         segundaopcion.setText("  Registrar participante");
         segundaopcion.setBorder(null);
         segundaopcion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -150,7 +150,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         terceraopcion.setBackground(new java.awt.Color(252, 186, 186));
         terceraopcion.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        terceraopcion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/mainwindow/register.png"))); // NOI18N
+        terceraopcion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/mainwindow/ayuda.png"))); // NOI18N
         terceraopcion.setText("    Acerca de...");
         terceraopcion.setBorder(null);
         terceraopcion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -170,7 +170,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         cuartaopcion.setBackground(new java.awt.Color(252, 186, 186));
         cuartaopcion.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        cuartaopcion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/mainwindow/folder.png"))); // NOI18N
+        cuartaopcion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/mainwindow/ajustes.png"))); // NOI18N
         cuartaopcion.setText("Reportes");
         cuartaopcion.setBorder(null);
         cuartaopcion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));

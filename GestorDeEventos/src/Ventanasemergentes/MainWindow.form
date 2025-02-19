@@ -224,7 +224,7 @@
                   <Font name="Dialog" size="16" style="1"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Imagenesausar/mainwindow/location.png"/>
+                  <Image iconType="3" name="/Imagenesausar/mainwindow/eventos.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="   Organizar un Evento"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -251,7 +251,7 @@
                   <Font name="Dialog" size="16" style="1"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Imagenesausar/mainwindow/user.png"/>
+                  <Image iconType="3" name="/Imagenesausar/mainwindow/agregar-usuario.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="  Registrar participante"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -277,7 +277,7 @@
                   <Font name="Dialog" size="16" style="1"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Imagenesausar/mainwindow/register.png"/>
+                  <Image iconType="3" name="/Imagenesausar/mainwindow/ayuda.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="    Acerca de..."/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -302,7 +302,7 @@
                   <Font name="Dialog" size="16" style="1"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Imagenesausar/mainwindow/folder.png"/>
+                  <Image iconType="3" name="/Imagenesausar/mainwindow/ajustes.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Reportes"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
