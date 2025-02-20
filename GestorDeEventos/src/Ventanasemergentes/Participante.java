@@ -24,19 +24,18 @@ public class Participante extends javax.swing.JFrame {
         campocargoempresa.setVisible(false);
         temaconferencia.setVisible(false);
         campotemaconferencia.setVisible(false);
-        separadorasist1.setVisible(false);
-        separadorasist2.setVisible(false);
-        separadorconf1.setVisible(false);
-        separadorconf2.setVisible(false);
-        separadorconf3.setVisible(false);
+        campoexp.setVisible(false);
         especialidad.setVisible(false);
         metodologiainst.setVisible(false);
         experienciainst.setVisible(false);
-        separadormetodologiainst.setVisible(false);
         campometodologiainst.setVisible(false);
         campotemaespecialidad.setVisible(false);
-        separadorespecialidad.setVisible(false);
-        sliderinst.setVisible(false);
+        temaponente.setVisible(false);
+        campotemaponente.setVisible(false);
+        duracionponente.setVisible(false);
+        campoduracionponent.setVisible(false);
+        institucionponente.setVisible(false);
+        campoinstitucionponente.setVisible(false);
                 
         
     }
@@ -56,54 +55,57 @@ public class Participante extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         padre = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
+        cabecera = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        camponombre = new javax.swing.JTextField();
-        campocorreo = new javax.swing.JTextField();
-        campotlf = new javax.swing.JTextField();
-        campocedula = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        cuerpo = new javax.swing.JPanel();
+        footer = new javax.swing.JPanel();
         selecciontipoparticipante = new javax.swing.JComboBox<>();
-        jLabel3 = new javax.swing.JLabel();
+        superior = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        cargoevento = new javax.swing.JLabel();
-        zonaencargada = new javax.swing.JLabel();
-        empresa = new javax.swing.JLabel();
-        campocargo = new javax.swing.JTextField();
-        campoempresa = new javax.swing.JTextField();
-        campozona = new javax.swing.JTextField();
-        campotemaconferencia = new javax.swing.JTextField();
-        campocargoempresa = new javax.swing.JTextField();
-        cargoempresa = new javax.swing.JLabel();
-        temaconferencia = new javax.swing.JLabel();
-        separadorasist1 = new javax.swing.JSeparator();
-        separadorconf2 = new javax.swing.JSeparator();
-        separadorconf1 = new javax.swing.JSeparator();
-        separadorasist2 = new javax.swing.JSeparator();
-        separadorconf3 = new javax.swing.JSeparator();
-        separadorcedula = new javax.swing.JSeparator();
+        jLabel3 = new javax.swing.JLabel();
+        campocorreo = new javax.swing.JTextField();
+        camponombre = new javax.swing.JTextField();
+        campocedula = new javax.swing.JTextField();
+        campotlf = new javax.swing.JTextField();
         separadornombre = new javax.swing.JSeparator();
-        separadortlf = new javax.swing.JSeparator();
         separadorcorreo = new javax.swing.JSeparator();
+        separadorcedula = new javax.swing.JSeparator();
+        separadortlf = new javax.swing.JSeparator();
+        izquierdacuerpo = new javax.swing.JPanel();
+        separadorconf5 = new javax.swing.JSeparator();
+        campocargo = new javax.swing.JTextField();
+        cargoevento = new javax.swing.JLabel();
+        campoempresa = new javax.swing.JTextField();
+        empresa = new javax.swing.JLabel();
+        campometodologiainst = new javax.swing.JTextField();
         metodologiainst = new javax.swing.JLabel();
+        temaconferencia = new javax.swing.JLabel();
+        campotemaconferencia = new javax.swing.JTextField();
         experienciainst = new javax.swing.JLabel();
+        campoexp = new javax.swing.JTextField();
+        temaponente = new javax.swing.JLabel();
+        duracionponente = new javax.swing.JLabel();
+        campotemaponente = new javax.swing.JTextField();
+        campoduracionponent = new javax.swing.JTextField();
+        derechacuerpo = new javax.swing.JPanel();
+        zonaencargada = new javax.swing.JLabel();
+        campozona = new javax.swing.JTextField();
+        cargoempresa = new javax.swing.JLabel();
+        campocargoempresa = new javax.swing.JTextField();
         especialidad = new javax.swing.JLabel();
         campotemaespecialidad = new javax.swing.JTextField();
-        campometodologiainst = new javax.swing.JTextField();
-        separadorespecialidad = new javax.swing.JSeparator();
-        separadormetodologiainst = new javax.swing.JSeparator();
-        sliderinst = new javax.swing.JSlider();
+        institucionponente = new javax.swing.JLabel();
+        campoinstitucionponente = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(255, 204, 204));
+        cabecera.setBackground(new java.awt.Color(255, 204, 204));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -113,37 +115,70 @@ public class Participante extends javax.swing.JFrame {
         jLabel6.setFocusable(false);
         jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout cabeceraLayout = new javax.swing.GroupLayout(cabecera);
+        cabecera.setLayout(cabeceraLayout);
+        cabeceraLayout.setHorizontalGroup(
+            cabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cabeceraLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 654, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        cabeceraLayout.setVerticalGroup(
+            cabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cabeceraLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabel6)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2.setBackground(new java.awt.Color(255, 228, 228));
+        cuerpo.setBackground(new java.awt.Color(255, 228, 228));
 
-        jPanel3.setBackground(new java.awt.Color(255, 204, 204));
+        footer.setBackground(new java.awt.Color(255, 204, 204));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout footerLayout = new javax.swing.GroupLayout(footer);
+        footer.setLayout(footerLayout);
+        footerLayout.setHorizontalGroup(
+            footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        footerLayout.setVerticalGroup(
+            footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 186, Short.MAX_VALUE)
         );
+
+        selecciontipoparticipante.setBackground(new java.awt.Color(255, 204, 204));
+        selecciontipoparticipante.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        selecciontipoparticipante.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Asistente", "Conferencista", "Instructor", "Ponente" }));
+        selecciontipoparticipante.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        selecciontipoparticipante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selecciontipoparticipanteActionPerformed(evt);
+            }
+        });
+
+        superior.setBackground(new java.awt.Color(255, 228, 228));
+
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        jLabel1.setText("Nombre");
+
+        jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        jLabel4.setText("Cedula");
+
+        jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        jLabel5.setText("Telefono");
+
+        jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        jLabel3.setText("Correo");
+
+        campocorreo.setBackground(new java.awt.Color(255, 228, 228));
+        campocorreo.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        campocorreo.setForeground(new java.awt.Color(204, 204, 204));
+        campocorreo.setText("Correo personal");
+        campocorreo.setToolTipText("");
+        campocorreo.setActionCommand("<Not Set>");
+        campocorreo.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        campocorreo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
         camponombre.setBackground(new java.awt.Color(255, 228, 228));
         camponombre.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
@@ -159,19 +194,14 @@ public class Participante extends javax.swing.JFrame {
             }
         });
 
-        campocorreo.setBackground(new java.awt.Color(255, 228, 228));
-        campocorreo.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        campocorreo.setForeground(new java.awt.Color(204, 204, 204));
-        campocorreo.setText("Correo personal");
-        campocorreo.setToolTipText("");
-        campocorreo.setActionCommand("<Not Set>");
-        campocorreo.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        campocorreo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        campocorreo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campocorreoActionPerformed(evt);
-            }
-        });
+        campocedula.setBackground(new java.awt.Color(255, 228, 228));
+        campocedula.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        campocedula.setForeground(new java.awt.Color(204, 204, 204));
+        campocedula.setText("Cedula de Identidad");
+        campocedula.setToolTipText("");
+        campocedula.setActionCommand("<Not Set>");
+        campocedula.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        campocedula.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
         campotlf.setBackground(new java.awt.Color(255, 228, 228));
         campotlf.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
@@ -181,344 +211,439 @@ public class Participante extends javax.swing.JFrame {
         campotlf.setActionCommand("<Not Set>");
         campotlf.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         campotlf.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        campotlf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campotlfActionPerformed(evt);
-            }
-        });
 
-        campocedula.setBackground(new java.awt.Color(255, 228, 228));
-        campocedula.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        campocedula.setForeground(new java.awt.Color(204, 204, 204));
-        campocedula.setText("Cedula de Identidad");
-        campocedula.setToolTipText("");
-        campocedula.setActionCommand("<Not Set>");
-        campocedula.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        campocedula.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        campocedula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campocedulaActionPerformed(evt);
-            }
-        });
+        separadornombre.setForeground(new java.awt.Color(0, 0, 0));
 
-        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        jLabel1.setText("Nombre");
+        separadorcorreo.setForeground(new java.awt.Color(0, 0, 0));
 
-        selecciontipoparticipante.setBackground(new java.awt.Color(255, 204, 204));
-        selecciontipoparticipante.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        selecciontipoparticipante.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Asistente", "Conferencista", "Instructor", "Ponente" }));
-        selecciontipoparticipante.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        selecciontipoparticipante.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selecciontipoparticipanteActionPerformed(evt);
-            }
-        });
+        separadorcedula.setForeground(new java.awt.Color(0, 0, 0));
 
-        jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        jLabel3.setText("Correo");
+        separadortlf.setForeground(new java.awt.Color(0, 0, 0));
 
-        jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        jLabel4.setText("Cedula");
+        javax.swing.GroupLayout superiorLayout = new javax.swing.GroupLayout(superior);
+        superior.setLayout(superiorLayout);
+        superiorLayout.setHorizontalGroup(
+            superiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(superiorLayout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addGroup(superiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(campocorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(camponombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(separadorcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(separadornombre, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(superiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(separadorcedula, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(separadortlf, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campotlf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(campocedula, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(118, 118, 118))
+        );
+        superiorLayout.setVerticalGroup(
+            superiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, superiorLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(superiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(superiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(camponombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campotlf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(superiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(separadornombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(separadortlf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(superiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, superiorLayout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(1, 1, 1)
+                        .addGroup(superiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(campocorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(campocedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(separadorcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, superiorLayout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(29, 29, 29)))
+                .addGap(0, 0, 0)
+                .addComponent(separadorcedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
+        );
 
-        jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        jLabel5.setText("Telefono");
+        izquierdacuerpo.setBackground(new java.awt.Color(255, 228, 228));
 
-        cargoevento.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        cargoevento.setText("Cargo en el evento");
+        separadorconf5.setForeground(new java.awt.Color(0, 0, 0));
 
-        zonaencargada.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        zonaencargada.setText("Zona encargada");
-
-        empresa.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        empresa.setText("Empresa");
-
-        campocargo.setBackground(new java.awt.Color(255, 228, 228));
+        campocargo.setBackground(new java.awt.Color(255, 204, 204));
         campocargo.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         campocargo.setForeground(new java.awt.Color(204, 204, 204));
-        campocargo.setText("Ingrese el Nombre");
+        campocargo.setText("Su participacion en el evento");
         campocargo.setToolTipText("");
         campocargo.setActionCommand("<Not Set>");
-        campocargo.setBorder(null);
+        campocargo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         campocargo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        campocargo.setPreferredSize(new java.awt.Dimension(200, 21));
         campocargo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campocargoActionPerformed(evt);
             }
         });
 
-        campoempresa.setBackground(new java.awt.Color(255, 228, 228));
+        cargoevento.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        cargoevento.setText("Cargo en el evento");
+
+        campoempresa.setBackground(new java.awt.Color(255, 204, 204));
         campoempresa.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         campoempresa.setForeground(new java.awt.Color(204, 204, 204));
         campoempresa.setText("Nombre de la Empresa");
         campoempresa.setToolTipText("");
         campoempresa.setActionCommand("<Not Set>");
-        campoempresa.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        campoempresa.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         campoempresa.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        campoempresa.setPreferredSize(new java.awt.Dimension(200, 21));
         campoempresa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoempresaActionPerformed(evt);
             }
         });
 
-        campozona.setBackground(new java.awt.Color(255, 228, 228));
-        campozona.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        campozona.setForeground(new java.awt.Color(204, 204, 204));
-        campozona.setText("Zona de Trabajo");
-        campozona.setToolTipText("");
-        campozona.setActionCommand("<Not Set>");
-        campozona.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        campozona.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        campozona.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campozonaActionPerformed(evt);
-            }
-        });
+        empresa.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        empresa.setText("Empresa");
 
-        campotemaconferencia.setBackground(new java.awt.Color(255, 228, 228));
-        campotemaconferencia.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        campotemaconferencia.setForeground(new java.awt.Color(204, 204, 204));
-        campotemaconferencia.setText("De lo que quiere informar");
-        campotemaconferencia.setToolTipText("");
-        campotemaconferencia.setActionCommand("<Not Set>");
-        campotemaconferencia.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        campotemaconferencia.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        campotemaconferencia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campotemaconferenciaActionPerformed(evt);
-            }
-        });
-
-        campocargoempresa.setBackground(new java.awt.Color(255, 228, 228));
-        campocargoempresa.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        campocargoempresa.setForeground(new java.awt.Color(204, 204, 204));
-        campocargoempresa.setText("Cargo en la Empresa");
-        campocargoempresa.setToolTipText("");
-        campocargoempresa.setActionCommand("<Not Set>");
-        campocargoempresa.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        campocargoempresa.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        campocargoempresa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campocargoempresaActionPerformed(evt);
-            }
-        });
-
-        cargoempresa.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        cargoempresa.setText("Cargo");
-
-        temaconferencia.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        temaconferencia.setText("Tema a Exponer");
-
-        separadorasist1.setForeground(new java.awt.Color(0, 0, 0));
-
-        separadorconf2.setForeground(new java.awt.Color(0, 0, 0));
-
-        separadorconf1.setForeground(new java.awt.Color(0, 0, 0));
-
-        separadorasist2.setForeground(new java.awt.Color(0, 0, 0));
-
-        separadorconf3.setForeground(new java.awt.Color(0, 0, 0));
-
-        separadorcedula.setForeground(new java.awt.Color(0, 0, 0));
-
-        separadornombre.setForeground(new java.awt.Color(0, 0, 0));
-
-        separadortlf.setForeground(new java.awt.Color(0, 0, 0));
-
-        separadorcorreo.setForeground(new java.awt.Color(0, 0, 0));
-
-        metodologiainst.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        metodologiainst.setText("Metodologia");
-
-        experienciainst.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        experienciainst.setText("Años de Experiencia");
-
-        especialidad.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        especialidad.setText("Especialidad");
-
-        campotemaespecialidad.setBackground(new java.awt.Color(255, 228, 228));
-        campotemaespecialidad.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        campotemaespecialidad.setForeground(new java.awt.Color(204, 204, 204));
-        campotemaespecialidad.setText("Campo especializado");
-        campotemaespecialidad.setToolTipText("");
-        campotemaespecialidad.setActionCommand("<Not Set>");
-        campotemaespecialidad.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        campotemaespecialidad.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        campotemaespecialidad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campotemaespecialidadActionPerformed(evt);
-            }
-        });
-
-        campometodologiainst.setBackground(new java.awt.Color(255, 228, 228));
+        campometodologiainst.setBackground(new java.awt.Color(255, 204, 204));
         campometodologiainst.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         campometodologiainst.setForeground(new java.awt.Color(204, 204, 204));
         campometodologiainst.setText("Metodo de enseñanza");
         campometodologiainst.setToolTipText("");
         campometodologiainst.setActionCommand("<Not Set>");
-        campometodologiainst.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        campometodologiainst.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         campometodologiainst.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        campometodologiainst.setPreferredSize(new java.awt.Dimension(200, 21));
         campometodologiainst.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campometodologiainstActionPerformed(evt);
             }
         });
 
-        separadorespecialidad.setForeground(new java.awt.Color(0, 0, 0));
+        metodologiainst.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        metodologiainst.setText("Metodologia");
 
-        separadormetodologiainst.setForeground(new java.awt.Color(0, 0, 0));
+        temaconferencia.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        temaconferencia.setText("Tema a Exponer");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(67, 67, 67)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(metodologiainst)
-                    .addComponent(separadormetodologiainst, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campometodologiainst, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(separadorconf3, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campocorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campotemaconferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(temaconferencia)
-                    .addComponent(camponombre, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(campocargo)
-                                .addComponent(selecciontipoparticipante, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+        campotemaconferencia.setBackground(new java.awt.Color(255, 204, 204));
+        campotemaconferencia.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        campotemaconferencia.setForeground(new java.awt.Color(204, 204, 204));
+        campotemaconferencia.setText("De lo que quiere informar");
+        campotemaconferencia.setToolTipText("");
+        campotemaconferencia.setActionCommand("<Not Set>");
+        campotemaconferencia.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        campotemaconferencia.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        campotemaconferencia.setPreferredSize(new java.awt.Dimension(200, 21));
+        campotemaconferencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campotemaconferenciaActionPerformed(evt);
+            }
+        });
+
+        experienciainst.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        experienciainst.setText("Años de Experiencia");
+
+        campoexp.setBackground(new java.awt.Color(255, 204, 204));
+        campoexp.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        campoexp.setForeground(new java.awt.Color(204, 204, 204));
+        campoexp.setText("Cantidad de años");
+        campoexp.setToolTipText("");
+        campoexp.setActionCommand("<Not Set>");
+        campoexp.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        campoexp.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        campoexp.setPreferredSize(new java.awt.Dimension(200, 21));
+        campoexp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoexpActionPerformed(evt);
+            }
+        });
+
+        temaponente.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        temaponente.setText("Tema a Exponer");
+
+        duracionponente.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        duracionponente.setText("Duracion de la Exposicion");
+
+        campotemaponente.setBackground(new java.awt.Color(255, 204, 204));
+        campotemaponente.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        campotemaponente.setForeground(new java.awt.Color(204, 204, 204));
+        campotemaponente.setText("De lo que quieres informar");
+        campotemaponente.setToolTipText("");
+        campotemaponente.setActionCommand("<Not Set>");
+        campotemaponente.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        campotemaponente.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        campotemaponente.setPreferredSize(new java.awt.Dimension(200, 21));
+        campotemaponente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campotemaponenteActionPerformed(evt);
+            }
+        });
+
+        campoduracionponent.setBackground(new java.awt.Color(255, 204, 204));
+        campoduracionponent.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        campoduracionponent.setForeground(new java.awt.Color(204, 204, 204));
+        campoduracionponent.setText("Tiempo a utilizar");
+        campoduracionponent.setToolTipText("");
+        campoduracionponent.setActionCommand("<Not Set>");
+        campoduracionponent.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        campoduracionponent.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        campoduracionponent.setPreferredSize(new java.awt.Dimension(200, 21));
+        campoduracionponent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoduracionponentActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout izquierdacuerpoLayout = new javax.swing.GroupLayout(izquierdacuerpo);
+        izquierdacuerpo.setLayout(izquierdacuerpoLayout);
+        izquierdacuerpoLayout.setHorizontalGroup(
+            izquierdacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(izquierdacuerpoLayout.createSequentialGroup()
+                .addGap(58, 58, 58)
+                .addGroup(izquierdacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(duracionponente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(izquierdacuerpoLayout.createSequentialGroup()
+                        .addGroup(izquierdacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(temaponente, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(izquierdacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(experienciainst, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(campocargo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(cargoevento)
-                                .addComponent(empresa, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(campoempresa, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))
-                            .addComponent(separadorasist1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(separadorconf1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(separadorcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(separadornombre, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(especialidad)
-                            .addComponent(campotemaespecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(separadorespecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(177, 177, 177)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(experienciainst)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(campocedula, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                                    .addComponent(campotlf, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                                    .addComponent(zonaencargada, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(campozona, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cargoempresa, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(campocargoempresa, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                                    .addComponent(separadorasist2, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(separadorconf2, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(separadortlf, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(separadorcedula, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(sliderinst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(camponombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campocedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(1, 1, 1)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(separadorcedula)
-                    .addComponent(separadornombre))
-                .addGap(14, 14, 14)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel5))
-                .addGap(8, 8, 8)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campotlf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campocorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(separadortlf)
-                    .addComponent(separadorcorreo))
-                .addGap(21, 21, 21)
-                .addComponent(selecciontipoparticipante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cargoevento)
-                    .addComponent(zonaencargada))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(campozona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campocargo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(separadorasist1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(empresa)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(campoempresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(separadorconf1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(7, 7, 7)
+                                .addComponent(metodologiainst)
                                 .addComponent(temaconferencia)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(campotemaconferencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(cargoempresa)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(campocargoempresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(separadorconf2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(separadorconf3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(separadorasist2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(campoempresa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(campotemaconferencia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(campometodologiainst, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(campoexp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, izquierdacuerpoLayout.createSequentialGroup()
+                        .addGroup(izquierdacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(campoduracionponent, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(campotemaponente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
+            .addGroup(izquierdacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(izquierdacuerpoLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(separadorconf5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        izquierdacuerpoLayout.setVerticalGroup(
+            izquierdacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(izquierdacuerpoLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(cargoevento)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(experienciainst)
-                    .addComponent(especialidad))
+                .addComponent(campocargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(empresa)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(campotemaespecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(sliderinst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(campoempresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(temaconferencia)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(separadorespecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campotemaconferencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(metodologiainst)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campometodologiainst, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campometodologiainst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(experienciainst)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(separadormetodologiainst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(campoexp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(temaponente)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(campotemaponente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(duracionponente)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(campoduracionponent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(izquierdacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(izquierdacuerpoLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(separadorconf5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        derechacuerpo.setBackground(new java.awt.Color(255, 228, 228));
+
+        zonaencargada.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        zonaencargada.setText("Zona encargada");
+
+        campozona.setBackground(new java.awt.Color(255, 204, 204));
+        campozona.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        campozona.setForeground(new java.awt.Color(204, 204, 204));
+        campozona.setText("Zona de Trabajo");
+        campozona.setToolTipText("");
+        campozona.setActionCommand("<Not Set>");
+        campozona.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        campozona.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        campozona.setPreferredSize(new java.awt.Dimension(200, 21));
+        campozona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campozonaActionPerformed(evt);
+            }
+        });
+
+        cargoempresa.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        cargoempresa.setText("Cargo");
+
+        campocargoempresa.setBackground(new java.awt.Color(255, 204, 204));
+        campocargoempresa.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        campocargoempresa.setForeground(new java.awt.Color(204, 204, 204));
+        campocargoempresa.setText("Cargo en la Empresa");
+        campocargoempresa.setToolTipText("");
+        campocargoempresa.setActionCommand("<Not Set>");
+        campocargoempresa.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        campocargoempresa.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        campocargoempresa.setPreferredSize(new java.awt.Dimension(200, 21));
+        campocargoempresa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campocargoempresaActionPerformed(evt);
+            }
+        });
+
+        especialidad.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        especialidad.setText("Especialidad");
+
+        campotemaespecialidad.setBackground(new java.awt.Color(255, 204, 204));
+        campotemaespecialidad.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        campotemaespecialidad.setForeground(new java.awt.Color(204, 204, 204));
+        campotemaespecialidad.setText("Campo especializado");
+        campotemaespecialidad.setToolTipText("");
+        campotemaespecialidad.setActionCommand("<Not Set>");
+        campotemaespecialidad.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        campotemaespecialidad.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        campotemaespecialidad.setPreferredSize(new java.awt.Dimension(200, 21));
+        campotemaespecialidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campotemaespecialidadActionPerformed(evt);
+            }
+        });
+
+        institucionponente.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        institucionponente.setText("Institucion");
+
+        campoinstitucionponente.setBackground(new java.awt.Color(255, 204, 204));
+        campoinstitucionponente.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        campoinstitucionponente.setForeground(new java.awt.Color(204, 204, 204));
+        campoinstitucionponente.setText("Institucion / Universidad");
+        campoinstitucionponente.setToolTipText("");
+        campoinstitucionponente.setActionCommand("<Not Set>");
+        campoinstitucionponente.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        campoinstitucionponente.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        campoinstitucionponente.setPreferredSize(new java.awt.Dimension(200, 21));
+        campoinstitucionponente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoinstitucionponenteActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout derechacuerpoLayout = new javax.swing.GroupLayout(derechacuerpo);
+        derechacuerpo.setLayout(derechacuerpoLayout);
+        derechacuerpoLayout.setHorizontalGroup(
+            derechacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, derechacuerpoLayout.createSequentialGroup()
+                .addContainerGap(189, Short.MAX_VALUE)
+                .addGroup(derechacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(institucionponente, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(derechacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(derechacuerpoLayout.createSequentialGroup()
+                            .addComponent(zonaencargada, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(82, 82, 82))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, derechacuerpoLayout.createSequentialGroup()
+                            .addGroup(derechacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(especialidad)
+                                .addComponent(campotemaespecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cargoempresa)
+                                .addGroup(derechacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(campozona, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(campocargoempresa, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGap(68, 68, 68)))
+                    .addComponent(campoinstitucionponente, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+        derechacuerpoLayout.setVerticalGroup(
+            derechacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(derechacuerpoLayout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(zonaencargada)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(campozona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cargoempresa)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(campocargoempresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(especialidad)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(campotemaespecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(institucionponente)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(campoinstitucionponente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(194, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout cuerpoLayout = new javax.swing.GroupLayout(cuerpo);
+        cuerpo.setLayout(cuerpoLayout);
+        cuerpoLayout.setHorizontalGroup(
+            cuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(footer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(cuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(superior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(cuerpoLayout.createSequentialGroup()
+                    .addGroup(cuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(cuerpoLayout.createSequentialGroup()
+                            .addGap(67, 67, 67)
+                            .addComponent(selecciontipoparticipante, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(cuerpoLayout.createSequentialGroup()
+                            .addGap(0, 0, 0)
+                            .addComponent(izquierdacuerpo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGap(0, 0, 0)
+                    .addComponent(derechacuerpo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+        cuerpoLayout.setVerticalGroup(
+            cuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cuerpoLayout.createSequentialGroup()
+                .addComponent(superior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(cuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(cuerpoLayout.createSequentialGroup()
+                        .addComponent(selecciontipoparticipante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(izquierdacuerpo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(cuerpoLayout.createSequentialGroup()
+                        .addComponent(derechacuerpo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(footer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout padreLayout = new javax.swing.GroupLayout(padre);
         padre.setLayout(padreLayout);
         padreLayout.setHorizontalGroup(
             padreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(padreLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+            .addComponent(cabecera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(cuerpo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         padreLayout.setVerticalGroup(
             padreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(padreLayout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cabecera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(cuerpo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -542,49 +667,63 @@ public class Participante extends javax.swing.JFrame {
         // Mostrar los campos según la opción seleccionada
         switch (opcionseleccionada){
             case "Asistente":
-                campocargo.setVisible(true);
-                campozona.setVisible(true);
-                cargoevento.setVisible(true);
-                zonaencargada.setVisible(true);
-                separadorasist1.setVisible(true);
-                separadorasist2.setVisible(true);
-                break;
+            campocargo.setVisible(true);
+            campozona.setVisible(true);
+            cargoevento.setVisible(true);
+            zonaencargada.setVisible(true);
+            
+            break;
             case "Conferencista":
-                campoempresa.setVisible(true);
-                empresa.setVisible(true);
-                cargoempresa.setVisible(true);
-                campocargoempresa.setVisible(true);
-                temaconferencia.setVisible(true);
-                campotemaconferencia.setVisible(true);
-                separadorconf1.setVisible(true);
-                separadorconf2.setVisible(true);
-                separadorconf3.setVisible(true);
-                break;
+            campoempresa.setVisible(true);
+            empresa.setVisible(true);
+            cargoempresa.setVisible(true);
+            campocargoempresa.setVisible(true);
+            temaconferencia.setVisible(true);
+            campotemaconferencia.setVisible(true);
+            
+            break;
             case "Instructor":
-                especialidad.setVisible(true);
-                metodologiainst.setVisible(true);
-                experienciainst.setVisible(true);
-                separadormetodologiainst.setVisible(true);
-                campometodologiainst.setVisible(true);
-                campotemaespecialidad.setVisible(true);
-                separadorespecialidad.setVisible(true);
-                sliderinst.setVisible(true);
-           
-                break;
+            especialidad.setVisible(true);
+            metodologiainst.setVisible(true);
+            experienciainst.setVisible(true);
+            campoexp.setVisible(true);
+            campometodologiainst.setVisible(true);
+            campotemaespecialidad.setVisible(true);
+            
+
+            break;
             case "Ponente":
-                
-                break;
+            temaponente.setVisible(true);
+            campotemaponente.setVisible(true);
+            duracionponente.setVisible(true);
+            campoduracionponent.setVisible(true);
+            institucionponente.setVisible(true);
+            campoinstitucionponente.setVisible(true);
+
+            break;
 
         }
-            
-            
-            
 
         // Actualizar la interfaz gráfica
         padre.revalidate();
         padre.repaint();
-
     }//GEN-LAST:event_selecciontipoparticipanteActionPerformed
+
+    private void campotemaconferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campotemaconferenciaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campotemaconferenciaActionPerformed
+
+    private void campometodologiainstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campometodologiainstActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campometodologiainstActionPerformed
+
+    private void campoempresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoempresaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoempresaActionPerformed
+
+    private void campocargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campocargoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campocargoActionPerformed
 
     private void campozonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campozonaActionPerformed
         // TODO add your handling code here:
@@ -594,41 +733,29 @@ public class Participante extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_campocargoempresaActionPerformed
 
-    private void campoempresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoempresaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoempresaActionPerformed
-
-    private void campotemaconferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campotemaconferenciaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campotemaconferenciaActionPerformed
-
-    private void campocargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campocargoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campocargoActionPerformed
-
-    private void campotlfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campotlfActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campotlfActionPerformed
-
-    private void campocedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campocedulaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campocedulaActionPerformed
-
-    private void camponombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_camponombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_camponombreActionPerformed
-
-    private void campocorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campocorreoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campocorreoActionPerformed
-
     private void campotemaespecialidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campotemaespecialidadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campotemaespecialidadActionPerformed
 
-    private void campometodologiainstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campometodologiainstActionPerformed
+    private void campoexpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoexpActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_campometodologiainstActionPerformed
+    }//GEN-LAST:event_campoexpActionPerformed
+
+    private void campoinstitucionponenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoinstitucionponenteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoinstitucionponenteActionPerformed
+
+    private void campotemaponenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campotemaponenteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campotemaponenteActionPerformed
+
+    private void campoduracionponentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoduracionponentActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoduracionponentActionPerformed
+
+    private void camponombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_camponombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_camponombreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -666,46 +793,49 @@ public class Participante extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel cabecera;
     private javax.swing.JTextField campocargo;
     private javax.swing.JTextField campocargoempresa;
     private javax.swing.JTextField campocedula;
     private javax.swing.JTextField campocorreo;
+    private javax.swing.JTextField campoduracionponent;
     private javax.swing.JTextField campoempresa;
+    private javax.swing.JTextField campoexp;
+    private javax.swing.JTextField campoinstitucionponente;
     private javax.swing.JTextField campometodologiainst;
     private javax.swing.JTextField camponombre;
     private javax.swing.JTextField campotemaconferencia;
     private javax.swing.JTextField campotemaespecialidad;
+    private javax.swing.JTextField campotemaponente;
     private javax.swing.JTextField campotlf;
     private javax.swing.JTextField campozona;
     private javax.swing.JLabel cargoempresa;
     private javax.swing.JLabel cargoevento;
+    private javax.swing.JPanel cuerpo;
+    private javax.swing.JPanel derechacuerpo;
+    private javax.swing.JLabel duracionponente;
     private javax.swing.JLabel empresa;
     private javax.swing.JLabel especialidad;
     private javax.swing.JLabel experienciainst;
+    private javax.swing.JPanel footer;
+    private javax.swing.JLabel institucionponente;
+    private javax.swing.JPanel izquierdacuerpo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel metodologiainst;
     private javax.swing.JPanel padre;
     private javax.swing.JComboBox<String> selecciontipoparticipante;
-    private javax.swing.JSeparator separadorasist1;
-    private javax.swing.JSeparator separadorasist2;
     private javax.swing.JSeparator separadorcedula;
-    private javax.swing.JSeparator separadorconf1;
-    private javax.swing.JSeparator separadorconf2;
-    private javax.swing.JSeparator separadorconf3;
+    private javax.swing.JSeparator separadorconf5;
     private javax.swing.JSeparator separadorcorreo;
-    private javax.swing.JSeparator separadorespecialidad;
-    private javax.swing.JSeparator separadormetodologiainst;
     private javax.swing.JSeparator separadornombre;
     private javax.swing.JSeparator separadortlf;
-    private javax.swing.JSlider sliderinst;
+    private javax.swing.JPanel superior;
     private javax.swing.JLabel temaconferencia;
+    private javax.swing.JLabel temaponente;
     private javax.swing.JLabel zonaencargada;
     // End of variables declaration//GEN-END:variables
 }
