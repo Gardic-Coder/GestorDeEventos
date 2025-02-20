@@ -4,6 +4,9 @@
  */
 package Ventanasemergentes;
 
+import java.awt.Color; //Permite alterar color
+import javax.swing.JTextField; //Permite usar los campos de Texto
+
 /**
  *
  * @author Alejandrito
@@ -39,6 +42,95 @@ public class Participante extends javax.swing.JFrame {
                 
         
     }
+    
+    //Vacia el campo de texto, y cambia el color a Negro
+    public void campovacio(JTextField campo, String mensaje, boolean color){
+        campo.setText(mensaje);
+        if (color){
+            campo.setForeground (Color.black);  
+        }else{
+            campo.setForeground (Color.gray);
+        }  
+    }
+    
+    //Ocultar o no los campos, para el Asistente
+    public void validarcampoAsistente(JTextField campo, String textopredeterminado, JTextField... otrosCampos){
+        if (campo.getText().equals(textopredeterminado)) { //El campo presionado, se verifica con su texto predeterminado
+            campovacio(campo, "", true);
+        }
+        for (JTextField otroCampo : otrosCampos) { //Para los demas campos
+            if (otroCampo.getText().isEmpty()) {//Si no estan vacios, no se alteran; en caso contrario, se les brinda su mensaje predeterminado
+                String mensaje = "";//En Java, la gestión de memoria para objetos como String se maneja automáticamente mediante el recolector de basura
+                if (otroCampo == campozona) {
+                    mensaje = "Zona de Trabajo";
+                } else if (otroCampo == campocargo) {
+                    mensaje = "Su participacion en el evento";
+                } 
+                campovacio(otroCampo, mensaje, false);
+            }
+        }
+    }
+    
+    //Conferencista
+    public void validarcampoConferencista(JTextField campo, String textopredeterminado, JTextField... otrosCampos){ 
+        if (campo.getText().equals(textopredeterminado)) {
+            campovacio(campo, "", true);
+        }
+        for (JTextField otroCampo : otrosCampos) {
+            if (otroCampo.getText().isEmpty()) {
+                String mensaje = "";
+                if (otroCampo == campoempresa) {
+                    mensaje = "Nombre de la Empresa";
+                } else if (otroCampo == campocargoempresa) {
+                    mensaje = "Cargo en la Empresa";
+                } else if (otroCampo == campotemaconferencia) {
+                    mensaje = "De lo que quiere informar";
+                } 
+                campovacio(otroCampo, mensaje, false);
+            }
+        }
+    }
+    
+    //Instructor
+    public void validarcampoInstructor(JTextField campo, String textopredeterminado, JTextField... otrosCampos){ 
+        if (campo.getText().equals(textopredeterminado)) {
+            campovacio(campo, "", true);
+        }
+        for (JTextField otroCampo : otrosCampos) {
+            if (otroCampo.getText().isEmpty()) {
+                String mensaje = "";
+                if (otroCampo == campometodologiainst) {
+                    mensaje = "Metodo de enseñanza";
+                } else if (otroCampo == campotemaespecialidad) {
+                    mensaje = "Campo especializado";
+                } else if (otroCampo == campoexp) {
+                    mensaje = "Cantidad de años";
+                } 
+                campovacio(otroCampo, mensaje, false);
+            }
+        }
+    }
+    //Ponente
+    public void validarcampoPonente(JTextField campo, String textopredeterminado, JTextField... otrosCampos){ 
+        if (campo.getText().equals(textopredeterminado)) {
+            campovacio(campo, "", true);
+        }
+        for (JTextField otroCampo : otrosCampos) {
+            if (otroCampo.getText().isEmpty()) {
+                String mensaje = "";
+                if (otroCampo == campotemaponente) {
+                    mensaje = "De lo que quieres informar";
+                } else if (otroCampo == campoinstitucionponente) {
+                    mensaje = "Institucion / Universidad";
+                } else if (otroCampo == campoduracionponent) {
+                    mensaje = "Tiempo a utilizar";
+                } 
+                campovacio(otroCampo, mensaje, false);
+            }
+        }
+    }
+    
+    
     
     
     public Participante() {
@@ -173,21 +265,38 @@ public class Participante extends javax.swing.JFrame {
 
         campocorreo.setBackground(new java.awt.Color(255, 228, 228));
         campocorreo.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        campocorreo.setForeground(new java.awt.Color(204, 204, 204));
+        campocorreo.setForeground(java.awt.Color.gray);
         campocorreo.setText("Correo personal");
         campocorreo.setToolTipText("");
         campocorreo.setActionCommand("<Not Set>");
         campocorreo.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         campocorreo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        campocorreo.setPreferredSize(new java.awt.Dimension(200, 17));
+        campocorreo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                campocorreoMousePressed(evt);
+            }
+        });
+        campocorreo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campocorreoActionPerformed(evt);
+            }
+        });
 
         camponombre.setBackground(new java.awt.Color(255, 228, 228));
         camponombre.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        camponombre.setForeground(new java.awt.Color(204, 204, 204));
+        camponombre.setForeground(java.awt.Color.gray);
         camponombre.setText("Nombre de la Persona");
         camponombre.setToolTipText("");
         camponombre.setActionCommand("<Not Set>");
         camponombre.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         camponombre.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        camponombre.setPreferredSize(new java.awt.Dimension(200, 17));
+        camponombre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                camponombreMousePressed(evt);
+            }
+        });
         camponombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 camponombreActionPerformed(evt);
@@ -196,21 +305,33 @@ public class Participante extends javax.swing.JFrame {
 
         campocedula.setBackground(new java.awt.Color(255, 228, 228));
         campocedula.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        campocedula.setForeground(new java.awt.Color(204, 204, 204));
+        campocedula.setForeground(java.awt.Color.gray);
         campocedula.setText("Cedula de Identidad");
         campocedula.setToolTipText("");
         campocedula.setActionCommand("<Not Set>");
         campocedula.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         campocedula.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        campocedula.setPreferredSize(new java.awt.Dimension(200, 17));
+        campocedula.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                campocedulaMousePressed(evt);
+            }
+        });
 
         campotlf.setBackground(new java.awt.Color(255, 228, 228));
         campotlf.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        campotlf.setForeground(new java.awt.Color(204, 204, 204));
+        campotlf.setForeground(java.awt.Color.gray);
         campotlf.setText("Nro. Personal");
         campotlf.setToolTipText("");
         campotlf.setActionCommand("<Not Set>");
         campotlf.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         campotlf.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        campotlf.setPreferredSize(new java.awt.Dimension(200, 17));
+        campotlf.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                campotlfMousePressed(evt);
+            }
+        });
 
         separadornombre.setForeground(new java.awt.Color(0, 0, 0));
 
@@ -282,13 +403,18 @@ public class Participante extends javax.swing.JFrame {
 
         campocargo.setBackground(new java.awt.Color(255, 204, 204));
         campocargo.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        campocargo.setForeground(new java.awt.Color(204, 204, 204));
+        campocargo.setForeground(java.awt.Color.gray);
         campocargo.setText("Su participacion en el evento");
         campocargo.setToolTipText("");
         campocargo.setActionCommand("<Not Set>");
         campocargo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         campocargo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         campocargo.setPreferredSize(new java.awt.Dimension(200, 21));
+        campocargo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                campocargoMousePressed(evt);
+            }
+        });
         campocargo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campocargoActionPerformed(evt);
@@ -300,13 +426,18 @@ public class Participante extends javax.swing.JFrame {
 
         campoempresa.setBackground(new java.awt.Color(255, 204, 204));
         campoempresa.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        campoempresa.setForeground(new java.awt.Color(204, 204, 204));
+        campoempresa.setForeground(java.awt.Color.gray);
         campoempresa.setText("Nombre de la Empresa");
         campoempresa.setToolTipText("");
         campoempresa.setActionCommand("<Not Set>");
         campoempresa.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         campoempresa.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         campoempresa.setPreferredSize(new java.awt.Dimension(200, 21));
+        campoempresa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                campoempresaMousePressed(evt);
+            }
+        });
         campoempresa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoempresaActionPerformed(evt);
@@ -318,13 +449,18 @@ public class Participante extends javax.swing.JFrame {
 
         campometodologiainst.setBackground(new java.awt.Color(255, 204, 204));
         campometodologiainst.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        campometodologiainst.setForeground(new java.awt.Color(204, 204, 204));
+        campometodologiainst.setForeground(java.awt.Color.gray);
         campometodologiainst.setText("Metodo de enseñanza");
         campometodologiainst.setToolTipText("");
         campometodologiainst.setActionCommand("<Not Set>");
         campometodologiainst.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         campometodologiainst.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         campometodologiainst.setPreferredSize(new java.awt.Dimension(200, 21));
+        campometodologiainst.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                campometodologiainstMousePressed(evt);
+            }
+        });
         campometodologiainst.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campometodologiainstActionPerformed(evt);
@@ -339,13 +475,18 @@ public class Participante extends javax.swing.JFrame {
 
         campotemaconferencia.setBackground(new java.awt.Color(255, 204, 204));
         campotemaconferencia.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        campotemaconferencia.setForeground(new java.awt.Color(204, 204, 204));
+        campotemaconferencia.setForeground(java.awt.Color.gray);
         campotemaconferencia.setText("De lo que quiere informar");
         campotemaconferencia.setToolTipText("");
         campotemaconferencia.setActionCommand("<Not Set>");
         campotemaconferencia.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         campotemaconferencia.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         campotemaconferencia.setPreferredSize(new java.awt.Dimension(200, 21));
+        campotemaconferencia.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                campotemaconferenciaMousePressed(evt);
+            }
+        });
         campotemaconferencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campotemaconferenciaActionPerformed(evt);
@@ -357,13 +498,18 @@ public class Participante extends javax.swing.JFrame {
 
         campoexp.setBackground(new java.awt.Color(255, 204, 204));
         campoexp.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        campoexp.setForeground(new java.awt.Color(204, 204, 204));
+        campoexp.setForeground(java.awt.Color.gray);
         campoexp.setText("Cantidad de años");
         campoexp.setToolTipText("");
         campoexp.setActionCommand("<Not Set>");
         campoexp.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         campoexp.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         campoexp.setPreferredSize(new java.awt.Dimension(200, 21));
+        campoexp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                campoexpMousePressed(evt);
+            }
+        });
         campoexp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoexpActionPerformed(evt);
@@ -378,13 +524,18 @@ public class Participante extends javax.swing.JFrame {
 
         campotemaponente.setBackground(new java.awt.Color(255, 204, 204));
         campotemaponente.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        campotemaponente.setForeground(new java.awt.Color(204, 204, 204));
+        campotemaponente.setForeground(java.awt.Color.gray);
         campotemaponente.setText("De lo que quieres informar");
         campotemaponente.setToolTipText("");
         campotemaponente.setActionCommand("<Not Set>");
         campotemaponente.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         campotemaponente.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         campotemaponente.setPreferredSize(new java.awt.Dimension(200, 21));
+        campotemaponente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                campotemaponenteMousePressed(evt);
+            }
+        });
         campotemaponente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campotemaponenteActionPerformed(evt);
@@ -393,13 +544,18 @@ public class Participante extends javax.swing.JFrame {
 
         campoduracionponent.setBackground(new java.awt.Color(255, 204, 204));
         campoduracionponent.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        campoduracionponent.setForeground(new java.awt.Color(204, 204, 204));
+        campoduracionponent.setForeground(java.awt.Color.gray);
         campoduracionponent.setText("Tiempo a utilizar");
         campoduracionponent.setToolTipText("");
         campoduracionponent.setActionCommand("<Not Set>");
         campoduracionponent.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         campoduracionponent.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         campoduracionponent.setPreferredSize(new java.awt.Dimension(200, 21));
+        campoduracionponent.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                campoduracionponentMousePressed(evt);
+            }
+        });
         campoduracionponent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoduracionponentActionPerformed(evt);
@@ -486,13 +642,18 @@ public class Participante extends javax.swing.JFrame {
 
         campozona.setBackground(new java.awt.Color(255, 204, 204));
         campozona.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        campozona.setForeground(new java.awt.Color(204, 204, 204));
+        campozona.setForeground(java.awt.Color.gray);
         campozona.setText("Zona de Trabajo");
         campozona.setToolTipText("");
         campozona.setActionCommand("<Not Set>");
         campozona.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         campozona.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         campozona.setPreferredSize(new java.awt.Dimension(200, 21));
+        campozona.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                campozonaMousePressed(evt);
+            }
+        });
         campozona.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campozonaActionPerformed(evt);
@@ -504,13 +665,18 @@ public class Participante extends javax.swing.JFrame {
 
         campocargoempresa.setBackground(new java.awt.Color(255, 204, 204));
         campocargoempresa.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        campocargoempresa.setForeground(new java.awt.Color(204, 204, 204));
+        campocargoempresa.setForeground(java.awt.Color.gray);
         campocargoempresa.setText("Cargo en la Empresa");
         campocargoempresa.setToolTipText("");
         campocargoempresa.setActionCommand("<Not Set>");
         campocargoempresa.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         campocargoempresa.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         campocargoempresa.setPreferredSize(new java.awt.Dimension(200, 21));
+        campocargoempresa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                campocargoempresaMousePressed(evt);
+            }
+        });
         campocargoempresa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campocargoempresaActionPerformed(evt);
@@ -522,13 +688,18 @@ public class Participante extends javax.swing.JFrame {
 
         campotemaespecialidad.setBackground(new java.awt.Color(255, 204, 204));
         campotemaespecialidad.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        campotemaespecialidad.setForeground(new java.awt.Color(204, 204, 204));
+        campotemaespecialidad.setForeground(java.awt.Color.gray);
         campotemaespecialidad.setText("Campo especializado");
         campotemaespecialidad.setToolTipText("");
         campotemaespecialidad.setActionCommand("<Not Set>");
         campotemaespecialidad.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         campotemaespecialidad.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         campotemaespecialidad.setPreferredSize(new java.awt.Dimension(200, 21));
+        campotemaespecialidad.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                campotemaespecialidadMousePressed(evt);
+            }
+        });
         campotemaespecialidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campotemaespecialidadActionPerformed(evt);
@@ -540,13 +711,18 @@ public class Participante extends javax.swing.JFrame {
 
         campoinstitucionponente.setBackground(new java.awt.Color(255, 204, 204));
         campoinstitucionponente.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        campoinstitucionponente.setForeground(new java.awt.Color(204, 204, 204));
+        campoinstitucionponente.setForeground(java.awt.Color.gray);
         campoinstitucionponente.setText("Institucion / Universidad");
         campoinstitucionponente.setToolTipText("");
         campoinstitucionponente.setActionCommand("<Not Set>");
         campoinstitucionponente.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         campoinstitucionponente.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         campoinstitucionponente.setPreferredSize(new java.awt.Dimension(200, 21));
+        campoinstitucionponente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                campoinstitucionponenteMousePressed(evt);
+            }
+        });
         campoinstitucionponente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoinstitucionponenteActionPerformed(evt);
@@ -756,6 +932,118 @@ public class Participante extends javax.swing.JFrame {
     private void camponombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_camponombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_camponombreActionPerformed
+
+    private void camponombreMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_camponombreMousePressed
+        if (camponombre.getText().equals ("Nombre de la Persona")){ //Al presionar un campo de texto
+            campovacio(camponombre, "", true);//El usuario podra escribir con el color negro
+        }
+        if (campotlf.getText().isEmpty()){ //En caso de que los demas esten vacios, volveran a poseer su mensaje predeterminado, en color gris
+            campovacio(campotlf,"Nro. Personal", false);
+        }
+        if (campocorreo.getText().isEmpty()){
+            campovacio(campocorreo,"Correo personal", false);
+        }
+        if (campocedula.getText().isEmpty()){
+            campovacio(campocedula, "Cedula de Identidad", false);
+        }
+    }//GEN-LAST:event_camponombreMousePressed
+    //Posiblemente haya una forma de mejorar esto, y no hacer puros if...
+    private void campotlfMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campotlfMousePressed
+        if (campotlf.getText().equals ("Nro. Personal")){
+            campovacio(campotlf, "", true);
+        }
+        if (camponombre.getText().isEmpty()){
+            campovacio(camponombre, "Nombre de la Persona", false);
+        }
+        if (campocorreo.getText().isEmpty()){
+            campovacio(campocorreo,"Correo personal", false);
+        }
+        if (campocedula.getText().isEmpty()){
+            campovacio(campocedula, "Cedula de Identidad", false);
+        }
+        
+    }//GEN-LAST:event_campotlfMousePressed
+
+    private void campocorreoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campocorreoMousePressed
+        if (campocorreo.getText().equals ("Correo personal")){
+            campovacio(campocorreo, "", true);
+        }
+        if (camponombre.getText().isEmpty()){
+            campovacio(camponombre, "Nombre de la Persona", false);
+        }
+        if (campocedula.getText().isEmpty()){
+            campovacio(campocedula, "Cedula de Identidad", false);
+        }
+        if (campotlf.getText().isEmpty()){ 
+            campovacio(campotlf,"Nro. Personal", false);
+        }
+        
+        
+    }//GEN-LAST:event_campocorreoMousePressed
+
+    private void campocedulaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campocedulaMousePressed
+        if (campocedula.getText().equals ("Cedula de Identidad")){
+            campovacio(campocedula, "", true);
+        }
+        if (camponombre.getText().isEmpty()){
+            campovacio(camponombre, "Nombre de la Persona", false);
+        }
+        if (campocorreo.getText().isEmpty()){
+            campovacio(campocorreo,"Correo personal", false);
+        }
+        if (campotlf.getText().isEmpty()){ 
+            campovacio(campotlf,"Nro. Personal", false);
+        }
+        
+    }//GEN-LAST:event_campocedulaMousePressed
+
+    private void campocorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campocorreoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campocorreoActionPerformed
+
+    private void campocargoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campocargoMousePressed
+       validarcampoAsistente(campocargo,"Su participacion en el evento", campozona);  
+    }//GEN-LAST:event_campocargoMousePressed
+
+    private void campozonaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campozonaMousePressed
+       validarcampoAsistente(campozona,"Zona de Trabajo", campocargo);  
+    }//GEN-LAST:event_campozonaMousePressed
+
+    private void campoempresaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoempresaMousePressed
+        validarcampoConferencista(campoempresa,"Nombre de la Empresa", campocargoempresa, campotemaconferencia);
+    }//GEN-LAST:event_campoempresaMousePressed
+
+    private void campocargoempresaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campocargoempresaMousePressed
+        validarcampoConferencista(campocargoempresa,"Cargo en la Empresa", campoempresa, campotemaconferencia);
+    }//GEN-LAST:event_campocargoempresaMousePressed
+
+    private void campotemaconferenciaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campotemaconferenciaMousePressed
+        validarcampoConferencista(campotemaconferencia,"De lo que quiere informar", campoempresa, campocargoempresa);
+    }//GEN-LAST:event_campotemaconferenciaMousePressed
+
+    private void campotemaespecialidadMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campotemaespecialidadMousePressed
+        validarcampoInstructor(campotemaespecialidad,"Campo especializado", campometodologiainst, campoexp);
+    }//GEN-LAST:event_campotemaespecialidadMousePressed
+
+    private void campometodologiainstMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campometodologiainstMousePressed
+        validarcampoInstructor(campometodologiainst,"Metodo de enseñanza", campotemaespecialidad, campoexp);
+    }//GEN-LAST:event_campometodologiainstMousePressed
+
+    private void campoinstitucionponenteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoinstitucionponenteMousePressed
+        validarcampoPonente(campoinstitucionponente,"Institucion / Universidad", campotemaponente, campoduracionponent);
+    }//GEN-LAST:event_campoinstitucionponenteMousePressed
+
+    private void campoexpMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoexpMousePressed
+        validarcampoInstructor(campoexp,"Cantidad de años", campometodologiainst, campotemaespecialidad);
+    }//GEN-LAST:event_campoexpMousePressed
+
+    private void campotemaponenteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campotemaponenteMousePressed
+        validarcampoPonente(campotemaponente,"De lo que quieres informar", campoinstitucionponente, campoduracionponent);
+    }//GEN-LAST:event_campotemaponenteMousePressed
+
+    private void campoduracionponentMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoduracionponentMousePressed
+        validarcampoPonente(campoduracionponent,"Tiempo a utilizar", campotemaponente, campoinstitucionponente);
+    }//GEN-LAST:event_campoduracionponentMousePressed
 
     /**
      * @param args the command line arguments
