@@ -6,16 +6,15 @@ package Ventanasemergentes;
 
 import java.awt.Color; //Permite alterar color
 import javax.swing.JTextField; //Permite usar los campos de Texto
-
 /**
  *
  * @author Alejandrito
  */
 public class Participante extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Participante
-     */
+    
+    private MainWindow principal; //Me permitra volver a la ventana principal (Referencia)
+    
     public void ocultar(){ //Oculta todos los campos y labels existentes
         campocargo.setVisible(false);
         campozona.setVisible(false);
@@ -139,6 +138,13 @@ public class Participante extends javax.swing.JFrame {
         ocultar();
     }
     
+    public Participante(MainWindow principal) {
+        initComponents();
+        setTitle("Registro de Participantes");
+        ocultar();
+        this.principal = principal;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -153,6 +159,9 @@ public class Participante extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         cuerpo = new javax.swing.JPanel();
         footer = new javax.swing.JPanel();
+        salir = new javax.swing.JButton();
+        Limpiar = new javax.swing.JButton();
+        registrar = new javax.swing.JButton();
         selecciontipoparticipante = new javax.swing.JComboBox<>();
         superior = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -168,7 +177,6 @@ public class Participante extends javax.swing.JFrame {
         separadorcedula = new javax.swing.JSeparator();
         separadortlf = new javax.swing.JSeparator();
         izquierdacuerpo = new javax.swing.JPanel();
-        separadorconf5 = new javax.swing.JSeparator();
         campocargo = new javax.swing.JTextField();
         cargoevento = new javax.swing.JLabel();
         campoempresa = new javax.swing.JTextField();
@@ -192,6 +200,8 @@ public class Participante extends javax.swing.JFrame {
         campotemaespecialidad = new javax.swing.JTextField();
         institucionponente = new javax.swing.JLabel();
         campoinstitucionponente = new javax.swing.JTextField();
+        imagen = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -203,7 +213,7 @@ public class Participante extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/Participante/add-task.png"))); // NOI18N
-        jLabel6.setText("Registro del Participante ");
+        jLabel6.setText("Registro del Participante    ");
         jLabel6.setFocusable(false);
         jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
@@ -211,32 +221,106 @@ public class Participante extends javax.swing.JFrame {
         cabecera.setLayout(cabeceraLayout);
         cabeceraLayout.setHorizontalGroup(
             cabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(cabeceraLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 654, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(66, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cabeceraLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 695, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
         );
         cabeceraLayout.setVerticalGroup(
             cabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(cabeceraLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cabeceraLayout.createSequentialGroup()
+                .addContainerGap(22, Short.MAX_VALUE)
                 .addComponent(jLabel6)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
 
         cuerpo.setBackground(new java.awt.Color(255, 228, 228));
 
         footer.setBackground(new java.awt.Color(255, 204, 204));
 
+        salir.setBackground(new java.awt.Color(252, 186, 186));
+        salir.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/Participante/exit.png"))); // NOI18N
+        salir.setText("Salir");
+        salir.setBorder(null);
+        salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        salir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                salirMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                salirMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                salirMousePressed(evt);
+            }
+        });
+        salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirActionPerformed(evt);
+            }
+        });
+
+        Limpiar.setBackground(new java.awt.Color(252, 186, 186));
+        Limpiar.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        Limpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/Participante/data-cleaning.png"))); // NOI18N
+        Limpiar.setText("Limpiar");
+        Limpiar.setBorder(null);
+        Limpiar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                LimpiarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                LimpiarMouseExited(evt);
+            }
+        });
+        Limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LimpiarActionPerformed(evt);
+            }
+        });
+
+        registrar.setBackground(new java.awt.Color(252, 186, 186));
+        registrar.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        registrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/Participante/verify.png"))); // NOI18N
+        registrar.setText("Registrar");
+        registrar.setBorder(null);
+        registrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                registrarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                registrarMouseExited(evt);
+            }
+        });
+        registrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registrarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout footerLayout = new javax.swing.GroupLayout(footer);
         footer.setLayout(footerLayout);
         footerLayout.setHorizontalGroup(
             footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(footerLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(142, 142, 142)
+                .addComponent(Limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33))
         );
         footerLayout.setVerticalGroup(
             footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 186, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, footerLayout.createSequentialGroup()
+                .addContainerGap(54, Short.MAX_VALUE)
+                .addGroup(footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(salir)
+                    .addComponent(Limpiar)
+                    .addComponent(registrar))
+                .addGap(42, 42, 42))
         );
 
         selecciontipoparticipante.setBackground(new java.awt.Color(255, 204, 204));
@@ -398,8 +482,6 @@ public class Participante extends javax.swing.JFrame {
         );
 
         izquierdacuerpo.setBackground(new java.awt.Color(255, 228, 228));
-
-        separadorconf5.setForeground(new java.awt.Color(0, 0, 0));
 
         campocargo.setBackground(new java.awt.Color(255, 204, 204));
         campocargo.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
@@ -590,16 +672,11 @@ public class Participante extends javax.swing.JFrame {
                             .addComponent(campoduracionponent, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(campotemaponente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())))
-            .addGroup(izquierdacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(izquierdacuerpoLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(separadorconf5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         izquierdacuerpoLayout.setVerticalGroup(
             izquierdacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(izquierdacuerpoLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(0, 0, 0)
                 .addComponent(cargoevento)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(campocargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -619,20 +696,15 @@ public class Participante extends javax.swing.JFrame {
                 .addComponent(experienciainst)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(campoexp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(temaponente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(campotemaponente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(duracionponente)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(duracionponente, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(campoduracionponent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(izquierdacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(izquierdacuerpoLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(separadorconf5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         derechacuerpo.setBackground(new java.awt.Color(255, 228, 228));
@@ -734,28 +806,27 @@ public class Participante extends javax.swing.JFrame {
         derechacuerpoLayout.setHorizontalGroup(
             derechacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, derechacuerpoLayout.createSequentialGroup()
-                .addContainerGap(189, Short.MAX_VALUE)
+                .addContainerGap(188, Short.MAX_VALUE)
                 .addGroup(derechacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(institucionponente, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(derechacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(derechacuerpoLayout.createSequentialGroup()
-                            .addComponent(zonaencargada, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(82, 82, 82))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, derechacuerpoLayout.createSequentialGroup()
-                            .addGroup(derechacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(especialidad)
-                                .addComponent(campotemaespecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cargoempresa)
-                                .addGroup(derechacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(campozona, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(campocargoempresa, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGap(68, 68, 68)))
-                    .addComponent(campoinstitucionponente, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(derechacuerpoLayout.createSequentialGroup()
+                        .addComponent(zonaencargada, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, derechacuerpoLayout.createSequentialGroup()
+                        .addGroup(derechacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(institucionponente, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(especialidad)
+                            .addComponent(campotemaespecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cargoempresa)
+                            .addGroup(derechacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(campozona, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(campocargoempresa, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(campoinstitucionponente, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(69, 69, 69))))
         );
         derechacuerpoLayout.setVerticalGroup(
             derechacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(derechacuerpoLayout.createSequentialGroup()
-                .addGap(47, 47, 47)
+                .addGap(32, 32, 32)
                 .addComponent(zonaencargada)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(campozona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -771,26 +842,35 @@ public class Participante extends javax.swing.JFrame {
                 .addComponent(institucionponente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(campoinstitucionponente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(194, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
+
+        imagen.setBackground(new java.awt.Color(255, 228, 228));
+        imagen.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/Participante/family2.png"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        imagen.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 27, 129, -1));
 
         javax.swing.GroupLayout cuerpoLayout = new javax.swing.GroupLayout(cuerpo);
         cuerpo.setLayout(cuerpoLayout);
         cuerpoLayout.setHorizontalGroup(
             cuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(footer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(cuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(superior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(cuerpoLayout.createSequentialGroup()
-                    .addGroup(cuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(cuerpoLayout.createSequentialGroup()
-                            .addGap(67, 67, 67)
-                            .addComponent(selecciontipoparticipante, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(cuerpoLayout.createSequentialGroup()
-                            .addGap(0, 0, 0)
-                            .addComponent(izquierdacuerpo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(0, 0, 0)
-                    .addComponent(derechacuerpo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addComponent(superior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(cuerpoLayout.createSequentialGroup()
+                .addGroup(cuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(cuerpoLayout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addComponent(selecciontipoparticipante, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(cuerpoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(izquierdacuerpo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(cuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(derechacuerpo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cuerpoLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 295, Short.MAX_VALUE)
+                        .addComponent(imagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         cuerpoLayout.setVerticalGroup(
             cuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -798,13 +878,19 @@ public class Participante extends javax.swing.JFrame {
                 .addComponent(superior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(cuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(cuerpoLayout.createSequentialGroup()
-                        .addComponent(selecciontipoparticipante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(izquierdacuerpo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(cuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(selecciontipoparticipante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(cuerpoLayout.createSequentialGroup()
+                                .addGap(33, 33, 33)
+                                .addComponent(izquierdacuerpo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(cuerpoLayout.createSequentialGroup()
                         .addComponent(derechacuerpo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addComponent(footer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(imagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)))
+                .addComponent(footer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
 
         javax.swing.GroupLayout padreLayout = new javax.swing.GroupLayout(padre);
@@ -1045,6 +1131,61 @@ public class Participante extends javax.swing.JFrame {
         validarcampoPonente(campoduracionponent,"Tiempo a utilizar", campotemaponente, campoinstitucionponente);
     }//GEN-LAST:event_campoduracionponentMousePressed
 
+    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
+        this.dispose();
+        principal.setVisible(true);
+    }//GEN-LAST:event_salirActionPerformed
+
+    private void LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarActionPerformed
+        campovacio(camponombre, "Nombre de la Persona", false);
+        campovacio(campocedula, "Cedula de Identidad", false);
+        campovacio(campocorreo, "Correo personal", false);
+        campovacio(campotlf, "Nro. Personal", false);
+        campovacio(campocargo, "Su participacion en el evento", false);
+        campovacio(campozona, "Zona de Trabajo", false);
+        campovacio(campoempresa, "Nombre de la Empresa", false);
+        campovacio(campocargoempresa, "Cargo en la Empresa", false);
+        campovacio(campotemaconferencia, "De lo que quiere informar", false);
+        campovacio(campotemaespecialidad, "Campo especializado", false);
+        campovacio(campometodologiainst, "Metodo de enseñanza", false);
+        campovacio(campoexp, "Cantidad de años", false);
+        campovacio(campoinstitucionponente, "Institucion / Universidad", false);
+        campovacio(campotemaponente, "De lo que quieres informar", false);
+        campovacio(campoduracionponent, "Tiempo a utilizar", false);
+    }//GEN-LAST:event_LimpiarActionPerformed
+
+    private void salirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_salirMousePressed
+
+    private void salirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMouseEntered
+        herramientasVentanas.cambiarColor(salir, true);
+    }//GEN-LAST:event_salirMouseEntered
+
+    private void salirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMouseExited
+        herramientasVentanas.cambiarColor(salir, false);
+    }//GEN-LAST:event_salirMouseExited
+
+    private void LimpiarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LimpiarMouseEntered
+        herramientasVentanas.cambiarColor(Limpiar, true);
+    }//GEN-LAST:event_LimpiarMouseEntered
+
+    private void LimpiarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LimpiarMouseExited
+        herramientasVentanas.cambiarColor(Limpiar, false);
+    }//GEN-LAST:event_LimpiarMouseExited
+
+    private void registrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarMouseEntered
+        herramientasVentanas.cambiarColor(registrar, true);
+    }//GEN-LAST:event_registrarMouseEntered
+
+    private void registrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarMouseExited
+        herramientasVentanas.cambiarColor(registrar, false);
+    }//GEN-LAST:event_registrarMouseExited
+
+    private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
+        //Aqui habria logica, si tuviera una
+    }//GEN-LAST:event_registrarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1081,6 +1222,7 @@ public class Participante extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Limpiar;
     private javax.swing.JPanel cabecera;
     private javax.swing.JTextField campocargo;
     private javax.swing.JTextField campocargoempresa;
@@ -1106,18 +1248,21 @@ public class Participante extends javax.swing.JFrame {
     private javax.swing.JLabel especialidad;
     private javax.swing.JLabel experienciainst;
     private javax.swing.JPanel footer;
+    private javax.swing.JPanel imagen;
     private javax.swing.JLabel institucionponente;
     private javax.swing.JPanel izquierdacuerpo;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel metodologiainst;
     private javax.swing.JPanel padre;
+    private javax.swing.JButton registrar;
+    private javax.swing.JButton salir;
     private javax.swing.JComboBox<String> selecciontipoparticipante;
     private javax.swing.JSeparator separadorcedula;
-    private javax.swing.JSeparator separadorconf5;
     private javax.swing.JSeparator separadorcorreo;
     private javax.swing.JSeparator separadornombre;
     private javax.swing.JSeparator separadortlf;

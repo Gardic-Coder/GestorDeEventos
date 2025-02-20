@@ -3,8 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Ventanasemergentes;
-import java.awt.Color; //Defino colores personalizados (Tecnologia Hover)
-import javax.swing.JButton; //Me permitira utilizar manualmente Jbutton
 /**
  *
  * @author juanm
@@ -18,19 +16,6 @@ public class MainWindow extends javax.swing.JFrame {
         initComponents();
         setTitle("Gestion de Eventos");
     }
-    
-    public void cambiarColor(JButton boton, boolean eventoentered){ //Una funcion que me permitira alterar los colores de un boton, dependiendo de la entrada o salida de un boton
-        if (eventoentered){ //Si el mouse entro en el radio del boton
-            boton.setBackground (new Color(255, 151, 151)); //Cambiar el color del fondo
-            boton.setForeground (new Color (255,255,255)); //Cambiar el color del texto
-        }else{ //si no...
-            boton.setBackground (new Color(252,186,186));
-            boton.setForeground (new Color(0,0,0));            
-        }
-    }
-
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -277,7 +262,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void segundaopcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_segundaopcionActionPerformed
         
-        Participante creador = new Participante();
+        Participante creador = new Participante(this);
         creador.setVisible(true);
         creador.setLocationRelativeTo(null);
         this.dispose();
@@ -293,35 +278,35 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_cuartaopcionActionPerformed
 
     private void primeraopcionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_primeraopcionMouseEntered
-        cambiarColor(primeraopcion,true);
+        herramientasVentanas.cambiarColor(primeraopcion,true);
     }//GEN-LAST:event_primeraopcionMouseEntered
 
     private void primeraopcionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_primeraopcionMouseExited
-        cambiarColor(primeraopcion,false);
+        herramientasVentanas.cambiarColor(primeraopcion,false);
     }//GEN-LAST:event_primeraopcionMouseExited
 
     private void segundaopcionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_segundaopcionMouseEntered
-        cambiarColor(segundaopcion,true);
+        herramientasVentanas.cambiarColor(segundaopcion,true);
     }//GEN-LAST:event_segundaopcionMouseEntered
 
     private void segundaopcionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_segundaopcionMouseExited
-        cambiarColor(segundaopcion,false);
+        herramientasVentanas.cambiarColor(segundaopcion,false);
     }//GEN-LAST:event_segundaopcionMouseExited
 
     private void terceraopcionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_terceraopcionMouseEntered
-        cambiarColor(terceraopcion,true);
+        herramientasVentanas.cambiarColor(terceraopcion,true);
     }//GEN-LAST:event_terceraopcionMouseEntered
 
     private void terceraopcionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_terceraopcionMouseExited
-        cambiarColor(terceraopcion,false);
+        herramientasVentanas.cambiarColor(terceraopcion,false);
     }//GEN-LAST:event_terceraopcionMouseExited
 
     private void cuartaopcionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cuartaopcionMouseEntered
-        cambiarColor(cuartaopcion,true);
+        herramientasVentanas.cambiarColor(cuartaopcion,true);
     }//GEN-LAST:event_cuartaopcionMouseEntered
 
     private void cuartaopcionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cuartaopcionMouseExited
-        cambiarColor(cuartaopcion,false);
+        herramientasVentanas.cambiarColor(cuartaopcion,false);
     }//GEN-LAST:event_cuartaopcionMouseExited
 
     private void segundaopcionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_segundaopcionMouseClicked
