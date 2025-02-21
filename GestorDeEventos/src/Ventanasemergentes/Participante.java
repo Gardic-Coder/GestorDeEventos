@@ -4,15 +4,17 @@
  */
 package Ventanasemergentes;
 
+import java.awt.Color; //Permite alterar color
+import javax.swing.JTextField; //Permite usar los campos de Texto
 /**
  *
  * @author Alejandrito
  */
 public class Participante extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Participante
-     */
+    
+    private MainWindow principal; //Me permitra volver a la ventana principal (Referencia)
+    
     public void ocultar(){ //Oculta todos los campos y labels existentes
         campocargo.setVisible(false);
         campozona.setVisible(false);
@@ -24,28 +26,123 @@ public class Participante extends javax.swing.JFrame {
         campocargoempresa.setVisible(false);
         temaconferencia.setVisible(false);
         campotemaconferencia.setVisible(false);
-        separadorasist1.setVisible(false);
-        separadorasist2.setVisible(false);
-        separadorconf1.setVisible(false);
-        separadorconf2.setVisible(false);
-        separadorconf3.setVisible(false);
+        campoexp.setVisible(false);
         especialidad.setVisible(false);
         metodologiainst.setVisible(false);
         experienciainst.setVisible(false);
-        separadormetodologiainst.setVisible(false);
         campometodologiainst.setVisible(false);
         campotemaespecialidad.setVisible(false);
-        separadorespecialidad.setVisible(false);
-        sliderinst.setVisible(false);
+        temaponente.setVisible(false);
+        campotemaponente.setVisible(false);
+        duracionponente.setVisible(false);
+        campoduracionponent.setVisible(false);
+        institucionponente.setVisible(false);
+        campoinstitucionponente.setVisible(false);
                 
         
     }
+    
+    //Vacia el campo de texto, y cambia el color a Negro
+    public void campovacio(JTextField campo, String mensaje, boolean color){
+        campo.setText(mensaje);
+        if (color){
+            campo.setForeground (Color.black);  
+        }else{
+            campo.setForeground (Color.gray);
+        }  
+    }
+    
+    //Ocultar o no los campos, para el Asistente
+    public void validarcampoAsistente(JTextField campo, String textopredeterminado, JTextField... otrosCampos){
+        if (campo.getText().equals(textopredeterminado)) { //El campo presionado, se verifica con su texto predeterminado
+            campovacio(campo, "", true);
+        }
+        for (JTextField otroCampo : otrosCampos) { //Para los demas campos
+            if (otroCampo.getText().isEmpty()) {//Si no estan vacios, no se alteran; en caso contrario, se les brinda su mensaje predeterminado
+                String mensaje = "";//En Java, la gestión de memoria para objetos como String se maneja automáticamente mediante el recolector de basura
+                if (otroCampo == campozona) {
+                    mensaje = "Zona de Trabajo";
+                } else if (otroCampo == campocargo) {
+                    mensaje = "Su participacion en el evento";
+                } 
+                campovacio(otroCampo, mensaje, false);
+            }
+        }
+    }
+    
+    //Conferencista
+    public void validarcampoConferencista(JTextField campo, String textopredeterminado, JTextField... otrosCampos){ 
+        if (campo.getText().equals(textopredeterminado)) {
+            campovacio(campo, "", true);
+        }
+        for (JTextField otroCampo : otrosCampos) {
+            if (otroCampo.getText().isEmpty()) {
+                String mensaje = "";
+                if (otroCampo == campoempresa) {
+                    mensaje = "Nombre de la Empresa";
+                } else if (otroCampo == campocargoempresa) {
+                    mensaje = "Cargo en la Empresa";
+                } else if (otroCampo == campotemaconferencia) {
+                    mensaje = "De lo que quiere informar";
+                } 
+                campovacio(otroCampo, mensaje, false);
+            }
+        }
+    }
+    
+    //Instructor
+    public void validarcampoInstructor(JTextField campo, String textopredeterminado, JTextField... otrosCampos){ 
+        if (campo.getText().equals(textopredeterminado)) {
+            campovacio(campo, "", true);
+        }
+        for (JTextField otroCampo : otrosCampos) {
+            if (otroCampo.getText().isEmpty()) {
+                String mensaje = "";
+                if (otroCampo == campometodologiainst) {
+                    mensaje = "Metodo de enseñanza";
+                } else if (otroCampo == campotemaespecialidad) {
+                    mensaje = "Campo especializado";
+                } else if (otroCampo == campoexp) {
+                    mensaje = "Cantidad de años";
+                } 
+                campovacio(otroCampo, mensaje, false);
+            }
+        }
+    }
+    //Ponente
+    public void validarcampoPonente(JTextField campo, String textopredeterminado, JTextField... otrosCampos){ 
+        if (campo.getText().equals(textopredeterminado)) {
+            campovacio(campo, "", true);
+        }
+        for (JTextField otroCampo : otrosCampos) {
+            if (otroCampo.getText().isEmpty()) {
+                String mensaje = "";
+                if (otroCampo == campotemaponente) {
+                    mensaje = "De lo que quieres informar";
+                } else if (otroCampo == campoinstitucionponente) {
+                    mensaje = "Institucion / Universidad";
+                } else if (otroCampo == campoduracionponent) {
+                    mensaje = "Tiempo a utilizar";
+                } 
+                campovacio(otroCampo, mensaje, false);
+            }
+        }
+    }
+    
+    
     
     
     public Participante() {
         initComponents();
         setTitle("Registro de Participantes");
         ocultar();
+    }
+    
+    public Participante(MainWindow principal) {
+        initComponents();
+        setTitle("Registro de Participantes");
+        ocultar();
+        this.principal = principal;
     }
     
     /**
@@ -56,153 +153,175 @@ public class Participante extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         padre = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
+        cabecera = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        camponombre = new javax.swing.JTextField();
-        campocorreo = new javax.swing.JTextField();
-        campotlf = new javax.swing.JTextField();
-        campocedula = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        cuerpo = new javax.swing.JPanel();
+        footer = new javax.swing.JPanel();
+        salir = new javax.swing.JButton();
+        Limpiar = new javax.swing.JButton();
+        registrar = new javax.swing.JButton();
         selecciontipoparticipante = new javax.swing.JComboBox<>();
-        jLabel3 = new javax.swing.JLabel();
+        superior = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        cargoevento = new javax.swing.JLabel();
-        zonaencargada = new javax.swing.JLabel();
-        empresa = new javax.swing.JLabel();
-        campocargo = new javax.swing.JTextField();
-        campoempresa = new javax.swing.JTextField();
-        campozona = new javax.swing.JTextField();
-        campotemaconferencia = new javax.swing.JTextField();
-        campocargoempresa = new javax.swing.JTextField();
-        cargoempresa = new javax.swing.JLabel();
-        temaconferencia = new javax.swing.JLabel();
-        separadorasist1 = new javax.swing.JSeparator();
-        separadorconf2 = new javax.swing.JSeparator();
-        separadorconf1 = new javax.swing.JSeparator();
-        separadorasist2 = new javax.swing.JSeparator();
-        separadorconf3 = new javax.swing.JSeparator();
-        separadorcedula = new javax.swing.JSeparator();
+        jLabel3 = new javax.swing.JLabel();
+        campocorreo = new javax.swing.JTextField();
+        camponombre = new javax.swing.JTextField();
+        campocedula = new javax.swing.JTextField();
+        campotlf = new javax.swing.JTextField();
         separadornombre = new javax.swing.JSeparator();
-        separadortlf = new javax.swing.JSeparator();
         separadorcorreo = new javax.swing.JSeparator();
+        separadorcedula = new javax.swing.JSeparator();
+        separadortlf = new javax.swing.JSeparator();
+        izquierdacuerpo = new javax.swing.JPanel();
+        campocargo = new javax.swing.JTextField();
+        cargoevento = new javax.swing.JLabel();
+        campoempresa = new javax.swing.JTextField();
+        empresa = new javax.swing.JLabel();
+        campometodologiainst = new javax.swing.JTextField();
         metodologiainst = new javax.swing.JLabel();
+        temaconferencia = new javax.swing.JLabel();
+        campotemaconferencia = new javax.swing.JTextField();
         experienciainst = new javax.swing.JLabel();
+        campoexp = new javax.swing.JTextField();
+        temaponente = new javax.swing.JLabel();
+        duracionponente = new javax.swing.JLabel();
+        campotemaponente = new javax.swing.JTextField();
+        campoduracionponent = new javax.swing.JTextField();
+        derechacuerpo = new javax.swing.JPanel();
+        zonaencargada = new javax.swing.JLabel();
+        campozona = new javax.swing.JTextField();
+        cargoempresa = new javax.swing.JLabel();
+        campocargoempresa = new javax.swing.JTextField();
         especialidad = new javax.swing.JLabel();
         campotemaespecialidad = new javax.swing.JTextField();
-        campometodologiainst = new javax.swing.JTextField();
-        separadorespecialidad = new javax.swing.JSeparator();
-        separadormetodologiainst = new javax.swing.JSeparator();
-        sliderinst = new javax.swing.JSlider();
+        institucionponente = new javax.swing.JLabel();
+        campoinstitucionponente = new javax.swing.JTextField();
+        imagen = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(255, 204, 204));
+        cabecera.setBackground(new java.awt.Color(255, 204, 204));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/Participante/add-task.png"))); // NOI18N
-        jLabel6.setText("Registro del Participante ");
+        jLabel6.setText("Registro del Participante    ");
         jLabel6.setFocusable(false);
         jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 654, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+        javax.swing.GroupLayout cabeceraLayout = new javax.swing.GroupLayout(cabecera);
+        cabecera.setLayout(cabeceraLayout);
+        cabeceraLayout.setHorizontalGroup(
+            cabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cabeceraLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 695, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+        cabeceraLayout.setVerticalGroup(
+            cabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cabeceraLayout.createSequentialGroup()
+                .addContainerGap(22, Short.MAX_VALUE)
                 .addComponent(jLabel6)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
 
-        jPanel2.setBackground(new java.awt.Color(255, 228, 228));
+        cuerpo.setBackground(new java.awt.Color(255, 228, 228));
 
-        jPanel3.setBackground(new java.awt.Color(255, 204, 204));
+        footer.setBackground(new java.awt.Color(255, 204, 204));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        salir.setBackground(new java.awt.Color(252, 186, 186));
+        salir.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/Participante/exit.png"))); // NOI18N
+        salir.setText("Salir");
+        salir.setBorder(null);
+        salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        salir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                salirMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                salirMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                salirMousePressed(evt);
+            }
+        });
+        salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirActionPerformed(evt);
+            }
+        });
+
+        Limpiar.setBackground(new java.awt.Color(252, 186, 186));
+        Limpiar.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        Limpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/Participante/data-cleaning.png"))); // NOI18N
+        Limpiar.setText("Limpiar");
+        Limpiar.setBorder(null);
+        Limpiar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                LimpiarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                LimpiarMouseExited(evt);
+            }
+        });
+        Limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LimpiarActionPerformed(evt);
+            }
+        });
+
+        registrar.setBackground(new java.awt.Color(252, 186, 186));
+        registrar.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        registrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/Participante/verify.png"))); // NOI18N
+        registrar.setText("Registrar");
+        registrar.setBorder(null);
+        registrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                registrarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                registrarMouseExited(evt);
+            }
+        });
+        registrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registrarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout footerLayout = new javax.swing.GroupLayout(footer);
+        footer.setLayout(footerLayout);
+        footerLayout.setHorizontalGroup(
+            footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(footerLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(142, 142, 142)
+                .addComponent(Limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 186, Short.MAX_VALUE)
+        footerLayout.setVerticalGroup(
+            footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, footerLayout.createSequentialGroup()
+                .addContainerGap(54, Short.MAX_VALUE)
+                .addGroup(footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(salir)
+                    .addComponent(Limpiar)
+                    .addComponent(registrar))
+                .addGap(42, 42, 42))
         );
-
-        camponombre.setBackground(new java.awt.Color(255, 228, 228));
-        camponombre.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        camponombre.setForeground(new java.awt.Color(204, 204, 204));
-        camponombre.setText("Nombre de la Persona");
-        camponombre.setToolTipText("");
-        camponombre.setActionCommand("<Not Set>");
-        camponombre.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        camponombre.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        camponombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                camponombreActionPerformed(evt);
-            }
-        });
-
-        campocorreo.setBackground(new java.awt.Color(255, 228, 228));
-        campocorreo.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        campocorreo.setForeground(new java.awt.Color(204, 204, 204));
-        campocorreo.setText("Correo personal");
-        campocorreo.setToolTipText("");
-        campocorreo.setActionCommand("<Not Set>");
-        campocorreo.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        campocorreo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        campocorreo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campocorreoActionPerformed(evt);
-            }
-        });
-
-        campotlf.setBackground(new java.awt.Color(255, 228, 228));
-        campotlf.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        campotlf.setForeground(new java.awt.Color(204, 204, 204));
-        campotlf.setText("Nro. Personal");
-        campotlf.setToolTipText("");
-        campotlf.setActionCommand("<Not Set>");
-        campotlf.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        campotlf.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        campotlf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campotlfActionPerformed(evt);
-            }
-        });
-
-        campocedula.setBackground(new java.awt.Color(255, 228, 228));
-        campocedula.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        campocedula.setForeground(new java.awt.Color(204, 204, 204));
-        campocedula.setText("Cedula de Identidad");
-        campocedula.setToolTipText("");
-        campocedula.setActionCommand("<Not Set>");
-        campocedula.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        campocedula.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        campocedula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campocedulaActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        jLabel1.setText("Nombre");
 
         selecciontipoparticipante.setBackground(new java.awt.Color(255, 204, 204));
         selecciontipoparticipante.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -214,8 +333,10 @@ public class Participante extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        jLabel3.setText("Correo");
+        superior.setBackground(new java.awt.Color(255, 228, 228));
+
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        jLabel1.setText("Nombre");
 
         jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
         jLabel4.setText("Cedula");
@@ -223,302 +344,568 @@ public class Participante extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
         jLabel5.setText("Telefono");
 
-        cargoevento.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        cargoevento.setText("Cargo en el evento");
+        jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        jLabel3.setText("Correo");
 
-        zonaencargada.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        zonaencargada.setText("Zona encargada");
+        campocorreo.setBackground(new java.awt.Color(255, 228, 228));
+        campocorreo.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        campocorreo.setForeground(java.awt.Color.gray);
+        campocorreo.setText("Correo personal");
+        campocorreo.setToolTipText("");
+        campocorreo.setActionCommand("<Not Set>");
+        campocorreo.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        campocorreo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        campocorreo.setPreferredSize(new java.awt.Dimension(200, 17));
+        campocorreo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                campocorreoMousePressed(evt);
+            }
+        });
+        campocorreo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campocorreoActionPerformed(evt);
+            }
+        });
 
-        empresa.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        empresa.setText("Empresa");
+        camponombre.setBackground(new java.awt.Color(255, 228, 228));
+        camponombre.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        camponombre.setForeground(java.awt.Color.gray);
+        camponombre.setText("Nombre de la Persona");
+        camponombre.setToolTipText("");
+        camponombre.setActionCommand("<Not Set>");
+        camponombre.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        camponombre.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        camponombre.setPreferredSize(new java.awt.Dimension(200, 17));
+        camponombre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                camponombreMousePressed(evt);
+            }
+        });
+        camponombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                camponombreActionPerformed(evt);
+            }
+        });
 
-        campocargo.setBackground(new java.awt.Color(255, 228, 228));
+        campocedula.setBackground(new java.awt.Color(255, 228, 228));
+        campocedula.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        campocedula.setForeground(java.awt.Color.gray);
+        campocedula.setText("Cedula de Identidad");
+        campocedula.setToolTipText("");
+        campocedula.setActionCommand("<Not Set>");
+        campocedula.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        campocedula.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        campocedula.setPreferredSize(new java.awt.Dimension(200, 17));
+        campocedula.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                campocedulaMousePressed(evt);
+            }
+        });
+
+        campotlf.setBackground(new java.awt.Color(255, 228, 228));
+        campotlf.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        campotlf.setForeground(java.awt.Color.gray);
+        campotlf.setText("Nro. Personal");
+        campotlf.setToolTipText("");
+        campotlf.setActionCommand("<Not Set>");
+        campotlf.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        campotlf.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        campotlf.setPreferredSize(new java.awt.Dimension(200, 17));
+        campotlf.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                campotlfMousePressed(evt);
+            }
+        });
+
+        separadornombre.setForeground(new java.awt.Color(0, 0, 0));
+
+        separadorcorreo.setForeground(new java.awt.Color(0, 0, 0));
+
+        separadorcedula.setForeground(new java.awt.Color(0, 0, 0));
+
+        separadortlf.setForeground(new java.awt.Color(0, 0, 0));
+
+        javax.swing.GroupLayout superiorLayout = new javax.swing.GroupLayout(superior);
+        superior.setLayout(superiorLayout);
+        superiorLayout.setHorizontalGroup(
+            superiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(superiorLayout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addGroup(superiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(campocorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(camponombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(separadorcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(separadornombre, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(superiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(separadorcedula, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(separadortlf, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campotlf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(campocedula, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(118, 118, 118))
+        );
+        superiorLayout.setVerticalGroup(
+            superiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, superiorLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(superiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(superiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(camponombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campotlf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(superiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(separadornombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(separadortlf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(superiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, superiorLayout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(1, 1, 1)
+                        .addGroup(superiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(campocorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(campocedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(separadorcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, superiorLayout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(29, 29, 29)))
+                .addGap(0, 0, 0)
+                .addComponent(separadorcedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
+        );
+
+        izquierdacuerpo.setBackground(new java.awt.Color(255, 228, 228));
+
+        campocargo.setBackground(new java.awt.Color(255, 204, 204));
         campocargo.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        campocargo.setForeground(new java.awt.Color(204, 204, 204));
-        campocargo.setText("Ingrese el Nombre");
+        campocargo.setForeground(java.awt.Color.gray);
+        campocargo.setText("Su participacion en el evento");
         campocargo.setToolTipText("");
         campocargo.setActionCommand("<Not Set>");
-        campocargo.setBorder(null);
+        campocargo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         campocargo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        campocargo.setPreferredSize(new java.awt.Dimension(200, 21));
+        campocargo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                campocargoMousePressed(evt);
+            }
+        });
         campocargo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campocargoActionPerformed(evt);
             }
         });
 
-        campoempresa.setBackground(new java.awt.Color(255, 228, 228));
+        cargoevento.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        cargoevento.setText("Cargo en el evento");
+
+        campoempresa.setBackground(new java.awt.Color(255, 204, 204));
         campoempresa.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        campoempresa.setForeground(new java.awt.Color(204, 204, 204));
+        campoempresa.setForeground(java.awt.Color.gray);
         campoempresa.setText("Nombre de la Empresa");
         campoempresa.setToolTipText("");
         campoempresa.setActionCommand("<Not Set>");
-        campoempresa.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        campoempresa.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         campoempresa.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        campoempresa.setPreferredSize(new java.awt.Dimension(200, 21));
+        campoempresa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                campoempresaMousePressed(evt);
+            }
+        });
         campoempresa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoempresaActionPerformed(evt);
             }
         });
 
-        campozona.setBackground(new java.awt.Color(255, 228, 228));
-        campozona.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        campozona.setForeground(new java.awt.Color(204, 204, 204));
-        campozona.setText("Zona de Trabajo");
-        campozona.setToolTipText("");
-        campozona.setActionCommand("<Not Set>");
-        campozona.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        campozona.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        campozona.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campozonaActionPerformed(evt);
-            }
-        });
+        empresa.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        empresa.setText("Empresa");
 
-        campotemaconferencia.setBackground(new java.awt.Color(255, 228, 228));
-        campotemaconferencia.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        campotemaconferencia.setForeground(new java.awt.Color(204, 204, 204));
-        campotemaconferencia.setText("De lo que quiere informar");
-        campotemaconferencia.setToolTipText("");
-        campotemaconferencia.setActionCommand("<Not Set>");
-        campotemaconferencia.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        campotemaconferencia.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        campotemaconferencia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campotemaconferenciaActionPerformed(evt);
-            }
-        });
-
-        campocargoempresa.setBackground(new java.awt.Color(255, 228, 228));
-        campocargoempresa.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        campocargoempresa.setForeground(new java.awt.Color(204, 204, 204));
-        campocargoempresa.setText("Cargo en la Empresa");
-        campocargoempresa.setToolTipText("");
-        campocargoempresa.setActionCommand("<Not Set>");
-        campocargoempresa.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        campocargoempresa.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        campocargoempresa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campocargoempresaActionPerformed(evt);
-            }
-        });
-
-        cargoempresa.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        cargoempresa.setText("Cargo");
-
-        temaconferencia.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        temaconferencia.setText("Tema a Exponer");
-
-        separadorasist1.setForeground(new java.awt.Color(0, 0, 0));
-
-        separadorconf2.setForeground(new java.awt.Color(0, 0, 0));
-
-        separadorconf1.setForeground(new java.awt.Color(0, 0, 0));
-
-        separadorasist2.setForeground(new java.awt.Color(0, 0, 0));
-
-        separadorconf3.setForeground(new java.awt.Color(0, 0, 0));
-
-        separadorcedula.setForeground(new java.awt.Color(0, 0, 0));
-
-        separadornombre.setForeground(new java.awt.Color(0, 0, 0));
-
-        separadortlf.setForeground(new java.awt.Color(0, 0, 0));
-
-        separadorcorreo.setForeground(new java.awt.Color(0, 0, 0));
-
-        metodologiainst.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        metodologiainst.setText("Metodologia");
-
-        experienciainst.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        experienciainst.setText("Años de Experiencia");
-
-        especialidad.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        especialidad.setText("Especialidad");
-
-        campotemaespecialidad.setBackground(new java.awt.Color(255, 228, 228));
-        campotemaespecialidad.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        campotemaespecialidad.setForeground(new java.awt.Color(204, 204, 204));
-        campotemaespecialidad.setText("Campo especializado");
-        campotemaespecialidad.setToolTipText("");
-        campotemaespecialidad.setActionCommand("<Not Set>");
-        campotemaespecialidad.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        campotemaespecialidad.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        campotemaespecialidad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campotemaespecialidadActionPerformed(evt);
-            }
-        });
-
-        campometodologiainst.setBackground(new java.awt.Color(255, 228, 228));
+        campometodologiainst.setBackground(new java.awt.Color(255, 204, 204));
         campometodologiainst.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        campometodologiainst.setForeground(new java.awt.Color(204, 204, 204));
+        campometodologiainst.setForeground(java.awt.Color.gray);
         campometodologiainst.setText("Metodo de enseñanza");
         campometodologiainst.setToolTipText("");
         campometodologiainst.setActionCommand("<Not Set>");
-        campometodologiainst.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        campometodologiainst.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         campometodologiainst.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        campometodologiainst.setPreferredSize(new java.awt.Dimension(200, 21));
+        campometodologiainst.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                campometodologiainstMousePressed(evt);
+            }
+        });
         campometodologiainst.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campometodologiainstActionPerformed(evt);
             }
         });
 
-        separadorespecialidad.setForeground(new java.awt.Color(0, 0, 0));
+        metodologiainst.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        metodologiainst.setText("Metodologia");
 
-        separadormetodologiainst.setForeground(new java.awt.Color(0, 0, 0));
+        temaconferencia.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        temaconferencia.setText("Tema a Exponer");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(67, 67, 67)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(metodologiainst)
-                    .addComponent(separadormetodologiainst, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campometodologiainst, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(separadorconf3, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campocorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campotemaconferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(temaconferencia)
-                    .addComponent(camponombre, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(campocargo)
-                                .addComponent(selecciontipoparticipante, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+        campotemaconferencia.setBackground(new java.awt.Color(255, 204, 204));
+        campotemaconferencia.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        campotemaconferencia.setForeground(java.awt.Color.gray);
+        campotemaconferencia.setText("De lo que quiere informar");
+        campotemaconferencia.setToolTipText("");
+        campotemaconferencia.setActionCommand("<Not Set>");
+        campotemaconferencia.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        campotemaconferencia.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        campotemaconferencia.setPreferredSize(new java.awt.Dimension(200, 21));
+        campotemaconferencia.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                campotemaconferenciaMousePressed(evt);
+            }
+        });
+        campotemaconferencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campotemaconferenciaActionPerformed(evt);
+            }
+        });
+
+        experienciainst.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        experienciainst.setText("Años de Experiencia");
+
+        campoexp.setBackground(new java.awt.Color(255, 204, 204));
+        campoexp.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        campoexp.setForeground(java.awt.Color.gray);
+        campoexp.setText("Cantidad de años");
+        campoexp.setToolTipText("");
+        campoexp.setActionCommand("<Not Set>");
+        campoexp.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        campoexp.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        campoexp.setPreferredSize(new java.awt.Dimension(200, 21));
+        campoexp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                campoexpMousePressed(evt);
+            }
+        });
+        campoexp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoexpActionPerformed(evt);
+            }
+        });
+
+        temaponente.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        temaponente.setText("Tema a Exponer");
+
+        duracionponente.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        duracionponente.setText("Duracion de la Exposicion");
+
+        campotemaponente.setBackground(new java.awt.Color(255, 204, 204));
+        campotemaponente.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        campotemaponente.setForeground(java.awt.Color.gray);
+        campotemaponente.setText("De lo que quieres informar");
+        campotemaponente.setToolTipText("");
+        campotemaponente.setActionCommand("<Not Set>");
+        campotemaponente.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        campotemaponente.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        campotemaponente.setPreferredSize(new java.awt.Dimension(200, 21));
+        campotemaponente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                campotemaponenteMousePressed(evt);
+            }
+        });
+        campotemaponente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campotemaponenteActionPerformed(evt);
+            }
+        });
+
+        campoduracionponent.setBackground(new java.awt.Color(255, 204, 204));
+        campoduracionponent.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        campoduracionponent.setForeground(java.awt.Color.gray);
+        campoduracionponent.setText("Tiempo a utilizar");
+        campoduracionponent.setToolTipText("");
+        campoduracionponent.setActionCommand("<Not Set>");
+        campoduracionponent.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        campoduracionponent.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        campoduracionponent.setPreferredSize(new java.awt.Dimension(200, 21));
+        campoduracionponent.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                campoduracionponentMousePressed(evt);
+            }
+        });
+        campoduracionponent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoduracionponentActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout izquierdacuerpoLayout = new javax.swing.GroupLayout(izquierdacuerpo);
+        izquierdacuerpo.setLayout(izquierdacuerpoLayout);
+        izquierdacuerpoLayout.setHorizontalGroup(
+            izquierdacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(izquierdacuerpoLayout.createSequentialGroup()
+                .addGap(58, 58, 58)
+                .addGroup(izquierdacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(duracionponente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(izquierdacuerpoLayout.createSequentialGroup()
+                        .addGroup(izquierdacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(temaponente, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(izquierdacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(experienciainst, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(campocargo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(cargoevento)
-                                .addComponent(empresa, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(campoempresa, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))
-                            .addComponent(separadorasist1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(separadorconf1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(separadorcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(separadornombre, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(especialidad)
-                            .addComponent(campotemaespecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(separadorespecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(177, 177, 177)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(experienciainst)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(campocedula, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                                    .addComponent(campotlf, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                                    .addComponent(zonaencargada, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(campozona, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cargoempresa, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(campocargoempresa, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                                    .addComponent(separadorasist2, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(separadorconf2, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(separadortlf, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(separadorcedula, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(sliderinst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(camponombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campocedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(1, 1, 1)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(separadorcedula)
-                    .addComponent(separadornombre))
-                .addGap(14, 14, 14)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel5))
-                .addGap(8, 8, 8)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campotlf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campocorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(separadortlf)
-                    .addComponent(separadorcorreo))
-                .addGap(21, 21, 21)
-                .addComponent(selecciontipoparticipante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cargoevento)
-                    .addComponent(zonaencargada))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(campozona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campocargo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(separadorasist1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(empresa)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(campoempresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(separadorconf1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(7, 7, 7)
+                                .addComponent(metodologiainst)
                                 .addComponent(temaconferencia)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(campotemaconferencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(cargoempresa)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(campocargoempresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(separadorconf2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(separadorconf3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(separadorasist2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(campoempresa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(campotemaconferencia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(campometodologiainst, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(campoexp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, izquierdacuerpoLayout.createSequentialGroup()
+                        .addGroup(izquierdacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(campoduracionponent, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(campotemaponente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
+        );
+        izquierdacuerpoLayout.setVerticalGroup(
+            izquierdacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(izquierdacuerpoLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(cargoevento)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(experienciainst)
-                    .addComponent(especialidad))
+                .addComponent(campocargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(empresa)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(campotemaespecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(sliderinst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(campoempresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(temaconferencia)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(separadorespecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campotemaconferencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(metodologiainst)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campometodologiainst, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campometodologiainst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(experienciainst)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(separadormetodologiainst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(campoexp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(temaponente)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(campotemaponente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(duracionponente, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(campoduracionponent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+
+        derechacuerpo.setBackground(new java.awt.Color(255, 228, 228));
+
+        zonaencargada.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        zonaencargada.setText("Zona encargada");
+
+        campozona.setBackground(new java.awt.Color(255, 204, 204));
+        campozona.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        campozona.setForeground(java.awt.Color.gray);
+        campozona.setText("Zona de Trabajo");
+        campozona.setToolTipText("");
+        campozona.setActionCommand("<Not Set>");
+        campozona.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        campozona.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        campozona.setPreferredSize(new java.awt.Dimension(200, 21));
+        campozona.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                campozonaMousePressed(evt);
+            }
+        });
+        campozona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campozonaActionPerformed(evt);
+            }
+        });
+
+        cargoempresa.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        cargoempresa.setText("Cargo");
+
+        campocargoempresa.setBackground(new java.awt.Color(255, 204, 204));
+        campocargoempresa.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        campocargoempresa.setForeground(java.awt.Color.gray);
+        campocargoempresa.setText("Cargo en la Empresa");
+        campocargoempresa.setToolTipText("");
+        campocargoempresa.setActionCommand("<Not Set>");
+        campocargoempresa.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        campocargoempresa.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        campocargoempresa.setPreferredSize(new java.awt.Dimension(200, 21));
+        campocargoempresa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                campocargoempresaMousePressed(evt);
+            }
+        });
+        campocargoempresa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campocargoempresaActionPerformed(evt);
+            }
+        });
+
+        especialidad.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        especialidad.setText("Especialidad");
+
+        campotemaespecialidad.setBackground(new java.awt.Color(255, 204, 204));
+        campotemaespecialidad.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        campotemaespecialidad.setForeground(java.awt.Color.gray);
+        campotemaespecialidad.setText("Campo especializado");
+        campotemaespecialidad.setToolTipText("");
+        campotemaespecialidad.setActionCommand("<Not Set>");
+        campotemaespecialidad.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        campotemaespecialidad.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        campotemaespecialidad.setPreferredSize(new java.awt.Dimension(200, 21));
+        campotemaespecialidad.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                campotemaespecialidadMousePressed(evt);
+            }
+        });
+        campotemaespecialidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campotemaespecialidadActionPerformed(evt);
+            }
+        });
+
+        institucionponente.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        institucionponente.setText("Institucion");
+
+        campoinstitucionponente.setBackground(new java.awt.Color(255, 204, 204));
+        campoinstitucionponente.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        campoinstitucionponente.setForeground(java.awt.Color.gray);
+        campoinstitucionponente.setText("Institucion / Universidad");
+        campoinstitucionponente.setToolTipText("");
+        campoinstitucionponente.setActionCommand("<Not Set>");
+        campoinstitucionponente.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        campoinstitucionponente.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        campoinstitucionponente.setPreferredSize(new java.awt.Dimension(200, 21));
+        campoinstitucionponente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                campoinstitucionponenteMousePressed(evt);
+            }
+        });
+        campoinstitucionponente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoinstitucionponenteActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout derechacuerpoLayout = new javax.swing.GroupLayout(derechacuerpo);
+        derechacuerpo.setLayout(derechacuerpoLayout);
+        derechacuerpoLayout.setHorizontalGroup(
+            derechacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, derechacuerpoLayout.createSequentialGroup()
+                .addContainerGap(188, Short.MAX_VALUE)
+                .addGroup(derechacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(derechacuerpoLayout.createSequentialGroup()
+                        .addComponent(zonaencargada, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, derechacuerpoLayout.createSequentialGroup()
+                        .addGroup(derechacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(institucionponente, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(especialidad)
+                            .addComponent(campotemaespecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cargoempresa)
+                            .addGroup(derechacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(campozona, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(campocargoempresa, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(campoinstitucionponente, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(69, 69, 69))))
+        );
+        derechacuerpoLayout.setVerticalGroup(
+            derechacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(derechacuerpoLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(zonaencargada)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(campozona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cargoempresa)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(campocargoempresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(especialidad)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(campotemaespecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(institucionponente)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(campoinstitucionponente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
+
+        imagen.setBackground(new java.awt.Color(255, 228, 228));
+        imagen.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/Participante/family2.png"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        imagen.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 27, 129, -1));
+
+        javax.swing.GroupLayout cuerpoLayout = new javax.swing.GroupLayout(cuerpo);
+        cuerpo.setLayout(cuerpoLayout);
+        cuerpoLayout.setHorizontalGroup(
+            cuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(footer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(superior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(cuerpoLayout.createSequentialGroup()
+                .addGroup(cuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(cuerpoLayout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addComponent(selecciontipoparticipante, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(cuerpoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(izquierdacuerpo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(cuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(derechacuerpo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cuerpoLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 295, Short.MAX_VALUE)
+                        .addComponent(imagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+        );
+        cuerpoLayout.setVerticalGroup(
+            cuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cuerpoLayout.createSequentialGroup()
+                .addComponent(superior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(cuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(cuerpoLayout.createSequentialGroup()
+                        .addGroup(cuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(selecciontipoparticipante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(cuerpoLayout.createSequentialGroup()
+                                .addGap(33, 33, 33)
+                                .addComponent(izquierdacuerpo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(cuerpoLayout.createSequentialGroup()
+                        .addComponent(derechacuerpo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(imagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)))
+                .addComponent(footer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
 
         javax.swing.GroupLayout padreLayout = new javax.swing.GroupLayout(padre);
         padre.setLayout(padreLayout);
         padreLayout.setHorizontalGroup(
             padreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(padreLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+            .addComponent(cabecera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(cuerpo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         padreLayout.setVerticalGroup(
             padreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(padreLayout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cabecera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(cuerpo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -542,49 +929,63 @@ public class Participante extends javax.swing.JFrame {
         // Mostrar los campos según la opción seleccionada
         switch (opcionseleccionada){
             case "Asistente":
-                campocargo.setVisible(true);
-                campozona.setVisible(true);
-                cargoevento.setVisible(true);
-                zonaencargada.setVisible(true);
-                separadorasist1.setVisible(true);
-                separadorasist2.setVisible(true);
-                break;
+            campocargo.setVisible(true);
+            campozona.setVisible(true);
+            cargoevento.setVisible(true);
+            zonaencargada.setVisible(true);
+            
+            break;
             case "Conferencista":
-                campoempresa.setVisible(true);
-                empresa.setVisible(true);
-                cargoempresa.setVisible(true);
-                campocargoempresa.setVisible(true);
-                temaconferencia.setVisible(true);
-                campotemaconferencia.setVisible(true);
-                separadorconf1.setVisible(true);
-                separadorconf2.setVisible(true);
-                separadorconf3.setVisible(true);
-                break;
+            campoempresa.setVisible(true);
+            empresa.setVisible(true);
+            cargoempresa.setVisible(true);
+            campocargoempresa.setVisible(true);
+            temaconferencia.setVisible(true);
+            campotemaconferencia.setVisible(true);
+            
+            break;
             case "Instructor":
-                especialidad.setVisible(true);
-                metodologiainst.setVisible(true);
-                experienciainst.setVisible(true);
-                separadormetodologiainst.setVisible(true);
-                campometodologiainst.setVisible(true);
-                campotemaespecialidad.setVisible(true);
-                separadorespecialidad.setVisible(true);
-                sliderinst.setVisible(true);
-           
-                break;
+            especialidad.setVisible(true);
+            metodologiainst.setVisible(true);
+            experienciainst.setVisible(true);
+            campoexp.setVisible(true);
+            campometodologiainst.setVisible(true);
+            campotemaespecialidad.setVisible(true);
+            
+
+            break;
             case "Ponente":
-                
-                break;
+            temaponente.setVisible(true);
+            campotemaponente.setVisible(true);
+            duracionponente.setVisible(true);
+            campoduracionponent.setVisible(true);
+            institucionponente.setVisible(true);
+            campoinstitucionponente.setVisible(true);
+
+            break;
 
         }
-            
-            
-            
 
         // Actualizar la interfaz gráfica
         padre.revalidate();
         padre.repaint();
-
     }//GEN-LAST:event_selecciontipoparticipanteActionPerformed
+
+    private void campotemaconferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campotemaconferenciaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campotemaconferenciaActionPerformed
+
+    private void campometodologiainstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campometodologiainstActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campometodologiainstActionPerformed
+
+    private void campoempresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoempresaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoempresaActionPerformed
+
+    private void campocargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campocargoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campocargoActionPerformed
 
     private void campozonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campozonaActionPerformed
         // TODO add your handling code here:
@@ -594,41 +995,196 @@ public class Participante extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_campocargoempresaActionPerformed
 
-    private void campoempresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoempresaActionPerformed
+    private void campotemaespecialidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campotemaespecialidadActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_campoempresaActionPerformed
+    }//GEN-LAST:event_campotemaespecialidadActionPerformed
 
-    private void campotemaconferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campotemaconferenciaActionPerformed
+    private void campoexpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoexpActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_campotemaconferenciaActionPerformed
+    }//GEN-LAST:event_campoexpActionPerformed
 
-    private void campocargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campocargoActionPerformed
+    private void campoinstitucionponenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoinstitucionponenteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_campocargoActionPerformed
+    }//GEN-LAST:event_campoinstitucionponenteActionPerformed
 
-    private void campotlfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campotlfActionPerformed
+    private void campotemaponenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campotemaponenteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_campotlfActionPerformed
+    }//GEN-LAST:event_campotemaponenteActionPerformed
 
-    private void campocedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campocedulaActionPerformed
+    private void campoduracionponentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoduracionponentActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_campocedulaActionPerformed
+    }//GEN-LAST:event_campoduracionponentActionPerformed
 
     private void camponombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_camponombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_camponombreActionPerformed
 
+    private void camponombreMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_camponombreMousePressed
+        if (camponombre.getText().equals ("Nombre de la Persona")){ //Al presionar un campo de texto
+            campovacio(camponombre, "", true);//El usuario podra escribir con el color negro
+        }
+        if (campotlf.getText().isEmpty()){ //En caso de que los demas esten vacios, volveran a poseer su mensaje predeterminado, en color gris
+            campovacio(campotlf,"Nro. Personal", false);
+        }
+        if (campocorreo.getText().isEmpty()){
+            campovacio(campocorreo,"Correo personal", false);
+        }
+        if (campocedula.getText().isEmpty()){
+            campovacio(campocedula, "Cedula de Identidad", false);
+        }
+    }//GEN-LAST:event_camponombreMousePressed
+    //Posiblemente haya una forma de mejorar esto, y no hacer puros if...
+    private void campotlfMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campotlfMousePressed
+        if (campotlf.getText().equals ("Nro. Personal")){
+            campovacio(campotlf, "", true);
+        }
+        if (camponombre.getText().isEmpty()){
+            campovacio(camponombre, "Nombre de la Persona", false);
+        }
+        if (campocorreo.getText().isEmpty()){
+            campovacio(campocorreo,"Correo personal", false);
+        }
+        if (campocedula.getText().isEmpty()){
+            campovacio(campocedula, "Cedula de Identidad", false);
+        }
+        
+    }//GEN-LAST:event_campotlfMousePressed
+
+    private void campocorreoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campocorreoMousePressed
+        if (campocorreo.getText().equals ("Correo personal")){
+            campovacio(campocorreo, "", true);
+        }
+        if (camponombre.getText().isEmpty()){
+            campovacio(camponombre, "Nombre de la Persona", false);
+        }
+        if (campocedula.getText().isEmpty()){
+            campovacio(campocedula, "Cedula de Identidad", false);
+        }
+        if (campotlf.getText().isEmpty()){ 
+            campovacio(campotlf,"Nro. Personal", false);
+        }
+        
+        
+    }//GEN-LAST:event_campocorreoMousePressed
+
+    private void campocedulaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campocedulaMousePressed
+        if (campocedula.getText().equals ("Cedula de Identidad")){
+            campovacio(campocedula, "", true);
+        }
+        if (camponombre.getText().isEmpty()){
+            campovacio(camponombre, "Nombre de la Persona", false);
+        }
+        if (campocorreo.getText().isEmpty()){
+            campovacio(campocorreo,"Correo personal", false);
+        }
+        if (campotlf.getText().isEmpty()){ 
+            campovacio(campotlf,"Nro. Personal", false);
+        }
+        
+    }//GEN-LAST:event_campocedulaMousePressed
+
     private void campocorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campocorreoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campocorreoActionPerformed
 
-    private void campotemaespecialidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campotemaespecialidadActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campotemaespecialidadActionPerformed
+    private void campocargoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campocargoMousePressed
+       validarcampoAsistente(campocargo,"Su participacion en el evento", campozona);  
+    }//GEN-LAST:event_campocargoMousePressed
 
-    private void campometodologiainstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campometodologiainstActionPerformed
+    private void campozonaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campozonaMousePressed
+       validarcampoAsistente(campozona,"Zona de Trabajo", campocargo);  
+    }//GEN-LAST:event_campozonaMousePressed
+
+    private void campoempresaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoempresaMousePressed
+        validarcampoConferencista(campoempresa,"Nombre de la Empresa", campocargoempresa, campotemaconferencia);
+    }//GEN-LAST:event_campoempresaMousePressed
+
+    private void campocargoempresaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campocargoempresaMousePressed
+        validarcampoConferencista(campocargoempresa,"Cargo en la Empresa", campoempresa, campotemaconferencia);
+    }//GEN-LAST:event_campocargoempresaMousePressed
+
+    private void campotemaconferenciaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campotemaconferenciaMousePressed
+        validarcampoConferencista(campotemaconferencia,"De lo que quiere informar", campoempresa, campocargoempresa);
+    }//GEN-LAST:event_campotemaconferenciaMousePressed
+
+    private void campotemaespecialidadMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campotemaespecialidadMousePressed
+        validarcampoInstructor(campotemaespecialidad,"Campo especializado", campometodologiainst, campoexp);
+    }//GEN-LAST:event_campotemaespecialidadMousePressed
+
+    private void campometodologiainstMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campometodologiainstMousePressed
+        validarcampoInstructor(campometodologiainst,"Metodo de enseñanza", campotemaespecialidad, campoexp);
+    }//GEN-LAST:event_campometodologiainstMousePressed
+
+    private void campoinstitucionponenteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoinstitucionponenteMousePressed
+        validarcampoPonente(campoinstitucionponente,"Institucion / Universidad", campotemaponente, campoduracionponent);
+    }//GEN-LAST:event_campoinstitucionponenteMousePressed
+
+    private void campoexpMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoexpMousePressed
+        validarcampoInstructor(campoexp,"Cantidad de años", campometodologiainst, campotemaespecialidad);
+    }//GEN-LAST:event_campoexpMousePressed
+
+    private void campotemaponenteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campotemaponenteMousePressed
+        validarcampoPonente(campotemaponente,"De lo que quieres informar", campoinstitucionponente, campoduracionponent);
+    }//GEN-LAST:event_campotemaponenteMousePressed
+
+    private void campoduracionponentMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoduracionponentMousePressed
+        validarcampoPonente(campoduracionponent,"Tiempo a utilizar", campotemaponente, campoinstitucionponente);
+    }//GEN-LAST:event_campoduracionponentMousePressed
+
+    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
+        this.dispose();
+        principal.setVisible(true);
+    }//GEN-LAST:event_salirActionPerformed
+
+    private void LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarActionPerformed
+        campovacio(camponombre, "Nombre de la Persona", false);
+        campovacio(campocedula, "Cedula de Identidad", false);
+        campovacio(campocorreo, "Correo personal", false);
+        campovacio(campotlf, "Nro. Personal", false);
+        campovacio(campocargo, "Su participacion en el evento", false);
+        campovacio(campozona, "Zona de Trabajo", false);
+        campovacio(campoempresa, "Nombre de la Empresa", false);
+        campovacio(campocargoempresa, "Cargo en la Empresa", false);
+        campovacio(campotemaconferencia, "De lo que quiere informar", false);
+        campovacio(campotemaespecialidad, "Campo especializado", false);
+        campovacio(campometodologiainst, "Metodo de enseñanza", false);
+        campovacio(campoexp, "Cantidad de años", false);
+        campovacio(campoinstitucionponente, "Institucion / Universidad", false);
+        campovacio(campotemaponente, "De lo que quieres informar", false);
+        campovacio(campoduracionponent, "Tiempo a utilizar", false);
+    }//GEN-LAST:event_LimpiarActionPerformed
+
+    private void salirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_campometodologiainstActionPerformed
+    }//GEN-LAST:event_salirMousePressed
+
+    private void salirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMouseEntered
+        herramientasVentanas.cambiarColor(salir, true);
+    }//GEN-LAST:event_salirMouseEntered
+
+    private void salirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMouseExited
+        herramientasVentanas.cambiarColor(salir, false);
+    }//GEN-LAST:event_salirMouseExited
+
+    private void LimpiarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LimpiarMouseEntered
+        herramientasVentanas.cambiarColor(Limpiar, true);
+    }//GEN-LAST:event_LimpiarMouseEntered
+
+    private void LimpiarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LimpiarMouseExited
+        herramientasVentanas.cambiarColor(Limpiar, false);
+    }//GEN-LAST:event_LimpiarMouseExited
+
+    private void registrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarMouseEntered
+        herramientasVentanas.cambiarColor(registrar, true);
+    }//GEN-LAST:event_registrarMouseEntered
+
+    private void registrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarMouseExited
+        herramientasVentanas.cambiarColor(registrar, false);
+    }//GEN-LAST:event_registrarMouseExited
+
+    private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
+        //Aqui habria logica, si tuviera una
+    }//GEN-LAST:event_registrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -666,46 +1222,53 @@ public class Participante extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Limpiar;
+    private javax.swing.JPanel cabecera;
     private javax.swing.JTextField campocargo;
     private javax.swing.JTextField campocargoempresa;
     private javax.swing.JTextField campocedula;
     private javax.swing.JTextField campocorreo;
+    private javax.swing.JTextField campoduracionponent;
     private javax.swing.JTextField campoempresa;
+    private javax.swing.JTextField campoexp;
+    private javax.swing.JTextField campoinstitucionponente;
     private javax.swing.JTextField campometodologiainst;
     private javax.swing.JTextField camponombre;
     private javax.swing.JTextField campotemaconferencia;
     private javax.swing.JTextField campotemaespecialidad;
+    private javax.swing.JTextField campotemaponente;
     private javax.swing.JTextField campotlf;
     private javax.swing.JTextField campozona;
     private javax.swing.JLabel cargoempresa;
     private javax.swing.JLabel cargoevento;
+    private javax.swing.JPanel cuerpo;
+    private javax.swing.JPanel derechacuerpo;
+    private javax.swing.JLabel duracionponente;
     private javax.swing.JLabel empresa;
     private javax.swing.JLabel especialidad;
     private javax.swing.JLabel experienciainst;
+    private javax.swing.JPanel footer;
+    private javax.swing.JPanel imagen;
+    private javax.swing.JLabel institucionponente;
+    private javax.swing.JPanel izquierdacuerpo;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel metodologiainst;
     private javax.swing.JPanel padre;
+    private javax.swing.JButton registrar;
+    private javax.swing.JButton salir;
     private javax.swing.JComboBox<String> selecciontipoparticipante;
-    private javax.swing.JSeparator separadorasist1;
-    private javax.swing.JSeparator separadorasist2;
     private javax.swing.JSeparator separadorcedula;
-    private javax.swing.JSeparator separadorconf1;
-    private javax.swing.JSeparator separadorconf2;
-    private javax.swing.JSeparator separadorconf3;
     private javax.swing.JSeparator separadorcorreo;
-    private javax.swing.JSeparator separadorespecialidad;
-    private javax.swing.JSeparator separadormetodologiainst;
     private javax.swing.JSeparator separadornombre;
     private javax.swing.JSeparator separadortlf;
-    private javax.swing.JSlider sliderinst;
+    private javax.swing.JPanel superior;
     private javax.swing.JLabel temaconferencia;
+    private javax.swing.JLabel temaponente;
     private javax.swing.JLabel zonaencargada;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,7 +4,6 @@
  */
 package participantesHeredados;
 import ClasesAbstractas.dto.ParticipanteDTO;
-import java.time.LocalTime;
 /**
  *
  * @author Alejandrito
@@ -16,9 +15,9 @@ public class Ponentes extends ParticipanteDTO {
     private String Tema;
     private String Institucion;
     //Biografia?
-    private LocalTime tiempoExponencia;
+    private String tiempoExponencia;
 
-    public Ponentes(String Tema, LocalTime tiempoExponencia, String Institucion, String nombre, String cedula, String correo, String telefono, String rol, String Evento, boolean asistencia) {
+    public Ponentes(String Tema, String tiempoExponencia, String Institucion, String nombre, String cedula, String correo, String telefono, String rol, String Evento, boolean asistencia) {
         super(nombre, cedula, correo, telefono, rol, Evento, asistencia);
         this.rol="Ponente";
         this.Tema = Tema;
@@ -38,7 +37,7 @@ public class Ponentes extends ParticipanteDTO {
         return Tema;
     }
 
-    public LocalTime getTiempoExponencia() {
+    public String getTiempoExponencia() {
         return tiempoExponencia;
     }
 
@@ -46,7 +45,7 @@ public class Ponentes extends ParticipanteDTO {
         this.Tema = Tema;
     }
 
-    public void setTiempoExponencia(LocalTime tiempoExponencia) {
+    public void setTiempoExponencia(String tiempoExponencia) {
         this.tiempoExponencia = tiempoExponencia;
     }
 }
