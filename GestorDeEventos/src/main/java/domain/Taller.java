@@ -30,5 +30,9 @@ public class Taller extends Evento {
     public void setEsPractico(boolean esPractico) {
         this.esPractico = esPractico;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Taller{" + "nivelDificultad=" + nivelDificultad + ", esPractico=" + esPractico + '}';
+    }
 }

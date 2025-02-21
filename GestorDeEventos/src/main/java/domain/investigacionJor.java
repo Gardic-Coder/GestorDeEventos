@@ -4,11 +4,11 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Set;
 
-public class investigacionJor extends Evento {
+public class InvestigacionJor extends Evento {
     private String InstitucionOrganizadora;
     private String Areatematica;
 
-    public investigacionJor(Set<Participante> listaParticipantes, String InstitucionOrganizadora, String Areatematica,
+    public InvestigacionJor(Set<Participante> listaParticipantes, String InstitucionOrganizadora, String Areatematica,
             String nombre, String lugar, LocalDate fecha, LocalTime horaComienzo, LocalTime horaFinalizado, int CapMax) {
         super(listaParticipantes, nombre, lugar, fecha, horaComienzo, horaFinalizado, CapMax);
         this.InstitucionOrganizadora = InstitucionOrganizadora;
@@ -30,5 +30,9 @@ public class investigacionJor extends Evento {
     public void setAreatematica(String Areatematica) {
         this.Areatematica = Areatematica;
     }
-    
+
+    @Override
+    public String toString() {
+        return "investigacionJor{" + "InstitucionOrganizadora=" + InstitucionOrganizadora + ", Areatematica=" + Areatematica + '}';
+    }
 }

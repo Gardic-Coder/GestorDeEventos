@@ -22,5 +22,9 @@ public class Conferencia extends Evento {
     public void setTemaPrincipal(String temaPrincipal) {
         this.temaPrincipal = temaPrincipal;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Conferencia{" + "temaPrincipal=" + temaPrincipal + '}';
+    }  
 }

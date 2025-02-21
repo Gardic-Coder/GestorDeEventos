@@ -2,12 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package funcionesGestionEventos;
+package main.java.application.services;
 
 /**
  *
- * @author juanm
+ * Alejandro
  */
-public class ParticipanteService {
+public class EventoService {
     
 }

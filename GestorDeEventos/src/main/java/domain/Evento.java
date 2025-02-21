@@ -83,5 +83,9 @@ public abstract class Evento {
     public int getCapMax() {
         return CapMax;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Evento{" + "listaParticipantes=" + listaParticipantes + ", nombre=" + nombre + ", lugar=" + lugar + ", fecha=" + fecha + ", horaComienzo=" + horaComienzo + ", horaFinalizado=" + horaFinalizado + ", CapMax=" + CapMax + '}';
+    } 
 }

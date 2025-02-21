@@ -1,6 +1,6 @@
 package main.java.domain;
 
-//Clase Abstracta de los Participantes; plantilla general de la cual saldran cada tipo de participante
+//Clase de los Participantes
 
 public class Participante { 
     private String nombre;
@@ -110,4 +110,9 @@ public class Participante {
     public void setAsistencia(boolean asistencia) {
         this.asistencia = asistencia;
     } 
+
+    @Override
+    public String toString() {
+        return "Participante{" + "nombre=" + nombre + ", cedula=" + cedula + ", correo=" + correo + ", telefono=" + telefono + ", rol=" + rol + ", Evento=" + Evento + ", asistencia=" + asistencia + ", tema=" + tema + ", descripcion=" + descripcion + '}';
+    }
 }

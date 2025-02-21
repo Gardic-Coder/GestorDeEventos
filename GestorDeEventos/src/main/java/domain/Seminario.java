@@ -41,5 +41,10 @@ public class Seminario extends Evento {
     public void setWorkShops(boolean workShops) {
         this.workShops = workShops;
     }
+
+    @Override
+    public String toString() {
+        return "Seminario{" + "cantSesiones=" + cantSesiones + ", gratuito=" + gratuito + ", workShops=" + workShops + '}';
+    }
     
 }

@@ -17,5 +17,4 @@ public enum RolParticipante {
     public boolean isTieneTema() {
         return tieneTema;
     }
-    
 }
