@@ -2,21 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package eventosHeredados;
-import ClasesAbstractas.dto.EventoDTO;
+package main.java.domain;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Set;
-import participantesHeredados.Asistente;
-import participantesHeredados.Conferencista;
-import participantesHeredados.Instructores;
-import participantesHeredados.Ponentes;
 import participantesHeredados.moderadores;
 /**
  *
  * @author juanm
  */
-public class investigacionJor extends EventoDTO {
+public class investigacionJor extends Evento {
     private String InstitucionOrganizadora;
     private String Areatematica;
 

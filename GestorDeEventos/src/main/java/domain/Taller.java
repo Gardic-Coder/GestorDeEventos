@@ -1,27 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package eventosHeredados;
-import ClasesAbstractas.dto.EventoDTO;
+package main.java.domain;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Set;
-import participantesHeredados.Asistente;
-import participantesHeredados.Conferencista;
-import participantesHeredados.Instructores;
-import participantesHeredados.Ponentes;
 import participantesHeredados.moderadores;
-/**
- *
- * @author Ale
- */
-public class Taller extends EventoDTO {
+
+public class Taller extends Evento {
     private String nivelDificultad;
     private boolean esPractico;
     //Material necesario???
 
-    public Taller(String nivelDificultad, boolean esPractico, Set<Asistente> listAsistentes, Set<Ponentes> listPonentes, Set<Instructores> listInstructores, Set<Conferencista> listConferencistas, String nombre, String lugar, LocalDate fecha, LocalTime horaComienzo, LocalTime horaFinalizado, int CapMax, moderadores organizador) {
+    public Taller(String nivelDificultad, boolean esPractico, String nombre, String lugar, LocalDate fecha, LocalTime horaComienzo, LocalTime horaFinalizado, int CapMax, moderadores organizador) {
         super(listAsistentes, listPonentes, listInstructores, listConferencistas, nombre, lugar, fecha, horaComienzo, horaFinalizado, CapMax, organizador);
         this.nivelDificultad = nivelDificultad;
         this.esPractico = esPractico;
