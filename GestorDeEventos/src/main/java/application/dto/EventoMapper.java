@@ -12,8 +12,7 @@ public class EventoMapper {
             .map(ParticipanteMapper::toDTO)
             .collect(Collectors.toSet());
 
-        if (evento instanceof Conferencia) {
-            Conferencia conferencia = (Conferencia) evento;
+        if (evento instanceof Conferencia conferencia) {
             return new ConferenciaDTO(
                 participantesDTO,
                 conferencia.getNombre(),
@@ -24,8 +23,7 @@ public class EventoMapper {
                 conferencia.getCapMax(),
                 conferencia.getTemaPrincipal()
             );
-        } else if (evento instanceof Seminario) {
-            Seminario seminario = (Seminario) evento;
+        } else if (evento instanceof Seminario seminario) {
             return new SeminarioDTO(
                 participantesDTO,
                 seminario.getNombre(),
@@ -38,8 +36,7 @@ public class EventoMapper {
                 seminario.isGratuito(),
                 seminario.isWorkShops()
             );
-        } else if (evento instanceof Taller) {
-            Taller taller = (Taller) evento;
+        } else if (evento instanceof Taller taller) {
             return new TallerDTO(
                 participantesDTO,
                 taller.getNombre(),
@@ -51,8 +48,7 @@ public class EventoMapper {
                 taller.getNivelDificultad(),
                 taller.isEsPractico()
             );
-        } else if (evento instanceof InvestigacionJor) {
-            InvestigacionJor investigacionJor = (InvestigacionJor) evento;
+        } else if (evento instanceof InvestigacionJor investigacionJor) {
             return new InvestigacionJorDTO(
                 participantesDTO,
                 investigacionJor.getNombre(),
@@ -76,8 +72,7 @@ public class EventoMapper {
             .map(ParticipanteMapper::fromDTO)
             .collect(Collectors.toSet());
 
-        if (dto instanceof ConferenciaDTO) {
-            ConferenciaDTO conferenciaDTO = (ConferenciaDTO) dto;
+        if (dto instanceof ConferenciaDTO conferenciaDTO) {
             return new Conferencia(
                 participantes,
                 conferenciaDTO.getTemaPrincipal(),
@@ -88,8 +83,7 @@ public class EventoMapper {
                 conferenciaDTO.getHoraFinalizado(),
                 conferenciaDTO.getCapMax()
             );
-        } else if (dto instanceof SeminarioDTO) {
-            SeminarioDTO seminarioDTO = (SeminarioDTO) dto;
+        } else if (dto instanceof SeminarioDTO seminarioDTO) {
             return new Seminario(
                 participantes,
                 seminarioDTO.getCantSesiones(),
@@ -102,8 +96,7 @@ public class EventoMapper {
                 seminarioDTO.getHoraFinalizado(),
                 seminarioDTO.getCapMax()
             );
-        } else if (dto instanceof TallerDTO) {
-            TallerDTO tallerDTO = (TallerDTO) dto;
+        } else if (dto instanceof TallerDTO tallerDTO) {
             return new Taller(
                 participantes,
                 tallerDTO.getNivelDificultad(),
@@ -115,8 +108,7 @@ public class EventoMapper {
                 tallerDTO.getHoraFinalizado(),
                 tallerDTO.getCapMax()
             );
-        } else if (dto instanceof InvestigacionJorDTO) {
-            InvestigacionJorDTO investigacionJorDTO = (InvestigacionJorDTO) dto;
+        } else if (dto instanceof InvestigacionJorDTO investigacionJorDTO) {
             return new InvestigacionJor(
                 participantes,
                 investigacionJorDTO.getInstitucionOrganizadora(),

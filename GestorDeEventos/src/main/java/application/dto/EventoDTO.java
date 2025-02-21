@@ -14,15 +14,15 @@ public abstract class EventoDTO {
     protected int capMax;
 
     // Constructor
-    public EventoDTO(Set<ParticipanteDTO> listaParticipantes, String nombre, String lugar, LocalDate fecha, 
-                     LocalTime horaComienzo, LocalTime horaFinalizado, int capMax) {
+    public EventoDTO (Set<ParticipanteDTO> listaParticipantes, String nombre, String lugar, LocalDate fecha, LocalTime horaComienzo, 
+                  LocalTime horaFinalizado, int CapMax) {
         this.listaParticipantes = listaParticipantes;
         this.nombre = nombre;
         this.lugar = lugar;
         this.fecha = fecha;
         this.horaComienzo = horaComienzo;
         this.horaFinalizado = horaFinalizado;
-        this.capMax = capMax;
+        this.capMax = CapMax;
     }
 
     public Set<ParticipanteDTO> getListaParticipantes() {
