@@ -10,7 +10,7 @@ public class InvestigacionJor extends Evento {
 
     public InvestigacionJor(Set<Participante> listaParticipantes, String InstitucionOrganizadora, String Areatematica,
             String nombre, String lugar, LocalDate fecha, LocalTime horaComienzo, LocalTime horaFinalizado, int CapMax) {
-        super(listaParticipantes, nombre, lugar, fecha, horaComienzo, horaFinalizado, CapMax);
+        super(nombre, lugar, fecha, horaComienzo, horaFinalizado, CapMax);
         this.InstitucionOrganizadora = InstitucionOrganizadora;
         this.Areatematica = Areatematica;
     }

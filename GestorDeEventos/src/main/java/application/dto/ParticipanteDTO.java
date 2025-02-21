@@ -1,9 +1,7 @@
 package main.java.application.dto;
 
 import main.java.domain.RolParticipante;
-import lombok.Data;
 
-@Data // Genera automáticamente getters, setters, toString, equals y hashCode
 public class ParticipanteDTO {
     private String nombre;
     private String cedula;
@@ -29,4 +27,82 @@ public class ParticipanteDTO {
         this.tema = tema;
         this.descripcion = descripcion;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public RolParticipante getRol() {
+        return rol;
+    }
+
+    public void setRol(RolParticipante rol) {
+        this.rol = rol;
+    }
+
+    public String getEvento() {
+        return evento;
+    }
+
+    public void setEvento(String evento) {
+        this.evento = evento;
+    }
+
+    public boolean isAsistencia() {
+        return asistencia;
+    }
+
+    public void setAsistencia(boolean asistencia) {
+        this.asistencia = asistencia;
+    }
+
+    public String getTema() {
+        return tema;
+    }
+
+    public void setTema(String tema) {
+        this.tema = tema;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    @Override
+    public String toString() {
+        return "ParticipanteDTO{" + "nombre=" + nombre + ", cedula=" + cedula + ", correo=" + correo + ", telefono=" + telefono + ", rol=" + rol + ", evento=" + evento + ", asistencia=" + asistencia + ", tema=" + tema + ", descripcion=" + descripcion + '}';
+    }
+    
 }

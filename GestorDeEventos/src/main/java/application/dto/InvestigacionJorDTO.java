@@ -3,9 +3,7 @@ package main.java.application.dto;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Set;
-import lombok.Data;
 
-@Data
 public class InvestigacionJorDTO extends EventoDTO{
     private String institucionOrganizadora;
     private String areaTematica;
@@ -16,5 +14,26 @@ public class InvestigacionJorDTO extends EventoDTO{
         super(listaParticipantes, nombre, lugar, fecha, horaComienzo, horaFinalizado, capMax);
         this.institucionOrganizadora = institucionOrganizadora;
         this.areaTematica = areaTematica;
+    }
+
+    public String getInstitucionOrganizadora() {
+        return institucionOrganizadora;
+    }
+
+    public void setInstitucionOrganizadora(String institucionOrganizadora) {
+        this.institucionOrganizadora = institucionOrganizadora;
+    }
+
+    public String getAreaTematica() {
+        return areaTematica;
+    }
+
+    public void setAreaTematica(String areaTematica) {
+        this.areaTematica = areaTematica;
+    }
+
+    @Override
+    public String toString() {
+        return "InvestigacionJorDTO{" + "institucionOrganizadora=" + institucionOrganizadora + ", areaTematica=" + areaTematica + '}';
     }
 }

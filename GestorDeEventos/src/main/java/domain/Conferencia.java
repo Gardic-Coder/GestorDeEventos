@@ -11,7 +11,7 @@ public class Conferencia extends Evento {
     private String temaPrincipal;
 
     public Conferencia(Set<Participante> listaParticipantes, String temaPrincipal, String nombre, String lugar, LocalDate fecha, LocalTime horaComienzo, LocalTime horaFinalizado, int CapMax) {
-        super(listaParticipantes, nombre, lugar, fecha, horaComienzo, horaFinalizado, CapMax);
+        super(nombre, lugar, fecha, horaComienzo, horaFinalizado, CapMax);
         this.temaPrincipal = temaPrincipal;
     }
 
@@ -26,5 +26,5 @@ public class Conferencia extends Evento {
     @Override
     public String toString() {
         return "Conferencia{" + "temaPrincipal=" + temaPrincipal + '}';
-    }  
+    }
 }

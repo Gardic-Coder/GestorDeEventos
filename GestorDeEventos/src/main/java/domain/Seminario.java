@@ -12,7 +12,7 @@ public class Seminario extends Evento {
     private boolean workShops;
 
     public Seminario(Set<Participante> listaParticipantes, int cantSesiones, boolean gratuito, boolean workShops, String nombre, String lugar, LocalDate fecha, LocalTime horaComienzo, LocalTime horaFinalizado, int CapMax) {
-        super(listaParticipantes, nombre, lugar, fecha, horaComienzo, horaFinalizado, CapMax);
+        super(nombre, lugar, fecha, horaComienzo, horaFinalizado, CapMax);
         this.cantSesiones = cantSesiones;
         this.gratuito = gratuito;
         this.workShops = workShops;
@@ -22,20 +22,20 @@ public class Seminario extends Evento {
         return cantSesiones;
     }
 
-    public boolean isGratuito() {
-        return gratuito;
-    }
-
-    public boolean isWorkShops() {
-        return workShops;
-    }
-
     public void setCantSesiones(int cantSesiones) {
         this.cantSesiones = cantSesiones;
     }
 
+    public boolean isGratuito() {
+        return gratuito;
+    }
+
     public void setGratuito(boolean gratuito) {
         this.gratuito = gratuito;
+    }
+
+    public boolean isWorkShops() {
+        return workShops;
     }
 
     public void setWorkShops(boolean workShops) {
@@ -46,5 +46,6 @@ public class Seminario extends Evento {
     public String toString() {
         return "Seminario{" + "cantSesiones=" + cantSesiones + ", gratuito=" + gratuito + ", workShops=" + workShops + '}';
     }
+    
     
 }

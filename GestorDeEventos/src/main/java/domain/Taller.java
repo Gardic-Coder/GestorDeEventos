@@ -10,7 +10,7 @@ public class Taller extends Evento {
     //Material necesario???
 
     public Taller(Set<Participante> listaParticipantes, String nivelDificultad, boolean esPractico, String nombre, String lugar, LocalDate fecha, LocalTime horaComienzo, LocalTime horaFinalizado, int CapMax) {
-        super(listaParticipantes, nombre, lugar, fecha, horaComienzo, horaFinalizado, CapMax);
+        super(nombre, lugar, fecha, horaComienzo, horaFinalizado, CapMax);
         this.nivelDificultad = nivelDificultad;
         this.esPractico = esPractico;
     }
@@ -21,14 +21,6 @@ public class Taller extends Evento {
 
     public boolean isEsPractico() {
         return esPractico;
-    }
-
-    public void setNivelDificultad(String nivelDificultad) {
-        this.nivelDificultad = nivelDificultad;
-    }
-
-    public void setEsPractico(boolean esPractico) {
-        this.esPractico = esPractico;
     }
 
     @Override
