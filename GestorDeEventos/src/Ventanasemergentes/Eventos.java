@@ -53,6 +53,8 @@ public class Eventos extends javax.swing.JFrame {
         separadorcorreo = new javax.swing.JSeparator();
         separadorcedula = new javax.swing.JSeparator();
         separadortlf = new javax.swing.JSeparator();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -354,22 +356,30 @@ public class Eventos extends javax.swing.JFrame {
                 .addGap(22, 22, 22))
         );
 
+        jSeparator1.setForeground(new java.awt.Color(255, 153, 153));
+
+        jSeparator2.setBackground(new java.awt.Color(255, 153, 153));
+        jSeparator2.setForeground(new java.awt.Color(255, 153, 153));
+
         javax.swing.GroupLayout containerModLayout = new javax.swing.GroupLayout(containerMod);
         containerMod.setLayout(containerModLayout);
         containerModLayout.setHorizontalGroup(
             containerModLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(footer, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(containerModLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(superior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jSeparator1)
+            .addComponent(superior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         containerModLayout.setVerticalGroup(
             containerModLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, containerModLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(superior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 421, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 389, Short.MAX_VALUE)
                 .addComponent(footer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -541,15 +551,6 @@ public class Eventos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Limpiar;
-    private javax.swing.JPanel cabecera;
-    private javax.swing.JPanel cabecera1;
-    private javax.swing.JPanel cabecera2;
-    private javax.swing.JPanel cabecera3;
-    private javax.swing.JPanel cabecera4;
-    private javax.swing.JPanel cabecera5;
-    private javax.swing.JPanel cabecera6;
-    private javax.swing.JPanel cabecera7;
-    private javax.swing.JPanel cabecera8;
     private javax.swing.JTextField campocedula;
     private javax.swing.JTextField campocorreo;
     private javax.swing.JTextField camponombre;
@@ -563,19 +564,12 @@ public class Eventos extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JPanel menu;
     private javax.swing.JPanel padre;
     private javax.swing.JButton registrar;

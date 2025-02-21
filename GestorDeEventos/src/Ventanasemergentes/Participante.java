@@ -4,7 +4,6 @@
  */
 package Ventanasemergentes;
 
-import java.awt.Color; //Permite alterar color
 import javax.swing.JTextField; //Permite usar los campos de Texto
 /**
  *
@@ -42,20 +41,12 @@ public class Participante extends javax.swing.JFrame {
         
     }
     
-    //Vacia el campo de texto, y cambia el color a Negro
-    public void campovacio(JTextField campo, String mensaje, boolean color){
-        campo.setText(mensaje);
-        if (color){
-            campo.setForeground (Color.black);  
-        }else{
-            campo.setForeground (Color.gray);
-        }  
-    }
+   
     
     //Ocultar o no los campos, para el Asistente
     public void validarcampoAsistente(JTextField campo, String textopredeterminado, JTextField... otrosCampos){
         if (campo.getText().equals(textopredeterminado)) { //El campo presionado, se verifica con su texto predeterminado
-            campovacio(campo, "", true);
+            herramientasVentanas.campovacio(campo, "", true);
         }
         for (JTextField otroCampo : otrosCampos) { //Para los demas campos
             if (otroCampo.getText().isEmpty()) {//Si no estan vacios, no se alteran; en caso contrario, se les brinda su mensaje predeterminado
@@ -65,7 +56,7 @@ public class Participante extends javax.swing.JFrame {
                 } else if (otroCampo == campocargo) {
                     mensaje = "Su participacion en el evento";
                 } 
-                campovacio(otroCampo, mensaje, false);
+                herramientasVentanas.campovacio(otroCampo, mensaje, false);
             }
         }
     }
@@ -73,7 +64,7 @@ public class Participante extends javax.swing.JFrame {
     //Conferencista
     public void validarcampoConferencista(JTextField campo, String textopredeterminado, JTextField... otrosCampos){ 
         if (campo.getText().equals(textopredeterminado)) {
-            campovacio(campo, "", true);
+            herramientasVentanas.campovacio(campo, "", true);
         }
         for (JTextField otroCampo : otrosCampos) {
             if (otroCampo.getText().isEmpty()) {
@@ -85,7 +76,7 @@ public class Participante extends javax.swing.JFrame {
                 } else if (otroCampo == campotemaconferencia) {
                     mensaje = "De lo que quiere informar";
                 } 
-                campovacio(otroCampo, mensaje, false);
+                herramientasVentanas.campovacio(otroCampo, mensaje, false);
             }
         }
     }
@@ -93,7 +84,7 @@ public class Participante extends javax.swing.JFrame {
     //Instructor
     public void validarcampoInstructor(JTextField campo, String textopredeterminado, JTextField... otrosCampos){ 
         if (campo.getText().equals(textopredeterminado)) {
-            campovacio(campo, "", true);
+            herramientasVentanas.campovacio(campo, "", true);
         }
         for (JTextField otroCampo : otrosCampos) {
             if (otroCampo.getText().isEmpty()) {
@@ -105,14 +96,14 @@ public class Participante extends javax.swing.JFrame {
                 } else if (otroCampo == campoexp) {
                     mensaje = "Cantidad de años";
                 } 
-                campovacio(otroCampo, mensaje, false);
+                herramientasVentanas.campovacio(otroCampo, mensaje, false);
             }
         }
     }
     //Ponente
     public void validarcampoPonente(JTextField campo, String textopredeterminado, JTextField... otrosCampos){ 
         if (campo.getText().equals(textopredeterminado)) {
-            campovacio(campo, "", true);
+            herramientasVentanas.campovacio(campo, "", true);
         }
         for (JTextField otroCampo : otrosCampos) {
             if (otroCampo.getText().isEmpty()) {
@@ -124,7 +115,7 @@ public class Participante extends javax.swing.JFrame {
                 } else if (otroCampo == campoduracionponent) {
                     mensaje = "Tiempo a utilizar";
                 } 
-                campovacio(otroCampo, mensaje, false);
+                herramientasVentanas.campovacio(otroCampo, mensaje, false);
             }
         }
     }
@@ -136,6 +127,11 @@ public class Participante extends javax.swing.JFrame {
         initComponents();
         setTitle("Registro de Participantes");
         ocultar();
+        //Me permitira utilizar funciones de clases externas (herramientasVentanas)
+        camponombre.setName("camponombre");
+        campocedula.setName("campocedula");
+        campotlf.setName("campotlf");
+        campocorreo.setName("campocorreo");
     }
     
     public Participante(MainWindow principal) {
@@ -143,6 +139,11 @@ public class Participante extends javax.swing.JFrame {
         setTitle("Registro de Participantes");
         ocultar();
         this.principal = principal;
+        //Me permitira utilizar funciones de clases externas (herramientasVentanas)
+        camponombre.setName("camponombre");
+        campocedula.setName("campocedula");
+        campotlf.setName("campotlf");
+        campocorreo.setName("campocorreo");
     }
     
     /**
@@ -212,7 +213,7 @@ public class Participante extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/Participante/add-task.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/Imagenes/Participante/register.png"))); // NOI18N
         jLabel6.setText("Registro del Participante    ");
         jLabel6.setFocusable(false);
         jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
@@ -240,7 +241,7 @@ public class Participante extends javax.swing.JFrame {
 
         salir.setBackground(new java.awt.Color(252, 186, 186));
         salir.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/Participante/exit.png"))); // NOI18N
+        salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/Imagenes/Participante/exit.png"))); // NOI18N
         salir.setText("Salir");
         salir.setBorder(null);
         salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -263,7 +264,7 @@ public class Participante extends javax.swing.JFrame {
 
         Limpiar.setBackground(new java.awt.Color(252, 186, 186));
         Limpiar.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        Limpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/Participante/data-cleaning.png"))); // NOI18N
+        Limpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/Imagenes/Participante/data-cleaning.png"))); // NOI18N
         Limpiar.setText("Limpiar");
         Limpiar.setBorder(null);
         Limpiar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -282,7 +283,7 @@ public class Participante extends javax.swing.JFrame {
 
         registrar.setBackground(new java.awt.Color(252, 186, 186));
         registrar.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        registrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/Participante/verify.png"))); // NOI18N
+        registrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/Imagenes/Participante/verify.png"))); // NOI18N
         registrar.setText("Registrar");
         registrar.setBorder(null);
         registrar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -848,7 +849,7 @@ public class Participante extends javax.swing.JFrame {
         imagen.setBackground(new java.awt.Color(255, 228, 228));
         imagen.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/Participante/family2.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/Imagenes/Participante/family2.png"))); // NOI18N
         jLabel2.setText("jLabel2");
         imagen.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 27, 129, -1));
 
@@ -887,8 +888,7 @@ public class Participante extends javax.swing.JFrame {
                     .addGroup(cuerpoLayout.createSequentialGroup()
                         .addComponent(derechacuerpo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(imagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)))
+                        .addComponent(imagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addComponent(footer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
@@ -1020,67 +1020,20 @@ public class Participante extends javax.swing.JFrame {
     }//GEN-LAST:event_camponombreActionPerformed
 
     private void camponombreMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_camponombreMousePressed
-        if (camponombre.getText().equals ("Nombre de la Persona")){ //Al presionar un campo de texto
-            campovacio(camponombre, "", true);//El usuario podra escribir con el color negro
-        }
-        if (campotlf.getText().isEmpty()){ //En caso de que los demas esten vacios, volveran a poseer su mensaje predeterminado, en color gris
-            campovacio(campotlf,"Nro. Personal", false);
-        }
-        if (campocorreo.getText().isEmpty()){
-            campovacio(campocorreo,"Correo personal", false);
-        }
-        if (campocedula.getText().isEmpty()){
-            campovacio(campocedula, "Cedula de Identidad", false);
-        }
+       herramientasVentanas.validarCampoprincipal(camponombre, "Nombre de la Persona", campocedula, campotlf, campocorreo);
     }//GEN-LAST:event_camponombreMousePressed
     //Posiblemente haya una forma de mejorar esto, y no hacer puros if...
     private void campotlfMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campotlfMousePressed
-        if (campotlf.getText().equals ("Nro. Personal")){
-            campovacio(campotlf, "", true);
-        }
-        if (camponombre.getText().isEmpty()){
-            campovacio(camponombre, "Nombre de la Persona", false);
-        }
-        if (campocorreo.getText().isEmpty()){
-            campovacio(campocorreo,"Correo personal", false);
-        }
-        if (campocedula.getText().isEmpty()){
-            campovacio(campocedula, "Cedula de Identidad", false);
-        }
-        
+       herramientasVentanas.validarCampoprincipal(campotlf, "Nro. Personal", campocedula, camponombre, campocorreo); 
     }//GEN-LAST:event_campotlfMousePressed
 
     private void campocorreoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campocorreoMousePressed
-        if (campocorreo.getText().equals ("Correo personal")){
-            campovacio(campocorreo, "", true);
-        }
-        if (camponombre.getText().isEmpty()){
-            campovacio(camponombre, "Nombre de la Persona", false);
-        }
-        if (campocedula.getText().isEmpty()){
-            campovacio(campocedula, "Cedula de Identidad", false);
-        }
-        if (campotlf.getText().isEmpty()){ 
-            campovacio(campotlf,"Nro. Personal", false);
-        }
-        
-        
+       herramientasVentanas.validarCampoprincipal(campocorreo, "Correo personal", campocedula, camponombre, campotlf);  
+       
     }//GEN-LAST:event_campocorreoMousePressed
 
     private void campocedulaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campocedulaMousePressed
-        if (campocedula.getText().equals ("Cedula de Identidad")){
-            campovacio(campocedula, "", true);
-        }
-        if (camponombre.getText().isEmpty()){
-            campovacio(camponombre, "Nombre de la Persona", false);
-        }
-        if (campocorreo.getText().isEmpty()){
-            campovacio(campocorreo,"Correo personal", false);
-        }
-        if (campotlf.getText().isEmpty()){ 
-            campovacio(campotlf,"Nro. Personal", false);
-        }
-        
+       herramientasVentanas.validarCampoprincipal(campocedula, "Cedula de Identidad", campotlf, camponombre, campocorreo); 
     }//GEN-LAST:event_campocedulaMousePressed
 
     private void campocorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campocorreoActionPerformed
@@ -1137,21 +1090,21 @@ public class Participante extends javax.swing.JFrame {
     }//GEN-LAST:event_salirActionPerformed
 
     private void LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarActionPerformed
-        campovacio(camponombre, "Nombre de la Persona", false);
-        campovacio(campocedula, "Cedula de Identidad", false);
-        campovacio(campocorreo, "Correo personal", false);
-        campovacio(campotlf, "Nro. Personal", false);
-        campovacio(campocargo, "Su participacion en el evento", false);
-        campovacio(campozona, "Zona de Trabajo", false);
-        campovacio(campoempresa, "Nombre de la Empresa", false);
-        campovacio(campocargoempresa, "Cargo en la Empresa", false);
-        campovacio(campotemaconferencia, "De lo que quiere informar", false);
-        campovacio(campotemaespecialidad, "Campo especializado", false);
-        campovacio(campometodologiainst, "Metodo de enseñanza", false);
-        campovacio(campoexp, "Cantidad de años", false);
-        campovacio(campoinstitucionponente, "Institucion / Universidad", false);
-        campovacio(campotemaponente, "De lo que quieres informar", false);
-        campovacio(campoduracionponent, "Tiempo a utilizar", false);
+        herramientasVentanas.campovacio(camponombre, "Nombre de la Persona", false);
+        herramientasVentanas.campovacio(campocedula, "Cedula de Identidad", false);
+        herramientasVentanas.campovacio(campocorreo, "Correo personal", false);
+        herramientasVentanas.campovacio(campotlf, "Nro. Personal", false);
+        herramientasVentanas.campovacio(campocargo, "Su participacion en el evento", false);
+        herramientasVentanas.campovacio(campozona, "Zona de Trabajo", false);
+        herramientasVentanas.campovacio(campoempresa, "Nombre de la Empresa", false);
+        herramientasVentanas.campovacio(campocargoempresa, "Cargo en la Empresa", false);
+        herramientasVentanas.campovacio(campotemaconferencia, "De lo que quiere informar", false);
+        herramientasVentanas.campovacio(campotemaespecialidad, "Campo especializado", false);
+        herramientasVentanas.campovacio(campometodologiainst, "Metodo de enseñanza", false);
+        herramientasVentanas.campovacio(campoexp, "Cantidad de años", false);
+        herramientasVentanas.campovacio(campoinstitucionponente, "Institucion / Universidad", false);
+        herramientasVentanas.campovacio(campotemaponente, "De lo que quieres informar", false);
+        herramientasVentanas.campovacio(campoduracionponent, "Tiempo a utilizar", false);
     }//GEN-LAST:event_LimpiarActionPerformed
 
     private void salirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMousePressed

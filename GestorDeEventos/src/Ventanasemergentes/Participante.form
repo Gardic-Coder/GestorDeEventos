@@ -93,7 +93,7 @@
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Imagenesausar/Participante/add-task.png"/>
+                  <Image iconType="3" name="/main/resources/Imagenes/Participante/register.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Registro del Participante    "/>
                 <Property name="focusable" type="boolean" value="false"/>
@@ -154,7 +154,6 @@
                               <Component id="derechacuerpo" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="imagen" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Component id="footer" min="-2" max="-2" attributes="0"/>
@@ -209,7 +208,7 @@
                       <Font name="Dialog" size="16" style="1"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Imagenesausar/Participante/exit.png"/>
+                      <Image iconType="3" name="/main/resources/Imagenes/Participante/exit.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Salir"/>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -235,7 +234,7 @@
                       <Font name="Dialog" size="16" style="1"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Imagenesausar/Participante/data-cleaning.png"/>
+                      <Image iconType="3" name="/main/resources/Imagenes/Participante/data-cleaning.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Limpiar"/>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -257,7 +256,7 @@
                       <Font name="Dialog" size="16" style="1"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Imagenesausar/Participante/verify.png"/>
+                      <Image iconType="3" name="/main/resources/Imagenes/Participante/verify.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Registrar"/>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -1148,7 +1147,7 @@
                 <Component class="javax.swing.JLabel" name="jLabel2">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Imagenesausar/Participante/family2.png"/>
+                      <Image iconType="3" name="/main/resources/Imagenes/Participante/family2.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="jLabel2"/>
                   </Properties>
