@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Ventanasemergentes;
+package main.java.gui;
 import java.awt.Color; //Defino colores personalizados (Tecnologia Hover)
 import javax.swing.JButton; //Me permitira utilizar manualmente Jbutton
 import javax.swing.JTextField;
