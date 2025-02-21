@@ -5,6 +5,7 @@
 package Ventanasemergentes;
 import java.awt.Color; //Defino colores personalizados (Tecnologia Hover)
 import javax.swing.JButton; //Me permitira utilizar manualmente Jbutton
+import javax.swing.JTextField;
 /**
  *
  * @author Alejandrito
@@ -17,6 +18,36 @@ public class herramientasVentanas {
         }else{ //si no...
             boton.setBackground (new Color(252,186,186));
             boton.setForeground (new Color(0,0,0));            
+        }
+    }
+        //Vacia el campo de texto, y cambia el color a Negro
+    public static void campovacio(JTextField campo, String mensaje, boolean color){
+        campo.setText(mensaje);
+        if (color){
+            campo.setForeground (Color.black);  
+        }else{
+            campo.setForeground (Color.gray);
+        }  
+    }
+    
+    public static void validarCampoprincipal(JTextField campo, String textopredeterminado, JTextField... otrosCampos){
+        if (campo.getText().equals(textopredeterminado)) { //El campo presionado, se verifica con su texto predeterminado
+            herramientasVentanas.campovacio(campo, "", true);
+        }
+        for (JTextField otroCampo : otrosCampos) { //Para los demas campos
+            if (otroCampo.getText().isEmpty()) {//Si no estan vacios, no se alteran; en caso contrario, se les brinda su mensaje predeterminado
+                String mensaje = "";//En Java, la gestión de memoria para objetos como String se maneja automáticamente mediante el recolector de basura
+                if (otroCampo.getName().equals("camponombre")) {
+                    mensaje = "Nombre de la Persona";
+                } else if (otroCampo.getName().equals("campocedula")) {
+                    mensaje = "Cedula de Identidad";
+                } else if (otroCampo .getName().equals("campocorreo")) {
+                    mensaje = "Correo personal";
+                } else if (otroCampo.getName().equals("campotlf")){
+                    mensaje = "Nro. Personal";   
+                }
+                herramientasVentanas.campovacio(otroCampo, mensaje, false);
+            }
         }
     }
 }
