@@ -301,7 +301,7 @@ public class Participante extends javax.swing.JFrame {
 
         selecciontipoparticipante.setBackground(new java.awt.Color(255, 204, 204));
         selecciontipoparticipante.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        selecciontipoparticipante.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Asistente", "Conferencista", "Instructor", "Ponente", " ", " " }));
+        selecciontipoparticipante.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Asistente", "Conferencista", "Instructor", "Ponente" }));
         selecciontipoparticipante.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         selecciontipoparticipante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
