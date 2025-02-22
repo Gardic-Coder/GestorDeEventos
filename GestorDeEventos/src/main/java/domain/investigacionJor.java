@@ -4,11 +4,11 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Set;
 
-public class InvestigacionJor extends Evento {
+public class investigacionJor extends Evento {
     private String InstitucionOrganizadora;
     private String Areatematica;
 
-    public InvestigacionJor(Set<Participante> listaParticipantes, String InstitucionOrganizadora, String Areatematica,
+    public investigacionJor(Set<Participante> listaParticipantes, String InstitucionOrganizadora, String Areatematica,
             String nombre, String lugar, LocalDate fecha, LocalTime horaComienzo, LocalTime horaFinalizado, int CapMax) {
         super(nombre, lugar, fecha, horaComienzo, horaFinalizado, CapMax);
         this.InstitucionOrganizadora = InstitucionOrganizadora;

@@ -48,7 +48,7 @@ public class EventoMapper {
                 taller.getNivelDificultad(),
                 taller.isEsPractico()
             );
-        } else if (evento instanceof InvestigacionJor investigacionJor) {
+        } else if (evento instanceof investigacionJor investigacionJor) {
             return new InvestigacionJorDTO(
                 participantesDTO,
                 investigacionJor.getNombre(),
@@ -109,7 +109,7 @@ public class EventoMapper {
                 tallerDTO.getCapMax()
             );
         } else if (dto instanceof InvestigacionJorDTO investigacionJorDTO) {
-            return new InvestigacionJor(
+            return new investigacionJor(
                 participantes,
                 investigacionJorDTO.getInstitucionOrganizadora(),
                 investigacionJorDTO.getAreaTematica(),
