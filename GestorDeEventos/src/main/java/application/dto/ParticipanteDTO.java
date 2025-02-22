@@ -3,12 +3,12 @@ package main.java.application.dto;
 import main.java.domain.RolParticipante;
 
 public class ParticipanteDTO {
+    private String eventoID;
     private String nombre;
     private String cedula;
     private String correo;
     private String telefono;
     private RolParticipante rol;
-    private String evento;
     private boolean asistencia;
     private String tema;
     private String descripcion;
@@ -22,7 +22,7 @@ public class ParticipanteDTO {
         this.correo = correo;
         this.telefono = telefono;
         this.rol = rol;
-        this.evento = evento;
+        this.eventoID = evento;
         this.asistencia = asistencia;
         this.tema = tema;
         this.descripcion = descripcion;
@@ -69,11 +69,11 @@ public class ParticipanteDTO {
     }
 
     public String getEvento() {
-        return evento;
+        return eventoID;
     }
 
     public void setEvento(String evento) {
-        this.evento = evento;
+        this.eventoID = evento;
     }
 
     public boolean isAsistencia() {
@@ -102,7 +102,7 @@ public class ParticipanteDTO {
 
     @Override
     public String toString() {
-        return "ParticipanteDTO{" + "nombre=" + nombre + ", cedula=" + cedula + ", correo=" + correo + ", telefono=" + telefono + ", rol=" + rol + ", evento=" + evento + ", asistencia=" + asistencia + ", tema=" + tema + ", descripcion=" + descripcion + '}';
+        return "ParticipanteDTO{" + "nombre=" + nombre + ", cedula=" + cedula + ", correo=" + correo + ", telefono=" + telefono + ", rol=" + rol + ", evento=" + eventoID + ", asistencia=" + asistencia + ", tema=" + tema + ", descripcion=" + descripcion + '}';
     }
     
 }

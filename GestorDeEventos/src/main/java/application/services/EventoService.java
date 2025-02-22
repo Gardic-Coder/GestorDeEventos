@@ -53,14 +53,16 @@ public class EventoService {
         guardarTodo(eventos); // Se guarda la nueva lista.
     }
     
-    public List<EventoDTO> enviarEventoDTO() {
+    public List<EventoDTO> listaDeEventoDTO() {
         List<Evento> eventos = cargarTodosLosEventos(); // Se carga la lista de eventos.
         List<EventoDTO> eventosDTO = new ArrayList<>();
         
-        for(Evento evento : eventos) {
+        eventos.forEach(evento -> {
             eventosDTO.add(EventoMapper.toDTO(evento)); // Se convierten todos los elementos de la lista.
-        }
+        });
         
         return eventosDTO; // Se devuelve la lista en DTO.
     }
+    
+     
 }
