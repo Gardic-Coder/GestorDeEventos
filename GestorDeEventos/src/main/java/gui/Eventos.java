@@ -175,7 +175,7 @@ public class Eventos extends javax.swing.JFrame {
 
         salireventos.setBackground(new java.awt.Color(252, 186, 186));
         salireventos.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        salireventos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/evento/exit.png"))); // NOI18N
+        salireventos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/Imagenes/Participante/exit.png"))); // NOI18N
         salireventos.setText("Salir");
         salireventos.setBorder(null);
         salireventos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -198,7 +198,7 @@ public class Eventos extends javax.swing.JFrame {
 
         limpiarEventos.setBackground(new java.awt.Color(252, 186, 186));
         limpiarEventos.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        limpiarEventos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/evento/data-cleaning.png"))); // NOI18N
+        limpiarEventos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/Imagenes/Participante/data-cleaning.png"))); // NOI18N
         limpiarEventos.setText("Limpiar");
         limpiarEventos.setBorder(null);
         limpiarEventos.setBorderPainted(false);
@@ -218,7 +218,7 @@ public class Eventos extends javax.swing.JFrame {
 
         registrarEventos.setBackground(new java.awt.Color(252, 186, 186));
         registrarEventos.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        registrarEventos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/evento/verify.png"))); // NOI18N
+        registrarEventos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/Imagenes/Participante/verify.png"))); // NOI18N
         registrarEventos.setText("Registrar");
         registrarEventos.setBorder(null);
         registrarEventos.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -374,7 +374,7 @@ public class Eventos extends javax.swing.JFrame {
 
         salirMod.setBackground(new java.awt.Color(252, 186, 186));
         salirMod.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        salirMod.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/evento/exit.png"))); // NOI18N
+        salirMod.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/Imagenes/Participante/exit.png"))); // NOI18N
         salirMod.setText("Salir");
         salirMod.setBorder(null);
         salirMod.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -397,7 +397,7 @@ public class Eventos extends javax.swing.JFrame {
 
         limpiarMod.setBackground(new java.awt.Color(252, 186, 186));
         limpiarMod.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        limpiarMod.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/evento/data-cleaning.png"))); // NOI18N
+        limpiarMod.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/Imagenes/Participante/data-cleaning.png"))); // NOI18N
         limpiarMod.setText("Limpiar");
         limpiarMod.setBorder(null);
         limpiarMod.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -416,7 +416,7 @@ public class Eventos extends javax.swing.JFrame {
 
         registrarMod.setBackground(new java.awt.Color(252, 186, 186));
         registrarMod.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        registrarMod.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/evento/verify.png"))); // NOI18N
+        registrarMod.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/Imagenes/Participante/verify.png"))); // NOI18N
         registrarMod.setText("Registrar");
         registrarMod.setBorder(null);
         registrarMod.addMouseListener(new java.awt.event.MouseAdapter() {
