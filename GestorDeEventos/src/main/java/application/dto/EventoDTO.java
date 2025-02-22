@@ -3,34 +3,34 @@ package main.java.application.dto;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Set;
+import main.java.domain.TipoEvento;
 
-public abstract class EventoDTO {
-    protected Set<ParticipanteDTO> listaParticipantes;
-    protected String nombre;
-    protected String lugar;
-    protected LocalDate fecha;
-    protected LocalTime horaComienzo;
-    protected LocalTime horaFinalizado;
-    protected int capMax;
+public class EventoDTO {
+    private String nombre;
+    private TipoEvento tipo;
+    private String lugar;
+    private LocalDate fecha; //Date??
+    private LocalTime horaComienzo; //Date??
+    private LocalTime horaFinalizado;
+    private final int CapMax;
+    private String descripcion;
+    private Set<ParticipanteDTO> listaParticipantes;
+    private final String ID;
 
     // Constructor
-    public EventoDTO (Set<ParticipanteDTO> listaParticipantes, String nombre, String lugar, LocalDate fecha, LocalTime horaComienzo, 
-                  LocalTime horaFinalizado, int CapMax) {
-        this.listaParticipantes = listaParticipantes;
+    public EventoDTO(String nombre, TipoEvento tipo, String lugar, LocalDate fecha,
+            LocalTime horaComienzo, LocalTime horaFinalizado, int CapMax, String descripcion, 
+            Set<ParticipanteDTO> listaParticipantes, String ID){
         this.nombre = nombre;
+        this.tipo = tipo;
         this.lugar = lugar;
         this.fecha = fecha;
         this.horaComienzo = horaComienzo;
         this.horaFinalizado = horaFinalizado;
-        this.capMax = CapMax;
-    }
-
-    public Set<ParticipanteDTO> getListaParticipantes() {
-        return listaParticipantes;
-    }
-
-    public void setListaParticipantes(Set<ParticipanteDTO> listaParticipantes) {
+        this.CapMax = CapMax;
+        this.descripcion = descripcion;
         this.listaParticipantes = listaParticipantes;
+        this.ID = ID;
     }
 
     public String getNombre() {
@@ -39,6 +39,14 @@ public abstract class EventoDTO {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public TipoEvento getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoEvento tipo) {
+        this.tipo = tipo;
     }
 
     public String getLugar() {
@@ -73,17 +81,33 @@ public abstract class EventoDTO {
         this.horaFinalizado = horaFinalizado;
     }
 
-    public int getCapMax() {
-        return capMax;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setCapMax(int capMax) {
-        this.capMax = capMax;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Set<ParticipanteDTO> getListaParticipantes() {
+        return listaParticipantes;
+    }
+
+    public void setListaParticipantes(Set<ParticipanteDTO> listaParticipantes) {
+        this.listaParticipantes = listaParticipantes;
+    }
+
+    public int getCapMax() {
+        return CapMax;
+    }
+
+    public String getID() {
+        return ID;
     }
 
     @Override
     public String toString() {
-        return "EventoDTO{" + "listaParticipantes=" + listaParticipantes + ", nombre=" + nombre + ", lugar=" + lugar + ", fecha=" + fecha + ", horaComienzo=" + horaComienzo + ", horaFinalizado=" + horaFinalizado + ", capMax=" + capMax + '}';
+        return "EventoDTO{" + "nombre=" + nombre + ", tipo=" + tipo + ", lugar=" + lugar + ", fecha=" + fecha + ", horaComienzo=" + horaComienzo + ", horaFinalizado=" + horaFinalizado + ", CapMax=" + CapMax + ", descripcion=" + descripcion + ", listaParticipantes=" + listaParticipantes + ", ID=" + ID + '}';
     }
     
 }
