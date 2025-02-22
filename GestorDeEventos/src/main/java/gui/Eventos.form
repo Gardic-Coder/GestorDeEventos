@@ -189,8 +189,31 @@
                           <Component id="footereventos" max="32767" attributes="0"/>
                           <Component id="titulo1" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="panelRegistro" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="metodomoderar3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="metodomoderar5" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="metodomoderar2" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="metodomoderar1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="metodomoderar4" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                                      <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                                      <Component id="metodomoderar6" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="299" max="-2" attributes="0"/>
+                              <Component id="metodomoderar7" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -198,9 +221,26 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="titulo1" max="32767" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                              <Component id="panelRegistro" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="metodomoderar1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="metodomoderar2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="metodomoderar3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="metodomoderar4" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="metodomoderar5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="metodomoderar6" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="metodomoderar7" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
                               <Component id="footereventos" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -370,26 +410,77 @@
                         </Component>
                       </SubComponents>
                     </Container>
-                    <Container class="javax.swing.JPanel" name="panelRegistro">
+                    <Component class="javax.swing.JLabel" name="metodomoderar1">
                       <Properties>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="d6" green="d6" red="ff" type="rgb"/>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Century Gothic" size="16" style="1"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Tipo de Evento "/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="metodomoderar3">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Century Gothic" size="16" style="1"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Lugar del Evento"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="metodomoderar4">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Century Gothic" size="16" style="1"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Capacidad de Participantes"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="metodomoderar5">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Century Gothic" size="16" style="1"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Hora a Comenzar"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="metodomoderar6">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Century Gothic" size="16" style="1"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Hora a Finalizar"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="jComboBox1">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="4">
+                            <StringItem index="0" value="Item 1"/>
+                            <StringItem index="1" value="Item 2"/>
+                            <StringItem index="2" value="Item 3"/>
+                            <StringItem index="3" value="Item 4"/>
+                          </StringArray>
                         </Property>
                       </Properties>
-
-                      <Layout>
-                        <DimensionLayout dim="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <EmptySpace min="0" pref="294" max="32767" attributes="0"/>
-                          </Group>
-                        </DimensionLayout>
-                        <DimensionLayout dim="1">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <EmptySpace min="0" pref="468" max="32767" attributes="0"/>
-                          </Group>
-                        </DimensionLayout>
-                      </Layout>
-                    </Container>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                      </AuxValues>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="metodomoderar2">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Century Gothic" size="16" style="1"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Nombre del Evento"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="metodomoderar7">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Century Gothic" size="16" style="1"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Descripcion"/>
+                      </Properties>
+                    </Component>
                   </SubComponents>
                 </Container>
                 <Container class="javax.swing.JPanel" name="containerMod">

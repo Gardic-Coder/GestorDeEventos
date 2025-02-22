@@ -52,7 +52,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Candara Light", 3, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(153, 0, 0));
-        jLabel3.setText("          Ver. 0.0.1 (Trabajo en proceso)");
+        jLabel3.setText("          Ver. 0.2.2 (Trabajo en proceso)");
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout derechaprincipalLayout = new javax.swing.GroupLayout(derechaprincipal);
