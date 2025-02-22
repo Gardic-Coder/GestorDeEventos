@@ -271,7 +271,10 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_segundaopcionActionPerformed
 
     private void primeraopcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_primeraopcionActionPerformed
-        // TODO add your handling code here:
+        Eventos creadoreventos = new Eventos(this);
+        creadoreventos.setVisible(true);
+        creadoreventos.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_primeraopcionActionPerformed
 
     private void cuartaopcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cuartaopcionActionPerformed

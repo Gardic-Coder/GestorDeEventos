@@ -4,7 +4,6 @@
  */
 package main.java.gui;
 
-import main.java.gui.MainWindow;
 import javax.swing.JTextField; //Permite usar los campos de Texto
 /**
  *
@@ -16,10 +15,6 @@ public class Participante extends javax.swing.JFrame {
     private MainWindow principal; //Me permitra volver a la ventana principal (Referencia)
     
     public void ocultar(){ //Oculta todos los campos y labels existentes
-        campocargo.setVisible(false);
-        campozona.setVisible(false);
-        cargoevento.setVisible(false);
-        zonaencargada.setVisible(false);
         campoempresa.setVisible(false);
         empresa.setVisible(false);
         cargoempresa.setVisible(false);
@@ -44,25 +39,8 @@ public class Participante extends javax.swing.JFrame {
     
    
     
-    //Ocultar o no los campos, para el Asistente
-    public void validarcampoAsistente(JTextField campo, String textopredeterminado, JTextField... otrosCampos){
-        if (campo.getText().equals(textopredeterminado)) { //El campo presionado, se verifica con su texto predeterminado
-            herramientasVentanas.campovacio(campo, "", true);
-        }
-        for (JTextField otroCampo : otrosCampos) { //Para los demas campos
-            if (otroCampo.getText().isEmpty()) {//Si no estan vacios, no se alteran; en caso contrario, se les brinda su mensaje predeterminado
-                String mensaje = "";//En Java, la gestión de memoria para objetos como String se maneja automáticamente mediante el recolector de basura
-                if (otroCampo == campozona) {
-                    mensaje = "Zona de Trabajo";
-                } else if (otroCampo == campocargo) {
-                    mensaje = "Su participacion en el evento";
-                } 
-                herramientasVentanas.campovacio(otroCampo, mensaje, false);
-            }
-        }
-    }
+    //Ocultar o no los campos de Conferencista
     
-    //Conferencista
     public void validarcampoConferencista(JTextField campo, String textopredeterminado, JTextField... otrosCampos){ 
         if (campo.getText().equals(textopredeterminado)) {
             herramientasVentanas.campovacio(campo, "", true);
@@ -179,8 +157,6 @@ public class Participante extends javax.swing.JFrame {
         separadorcedula = new javax.swing.JSeparator();
         separadortlf = new javax.swing.JSeparator();
         izquierdacuerpo = new javax.swing.JPanel();
-        campocargo = new javax.swing.JTextField();
-        cargoevento = new javax.swing.JLabel();
         campoempresa = new javax.swing.JTextField();
         empresa = new javax.swing.JLabel();
         campometodologiainst = new javax.swing.JTextField();
@@ -194,8 +170,6 @@ public class Participante extends javax.swing.JFrame {
         campotemaponente = new javax.swing.JTextField();
         campoduracionponent = new javax.swing.JTextField();
         derechacuerpo = new javax.swing.JPanel();
-        zonaencargada = new javax.swing.JLabel();
-        campozona = new javax.swing.JTextField();
         cargoempresa = new javax.swing.JLabel();
         campocargoempresa = new javax.swing.JTextField();
         especialidad = new javax.swing.JLabel();
@@ -327,7 +301,7 @@ public class Participante extends javax.swing.JFrame {
 
         selecciontipoparticipante.setBackground(new java.awt.Color(255, 204, 204));
         selecciontipoparticipante.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        selecciontipoparticipante.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Asistente", "Conferencista", "Instructor", "Ponente" }));
+        selecciontipoparticipante.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Asistente", "Conferencista", "Instructor", "Ponente", "a", "e", "r", "t", "y", "u", "i", "o", "p", "s", "f", "g", "j", "h", "x", "c", "b", "q", " " }));
         selecciontipoparticipante.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         selecciontipoparticipante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -485,29 +459,6 @@ public class Participante extends javax.swing.JFrame {
 
         izquierdacuerpo.setBackground(new java.awt.Color(255, 228, 228));
 
-        campocargo.setBackground(new java.awt.Color(255, 204, 204));
-        campocargo.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        campocargo.setForeground(java.awt.Color.gray);
-        campocargo.setText("Su participacion en el evento");
-        campocargo.setToolTipText("");
-        campocargo.setActionCommand("<Not Set>");
-        campocargo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        campocargo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        campocargo.setPreferredSize(new java.awt.Dimension(200, 21));
-        campocargo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                campocargoMousePressed(evt);
-            }
-        });
-        campocargo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campocargoActionPerformed(evt);
-            }
-        });
-
-        cargoevento.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        cargoevento.setText("Cargo en el evento");
-
         campoempresa.setBackground(new java.awt.Color(255, 204, 204));
         campoempresa.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         campoempresa.setForeground(java.awt.Color.gray);
@@ -659,8 +610,6 @@ public class Participante extends javax.swing.JFrame {
                             .addComponent(temaponente, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(izquierdacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(experienciainst, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(campocargo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cargoevento)
                                 .addComponent(empresa)
                                 .addComponent(metodologiainst)
                                 .addComponent(temaconferencia)
@@ -678,11 +627,7 @@ public class Participante extends javax.swing.JFrame {
         izquierdacuerpoLayout.setVerticalGroup(
             izquierdacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(izquierdacuerpoLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(cargoevento)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campocargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(60, 60, 60)
                 .addComponent(empresa)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(campoempresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -710,29 +655,6 @@ public class Participante extends javax.swing.JFrame {
         );
 
         derechacuerpo.setBackground(new java.awt.Color(255, 228, 228));
-
-        zonaencargada.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        zonaencargada.setText("Zona encargada");
-
-        campozona.setBackground(new java.awt.Color(255, 204, 204));
-        campozona.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        campozona.setForeground(java.awt.Color.gray);
-        campozona.setText("Zona de Trabajo");
-        campozona.setToolTipText("");
-        campozona.setActionCommand("<Not Set>");
-        campozona.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        campozona.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        campozona.setPreferredSize(new java.awt.Dimension(200, 21));
-        campozona.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                campozonaMousePressed(evt);
-            }
-        });
-        campozona.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campozonaActionPerformed(evt);
-            }
-        });
 
         cargoempresa.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
         cargoempresa.setText("Cargo");
@@ -810,29 +732,18 @@ public class Participante extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, derechacuerpoLayout.createSequentialGroup()
                 .addContainerGap(188, Short.MAX_VALUE)
                 .addGroup(derechacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(derechacuerpoLayout.createSequentialGroup()
-                        .addComponent(zonaencargada, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, derechacuerpoLayout.createSequentialGroup()
-                        .addGroup(derechacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(institucionponente, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(especialidad)
-                            .addComponent(campotemaespecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cargoempresa)
-                            .addGroup(derechacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(campozona, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(campocargoempresa, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(campoinstitucionponente, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(69, 69, 69))))
+                    .addComponent(institucionponente, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(especialidad)
+                    .addComponent(campotemaespecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cargoempresa)
+                    .addComponent(campocargoempresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoinstitucionponente, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(69, 69, 69))
         );
         derechacuerpoLayout.setVerticalGroup(
             derechacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(derechacuerpoLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(zonaencargada)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campozona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(92, 92, 92)
                 .addComponent(cargoempresa)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(campocargoempresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -929,13 +840,6 @@ public class Participante extends javax.swing.JFrame {
         ocultar();
         // Mostrar los campos según la opción seleccionada
         switch (opcionseleccionada){
-            case "Asistente":
-            campocargo.setVisible(true);
-            campozona.setVisible(true);
-            cargoevento.setVisible(true);
-            zonaencargada.setVisible(true);
-            
-            break;
             case "Conferencista":
             campoempresa.setVisible(true);
             empresa.setVisible(true);
@@ -983,14 +887,6 @@ public class Participante extends javax.swing.JFrame {
     private void campoempresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoempresaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campoempresaActionPerformed
-
-    private void campocargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campocargoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campocargoActionPerformed
-
-    private void campozonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campozonaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campozonaActionPerformed
 
     private void campocargoempresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campocargoempresaActionPerformed
         // TODO add your handling code here:
@@ -1041,14 +937,6 @@ public class Participante extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_campocorreoActionPerformed
 
-    private void campocargoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campocargoMousePressed
-       validarcampoAsistente(campocargo,"Su participacion en el evento", campozona);  
-    }//GEN-LAST:event_campocargoMousePressed
-
-    private void campozonaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campozonaMousePressed
-       validarcampoAsistente(campozona,"Zona de Trabajo", campocargo);  
-    }//GEN-LAST:event_campozonaMousePressed
-
     private void campoempresaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoempresaMousePressed
         validarcampoConferencista(campoempresa,"Nombre de la Empresa", campocargoempresa, campotemaconferencia);
     }//GEN-LAST:event_campoempresaMousePressed
@@ -1095,8 +983,6 @@ public class Participante extends javax.swing.JFrame {
         herramientasVentanas.campovacio(campocedula, "Cedula de Identidad", false);
         herramientasVentanas.campovacio(campocorreo, "Correo personal", false);
         herramientasVentanas.campovacio(campotlf, "Nro. Personal", false);
-        herramientasVentanas.campovacio(campocargo, "Su participacion en el evento", false);
-        herramientasVentanas.campovacio(campozona, "Zona de Trabajo", false);
         herramientasVentanas.campovacio(campoempresa, "Nombre de la Empresa", false);
         herramientasVentanas.campovacio(campocargoempresa, "Cargo en la Empresa", false);
         herramientasVentanas.campovacio(campotemaconferencia, "De lo que quiere informar", false);
@@ -1178,7 +1064,6 @@ public class Participante extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Limpiar;
     private javax.swing.JPanel cabecera;
-    private javax.swing.JTextField campocargo;
     private javax.swing.JTextField campocargoempresa;
     private javax.swing.JTextField campocedula;
     private javax.swing.JTextField campocorreo;
@@ -1192,9 +1077,7 @@ public class Participante extends javax.swing.JFrame {
     private javax.swing.JTextField campotemaespecialidad;
     private javax.swing.JTextField campotemaponente;
     private javax.swing.JTextField campotlf;
-    private javax.swing.JTextField campozona;
     private javax.swing.JLabel cargoempresa;
-    private javax.swing.JLabel cargoevento;
     private javax.swing.JPanel cuerpo;
     private javax.swing.JPanel derechacuerpo;
     private javax.swing.JLabel duracionponente;
@@ -1223,6 +1106,5 @@ public class Participante extends javax.swing.JFrame {
     private javax.swing.JPanel superior;
     private javax.swing.JLabel temaconferencia;
     private javax.swing.JLabel temaponente;
-    private javax.swing.JLabel zonaencargada;
     // End of variables declaration//GEN-END:variables
 }

@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package main.java.gui;
+import javax.swing.JTextField; //Permite usar los campos de Texto
+import java.awt.CardLayout; //Permite usar los CardLayouts y cambiar la ventana
 
 /**
  *
@@ -10,11 +12,43 @@ package main.java.gui;
  */
 public class Eventos extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Eventos
-     */
+    public void validarcampoModerador(JTextField campo, String textopredeterminado, JTextField... otrosCampos){ 
+        if (campo.getText().equals(textopredeterminado)) {
+            herramientasVentanas.campovacio(campo, "", true);
+        }
+        for (JTextField otroCampo : otrosCampos) {
+            if (otroCampo.getText().isEmpty()) {
+                String mensaje = "";
+                if (otroCampo == campometodo) {
+                    mensaje = "Practico, Teorico, etc...";
+                } else if (otroCampo == campoexpint) {
+                    mensaje = "X Años de Experiencia";
+                } else if (otroCampo == campoexp) {
+                    mensaje = "Descripcion (No es obligatorio)";
+                } else if (otroCampo == camponombre) {
+                    mensaje = "Nombre de la Persona";
+                } else if (otroCampo == campocedula) {
+                    mensaje = "Cedula de Identidad";
+                } else if (otroCampo == campocorreo) {
+                    mensaje = "Correo personal";
+                } else if (otroCampo == campotlf) {
+                    mensaje = "Nro. Personal";
+                } 
+                herramientasVentanas.campovacio(otroCampo, mensaje, false);
+            }
+        }
+    }
+    
+    private MainWindow principal; //Me permitra volver a la ventana principal (Referencia)
+    
+    
     public Eventos() {
         initComponents();
+    }
+    
+     public Eventos(MainWindow principal) {
+        initComponents();
+        this.principal = principal;
     }
 
     /**
@@ -31,16 +65,24 @@ public class Eventos extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         containerprincipal = new javax.swing.JPanel();
         menu = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        ventana = new javax.swing.JComboBox<>();
         containerCartas = new javax.swing.JPanel();
+        containerEventos = new javax.swing.JPanel();
+        footereventos = new javax.swing.JPanel();
+        salireventos = new javax.swing.JButton();
+        limpiarEventos = new javax.swing.JButton();
+        registrarEventos = new javax.swing.JButton();
+        titulo1 = new javax.swing.JPanel();
+        titulomoderador1 = new javax.swing.JLabel();
+        panelRegistro = new javax.swing.JPanel();
         containerMod = new javax.swing.JPanel();
         footer = new javax.swing.JPanel();
-        salir = new javax.swing.JButton();
-        Limpiar = new javax.swing.JButton();
-        registrar = new javax.swing.JButton();
+        salirMod = new javax.swing.JButton();
+        limpiarMod = new javax.swing.JButton();
+        registrarMod = new javax.swing.JButton();
         superior = new javax.swing.JPanel();
+        titulo = new javax.swing.JPanel();
+        titulomoderador = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -53,10 +95,17 @@ public class Eventos extends javax.swing.JFrame {
         separadorcorreo = new javax.swing.JSeparator();
         separadorcedula = new javax.swing.JSeparator();
         separadortlf = new javax.swing.JSeparator();
-        jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
+        campometodo = new javax.swing.JTextField();
+        metodomoderar = new javax.swing.JLabel();
+        experiencias = new javax.swing.JLabel();
+        experienciascantidad = new javax.swing.JLabel();
+        campoexpint = new javax.swing.JTextField();
+        campoexp = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
 
         padre.setBackground(new java.awt.Color(255, 228, 228));
         padre.setLayout(new java.awt.BorderLayout());
@@ -66,7 +115,7 @@ public class Eventos extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/evento/corporate.png"))); // NOI18N
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/Imagenes/eventos/corporate.png"))); // NOI18N
         jLabel15.setText("Organizacion del Evento  ");
         jLabel15.setFocusable(false);
         jLabel15.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
@@ -80,37 +129,31 @@ public class Eventos extends javax.swing.JFrame {
         menu.setBackground(new java.awt.Color(252, 186, 186));
         menu.setPreferredSize(new java.awt.Dimension(737, 70));
 
-        jComboBox1.setBackground(new java.awt.Color(255, 204, 204));
-        jComboBox1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Moderador", "Eventos" }));
-        jComboBox1.setMinimumSize(new java.awt.Dimension(138, 27));
-        jComboBox1.setPreferredSize(new java.awt.Dimension(138, 27));
-
-        jButton1.setText("jButton1");
-
-        jButton2.setText("jButton2");
+        ventana.setBackground(new java.awt.Color(255, 204, 204));
+        ventana.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        ventana.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Moderador", "Eventos" }));
+        ventana.setMinimumSize(new java.awt.Dimension(138, 27));
+        ventana.setPreferredSize(new java.awt.Dimension(138, 27));
+        ventana.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ventanaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout menuLayout = new javax.swing.GroupLayout(menu);
         menu.setLayout(menuLayout);
         menuLayout.setHorizontalGroup(
             menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLayout.createSequentialGroup()
-                .addGap(74, 74, 74)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(174, 174, 174)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(97, 97, 97))
+            .addGroup(menuLayout.createSequentialGroup()
+                .addGap(299, 299, 299)
+                .addComponent(ventana, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(300, Short.MAX_VALUE))
         );
         menuLayout.setVerticalGroup(
             menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                .addComponent(ventana, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -119,68 +162,225 @@ public class Eventos extends javax.swing.JFrame {
         containerCartas.setBackground(new java.awt.Color(255, 228, 228));
         containerCartas.setLayout(new java.awt.CardLayout());
 
+        containerEventos.setBackground(new java.awt.Color(255, 228, 228));
+
+        footereventos.setBackground(new java.awt.Color(255, 204, 204));
+
+        salireventos.setBackground(new java.awt.Color(252, 186, 186));
+        salireventos.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        salireventos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/evento/exit.png"))); // NOI18N
+        salireventos.setText("Salir");
+        salireventos.setBorder(null);
+        salireventos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        salireventos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                salireventosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                salireventosMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                salireventosMousePressed(evt);
+            }
+        });
+        salireventos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salireventosActionPerformed(evt);
+            }
+        });
+
+        limpiarEventos.setBackground(new java.awt.Color(252, 186, 186));
+        limpiarEventos.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        limpiarEventos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/evento/data-cleaning.png"))); // NOI18N
+        limpiarEventos.setText("Limpiar");
+        limpiarEventos.setBorder(null);
+        limpiarEventos.setBorderPainted(false);
+        limpiarEventos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                limpiarEventosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                limpiarEventosMouseExited(evt);
+            }
+        });
+        limpiarEventos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                limpiarEventosActionPerformed(evt);
+            }
+        });
+
+        registrarEventos.setBackground(new java.awt.Color(252, 186, 186));
+        registrarEventos.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        registrarEventos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/evento/verify.png"))); // NOI18N
+        registrarEventos.setText("Registrar");
+        registrarEventos.setBorder(null);
+        registrarEventos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                registrarEventosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                registrarEventosMouseExited(evt);
+            }
+        });
+        registrarEventos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registrarEventosActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout footereventosLayout = new javax.swing.GroupLayout(footereventos);
+        footereventos.setLayout(footereventosLayout);
+        footereventosLayout.setHorizontalGroup(
+            footereventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(footereventosLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(salireventos, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(142, 142, 142)
+                .addComponent(limpiarEventos, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
+                .addComponent(registrarEventos, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33))
+        );
+        footereventosLayout.setVerticalGroup(
+            footereventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, footereventosLayout.createSequentialGroup()
+                .addContainerGap(54, Short.MAX_VALUE)
+                .addGroup(footereventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(salireventos)
+                    .addComponent(limpiarEventos)
+                    .addComponent(registrarEventos))
+                .addGap(42, 42, 42))
+        );
+
+        titulo1.setBackground(new java.awt.Color(255, 204, 204));
+
+        titulomoderador1.setFont(new java.awt.Font("Dialog", 1, 40)); // NOI18N
+        titulomoderador1.setForeground(new java.awt.Color(255, 255, 255));
+        titulomoderador1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        titulomoderador1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/Imagenes/eventos/calendar.png"))); // NOI18N
+        titulomoderador1.setText("Registro del Evento ");
+        titulomoderador1.setToolTipText("");
+        titulomoderador1.setFocusable(false);
+        titulomoderador1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+
+        javax.swing.GroupLayout titulo1Layout = new javax.swing.GroupLayout(titulo1);
+        titulo1.setLayout(titulo1Layout);
+        titulo1Layout.setHorizontalGroup(
+            titulo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(titulo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(titulo1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(titulomoderador1)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        titulo1Layout.setVerticalGroup(
+            titulo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 80, Short.MAX_VALUE)
+            .addGroup(titulo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(titulo1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(titulomoderador1)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        panelRegistro.setBackground(new java.awt.Color(255, 214, 214));
+
+        javax.swing.GroupLayout panelRegistroLayout = new javax.swing.GroupLayout(panelRegistro);
+        panelRegistro.setLayout(panelRegistroLayout);
+        panelRegistroLayout.setHorizontalGroup(
+            panelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 294, Short.MAX_VALUE)
+        );
+        panelRegistroLayout.setVerticalGroup(
+            panelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 468, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout containerEventosLayout = new javax.swing.GroupLayout(containerEventos);
+        containerEventos.setLayout(containerEventosLayout);
+        containerEventosLayout.setHorizontalGroup(
+            containerEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(footereventos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(titulo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, containerEventosLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(panelRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        containerEventosLayout.setVerticalGroup(
+            containerEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, containerEventosLayout.createSequentialGroup()
+                .addComponent(titulo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addComponent(panelRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(footereventos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        containerCartas.add(containerEventos, "card3");
+
         containerMod.setBackground(new java.awt.Color(255, 228, 228));
 
         footer.setBackground(new java.awt.Color(255, 204, 204));
 
-        salir.setBackground(new java.awt.Color(252, 186, 186));
-        salir.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/evento/exit.png"))); // NOI18N
-        salir.setText("Salir");
-        salir.setBorder(null);
-        salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        salir.addMouseListener(new java.awt.event.MouseAdapter() {
+        salirMod.setBackground(new java.awt.Color(252, 186, 186));
+        salirMod.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        salirMod.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/evento/exit.png"))); // NOI18N
+        salirMod.setText("Salir");
+        salirMod.setBorder(null);
+        salirMod.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        salirMod.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                salirMouseEntered(evt);
+                salirModMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                salirMouseExited(evt);
+                salirModMouseExited(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                salirMousePressed(evt);
+                salirModMousePressed(evt);
             }
         });
-        salir.addActionListener(new java.awt.event.ActionListener() {
+        salirMod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                salirActionPerformed(evt);
+                salirModActionPerformed(evt);
             }
         });
 
-        Limpiar.setBackground(new java.awt.Color(252, 186, 186));
-        Limpiar.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        Limpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/evento/data-cleaning.png"))); // NOI18N
-        Limpiar.setText("Limpiar");
-        Limpiar.setBorder(null);
-        Limpiar.addMouseListener(new java.awt.event.MouseAdapter() {
+        limpiarMod.setBackground(new java.awt.Color(252, 186, 186));
+        limpiarMod.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        limpiarMod.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/evento/data-cleaning.png"))); // NOI18N
+        limpiarMod.setText("Limpiar");
+        limpiarMod.setBorder(null);
+        limpiarMod.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                LimpiarMouseEntered(evt);
+                limpiarModMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                LimpiarMouseExited(evt);
+                limpiarModMouseExited(evt);
             }
         });
-        Limpiar.addActionListener(new java.awt.event.ActionListener() {
+        limpiarMod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LimpiarActionPerformed(evt);
+                limpiarModActionPerformed(evt);
             }
         });
 
-        registrar.setBackground(new java.awt.Color(252, 186, 186));
-        registrar.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        registrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/evento/verify.png"))); // NOI18N
-        registrar.setText("Registrar");
-        registrar.setBorder(null);
-        registrar.addMouseListener(new java.awt.event.MouseAdapter() {
+        registrarMod.setBackground(new java.awt.Color(252, 186, 186));
+        registrarMod.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        registrarMod.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenesausar/evento/verify.png"))); // NOI18N
+        registrarMod.setText("Registrar");
+        registrarMod.setBorder(null);
+        registrarMod.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                registrarMouseEntered(evt);
+                registrarModMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                registrarMouseExited(evt);
+                registrarModMouseExited(evt);
             }
         });
-        registrar.addActionListener(new java.awt.event.ActionListener() {
+        registrarMod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registrarActionPerformed(evt);
+                registrarModActionPerformed(evt);
             }
         });
 
@@ -190,11 +390,11 @@ public class Eventos extends javax.swing.JFrame {
             footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(footerLayout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(salirMod, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(142, 142, 142)
-                .addComponent(Limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(limpiarMod, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
-                .addComponent(registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(registrarMod, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33))
         );
         footerLayout.setVerticalGroup(
@@ -202,13 +402,44 @@ public class Eventos extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, footerLayout.createSequentialGroup()
                 .addContainerGap(54, Short.MAX_VALUE)
                 .addGroup(footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(salir)
-                    .addComponent(Limpiar)
-                    .addComponent(registrar))
+                    .addComponent(salirMod)
+                    .addComponent(limpiarMod)
+                    .addComponent(registrarMod))
                 .addGap(42, 42, 42))
         );
 
         superior.setBackground(new java.awt.Color(255, 228, 228));
+
+        titulo.setBackground(new java.awt.Color(255, 204, 204));
+
+        titulomoderador.setFont(new java.awt.Font("Dialog", 1, 40)); // NOI18N
+        titulomoderador.setForeground(new java.awt.Color(255, 255, 255));
+        titulomoderador.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        titulomoderador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/Imagenes/eventos/crown.png"))); // NOI18N
+        titulomoderador.setText("Registro del Moderador  ");
+        titulomoderador.setFocusable(false);
+        titulomoderador.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+
+        javax.swing.GroupLayout tituloLayout = new javax.swing.GroupLayout(titulo);
+        titulo.setLayout(tituloLayout);
+        tituloLayout.setHorizontalGroup(
+            tituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(tituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(tituloLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(titulomoderador)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        tituloLayout.setVerticalGroup(
+            tituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 68, Short.MAX_VALUE)
+            .addGroup(tituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(tituloLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(titulomoderador)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
         jLabel1.setText("Nombre");
@@ -305,7 +536,7 @@ public class Eventos extends javax.swing.JFrame {
         superiorLayout.setHorizontalGroup(
             superiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(superiorLayout.createSequentialGroup()
-                .addGap(59, 59, 59)
+                .addGap(118, 118, 118)
                 .addGroup(superiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(campocorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -313,7 +544,7 @@ public class Eventos extends javax.swing.JFrame {
                     .addComponent(separadorcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(separadornombre, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
                 .addGroup(superiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(separadorcedula, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -322,11 +553,15 @@ public class Eventos extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(campocedula, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(118, 118, 118))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, superiorLayout.createSequentialGroup()
+                .addComponent(titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
         superiorLayout.setVerticalGroup(
             superiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, superiorLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(superiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel5))
@@ -356,30 +591,108 @@ public class Eventos extends javax.swing.JFrame {
                 .addGap(22, 22, 22))
         );
 
-        jSeparator1.setForeground(new java.awt.Color(255, 153, 153));
-
         jSeparator2.setBackground(new java.awt.Color(255, 153, 153));
         jSeparator2.setForeground(new java.awt.Color(255, 153, 153));
+
+        campometodo.setBackground(new java.awt.Color(255, 204, 204));
+        campometodo.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        campometodo.setForeground(java.awt.Color.gray);
+        campometodo.setText("Practico, Teorico, etc...");
+        campometodo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        campometodo.setMinimumSize(new java.awt.Dimension(200, 21));
+        campometodo.setPreferredSize(new java.awt.Dimension(200, 21));
+        campometodo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                campometodoMousePressed(evt);
+            }
+        });
+
+        metodomoderar.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        metodomoderar.setText("Metodo de Moderacion");
+
+        experiencias.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        experiencias.setText("Experiencias Previas");
+
+        experienciascantidad.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        experienciascantidad.setText("Años de Experiencia");
+
+        campoexpint.setBackground(new java.awt.Color(255, 204, 204));
+        campoexpint.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        campoexpint.setForeground(java.awt.Color.gray);
+        campoexpint.setText("X Años de Experiencia");
+        campoexpint.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        campoexpint.setMinimumSize(new java.awt.Dimension(200, 21));
+        campoexpint.setPreferredSize(new java.awt.Dimension(200, 21));
+        campoexpint.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                campoexpintMousePressed(evt);
+            }
+        });
+        campoexpint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoexpintActionPerformed(evt);
+            }
+        });
+
+        campoexp.setBackground(new java.awt.Color(255, 204, 204));
+        campoexp.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        campoexp.setForeground(java.awt.Color.gray);
+        campoexp.setText("Descripcion (No es obligatorio)");
+        campoexp.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        campoexp.setMinimumSize(new java.awt.Dimension(200, 21));
+        campoexp.setPreferredSize(new java.awt.Dimension(200, 21));
+        campoexp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                campoexpMousePressed(evt);
+            }
+        });
+        campoexp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoexpActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout containerModLayout = new javax.swing.GroupLayout(containerMod);
         containerMod.setLayout(containerModLayout);
         containerModLayout.setHorizontalGroup(
             containerModLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(footer, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jSeparator1)
             .addComponent(superior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(containerModLayout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addGroup(containerModLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(metodomoderar)
+                    .addComponent(campometodo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoexpint, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(experienciascantidad))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(containerModLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(experiencias)
+                    .addComponent(campoexp, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36))
         );
         containerModLayout.setVerticalGroup(
             containerModLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, containerModLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(0, 0, 0)
                 .addComponent(superior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(22, 22, 22)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 389, Short.MAX_VALUE)
+                .addGap(28, 28, 28)
+                .addGroup(containerModLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(metodomoderar)
+                    .addComponent(experiencias))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(containerModLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(containerModLayout.createSequentialGroup()
+                        .addComponent(campometodo, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(experienciascantidad)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(campoexpint, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoexp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
                 .addComponent(footer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -403,45 +716,51 @@ public class Eventos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void salirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMouseEntered
-        herramientasVentanas.cambiarColor(salir, true);
-    }//GEN-LAST:event_salirMouseEntered
+    private void salirModMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirModMouseEntered
+        herramientasVentanas.cambiarColor(salirMod, true);
+    }//GEN-LAST:event_salirModMouseEntered
 
-    private void salirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMouseExited
-        herramientasVentanas.cambiarColor(salir, false);
-    }//GEN-LAST:event_salirMouseExited
+    private void salirModMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirModMouseExited
+        herramientasVentanas.cambiarColor(salirMod, false);
+    }//GEN-LAST:event_salirModMouseExited
 
-    private void salirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMousePressed
+    private void salirModMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirModMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_salirMousePressed
+    }//GEN-LAST:event_salirModMousePressed
 
-    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
-        
-    }//GEN-LAST:event_salirActionPerformed
+    private void salirModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirModActionPerformed
+        this.dispose();
+        principal.setVisible(true);
+    }//GEN-LAST:event_salirModActionPerformed
 
-    private void LimpiarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LimpiarMouseEntered
-        herramientasVentanas.cambiarColor(Limpiar, true);
-    }//GEN-LAST:event_LimpiarMouseEntered
+    private void limpiarModMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_limpiarModMouseEntered
+        herramientasVentanas.cambiarColor(limpiarMod, true);
+    }//GEN-LAST:event_limpiarModMouseEntered
 
-    private void LimpiarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LimpiarMouseExited
-        herramientasVentanas.cambiarColor(Limpiar, false);
-    }//GEN-LAST:event_LimpiarMouseExited
+    private void limpiarModMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_limpiarModMouseExited
+        herramientasVentanas.cambiarColor(limpiarMod, false);
+    }//GEN-LAST:event_limpiarModMouseExited
 
-    private void LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarActionPerformed
-        
-    }//GEN-LAST:event_LimpiarActionPerformed
+    private void limpiarModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarModActionPerformed
+        herramientasVentanas.campovacio(campometodo, "Practico, Teorico, etc...", false);
+        herramientasVentanas.campovacio(campoexp, "Descripcion (No es obligatorio)", false);
+        herramientasVentanas.campovacio(camponombre, "Nombre de la Persona", false);
+        herramientasVentanas.campovacio(campocedula, "Cedula de Identidad", false);
+        herramientasVentanas.campovacio(campotlf, "Nro. Personal", false);
+        herramientasVentanas.campovacio(campocorreo, "Correo personal", false);
+    }//GEN-LAST:event_limpiarModActionPerformed
 
-    private void registrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarMouseEntered
-        herramientasVentanas.cambiarColor(registrar, true);
-    }//GEN-LAST:event_registrarMouseEntered
+    private void registrarModMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarModMouseEntered
+        herramientasVentanas.cambiarColor(registrarMod, true);
+    }//GEN-LAST:event_registrarModMouseEntered
 
-    private void registrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarMouseExited
-        herramientasVentanas.cambiarColor(registrar, false);
-    }//GEN-LAST:event_registrarMouseExited
+    private void registrarModMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarModMouseExited
+        herramientasVentanas.cambiarColor(registrarMod, false);
+    }//GEN-LAST:event_registrarModMouseExited
 
-    private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
+    private void registrarModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarModActionPerformed
         //Aqui habria logica, si tuviera una
-    }//GEN-LAST:event_registrarActionPerformed
+    }//GEN-LAST:event_registrarModActionPerformed
 
     private void campocorreoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campocorreoMousePressed
         if (campocorreo.getText().equals ("Correo personal")){
@@ -514,6 +833,81 @@ public class Eventos extends javax.swing.JFrame {
 
     }//GEN-LAST:event_campotlfMousePressed
 
+    private void campoexpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoexpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoexpActionPerformed
+
+    private void campometodoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campometodoMousePressed
+        validarcampoModerador(campometodo,"Practico, Teorico, etc...", campoexp, campoexpint, camponombre, campotlf, campocorreo, campocedula);
+    }//GEN-LAST:event_campometodoMousePressed
+
+    private void campoexpintMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoexpintMousePressed
+        validarcampoModerador(campoexpint,"X Años de Experiencia", campoexp, campometodo, camponombre, campotlf, campocorreo, campocedula);
+    }//GEN-LAST:event_campoexpintMousePressed
+
+    private void campoexpMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoexpMousePressed
+        validarcampoModerador(campoexp,"Descripcion (No es obligatorio)", campoexpint, campometodo, camponombre, campotlf, campocorreo, campocedula);
+    }//GEN-LAST:event_campoexpMousePressed
+
+    private void salireventosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salireventosMouseEntered
+        herramientasVentanas.cambiarColor(salireventos, true);
+    }//GEN-LAST:event_salireventosMouseEntered
+
+    private void salireventosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salireventosMouseExited
+        herramientasVentanas.cambiarColor(salireventos, false);
+    }//GEN-LAST:event_salireventosMouseExited
+
+    private void salireventosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salireventosMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_salireventosMousePressed
+
+    private void salireventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salireventosActionPerformed
+        this.dispose();
+        principal.setVisible(true);
+    }//GEN-LAST:event_salireventosActionPerformed
+
+    private void limpiarEventosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_limpiarEventosMouseEntered
+        herramientasVentanas.cambiarColor(limpiarEventos, true);
+    }//GEN-LAST:event_limpiarEventosMouseEntered
+
+    private void limpiarEventosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_limpiarEventosMouseExited
+        herramientasVentanas.cambiarColor(limpiarEventos, false);
+    }//GEN-LAST:event_limpiarEventosMouseExited
+
+    private void limpiarEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarEventosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_limpiarEventosActionPerformed
+
+    private void registrarEventosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarEventosMouseEntered
+        herramientasVentanas.cambiarColor(registrarEventos, true);
+    }//GEN-LAST:event_registrarEventosMouseEntered
+
+    private void registrarEventosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarEventosMouseExited
+       herramientasVentanas.cambiarColor(registrarEventos, false);
+    }//GEN-LAST:event_registrarEventosMouseExited
+
+    private void registrarEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarEventosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_registrarEventosActionPerformed
+
+    private void campoexpintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoexpintActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoexpintActionPerformed
+
+    private void ventanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ventanaActionPerformed
+        if(ventana.getSelectedIndex()==0){
+            containerCartas.removeAll();
+            containerCartas.add(containerMod);
+            containerCartas.repaint();
+            containerCartas.revalidate();
+        }else{
+            containerCartas.removeAll();
+            containerCartas.add(containerEventos);
+            containerCartas.repaint();
+            containerCartas.revalidate();
+        }
+    }//GEN-LAST:event_ventanaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -550,34 +944,47 @@ public class Eventos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Limpiar;
     private javax.swing.JTextField campocedula;
     private javax.swing.JTextField campocorreo;
+    private javax.swing.JTextField campoexp;
+    private javax.swing.JTextField campoexpint;
+    private javax.swing.JTextField campometodo;
     private javax.swing.JTextField camponombre;
     private javax.swing.JTextField campotlf;
     private javax.swing.JPanel containerCartas;
+    private javax.swing.JPanel containerEventos;
     private javax.swing.JPanel containerMod;
     private javax.swing.JPanel containerprincipal;
+    private javax.swing.JLabel experiencias;
+    private javax.swing.JLabel experienciascantidad;
     private javax.swing.JPanel footer;
+    private javax.swing.JPanel footereventos;
     private javax.swing.JPanel header;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JButton limpiarEventos;
+    private javax.swing.JButton limpiarMod;
     private javax.swing.JPanel menu;
+    private javax.swing.JLabel metodomoderar;
     private javax.swing.JPanel padre;
-    private javax.swing.JButton registrar;
-    private javax.swing.JButton salir;
+    private javax.swing.JPanel panelRegistro;
+    private javax.swing.JButton registrarEventos;
+    private javax.swing.JButton registrarMod;
+    private javax.swing.JButton salirMod;
+    private javax.swing.JButton salireventos;
     private javax.swing.JSeparator separadorcedula;
     private javax.swing.JSeparator separadorcorreo;
     private javax.swing.JSeparator separadornombre;
     private javax.swing.JSeparator separadortlf;
     private javax.swing.JPanel superior;
+    private javax.swing.JPanel titulo;
+    private javax.swing.JPanel titulo1;
+    private javax.swing.JLabel titulomoderador;
+    private javax.swing.JLabel titulomoderador1;
+    private javax.swing.JComboBox<String> ventana;
     // End of variables declaration//GEN-END:variables
 }
