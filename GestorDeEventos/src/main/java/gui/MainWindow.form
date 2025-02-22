@@ -190,7 +190,7 @@
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Imagenesausar/mainwindow/pencil.png"/>
+                  <Image iconType="3" name="/main/resources/Imagenes/mainWindow/pencil.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Menu  "/>
                 <Property name="verticalAlignment" type="int" value="3"/>
