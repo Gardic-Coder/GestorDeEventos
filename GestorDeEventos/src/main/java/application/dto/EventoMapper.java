@@ -32,7 +32,20 @@ public class EventoMapper {
             .map(ParticipanteMapper::fromDTO)
             .collect(Collectors.toSet());
         
-        return new Evento(dto.getNombre(), 
+        if(dto.getID() == null) {
+            return new Evento(
+                    dto.getNombre(), 
+                    dto.getTipo(), 
+                    dto.getLugar(), 
+                    dto.getFecha(), 
+                    dto.getHoraComienzo(), 
+                    dto.getHoraFinalizado(), 
+                    dto.getCapMax(), 
+                    dto.getDescripcion());
+            
+        } else {
+            return new Evento(
+                dto.getNombre(), 
                 dto.getTipo(), 
                 dto.getLugar(), 
                 dto.getFecha(), 
@@ -42,5 +55,6 @@ public class EventoMapper {
                 dto.getDescripcion(), 
                 participantes, 
                 dto.getID());
+        }
     }
 }
