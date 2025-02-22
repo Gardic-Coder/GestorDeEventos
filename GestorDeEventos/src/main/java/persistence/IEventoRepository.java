@@ -2,9 +2,9 @@ package main.java.persistence;
 
 import java.util.List;
 
-import main.java.domain.Evento;
+import main.java.application.dto.EventoDTO;
 
 public interface IEventoRepository {
-    public List<Evento> cargarEventos();
-    public void guardarEventos(List<Evento> eventos);
+    public List<EventoDTO> cargarEventos();
+    public void guardarEventos(List<EventoDTO> eventos);
 }

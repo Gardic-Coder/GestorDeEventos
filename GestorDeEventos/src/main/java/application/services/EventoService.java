@@ -16,8 +16,8 @@ public class EventoService {
     private final IParticipanteRepository participanteRepo = new ParticipanteRepository();
 
     public List<Evento> cargarTodosLosEventos() {
-        List<Evento> eventos = eventoRepo.cargarEventos();
-        List<Participante> participantes = participanteRepo.cargarParticipantes();
+        List<Evento> eventos = EventoMapper.listFromDTO(eventoRepo.cargarEventos());
+        List<Participante> participantes = ParticipanteMapper.listaFromDTO(participanteRepo.cargarParticipantes());
 
         // Agrupar participantes por ID de evento
         Map<String, List<Participante>> participantesPorEvento = participantes.stream()
@@ -30,13 +30,15 @@ public class EventoService {
             );
             evento.setListaParticipantes(participantesEvento);
         });
+        
+        Evento.inicializarContador(eventos); // Inicializar contador
 
         return eventos;
     }
 
-    public void guardarTodo(List<Evento> eventos) {
+    public void guardarTodo(List<EventoDTO> eventos) {
         // Extraer todos los participantes de todos los eventos
-        List<Participante> participantes = eventos.stream()
+        List<ParticipanteDTO> participantes = eventos.stream()
             .flatMap(e -> e.getListaParticipantes().stream())
             .collect(Collectors.toList());
 
@@ -44,13 +46,19 @@ public class EventoService {
         participanteRepo.guardarParticipantes(participantes);
     }
     
-    public void recibirEventoDTO(EventoDTO evento) {
-        Evento nuevoEvento = EventoMapper.fromDTO(evento); // Conversion de DTO a Objeto de dominio.
+    public void recibirEventoDTO(EventoDTO eventoDTO) {
+        Evento nuevoEvento = EventoMapper.fromDTO(eventoDTO); // Conversion de DTO a Objeto de dominio.
         List<Evento> eventos = cargarTodosLosEventos(); // Se carga la lista de eventos.
         
         eventos.add(nuevoEvento); // Se agrega el nuevo evento a la lista de eventos.
         
-        guardarTodo(eventos); // Se guarda la nueva lista.
+        List<EventoDTO> eventosDTO = new ArrayList<>();
+        
+        eventos.forEach(evento -> {
+            eventosDTO.add(EventoMapper.toDTO(evento)); // Se convierten todos los elementos de la lista.
+        });
+        
+        guardarTodo(eventosDTO); // Se guarda la nueva lista.
     }
     
     public List<EventoDTO> listaDeEventoDTO() {
@@ -63,6 +71,5 @@ public class EventoService {
         
         return eventosDTO; // Se devuelve la lista en DTO.
     }
-    
      
 }

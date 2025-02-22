@@ -18,5 +18,4 @@ public class MainApp {
          paginainicial.setLocationRelativeTo(null);
          
     }
-    
 }

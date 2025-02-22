@@ -4,40 +4,37 @@ import java.util.ArrayList;
 import java.util.List;
 import main.java.application.dto.*;
 import main.java.domain.*;
+import main.java.persistence.*;
 
 
 public class ParticipanteService {
+    private final IEventoRepository eventoRepo = new EventoRepository();
+    //private final IParticipanteRepository participanteRepo = new ParticipanteRepository();
     EventoService eventoService = new EventoService();
     
-    public void agregarParticipante(ParticipanteDTO participante) {
-       List<EventoDTO> eventosDTO = eventoService.listaDeEventoDTO();
-       List<Evento> eventos = new ArrayList<>();
-       Participante nuevoParticipante = ParticipanteMapper.fromDTO(participante);
+    public void agregarParticipante(ParticipanteDTO participanteDTO) {
+       List<Evento> eventos = EventoMapper.listFromDTO(eventoRepo.cargarEventos());
+       Participante nuevoParticipante = ParticipanteMapper.fromDTO(participanteDTO);
        
-       eventosDTO.forEach(eventoDTO -> {
-           eventos.add(EventoMapper.fromDTO(eventoDTO));
-        });
-       
-       eventos.stream().filter(evento -> (evento.getID().equals(participante.getEvento()))).forEachOrdered(evento -> {
+       eventos.stream().filter(evento -> (evento.getID().equals(participanteDTO.getEvento()))).forEachOrdered(evento -> {
            evento.agregarParticipante(nuevoParticipante);
         });
        
-       eventoService.guardarTodo(eventos);
+       List<EventoDTO> eventosDTO = EventoMapper.listToDTO(eventos);
+       
+       eventoService.guardarTodo(eventosDTO);
     }
     
     public void eliminarParticipante(ParticipanteDTO participante) {
-       List<EventoDTO> eventosDTO = eventoService.listaDeEventoDTO();
-       List<Evento> eventos = new ArrayList<>();
+       List<Evento> eventos = EventoMapper.listFromDTO(eventoRepo.cargarEventos());
        Participante participanteEliminar = ParticipanteMapper.fromDTO(participante);
-       
-       eventosDTO.forEach(eventoDTO -> {
-           eventos.add(EventoMapper.fromDTO(eventoDTO));
-        });
        
        eventos.stream().filter(evento -> (evento.getID().equals(participanteEliminar.getEvento()))).forEachOrdered((Evento evento) -> {
            evento.eliminarParticipante(participanteEliminar);
         });
        
-       eventoService.guardarTodo(eventos);
+       List<EventoDTO> eventosDTO = EventoMapper.listToDTO(eventos);
+       
+       eventoService.guardarTodo(eventosDTO);
     }
 }

@@ -1,5 +1,7 @@
 package main.java.application.dto;
 
+import java.util.ArrayList;
+import java.util.List;
 import main.java.domain.Participante;
 
 public class ParticipanteMapper {
@@ -31,5 +33,25 @@ public class ParticipanteMapper {
                 dto.getTema(),
                 dto.getDescripcion()
         );
+    }
+    
+    public static List<ParticipanteDTO> listaToDTO(List<Participante> participantes) {
+        List<ParticipanteDTO> participantesDTO = new ArrayList<>();
+        
+        participantes.forEach(participante -> {
+            participantesDTO.add(ParticipanteMapper.toDTO(participante));
+        });
+        
+        return participantesDTO;
+    }
+    
+    public static List<Participante> listaFromDTO(List<ParticipanteDTO> participantesDTO) {
+        List<Participante> participantes = new ArrayList<>();
+        
+        participantesDTO.forEach(participanteDTO -> {
+            participantes.add(ParticipanteMapper.fromDTO(participanteDTO));
+        });
+        
+        return participantes;
     }
 }

@@ -22,7 +22,9 @@ public class Evento {
     private static int contador = 0;
     
     public Evento(String nombre, TipoEvento tipo, String lugar, LocalDate fecha,
-            LocalTime horaComienzo, LocalTime horaFinalizado, int CapMax, String descripcion){
+            LocalTime horaComienzo, LocalTime horaFinalizado, int CapMax, String descripcion, 
+            Set<Participante> listaParticipantes){
+        this.listaParticipantes = new TreeSet<>(new ParticipanteRolComparator());
         this.nombre = nombre;
         this.tipo = tipo;
         this.lugar = lugar;
@@ -31,13 +33,14 @@ public class Evento {
         this.horaFinalizado = horaFinalizado;
         this.CapMax = CapMax;
         this.descripcion = descripcion;
-        this.listaParticipantes = new TreeSet<>(new ParticipanteRolComparator());
+        this.listaParticipantes = listaParticipantes;
         this.ID = crearID();
     }
     
     public Evento(String nombre, TipoEvento tipo, String lugar, LocalDate fecha,
             LocalTime horaComienzo, LocalTime horaFinalizado, int CapMax, String descripcion, 
             Set<Participante> listaParticipantes, String ID){
+        this.listaParticipantes = new TreeSet<>(new ParticipanteRolComparator());
         this.nombre = nombre;
         this.tipo = tipo;
         this.lugar = lugar;

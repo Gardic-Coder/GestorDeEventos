@@ -3,6 +3,7 @@ package main.java.persistence;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import main.java.application.dto.*;
 
 import main.java.domain.*;
 
@@ -10,13 +11,13 @@ public class ParticipanteRepository implements IParticipanteRepository{
     private final String ARCHIVO = "src\\main\\resources\\participantes.txt";
 
     @Override
-    public List<Participante> cargarParticipantes() {
-        List<Participante> participantes = new ArrayList<>();
+    public List<ParticipanteDTO> cargarParticipantes() {
+        List<ParticipanteDTO> participantes = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(ARCHIVO))) {
             String linea;
             while ((linea = reader.readLine()) != null) {
                 String[] partes = linea.split("\\|");
-                Participante participante = new Participante(
+                ParticipanteDTO participante = new ParticipanteDTO(
                     partes[1], // nombre
                     partes[2], // cedula
                     partes[3], // correo
@@ -36,9 +37,9 @@ public class ParticipanteRepository implements IParticipanteRepository{
     }
 
     @Override
-    public void guardarParticipantes(List<Participante> participantes) {
+    public void guardarParticipantes(List<ParticipanteDTO> participantes) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(ARCHIVO))) {
-            for (Participante p : participantes) {
+            for (ParticipanteDTO p : participantes) {
                 String linea = String.join("|",
                     p.getEvento(), // ID del evento
                     p.getNombre(),

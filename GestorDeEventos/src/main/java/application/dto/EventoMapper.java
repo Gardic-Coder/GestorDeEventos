@@ -1,5 +1,7 @@
 package main.java.application.dto;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import main.java.domain.*;
@@ -41,7 +43,8 @@ public class EventoMapper {
                     dto.getHoraComienzo(), 
                     dto.getHoraFinalizado(), 
                     dto.getCapMax(), 
-                    dto.getDescripcion());
+                    dto.getDescripcion(),
+                    participantes);
             
         } else {
             return new Evento(
@@ -56,5 +59,25 @@ public class EventoMapper {
                 participantes, 
                 dto.getID());
         }
+    }
+    
+    public static List<EventoDTO> listToDTO(List<Evento> eventos) {
+        List<EventoDTO> eventosDTO = new ArrayList<>();
+        
+        eventos.forEach(evento -> {
+            eventosDTO.add(EventoMapper.toDTO(evento)); // Se convierten todos los elementos de la lista.
+        });
+        
+        return eventosDTO;
+    }
+    
+    public static List<Evento> listFromDTO(List<EventoDTO> eventosDTO) {
+        List<Evento> eventos = new ArrayList<>();
+        
+        eventosDTO.forEach(eventoDTO -> {
+            eventos.add(EventoMapper.fromDTO(eventoDTO)); // Se convierten todos los elementos de la lista.
+        });
+        
+        return eventos;
     }
 }
