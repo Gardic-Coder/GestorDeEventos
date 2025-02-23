@@ -1,6 +1,6 @@
 package main.java.gui;
 
-import main.java.domain.RolParticipante;
+import main.java.application.dto.RolParticipante;
 import java.awt.Component;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

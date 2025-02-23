@@ -1,6 +1,6 @@
 package main.java.application.services;
 
-import main.java.domain.RolParticipante;
+import main.java.application.dto.RolParticipante;
 import java.util.ArrayList;
 import java.util.List;
 import main.java.application.dto.*;

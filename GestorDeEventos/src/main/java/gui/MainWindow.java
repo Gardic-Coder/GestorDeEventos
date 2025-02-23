@@ -192,7 +192,8 @@ public class MainWindow extends javax.swing.JFrame {
         salir.setBackground(new java.awt.Color(255, 204, 204));
         salir.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         salir.setText("X");
-        salir.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        salir.setBorder(null);
+        salir.setBorderPainted(false);
         salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         salir.setPreferredSize(new java.awt.Dimension(45, 38));
         salir.addMouseListener(new java.awt.event.MouseAdapter() {
