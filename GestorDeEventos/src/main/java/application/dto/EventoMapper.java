@@ -29,10 +29,7 @@ public class EventoMapper {
 
     // Convierte un EventoDTO a Evento
     public static Evento fromDTO(EventoDTO dto) {
-        Set<Participante> participantes = dto.getListaParticipantes()
-            .stream()
-            .map(ParticipanteMapper::fromDTO)
-            .collect(Collectors.toSet());
+        
         
         if(dto.getID() == null) {
             return new Evento(
@@ -46,6 +43,10 @@ public class EventoMapper {
                     dto.getDescripcion());
             
         } else {
+            Set<Participante> participantes = dto.getListaParticipantes()
+            .stream()
+            .map(ParticipanteMapper::fromDTO)
+            .collect(Collectors.toSet());
             return new Evento(
                 dto.getNombre(), 
                 dto.getTipo(), 

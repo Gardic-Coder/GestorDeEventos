@@ -1,0 +1,8 @@
+EVT-1|No se|CONFERENCIA|no se|2025-02-25|06:30:52.341|09:30:52.341|15|no se
+EVT-1|Rumba Sexual Llanera|CONFERENCIA|no se|2025-02-27|06:30:39.498|09:45:39.498|15|npi
+EVT-2|Rumba sexual|TALLER|Casa de ale|2025-02-26|06:30:22.492|09:45:22.492|15|si
+EVT-3|agtga|CONFERENCIA|wetfgtg|2025-02-26|06:30:23.192|06:45:23.192|15|gtwertgwertg
+EVT-4|afsefgs|CONFERENCIA|fegfgs|2025-02-26|06:45:27.531|06:54:27.531|15|dfhsrfs
+EVT-5|tgweatgtgf|CONFERENCIA|arggg|2025-02-26|06:30:16.925|06:30:16.925|10|atggtfger
+EVT-6|aaffgsdfgg|CONFERENCIA|tgwefgsgtf|2025-02-23|06:30:22.990|09:45:22.990|15|effeswafed
+EVT-7|reghrfhrfs|CONFERENCIA|ergaertgre|2025-02-23|06:31:31.919|09:45:31.919|15|eyhtryhes
