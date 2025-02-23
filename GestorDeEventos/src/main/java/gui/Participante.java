@@ -176,6 +176,7 @@ public class Participante extends javax.swing.JFrame {
         campotemaespecialidad = new javax.swing.JTextField();
         institucionponente = new javax.swing.JLabel();
         campoinstitucionponente = new javax.swing.JTextField();
+        seleccionEvt = new javax.swing.JComboBox<>();
         imagen = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -729,6 +730,15 @@ public class Participante extends javax.swing.JFrame {
             }
         });
 
+        seleccionEvt.setBackground(new java.awt.Color(255, 204, 204));
+        seleccionEvt.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        seleccionEvt.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        seleccionEvt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                seleccionEvtActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout derechacuerpoLayout = new javax.swing.GroupLayout(derechacuerpo);
         derechacuerpo.setLayout(derechacuerpoLayout);
         derechacuerpoLayout.setHorizontalGroup(
@@ -736,6 +746,7 @@ public class Participante extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, derechacuerpoLayout.createSequentialGroup()
                 .addContainerGap(188, Short.MAX_VALUE)
                 .addGroup(derechacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(seleccionEvt, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(institucionponente, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(especialidad)
                     .addComponent(campotemaespecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -747,7 +758,8 @@ public class Participante extends javax.swing.JFrame {
         derechacuerpoLayout.setVerticalGroup(
             derechacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(derechacuerpoLayout.createSequentialGroup()
-                .addGap(92, 92, 92)
+                .addComponent(seleccionEvt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(65, 65, 65)
                 .addComponent(cargoempresa)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(campocargoempresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1034,6 +1046,10 @@ public class Participante extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_campocedulaActionPerformed
 
+    private void seleccionEvtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionEvtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_seleccionEvtActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1106,6 +1122,7 @@ public class Participante extends javax.swing.JFrame {
     private javax.swing.JPanel padre;
     private javax.swing.JButton registrar;
     private javax.swing.JButton salir;
+    private javax.swing.JComboBox<String> seleccionEvt;
     private javax.swing.JComboBox<String> selecciontipoparticipante;
     private javax.swing.JSeparator separadorcedula;
     private javax.swing.JSeparator separadorcorreo;
