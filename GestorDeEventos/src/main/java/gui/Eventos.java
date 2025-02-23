@@ -113,6 +113,8 @@ public class Eventos extends javax.swing.JFrame {
         campocapMax = new javax.swing.JTextField();
         botonComienzo = new javax.swing.JButton();
         botonFinalizar = new javax.swing.JButton();
+        calendario = new de.wannawork.jcalendar.JCalendarComboBox();
+        metodomoderar8 = new javax.swing.JLabel();
         containerMod = new javax.swing.JPanel();
         footer = new javax.swing.JPanel();
         salirMod = new javax.swing.JButton();
@@ -456,6 +458,14 @@ public class Eventos extends javax.swing.JFrame {
             }
         });
 
+        calendario.setBackground(new java.awt.Color(255, 153, 153));
+        calendario.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        calendario.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        calendario.setMinimumSize(new java.awt.Dimension(125, 30));
+
+        metodomoderar8.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        metodomoderar8.setText("Fecha del Evento");
+
         javax.swing.GroupLayout containerEventosLayout = new javax.swing.GroupLayout(containerEventos);
         containerEventos.setLayout(containerEventosLayout);
         containerEventosLayout.setHorizontalGroup(
@@ -475,27 +485,25 @@ public class Eventos extends javax.swing.JFrame {
                     .addGroup(containerEventosLayout.createSequentialGroup()
                         .addGap(83, 83, 83)
                         .addComponent(metodomoderar2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(containerEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
+                .addGroup(containerEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(containerEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, containerEventosLayout.createSequentialGroup()
+                            .addGroup(containerEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, containerEventosLayout.createSequentialGroup()
+                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(38, 38, 38)
+                                    .addComponent(calendario, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(campocapMax, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(26, 26, 26))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, containerEventosLayout.createSequentialGroup()
+                            .addComponent(metodomoderar4)
+                            .addGap(50, 50, 50)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, containerEventosLayout.createSequentialGroup()
-                        .addComponent(campocapMax, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, containerEventosLayout.createSequentialGroup()
-                        .addComponent(metodomoderar4)
-                        .addGap(50, 50, 50))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, containerEventosLayout.createSequentialGroup()
-                        .addGroup(containerEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(metodomoderar1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(97, 97, 97))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, containerEventosLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(campodescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38))
-            .addGroup(containerEventosLayout.createSequentialGroup()
-                .addGap(318, 318, 318)
-                .addComponent(metodomoderar7)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(metodomoderar1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(metodomoderar8, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(containerEventosLayout.createSequentialGroup()
                 .addGap(90, 90, 90)
                 .addComponent(metodomoderar5)
@@ -508,6 +516,14 @@ public class Eventos extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(botonFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(76, 76, 76))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, containerEventosLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(campodescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38))
+            .addGroup(containerEventosLayout.createSequentialGroup()
+                .addGap(318, 318, 318)
+                .addComponent(metodomoderar7)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         containerEventosLayout.setVerticalGroup(
             containerEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -516,11 +532,13 @@ public class Eventos extends javax.swing.JFrame {
                 .addGap(58, 58, 58)
                 .addGroup(containerEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(metodomoderar1)
-                    .addComponent(metodomoderar2))
+                    .addComponent(metodomoderar2)
+                    .addComponent(metodomoderar8))
                 .addGap(18, 18, 18)
                 .addGroup(containerEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(campoevnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(calendario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(67, 67, 67)
                 .addGroup(containerEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(metodomoderar3)
@@ -1185,6 +1203,7 @@ public class Eventos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonComienzo;
     private javax.swing.JButton botonFinalizar;
+    private de.wannawork.jcalendar.JCalendarComboBox calendario;
     private javax.swing.JTextField campocapMax;
     private javax.swing.JTextField campocedula;
     private javax.swing.JTextField campocorreo;
@@ -1225,6 +1244,7 @@ public class Eventos extends javax.swing.JFrame {
     private javax.swing.JLabel metodomoderar5;
     private javax.swing.JLabel metodomoderar6;
     private javax.swing.JLabel metodomoderar7;
+    private javax.swing.JLabel metodomoderar8;
     private javax.swing.JPanel padre;
     private javax.swing.JButton registrarEventos;
     private javax.swing.JButton registrarMod;
