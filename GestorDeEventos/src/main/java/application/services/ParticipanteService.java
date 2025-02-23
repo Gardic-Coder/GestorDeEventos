@@ -14,7 +14,7 @@ public class ParticipanteService {
 
     public void agregarParticipante(ParticipanteDTO participanteDTO) {
         List<Evento> eventos = eventoService.cargarTodosLosEventos();
-                //EventoMapper.listFromDTO(eventoRepo.cargarEventos());
+        //EventoMapper.listFromDTO(eventoRepo.cargarEventos());
 
         Participante nuevoParticipante = ParticipanteMapper.fromDTO(participanteDTO);
 
@@ -27,17 +27,25 @@ public class ParticipanteService {
 
     }
 
-    public void eliminarParticipante(ParticipanteDTO participante) {
-        List<Evento> eventos = EventoMapper.listFromDTO(eventoRepo.cargarEventos());
-        Participante participanteEliminar = ParticipanteMapper.fromDTO(participante);
+    public void eliminarParticipante(ParticipanteDTO participanteDTO) {
+        Participante participante = ParticipanteMapper.fromDTO(participanteDTO);
 
-        eventos.stream().filter(evento -> (evento.getID().equals(participanteEliminar.getEvento()))).forEachOrdered((Evento evento) -> {
-            evento.eliminarParticipante(participanteEliminar);
-        });
+        if (participante.getRol() == RolParticipante.MODERADOR) {
+            // Eliminar el evento completo si es moderador
+            eventoService.eliminarEvento(participante.getEvento());
+        } else {
+            // Eliminar solo el participante
+            List<Evento> eventos = eventoService.cargarTodosLosEventos();
 
-        List<EventoDTO> eventosDTO = EventoMapper.listToDTO(eventos);
+            for (Evento evento : eventos) {
+                if (evento.getID().equals(participante.getEvento())) {
+                    evento.eliminarParticipante(participante);
+                    break;
+                }
+            }
 
-        eventoService.guardarTodo(eventosDTO);
+            eventoService.guardarTodo(EventoMapper.listToDTO(eventos));
+        }
     }
 
     public List<ParticipanteDTO> participantesDeEvento(String EventoID) {
@@ -50,6 +58,20 @@ public class ParticipanteService {
         }
 
         return participantes;
+    }
+
+    public List<ParticipanteDTO> listaParticipantes() {
+        List<ParticipanteDTO> participantes = participanteRepo.cargarParticipantes();
+        return participantes;
+    }
+
+    
+
+    public ParticipanteDTO buscarParticipantePorCedulaYEvento(String cedula, String idEvento) {
+        return participanteRepo.cargarParticipantes().stream()
+                .filter(p -> p.getCedula().equals(cedula) && p.getEvento().equals(idEvento))
+                .findFirst()
+                .orElse(null);
     }
 
 }

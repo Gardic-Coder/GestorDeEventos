@@ -49,25 +49,23 @@ public class EventoService {
     public void recibirEventoDTO(EventoDTO eventoDTO) {
         Evento nuevoEvento = EventoMapper.fromDTO(eventoDTO); // Conversion de DTO a Objeto de dominio.
         List<Evento> eventos = cargarTodosLosEventos(); // Se carga la lista de eventos.
-        
 
         eventos.add(nuevoEvento); // Se agrega el nuevo evento a la lista de eventos.
 
         List<EventoDTO> eventosDTO = EventoMapper.listToDTO(eventos);
         guardarTodo(eventosDTO); // Se guarda la nueva lista.
-        
+
     }
 
     public EventoDTO generarEventoID(EventoDTO eventoDTO) {
         List<Evento> eventos = cargarTodosLosEventos();
-        
+
         //Evento.inicializarContador(eventos); // Inicializar contador
         Evento eventoNuevo = EventoMapper.fromDTO(eventoDTO);
         eventoDTO = EventoMapper.toDTO(eventoNuevo);
-        
+
         List<EventoDTO> eventosDTO = EventoMapper.listToDTO(eventos);
         guardarTodo(eventosDTO);
-        
 
         return eventoDTO;
     }
@@ -81,6 +79,32 @@ public class EventoService {
         });
 
         return eventosDTO; // Se devuelve la lista en DTO.
+    }
+
+    public void eliminarEvento(String idEvento) {
+        List<Evento> eventos = cargarTodosLosEventos();
+
+        // Eliminar el evento
+        eventos.removeIf(evento -> evento.getID().equals(idEvento));
+
+        // Guardar cambios (esto automáticamente eliminará los participantes asociados)
+        guardarTodo(EventoMapper.listToDTO(eventos));
+    }
+
+    public EventoDTO buscarEventoPorID(String idEvento) {
+        return EventoMapper.toDTO(
+                cargarTodosLosEventos().stream()
+                        .filter(e -> e.getID().equals(idEvento))
+                        .findFirst()
+                        .orElse(null)
+        );
+    }
+
+    public EventoDTO buscarEventoPorNombre(String nombreEvento) {
+        return listaDeEventoDTO().stream()
+                .filter(e -> e.getNombre().equals(nombreEvento))
+                .findFirst()
+                .orElse(null);
     }
 
 }

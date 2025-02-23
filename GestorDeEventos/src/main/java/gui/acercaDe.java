@@ -1,13 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package main.java.gui;
 
-/**
- *
- * @author Alejandrito
- */
+
 public class acercaDe extends javax.swing.JFrame {
 
     private MainWindow principal; //Me permitra volver a la ventana principal (Referencia)

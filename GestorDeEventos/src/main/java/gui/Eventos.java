@@ -3,8 +3,6 @@ package main.java.gui;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.ZoneId;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField; //Permite usar los campos de Texto
 import main.java.application.dto.*;
@@ -1176,6 +1174,10 @@ public class Eventos extends javax.swing.JFrame {
         herramientasVentanas.campovacio(campocedula, "V-XX.XXX.XX", false);
         herramientasVentanas.campovacio(campotlf, "Nro. Personal", false);
         herramientasVentanas.campovacio(campocorreo, "Correo personal", false);
+        herramientasVentanas.campovacio(campoevnombre, "Ingrese el nombre del evento", false);
+        herramientasVentanas.campovacio(campolugar, "Direccion", false);
+        herramientasVentanas.campovacio(campodescripcion, "Descripcion (No es obligatorio)", false);
+        herramientasVentanas.campovacio(campocapMax, "Participantes que asistiran", false);
     }//GEN-LAST:event_registrarModActionPerformed
 
     private void campocorreoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campocorreoMousePressed

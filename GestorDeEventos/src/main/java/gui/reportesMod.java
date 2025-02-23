@@ -1,21 +1,222 @@
 package main.java.gui;
 
+import java.awt.Component;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import main.java.application.dto.*;
+import main.java.application.services.*;
 
 public class reportesMod extends javax.swing.JFrame {
 
-    
     private MainWindow principal;
-    
+
     public reportesMod() {
         initComponents();
+        cargarTablaEventos();
+        cargarTablaParticipantes();
     }
-    
+
     public reportesMod(MainWindow principal) {
         initComponents();
-        this.principal=principal;
+        cargarTablaEventos();
+        cargarTablaParticipantes();
+        this.principal = principal;
     }
-    
-    
+
+    private void cargarTablaEventos() {
+        // Obtener datos del servicio
+        EventoService eventoService = new EventoService();
+        List<EventoDTO> eventos = eventoService.listaDeEventoDTO();
+
+        // Crear modelo de tabla
+        DefaultTableModel model = new DefaultTableModel(
+                new Object[]{"Nombre", "Tipo de Evento", "Fecha", "Hora Inicio"}, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // Hacer tabla no editable
+            }
+        };
+
+        // Formateador de fechas y horas
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+
+        // Llenar la tabla
+        for (EventoDTO evento : eventos) {
+            model.addRow(new Object[]{
+                evento.getNombre(),
+                evento.getTipo().toString(),
+                evento.getFecha().format(dateFormatter),
+                evento.getHoraComienzo().format(timeFormatter)
+            });
+        }
+
+        // Asignar modelo a la tabla
+        tablaEvt.setModel(model);
+
+        // Configurar ancho de columnas
+        tablaEvt.getColumnModel().getColumn(0).setPreferredWidth(150); // Nombre
+        tablaEvt.getColumnModel().getColumn(1).setPreferredWidth(100); // Tipo
+        tablaEvt.getColumnModel().getColumn(2).setPreferredWidth(80);  // Fecha
+        tablaEvt.getColumnModel().getColumn(3).setPreferredWidth(60);  // Hora
+
+    }
+
+    private void cargarTablaParticipantes() {
+        // Obtener datos de los servicios
+        ParticipanteService participanteService = new ParticipanteService();
+        EventoService eventoService = new EventoService();
+
+        List<ParticipanteDTO> participantes = participanteService.listaParticipantes();
+        List<EventoDTO> eventos = eventoService.listaDeEventoDTO();
+
+        // Crear mapa rápido para buscar eventos por ID
+        Map<String, String> mapaEventos = new HashMap<>();
+        for (EventoDTO evento : eventos) {
+            mapaEventos.put(evento.getID(), evento.getNombre());
+        }
+
+        // Crear modelo de tabla
+        DefaultTableModel model = new DefaultTableModel(
+                new Object[]{"Evento", "Nombre", "Cédula", "Rol"}, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+
+        };
+
+        tablaEvt.setAutoCreateRowSorter(true);
+        tablaParticipante.setAutoCreateRowSorter(true);
+
+        // Llenar la tabla
+        for (ParticipanteDTO participante : participantes) {
+            String nombreEvento = mapaEventos.getOrDefault(participante.getEvento(), "Evento Desconocido");
+
+            model.addRow(new Object[]{
+                nombreEvento,
+                participante.getNombre(),
+                participante.getCedula(),
+                participante.getRol().toString()
+            });
+        }
+
+        tablaEvt.setDefaultRenderer(LocalDate.class, new DefaultTableCellRenderer() {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+            @Override
+            public Component getTableCellRendererComponent(
+                    JTable table, Object value,
+                    boolean isSelected, boolean hasFocus,
+                    int row, int column
+            ) {
+                if (value instanceof LocalDate) {
+                    value = ((LocalDate) value).format(formatter);
+                }
+                return super.getTableCellRendererComponent(
+                        table, value, isSelected, hasFocus, row, column
+                );
+            }
+        });
+
+        // Asignar modelo a la tabla
+        tablaParticipante.setModel(model);
+
+        // Configurar ancho de columnas
+        tablaParticipante.getColumnModel().getColumn(0).setPreferredWidth(150); // Evento
+        tablaParticipante.getColumnModel().getColumn(1).setPreferredWidth(120); // Nombre
+        tablaParticipante.getColumnModel().getColumn(2).setPreferredWidth(100); // Cédula
+        tablaParticipante.getColumnModel().getColumn(3).setPreferredWidth(80);  // Rol
+
+        /*int filaSeleccionada = tablaEvt.getSelectedRow();
+        if (filaSeleccionada >= 0) {
+        String nombreEvento = (String) tablaEvt.getValueAt(filaSeleccionada, 0);
+        // Operaciones con el evento seleccionado...
+        }*/
+    }
+
+    private void eliminarEvento() {
+        EventoService eventoService = new EventoService();
+        int filaSeleccionada = tablaEvt.getSelectedRow();
+
+        if (filaSeleccionada >= 0) {
+            String nombreEvento = (String) tablaEvt.getValueAt(filaSeleccionada, 0);
+            EventoDTO evento = eventoService.buscarEventoPorNombre(nombreEvento);
+
+            int confirmacion = JOptionPane.showConfirmDialog(
+                    this,
+                    "¿Eliminar el evento '" + nombreEvento + "' y todos sus participantes?",
+                    "Confirmar eliminación",
+                    JOptionPane.YES_NO_OPTION
+            );
+
+            if (confirmacion == JOptionPane.YES_OPTION) {
+                eventoService.eliminarEvento(evento.getID());
+                cargarTablaEventos();
+                cargarTablaParticipantes();
+            }
+        }
+    }
+
+// Método para eliminar participante
+    private void eliminarParticipante() {
+        ParticipanteService participanteService = new ParticipanteService();
+        int filaSeleccionada = tablaParticipante.getSelectedRow();
+
+        if (filaSeleccionada >= 0) {
+            String cedula = (String) tablaParticipante.getValueAt(filaSeleccionada, 2);
+            String nombreEvento = (String) tablaParticipante.getValueAt(filaSeleccionada, 0);
+            String idEvento = obtenerIdEventoDesdeNombre(nombreEvento);
+
+            ParticipanteDTO participante = participanteService.buscarParticipantePorCedulaYEvento(cedula, idEvento);
+
+            if (participante != null) {
+                if (participante.getRol() == RolParticipante.MODERADOR) {
+                    int confirmacion = JOptionPane.showConfirmDialog(
+                            this,
+                            "¡Es moderador! ¿Eliminar el evento completo?",
+                            "Confirmar eliminación",
+                            JOptionPane.YES_NO_OPTION
+                    );
+
+                    if (confirmacion == JOptionPane.YES_OPTION) {
+                        participanteService.eliminarParticipante(participante);
+                        cargarTablaEventos();
+                        cargarTablaParticipantes();
+                    }
+                } else {
+                    int confirmacion = JOptionPane.showConfirmDialog(
+                            this,
+                            "¿Eliminar al participante " + participante.getNombre() + "?",
+                            "Confirmar eliminación",
+                            JOptionPane.YES_NO_OPTION
+                    );
+
+                    if (confirmacion == JOptionPane.YES_OPTION) {
+                        participanteService.eliminarParticipante(participante);
+                        cargarTablaParticipantes();
+                    }
+                }
+            }
+        }
+    }
+
+// Método auxiliar para buscar ID de evento
+    private String obtenerIdEventoDesdeNombre(String nombreEvento) {
+        EventoService eventoService = new EventoService();
+        return eventoService.listaDeEventoDTO().stream()
+                .filter(e -> e.getNombre().equals(nombreEvento))
+                .findFirst()
+                .map(EventoDTO::getID)
+                .orElse(null);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -238,13 +439,13 @@ public class reportesMod extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addComponent(tablaPar, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
+                .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(update2)
                     .addComponent(crear2)
                     .addComponent(delete2)
                     .addComponent(Salir2))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout participantesLayout = new javax.swing.GroupLayout(participantes);
@@ -435,7 +636,7 @@ public class reportesMod extends javax.swing.JFrame {
         crearEvt.setVisible(true);
         crearEvt.setLocationRelativeTo(null);
         this.dispose();
-        herramientasVentanas.cambiarColor(crear,false);
+        herramientasVentanas.cambiarColor(crear, false);
     }//GEN-LAST:event_crearActionPerformed
 
     private void updateMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseEntered
@@ -467,7 +668,7 @@ public class reportesMod extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteMousePressed
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
-        // TODO add your handling code here:
+        eliminarEvento();
     }//GEN-LAST:event_deleteActionPerformed
 
     private void salirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMouseEntered
@@ -505,12 +706,12 @@ public class reportesMod extends javax.swing.JFrame {
     }//GEN-LAST:event_Salir2ActionPerformed
 
     private void tablasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tablasActionPerformed
-        if(tablas.getSelectedIndex()==0){
+        if (tablas.getSelectedIndex() == 0) {
             containerPrincipal.removeAll();
             containerPrincipal.add(participantes);
             containerPrincipal.repaint();
             containerPrincipal.revalidate();
-        }else{
+        } else {
             containerPrincipal.removeAll();
             containerPrincipal.add(eventos);
             containerPrincipal.repaint();
@@ -535,7 +736,7 @@ public class reportesMod extends javax.swing.JFrame {
         crearPar.setVisible(true);
         crearPar.setLocationRelativeTo(null);
         this.dispose();
-        herramientasVentanas.cambiarColor(crear,false);
+        herramientasVentanas.cambiarColor(crear, false);
     }//GEN-LAST:event_crear2ActionPerformed
 
     private void update2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_update2MouseEntered
@@ -567,7 +768,7 @@ public class reportesMod extends javax.swing.JFrame {
     }//GEN-LAST:event_delete2MousePressed
 
     private void delete2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete2ActionPerformed
-        // TODO add your handling code here:
+        eliminarParticipante();
     }//GEN-LAST:event_delete2ActionPerformed
 
     /**

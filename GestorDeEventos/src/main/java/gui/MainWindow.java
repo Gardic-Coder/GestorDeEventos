@@ -1,19 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package main.java.gui;
 import java.awt.Color; //Defino colores personalizados (Tecnologia Hover)
 
-/**
- *
- * @author juanm
- */
 public class MainWindow extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MainWindow
-     */
     public MainWindow() {
         initComponents();
         setTitle("Gestion de Eventos");
@@ -55,7 +44,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Candara Light", 3, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(153, 0, 0));
-        jLabel3.setText("          Ver. 0.2.2 (Trabajo en proceso)");
+        jLabel3.setText("          Ver. 0.4.0 (Trabajo en proceso)");
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jLabel4.setFont(new java.awt.Font("Gill Sans MT", 3, 14)); // NOI18N
