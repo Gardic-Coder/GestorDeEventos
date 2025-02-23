@@ -40,7 +40,7 @@ public class herramientasVentanas {
                 if (otroCampo.getName().equals("camponombre")) {
                     mensaje = "Nombre de la Persona";
                 } else if (otroCampo.getName().equals("campocedula")) {
-                    mensaje = "Cedula de Identidad";
+                    mensaje = "V-XX.XXX.XX";
                 } else if (otroCampo .getName().equals("campocorreo")) {
                     mensaje = "Correo personal";
                 } else if (otroCampo.getName().equals("campotlf")){
