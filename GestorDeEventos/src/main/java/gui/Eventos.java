@@ -4,13 +4,13 @@
  */
 package main.java.gui;
 import javax.swing.JTextField; //Permite usar los campos de Texto
-
 /**
  *
  * @author Alejandrito
  */
 public class Eventos extends javax.swing.JFrame {
 
+    //Elimina o vuelve a ingresar el texto predeterminado de los campos de textos, en caso de que esten vacios
     public void validarcampoModerador(JTextField campo, String textopredeterminado, JTextField... otrosCampos){ 
         if (campo.getText().equals(textopredeterminado)) {
             herramientasVentanas.campovacio(campo, "", true);
@@ -32,6 +32,32 @@ public class Eventos extends javax.swing.JFrame {
                     mensaje = "Nro. Personal";
                 } else if (otroCampo == campoexp){
                     mensaje = "Descripcion (No es obligatorio)";
+                }
+                herramientasVentanas.campovacio(otroCampo, mensaje, false);
+            }
+        }
+    }
+    
+     public void validarcampoEvento(JTextField campo, String textopredeterminado, JTextField... otrosCampos){ 
+        if (campo.getText().equals(textopredeterminado)) {
+            herramientasVentanas.campovacio(campo, "", true);
+        }
+        
+        for (JTextField otroCampo : otrosCampos) {
+            if (otroCampo.getText().isEmpty()) {
+                String mensaje = "";
+                if (otroCampo == campoevnombre) {
+                    mensaje = "Ingrese el nombre del evento";
+                } else if (otroCampo == campolugar) {
+                    mensaje = "Direccion";
+                } else if (otroCampo == campocapMax) {
+                    mensaje = "Participantes que asistiran";
+                } else if (otroCampo == campohoracomienzo) {
+                    mensaje = "hh/mm/ss";
+                } else if (otroCampo == campodescripcion) {
+                    mensaje = "Descripcion (No es obligatorio)";
+                } else if (otroCampo == campohorafinalizado){
+                    mensaje = "hh/mm/ss";
                 }
                 herramientasVentanas.campovacio(otroCampo, mensaje, false);
             }
@@ -89,7 +115,6 @@ public class Eventos extends javax.swing.JFrame {
         campolugar = new javax.swing.JTextField();
         campohoracomienzo = new javax.swing.JTextField();
         campodescripcion = new javax.swing.JTextField();
-        campometodo5 = new javax.swing.JTextField();
         campohorafinalizado = new javax.swing.JTextField();
         campocapMax = new javax.swing.JTextField();
         containerMod = new javax.swing.JPanel();
@@ -382,23 +407,9 @@ public class Eventos extends javax.swing.JFrame {
         campodescripcion.setText("Descripcion (No es obligatorio)");
         campodescripcion.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         campodescripcion.setMinimumSize(new java.awt.Dimension(200, 21));
-        campodescripcion.setPreferredSize(new java.awt.Dimension(200, 21));
         campodescripcion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 campodescripcionMousePressed(evt);
-            }
-        });
-
-        campometodo5.setBackground(new java.awt.Color(255, 204, 204));
-        campometodo5.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        campometodo5.setForeground(java.awt.Color.gray);
-        campometodo5.setText("Practico, Teorico, etc...");
-        campometodo5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        campometodo5.setMinimumSize(new java.awt.Dimension(200, 21));
-        campometodo5.setPreferredSize(new java.awt.Dimension(200, 21));
-        campometodo5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                campometodo5MousePressed(evt);
             }
         });
 
@@ -425,6 +436,11 @@ public class Eventos extends javax.swing.JFrame {
         campocapMax.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 campocapMaxMousePressed(evt);
+            }
+        });
+        campocapMax.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campocapMaxActionPerformed(evt);
             }
         });
 
@@ -454,9 +470,6 @@ public class Eventos extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(containerEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, containerEventosLayout.createSequentialGroup()
-                        .addComponent(campometodo5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(55, 55, 55))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, containerEventosLayout.createSequentialGroup()
                         .addGroup(containerEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(campohorafinalizado, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
                             .addComponent(campocapMax, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -484,39 +497,33 @@ public class Eventos extends javax.swing.JFrame {
         containerEventosLayout.setVerticalGroup(
             containerEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, containerEventosLayout.createSequentialGroup()
-                .addGroup(containerEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(containerEventosLayout.createSequentialGroup()
-                        .addComponent(titulo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(58, 58, 58)
-                        .addGroup(containerEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(metodomoderar1)
-                            .addComponent(metodomoderar2))
-                        .addGap(18, 18, 18)
-                        .addGroup(containerEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(campoevnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(67, 67, 67)
-                        .addGroup(containerEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(metodomoderar3)
-                            .addComponent(metodomoderar4))
-                        .addGap(18, 18, 18)
-                        .addGroup(containerEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(campolugar, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(campocapMax, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(67, 67, 67)
-                        .addGroup(containerEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(metodomoderar5)
-                            .addComponent(metodomoderar6))
-                        .addGap(18, 18, 18)
-                        .addGroup(containerEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(campohoracomienzo, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(campohorafinalizado, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(19, 19, 19)
-                        .addComponent(metodomoderar7))
-                    .addGroup(containerEventosLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(campometodo5, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(titulo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(58, 58, 58)
+                .addGroup(containerEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(metodomoderar1)
+                    .addComponent(metodomoderar2))
+                .addGap(18, 18, 18)
+                .addGroup(containerEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(campoevnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(67, 67, 67)
+                .addGroup(containerEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(metodomoderar3)
+                    .addComponent(metodomoderar4))
+                .addGap(18, 18, 18)
+                .addGroup(containerEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(campolugar, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campocapMax, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(67, 67, 67)
+                .addGroup(containerEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(metodomoderar5)
+                    .addComponent(metodomoderar6))
+                .addGap(18, 18, 18)
+                .addGroup(containerEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(campohoracomienzo, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campohorafinalizado, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
+                .addComponent(metodomoderar7)
                 .addGap(18, 18, 18)
                 .addComponent(campodescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -759,9 +766,7 @@ public class Eventos extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(campocedula, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(118, 118, 118))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, superiorLayout.createSequentialGroup()
-                .addComponent(titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+            .addComponent(titulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         superiorLayout.setVerticalGroup(
             superiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -846,7 +851,6 @@ public class Eventos extends javax.swing.JFrame {
         campoexp.setText("Descripcion (No es obligatorio)");
         campoexp.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         campoexp.setMinimumSize(new java.awt.Dimension(200, 21));
-        campoexp.setPreferredSize(new java.awt.Dimension(200, 21));
         campoexp.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 campoexpMousePressed(evt);
@@ -1031,7 +1035,12 @@ public class Eventos extends javax.swing.JFrame {
     }//GEN-LAST:event_limpiarEventosMouseExited
 
     private void limpiarEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarEventosActionPerformed
-        // TODO add your handling code here:
+        herramientasVentanas.campovacio(campoevnombre, "Ingrese el nombre del evento", false);
+        herramientasVentanas.campovacio(campolugar, "Direccion", false);
+        herramientasVentanas.campovacio(campohoracomienzo, "hh/mm/ss", false);
+        herramientasVentanas.campovacio(campohorafinalizado, "hh/mm/ss", false);
+        herramientasVentanas.campovacio(campodescripcion, "Descripcion (No es obligatorio)", false);
+        herramientasVentanas.campovacio(campocapMax, "Participantes que asistiran", false);
     }//GEN-LAST:event_limpiarEventosActionPerformed
 
     private void registrarEventosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarEventosMouseEntered
@@ -1073,31 +1082,27 @@ public class Eventos extends javax.swing.JFrame {
     }//GEN-LAST:event_campoexpMousePressed
 
     private void campoevnombreMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoevnombreMousePressed
-        validarcampoModerador(campoexp,"", campoexpint, campometodo, camponombre, campotlf, campocorreo, campocedula);
+        validarcampoModerador(campoevnombre,"Ingrese el nombre del evento", campolugar, campohoracomienzo, campohorafinalizado, campodescripcion, campocapMax);
     }//GEN-LAST:event_campoevnombreMousePressed
 
     private void campolugarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campolugarMousePressed
-        // TODO add your handling code here:
+        validarcampoModerador(campolugar,"Direccion", campoevnombre, campohoracomienzo, campohorafinalizado, campodescripcion, campocapMax);
     }//GEN-LAST:event_campolugarMousePressed
 
     private void campohoracomienzoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campohoracomienzoMousePressed
-        // TODO add your handling code here:
+        validarcampoModerador(campohoracomienzo,"hh/mm/ss", campolugar, campoevnombre, campohorafinalizado, campodescripcion, campocapMax);
     }//GEN-LAST:event_campohoracomienzoMousePressed
 
     private void campodescripcionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campodescripcionMousePressed
-        // TODO add your handling code here:
+        validarcampoModerador(campodescripcion,"Descripcion (No es obligatorio)", campolugar, campoevnombre, campohorafinalizado, campohoracomienzo, campocapMax);
     }//GEN-LAST:event_campodescripcionMousePressed
 
-    private void campometodo5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campometodo5MousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campometodo5MousePressed
-
     private void campohorafinalizadoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campohorafinalizadoMousePressed
-        // TODO add your handling code here:
+        validarcampoModerador(campohorafinalizado,"hh/mm/ss", campolugar, campoevnombre, campohoracomienzo, campodescripcion, campocapMax);
     }//GEN-LAST:event_campohorafinalizadoMousePressed
 
     private void campocapMaxMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campocapMaxMousePressed
-        // TODO add your handling code here:
+        validarcampoModerador(campocapMax,"Participantes que asistiran", campolugar, campohoracomienzo, campohorafinalizado, campodescripcion, campoevnombre);
     }//GEN-LAST:event_campocapMaxMousePressed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
@@ -1107,6 +1112,10 @@ public class Eventos extends javax.swing.JFrame {
     private void campoevnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoevnombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campoevnombreActionPerformed
+
+    private void campocapMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campocapMaxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campocapMaxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1155,7 +1164,6 @@ public class Eventos extends javax.swing.JFrame {
     private javax.swing.JTextField campohorafinalizado;
     private javax.swing.JTextField campolugar;
     private javax.swing.JTextField campometodo;
-    private javax.swing.JTextField campometodo5;
     private javax.swing.JTextField camponombre;
     private javax.swing.JTextField campotlf;
     private javax.swing.JPanel containerCartas;
