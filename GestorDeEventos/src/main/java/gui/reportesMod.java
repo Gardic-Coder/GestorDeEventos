@@ -1,18 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package main.java.gui;
 
-/**
- *
- * @author Alejandrito
- */
+
 public class reportesMod extends javax.swing.JFrame {
 
-    /**
-     * Creates new form reportesMod
-     */
+    
     private MainWindow principal;
     
     public reportesMod() {
