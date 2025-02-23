@@ -1,5 +1,7 @@
 package main.java.application.dto;
 
+import main.java.domain.RolParticipante;
+
 public class ParticipanteDTO {
     private String eventoID;
     private String nombre;

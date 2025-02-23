@@ -2,8 +2,6 @@ package main.java.domain;
 
 //Clase de los Participantes
 
-import main.java.application.dto.RolParticipante;
-
 
 
 public class Participante { 
