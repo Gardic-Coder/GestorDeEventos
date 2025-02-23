@@ -34,45 +34,20 @@ public class reportesMod extends javax.swing.JFrame {
         tablas = new javax.swing.JComboBox<>();
         containerPrincipal = new javax.swing.JPanel();
         participantes = new javax.swing.JPanel();
-        menuparticipantes = new javax.swing.JPanel();
-        nombrePar = new javax.swing.JLabel();
-        camponombre = new javax.swing.JTextField();
-        cedula = new javax.swing.JLabel();
-        campocedula = new javax.swing.JTextField();
-        correo = new javax.swing.JLabel();
-        campoCorreo = new javax.swing.JTextField();
-        eventosCombo1 = new javax.swing.JComboBox<>();
-        Salir2 = new javax.swing.JButton();
-        tlfPar = new javax.swing.JLabel();
-        campoTlf = new javax.swing.JTextField();
-        campoDescripcion = new javax.swing.JTextField();
-        descripcionPar = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         tablaPar = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         crear2 = new javax.swing.JButton();
         update2 = new javax.swing.JButton();
         delete2 = new javax.swing.JButton();
+        Salir2 = new javax.swing.JButton();
         eventos = new javax.swing.JPanel();
-        menu = new javax.swing.JPanel();
-        nombreevt = new javax.swing.JLabel();
-        camponombreevt = new javax.swing.JTextField();
-        lugarevt = new javax.swing.JLabel();
-        campolugarevt = new javax.swing.JTextField();
-        tipoEvt = new javax.swing.JLabel();
-        eventosCombo = new javax.swing.JComboBox<>();
-        evtFecha = new javax.swing.JLabel();
-        calendario = new de.wannawork.jcalendar.JCalendarComboBox();
-        horaComienzo = new javax.swing.JLabel();
-        botonComienzo = new javax.swing.JButton();
-        horaFinalizado = new javax.swing.JLabel();
-        botonFinalizar = new javax.swing.JButton();
-        salir = new javax.swing.JButton();
         tablaEventos = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         crear = new javax.swing.JButton();
         update = new javax.swing.JButton();
         delete = new javax.swing.JButton();
+        salir = new javax.swing.JButton();
 
         horaComenzar.setForeground(new java.awt.Color(255, 102, 102));
 
@@ -115,7 +90,7 @@ public class reportesMod extends javax.swing.JFrame {
                 .addComponent(titulo)
                 .addGap(18, 18, 18)
                 .addComponent(tablas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,204 +107,6 @@ public class reportesMod extends javax.swing.JFrame {
         padre.add(header, java.awt.BorderLayout.PAGE_START);
 
         containerPrincipal.setLayout(new java.awt.CardLayout());
-
-        menuparticipantes.setBackground(new java.awt.Color(252, 186, 186));
-
-        nombrePar.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        nombrePar.setText(" Nombre de la Persona");
-
-        camponombre.setBackground(new java.awt.Color(255, 204, 204));
-        camponombre.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        camponombre.setForeground(java.awt.Color.gray);
-        camponombre.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        camponombre.setMinimumSize(new java.awt.Dimension(200, 21));
-        camponombre.setPreferredSize(new java.awt.Dimension(200, 21));
-        camponombre.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                camponombreMousePressed(evt);
-            }
-        });
-        camponombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                camponombreActionPerformed(evt);
-            }
-        });
-
-        cedula.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        cedula.setText(" Cedula de Identidad");
-
-        campocedula.setBackground(new java.awt.Color(255, 204, 204));
-        campocedula.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        campocedula.setForeground(java.awt.Color.gray);
-        campocedula.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        campocedula.setMinimumSize(new java.awt.Dimension(200, 21));
-        campocedula.setPreferredSize(new java.awt.Dimension(200, 21));
-        campocedula.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                campocedulaMousePressed(evt);
-            }
-        });
-
-        correo.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        correo.setText("Correo");
-
-        campoCorreo.setBackground(new java.awt.Color(255, 204, 204));
-        campoCorreo.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        campoCorreo.setForeground(java.awt.Color.gray);
-        campoCorreo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        campoCorreo.setMinimumSize(new java.awt.Dimension(200, 21));
-        campoCorreo.setPreferredSize(new java.awt.Dimension(200, 21));
-        campoCorreo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                campoCorreoMousePressed(evt);
-            }
-        });
-        campoCorreo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoCorreoActionPerformed(evt);
-            }
-        });
-
-        eventosCombo1.setBackground(new java.awt.Color(255, 204, 204));
-        eventosCombo1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        eventosCombo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Asistente", "Conferencista", "Instructor", "Ponente", " " }));
-        eventosCombo1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                eventosCombo1ActionPerformed(evt);
-            }
-        });
-
-        Salir2.setBackground(new java.awt.Color(252, 186, 186));
-        Salir2.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        Salir2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/Imagenes/Participante/exit.png"))); // NOI18N
-        Salir2.setText("Salir");
-        Salir2.setBorder(null);
-        Salir2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Salir2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                Salir2MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                Salir2MouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                Salir2MousePressed(evt);
-            }
-        });
-        Salir2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Salir2ActionPerformed(evt);
-            }
-        });
-
-        tlfPar.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        tlfPar.setText("Telefono");
-
-        campoTlf.setBackground(new java.awt.Color(255, 204, 204));
-        campoTlf.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        campoTlf.setForeground(java.awt.Color.gray);
-        campoTlf.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        campoTlf.setMinimumSize(new java.awt.Dimension(200, 21));
-        campoTlf.setPreferredSize(new java.awt.Dimension(200, 21));
-        campoTlf.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                campoTlfMousePressed(evt);
-            }
-        });
-        campoTlf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoTlfActionPerformed(evt);
-            }
-        });
-
-        campoDescripcion.setBackground(new java.awt.Color(255, 204, 204));
-        campoDescripcion.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        campoDescripcion.setForeground(java.awt.Color.gray);
-        campoDescripcion.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        campoDescripcion.setMinimumSize(new java.awt.Dimension(200, 21));
-        campoDescripcion.setPreferredSize(new java.awt.Dimension(200, 21));
-        campoDescripcion.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                campoDescripcionMousePressed(evt);
-            }
-        });
-        campoDescripcion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoDescripcionActionPerformed(evt);
-            }
-        });
-
-        descripcionPar.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        descripcionPar.setText("Descripcion");
-
-        javax.swing.GroupLayout menuparticipantesLayout = new javax.swing.GroupLayout(menuparticipantes);
-        menuparticipantes.setLayout(menuparticipantesLayout);
-        menuparticipantesLayout.setHorizontalGroup(
-            menuparticipantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menuparticipantesLayout.createSequentialGroup()
-                .addGroup(menuparticipantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(menuparticipantesLayout.createSequentialGroup()
-                        .addGap(71, 71, 71)
-                        .addComponent(eventosCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(menuparticipantesLayout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addGroup(menuparticipantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(camponombre, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(campocedula, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(menuparticipantesLayout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(cedula))
-                            .addComponent(nombrePar)))
-                    .addGroup(menuparticipantesLayout.createSequentialGroup()
-                        .addGap(71, 71, 71)
-                        .addComponent(Salir2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(menuparticipantesLayout.createSequentialGroup()
-                        .addGap(101, 101, 101)
-                        .addComponent(correo))
-                    .addGroup(menuparticipantesLayout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addGroup(menuparticipantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(campoTlf, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(campoCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(campoDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(menuparticipantesLayout.createSequentialGroup()
-                        .addGap(97, 97, 97)
-                        .addComponent(tlfPar)))
-                .addContainerGap(40, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuparticipantesLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(descripcionPar)
-                .addGap(87, 87, 87))
-        );
-        menuparticipantesLayout.setVerticalGroup(
-            menuparticipantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuparticipantesLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(nombrePar)
-                .addGap(12, 12, 12)
-                .addComponent(camponombre, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(cedula)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(campocedula, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(correo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(campoCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(tlfPar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(campoTlf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(eventosCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(descripcionPar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(campoDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(141, 141, 141)
-                .addComponent(Salir2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
 
         jPanel1.setBackground(new java.awt.Color(255, 228, 228));
 
@@ -415,18 +192,43 @@ public class reportesMod extends javax.swing.JFrame {
             }
         });
 
+        Salir2.setBackground(new java.awt.Color(252, 186, 186));
+        Salir2.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        Salir2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/Imagenes/Participante/exit.png"))); // NOI18N
+        Salir2.setText("Salir");
+        Salir2.setBorder(null);
+        Salir2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Salir2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Salir2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Salir2MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                Salir2MousePressed(evt);
+            }
+        });
+        Salir2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Salir2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(tablaPar, javax.swing.GroupLayout.PREFERRED_SIZE, 690, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(tablaPar, javax.swing.GroupLayout.PREFERRED_SIZE, 962, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(47, 47, 47)
+                .addGap(42, 42, 42)
                 .addComponent(crear2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(98, 98, 98)
+                .addGap(120, 120, 120)
                 .addComponent(update2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(117, 117, 117)
+                .addComponent(Salir2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(delete2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(62, 62, 62))
@@ -436,12 +238,13 @@ public class reportesMod extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addComponent(tablaPar, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
+                .addGap(43, 43, 43)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(update2)
+                    .addComponent(crear2)
                     .addComponent(delete2)
-                    .addComponent(crear2))
-                .addContainerGap(36, Short.MAX_VALUE))
+                    .addComponent(Salir2))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout participantesLayout = new javax.swing.GroupLayout(participantes);
@@ -450,221 +253,16 @@ public class reportesMod extends javax.swing.JFrame {
             participantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, participantesLayout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addComponent(menuparticipantes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0))
         );
         participantesLayout.setVerticalGroup(
             participantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(menuparticipantes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         containerPrincipal.add(participantes, "card3");
 
         eventos.setBackground(new java.awt.Color(255, 228, 228));
-
-        menu.setBackground(new java.awt.Color(252, 186, 186));
-
-        nombreevt.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        nombreevt.setText("Nombre del Evento");
-
-        camponombreevt.setBackground(new java.awt.Color(255, 204, 204));
-        camponombreevt.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        camponombreevt.setForeground(java.awt.Color.gray);
-        camponombreevt.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        camponombreevt.setMinimumSize(new java.awt.Dimension(200, 21));
-        camponombreevt.setPreferredSize(new java.awt.Dimension(200, 21));
-        camponombreevt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                camponombreevtMousePressed(evt);
-            }
-        });
-        camponombreevt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                camponombreevtActionPerformed(evt);
-            }
-        });
-
-        lugarevt.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        lugarevt.setText("Lugar del Evento");
-
-        campolugarevt.setBackground(new java.awt.Color(255, 204, 204));
-        campolugarevt.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        campolugarevt.setForeground(java.awt.Color.gray);
-        campolugarevt.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        campolugarevt.setMinimumSize(new java.awt.Dimension(200, 21));
-        campolugarevt.setPreferredSize(new java.awt.Dimension(200, 21));
-        campolugarevt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                campolugarevtMousePressed(evt);
-            }
-        });
-
-        tipoEvt.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        tipoEvt.setText(" Tipo de Evento ");
-
-        eventosCombo.setBackground(new java.awt.Color(255, 204, 204));
-        eventosCombo.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        eventosCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Conferencia", "Jornada", "Seminario", "Taller" }));
-        eventosCombo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                eventosComboActionPerformed(evt);
-            }
-        });
-
-        evtFecha.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        evtFecha.setText("  Fecha del Evento");
-
-        calendario.setBackground(new java.awt.Color(255, 153, 153));
-        calendario.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        calendario.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        calendario.setMinimumSize(new java.awt.Dimension(125, 30));
-
-        horaComienzo.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        horaComienzo.setText("Hora a Comenzar");
-
-        botonComienzo.setBackground(new java.awt.Color(252, 186, 186));
-        botonComienzo.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        botonComienzo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/Imagenes/eventos/clock.png"))); // NOI18N
-        botonComienzo.setText("Selecciona la Hora");
-        botonComienzo.setBorder(null);
-        botonComienzo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                botonComienzoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                botonComienzoMouseExited(evt);
-            }
-        });
-        botonComienzo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonComienzoActionPerformed(evt);
-            }
-        });
-
-        horaFinalizado.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        horaFinalizado.setText("Hora a Finalizar");
-
-        botonFinalizar.setBackground(new java.awt.Color(252, 186, 186));
-        botonFinalizar.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        botonFinalizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/Imagenes/eventos/technology.png"))); // NOI18N
-        botonFinalizar.setText("Selecciona la Hora");
-        botonFinalizar.setBorder(null);
-        botonFinalizar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                botonFinalizarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                botonFinalizarMouseExited(evt);
-            }
-        });
-        botonFinalizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonFinalizarActionPerformed(evt);
-            }
-        });
-
-        salir.setBackground(new java.awt.Color(252, 186, 186));
-        salir.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/Imagenes/Participante/exit.png"))); // NOI18N
-        salir.setText("Salir");
-        salir.setBorder(null);
-        salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        salir.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                salirMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                salirMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                salirMousePressed(evt);
-            }
-        });
-        salir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                salirActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout menuLayout = new javax.swing.GroupLayout(menu);
-        menu.setLayout(menuLayout);
-        menuLayout.setHorizontalGroup(
-            menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menuLayout.createSequentialGroup()
-                .addGap(74, 74, 74)
-                .addComponent(lugarevt)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLayout.createSequentialGroup()
-                .addContainerGap(43, Short.MAX_VALUE)
-                .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(botonFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLayout.createSequentialGroup()
-                                .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(evtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(menuLayout.createSequentialGroup()
-                                        .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(tipoEvt, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(eventosCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(13, 13, 13)))
-                                .addGap(63, 63, 63))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLayout.createSequentialGroup()
-                                .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(menuLayout.createSequentialGroup()
-                                        .addGap(13, 13, 13)
-                                        .addComponent(calendario, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(horaComienzo))
-                                .addGap(66, 66, 66))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLayout.createSequentialGroup()
-                                .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(camponombreevt, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(campolugarevt, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(botonComienzo, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(38, 38, 38))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLayout.createSequentialGroup()
-                        .addComponent(horaFinalizado)
-                        .addGap(72, 72, 72))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLayout.createSequentialGroup()
-                        .addComponent(nombreevt)
-                        .addGap(59, 59, 59))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLayout.createSequentialGroup()
-                        .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(69, 69, 69))))
-        );
-        menuLayout.setVerticalGroup(
-            menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(nombreevt)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(camponombreevt, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lugarevt)
-                .addGap(12, 12, 12)
-                .addComponent(campolugarevt, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
-                .addComponent(tipoEvt)
-                .addGap(18, 18, 18)
-                .addComponent(eventosCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
-                .addComponent(evtFecha)
-                .addGap(18, 18, 18)
-                .addComponent(calendario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(horaComienzo)
-                .addGap(18, 18, 18)
-                .addComponent(botonComienzo)
-                .addGap(18, 18, 18)
-                .addComponent(horaFinalizado)
-                .addGap(18, 18, 18)
-                .addComponent(botonFinalizar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addComponent(salir)
-                .addGap(16, 16, 16))
-        );
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -748,24 +346,44 @@ public class reportesMod extends javax.swing.JFrame {
             }
         });
 
+        salir.setBackground(new java.awt.Color(252, 186, 186));
+        salir.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/Imagenes/Participante/exit.png"))); // NOI18N
+        salir.setText("Salir");
+        salir.setBorder(null);
+        salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        salir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                salirMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                salirMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                salirMousePressed(evt);
+            }
+        });
+        salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout eventosLayout = new javax.swing.GroupLayout(eventos);
         eventos.setLayout(eventosLayout);
         eventosLayout.setHorizontalGroup(
             eventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(tablaEventos)
             .addGroup(eventosLayout.createSequentialGroup()
-                .addGroup(eventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(tablaEventos, javax.swing.GroupLayout.PREFERRED_SIZE, 690, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(eventosLayout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(crear, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(98, 98, 98)
-                        .addComponent(update, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(52, 52, 52)))
-                .addGap(0, 0, 0)
-                .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+                .addGap(52, 52, 52)
+                .addComponent(crear, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(98, 98, 98)
+                .addComponent(update, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(112, 112, 112)
+                .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
+                .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58))
         );
         eventosLayout.setVerticalGroup(
             eventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -775,11 +393,9 @@ public class reportesMod extends javax.swing.JFrame {
                 .addGroup(eventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(update)
                     .addComponent(delete)
-                    .addComponent(crear))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(eventosLayout.createSequentialGroup()
-                .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(crear)
+                    .addComponent(salir))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         containerPrincipal.add(eventos, "card2");
@@ -795,52 +411,12 @@ public class reportesMod extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(padre, javax.swing.GroupLayout.DEFAULT_SIZE, 716, Short.MAX_VALUE)
+                .addComponent(padre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void camponombreevtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_camponombreevtMousePressed
-        
-    }//GEN-LAST:event_camponombreevtMousePressed
-
-    private void camponombreevtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_camponombreevtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_camponombreevtActionPerformed
-
-    private void campolugarevtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campolugarevtMousePressed
-        
-    }//GEN-LAST:event_campolugarevtMousePressed
-
-    private void eventosComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventosComboActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_eventosComboActionPerformed
-
-    private void botonComienzoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonComienzoMouseEntered
-        herramientasVentanas.cambiarColor(botonComienzo, true);
-    }//GEN-LAST:event_botonComienzoMouseEntered
-
-    private void botonComienzoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonComienzoMouseExited
-        herramientasVentanas.cambiarColor(botonComienzo, false);
-    }//GEN-LAST:event_botonComienzoMouseExited
-
-    private void botonComienzoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonComienzoActionPerformed
-        horaComenzar.showPopup(this, WIDTH, WIDTH);
-    }//GEN-LAST:event_botonComienzoActionPerformed
-
-    private void botonFinalizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonFinalizarMouseEntered
-        herramientasVentanas.cambiarColor(botonFinalizar, true);
-    }//GEN-LAST:event_botonFinalizarMouseEntered
-
-    private void botonFinalizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonFinalizarMouseExited
-        herramientasVentanas.cambiarColor(botonFinalizar, false);
-    }//GEN-LAST:event_botonFinalizarMouseExited
-
-    private void botonFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonFinalizarActionPerformed
-        horaFinal.showPopup(this, WIDTH, WIDTH);
-    }//GEN-LAST:event_botonFinalizarActionPerformed
 
     private void crearMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearMouseEntered
         herramientasVentanas.cambiarColor(crear, true);
@@ -911,30 +487,6 @@ public class reportesMod extends javax.swing.JFrame {
         principal.setVisible(true);
     }//GEN-LAST:event_salirActionPerformed
 
-    private void camponombreMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_camponombreMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_camponombreMousePressed
-
-    private void camponombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_camponombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_camponombreActionPerformed
-
-    private void campocedulaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campocedulaMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campocedulaMousePressed
-
-    private void campoCorreoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoCorreoMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoCorreoMousePressed
-
-    private void campoCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoCorreoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoCorreoActionPerformed
-
-    private void eventosCombo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventosCombo1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_eventosCombo1ActionPerformed
-
     private void Salir2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Salir2MouseEntered
         herramientasVentanas.cambiarColor(Salir2, true);
     }//GEN-LAST:event_Salir2MouseEntered
@@ -965,22 +517,6 @@ public class reportesMod extends javax.swing.JFrame {
             containerPrincipal.revalidate();
         }
     }//GEN-LAST:event_tablasActionPerformed
-
-    private void campoTlfMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoTlfMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoTlfMousePressed
-
-    private void campoTlfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoTlfActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoTlfActionPerformed
-
-    private void campoDescripcionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoDescripcionMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoDescripcionMousePressed
-
-    private void campoDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoDescripcionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoDescripcionActionPerformed
 
     private void crear2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crear2MouseEntered
         herramientasVentanas.cambiarColor(crear2, true);
@@ -1071,50 +607,25 @@ public class reportesMod extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Salir2;
-    private javax.swing.JButton botonComienzo;
-    private javax.swing.JButton botonFinalizar;
-    private de.wannawork.jcalendar.JCalendarComboBox calendario;
-    private javax.swing.JTextField campoCorreo;
-    private javax.swing.JTextField campoDescripcion;
-    private javax.swing.JTextField campoTlf;
-    private javax.swing.JTextField campocedula;
-    private javax.swing.JTextField campolugarevt;
-    private javax.swing.JTextField camponombre;
-    private javax.swing.JTextField camponombreevt;
-    private javax.swing.JLabel cedula;
     private javax.swing.JPanel containerPrincipal;
-    private javax.swing.JLabel correo;
     private javax.swing.JButton crear;
     private javax.swing.JButton crear2;
     private javax.swing.JButton delete;
     private javax.swing.JButton delete2;
-    private javax.swing.JLabel descripcionPar;
     private javax.swing.JPanel eventos;
-    private javax.swing.JComboBox<String> eventosCombo;
-    private javax.swing.JComboBox<String> eventosCombo1;
-    private javax.swing.JLabel evtFecha;
     private javax.swing.JPanel header;
     private com.raven.swing.TimePicker horaComenzar;
-    private javax.swing.JLabel horaComienzo;
     private com.raven.swing.TimePicker horaFinal;
-    private javax.swing.JLabel horaFinalizado;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JLabel lugarevt;
-    private javax.swing.JPanel menu;
-    private javax.swing.JPanel menuparticipantes;
-    private javax.swing.JLabel nombrePar;
-    private javax.swing.JLabel nombreevt;
     private javax.swing.JPanel padre;
     private javax.swing.JPanel participantes;
     private javax.swing.JButton salir;
     private javax.swing.JScrollPane tablaEventos;
     private javax.swing.JScrollPane tablaPar;
     private javax.swing.JComboBox<String> tablas;
-    private javax.swing.JLabel tipoEvt;
     private javax.swing.JLabel titulo;
-    private javax.swing.JLabel tlfPar;
     private javax.swing.JButton update;
     private javax.swing.JButton update2;
     // End of variables declaration//GEN-END:variables
