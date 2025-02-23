@@ -481,7 +481,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="80" green="80" id="gray" palette="1" red="80" type="palette"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Cedula de Identidad"/>
+                    <Property name="text" type="java.lang.String" value="V-XX.XXX.XX"/>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                     <Property name="actionCommand" type="java.lang.String" value="&lt;Not Set&gt;"/>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -498,6 +498,7 @@
                   </Properties>
                   <Events>
                     <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="campocedulaMousePressed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campocedulaActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="campotlf">

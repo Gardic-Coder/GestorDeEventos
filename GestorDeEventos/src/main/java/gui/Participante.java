@@ -366,7 +366,7 @@ public class Participante extends javax.swing.JFrame {
         campocedula.setBackground(new java.awt.Color(255, 228, 228));
         campocedula.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         campocedula.setForeground(java.awt.Color.gray);
-        campocedula.setText("Cedula de Identidad");
+        campocedula.setText("V-XX.XXX.XX");
         campocedula.setToolTipText("");
         campocedula.setActionCommand("<Not Set>");
         campocedula.setBorder(javax.swing.BorderFactory.createCompoundBorder());
@@ -375,6 +375,11 @@ public class Participante extends javax.swing.JFrame {
         campocedula.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 campocedulaMousePressed(evt);
+            }
+        });
+        campocedula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campocedulaActionPerformed(evt);
             }
         });
 
@@ -930,7 +935,7 @@ public class Participante extends javax.swing.JFrame {
     }//GEN-LAST:event_campocorreoMousePressed
 
     private void campocedulaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campocedulaMousePressed
-       herramientasVentanas.validarCampoprincipal(campocedula, "Cedula de Identidad", campotlf, camponombre, campocorreo); 
+       herramientasVentanas.validarCampoprincipal(campocedula, "V-XX.XXX.XX", campotlf, camponombre, campocorreo); 
     }//GEN-LAST:event_campocedulaMousePressed
 
     private void campocorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campocorreoActionPerformed
@@ -980,7 +985,7 @@ public class Participante extends javax.swing.JFrame {
 
     private void LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarActionPerformed
         herramientasVentanas.campovacio(camponombre, "Nombre de la Persona", false);
-        herramientasVentanas.campovacio(campocedula, "Cedula de Identidad", false);
+        herramientasVentanas.campovacio(campocedula, "V-XX.XXX.XX", false);
         herramientasVentanas.campovacio(campocorreo, "Correo personal", false);
         herramientasVentanas.campovacio(campotlf, "Nro. Personal", false);
         herramientasVentanas.campovacio(campoempresa, "Nombre de la Empresa", false);
@@ -1025,6 +1030,10 @@ public class Participante extends javax.swing.JFrame {
     private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
         //Aqui habria logica, si tuviera una
     }//GEN-LAST:event_registrarActionPerformed
+
+    private void campocedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campocedulaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campocedulaActionPerformed
 
     /**
      * @param args the command line arguments
