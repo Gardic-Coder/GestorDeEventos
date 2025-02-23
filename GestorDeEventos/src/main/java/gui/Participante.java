@@ -1,20 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package main.java.gui;
 
+import java.awt.Component;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField; //Permite usar los campos de Texto
-/**
- *
- * @author Alejandrito
- */
+import main.java.application.dto.*;
+import main.java.application.services.*;
+
 public class Participante extends javax.swing.JFrame {
 
-    
     private MainWindow principal; //Me permitra volver a la ventana principal (Referencia)
-    
-    public void ocultar(){ //Oculta todos los campos y labels existentes
+
+    public void ocultar() { //Oculta todos los campos y labels existentes
         campoempresa.setVisible(false);
         empresa.setVisible(false);
         cargoempresa.setVisible(false);
@@ -33,15 +33,11 @@ public class Participante extends javax.swing.JFrame {
         campoduracionponent.setVisible(false);
         institucionponente.setVisible(false);
         campoinstitucionponente.setVisible(false);
-                
-        
+
     }
-    
-   
-    
+
     //Ocultar o no los campos de Conferencista
-    
-    public void validarcampoConferencista(JTextField campo, String textopredeterminado, JTextField... otrosCampos){ 
+    public void validarcampoConferencista(JTextField campo, String textopredeterminado, JTextField... otrosCampos) {
         if (campo.getText().equals(textopredeterminado)) {
             herramientasVentanas.campovacio(campo, "", true);
         }
@@ -54,14 +50,14 @@ public class Participante extends javax.swing.JFrame {
                     mensaje = "Cargo en la Empresa";
                 } else if (otroCampo == campotemaconferencia) {
                     mensaje = "De lo que quiere informar";
-                } 
+                }
                 herramientasVentanas.campovacio(otroCampo, mensaje, false);
             }
         }
     }
-    
+
     //Instructor
-    public void validarcampoInstructor(JTextField campo, String textopredeterminado, JTextField... otrosCampos){ 
+    public void validarcampoInstructor(JTextField campo, String textopredeterminado, JTextField... otrosCampos) {
         if (campo.getText().equals(textopredeterminado)) {
             herramientasVentanas.campovacio(campo, "", true);
         }
@@ -74,13 +70,14 @@ public class Participante extends javax.swing.JFrame {
                     mensaje = "Campo especializado";
                 } else if (otroCampo == campoexp) {
                     mensaje = "Cantidad de años";
-                } 
+                }
                 herramientasVentanas.campovacio(otroCampo, mensaje, false);
             }
         }
     }
+
     //Ponente
-    public void validarcampoPonente(JTextField campo, String textopredeterminado, JTextField... otrosCampos){ 
+    public void validarcampoPonente(JTextField campo, String textopredeterminado, JTextField... otrosCampos) {
         if (campo.getText().equals(textopredeterminado)) {
             herramientasVentanas.campovacio(campo, "", true);
         }
@@ -93,15 +90,12 @@ public class Participante extends javax.swing.JFrame {
                     mensaje = "Institucion / Universidad";
                 } else if (otroCampo == campoduracionponent) {
                     mensaje = "Tiempo a utilizar";
-                } 
+                }
                 herramientasVentanas.campovacio(otroCampo, mensaje, false);
             }
         }
     }
-    
-    
-    
-    
+
     public Participante() {
         initComponents();
         setTitle("Registro de Participantes");
@@ -111,8 +105,9 @@ public class Participante extends javax.swing.JFrame {
         campocedula.setName("campocedula");
         campotlf.setName("campotlf");
         campocorreo.setName("campocorreo");
+        cargarEventosEnComboBox();
     }
-    
+
     public Participante(MainWindow principal) {
         initComponents();
         setTitle("Registro de Participantes");
@@ -123,8 +118,119 @@ public class Participante extends javax.swing.JFrame {
         campocedula.setName("campocedula");
         campotlf.setName("campotlf");
         campocorreo.setName("campocorreo");
+        cargarEventosEnComboBox();
     }
-    
+
+    // Método para cargar eventos en el combo box
+    public void cargarEventosEnComboBox() {
+        EventoService eventoService = new EventoService();
+        List<EventoDTO> eventos = eventoService.listaDeEventoDTO();
+
+        // Configurar el renderizado para mostrar solo el nombre
+        comboEventos.setRenderer(new DefaultListCellRenderer() {
+            @Override
+            public Component getListCellRendererComponent(
+                    JList<?> list,
+                    Object value,
+                    int index,
+                    boolean isSelected,
+                    boolean cellHasFocus
+            ) {
+                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+                if (value instanceof EventoDTO) {
+                    setText(((EventoDTO) value).getNombre());
+                }
+                return this;
+            }
+        });
+
+        // Cargar los eventos
+        DefaultComboBoxModel<EventoDTO> model = new DefaultComboBoxModel<>();
+        for (EventoDTO evento : eventos) {
+            model.addElement(evento);
+        }
+        comboEventos.setModel(model);
+    }
+
+// Método para obtener el evento seleccionado
+    public EventoDTO obtenerEventoSeleccionado() {
+        return (EventoDTO) comboEventos.getSelectedItem();
+    }
+
+    // Métodos auxiliares
+    private String validarCampo(String valor, String nombreCampo, String placeholder) {
+        if (valor == null || valor.trim().isEmpty() || valor.equals(placeholder)) {
+            throw new IllegalArgumentException(nombreCampo + " es obligatorio");
+        }
+        return valor.trim();
+    }
+
+    private String validarFormato(String valor, String patron, String nombreCampo, String placeholder) {
+        String valorLimpio = validarCampo(valor, nombreCampo, placeholder);
+        if (!valorLimpio.matches(patron)) {
+            throw new IllegalArgumentException("Formato de " + nombreCampo + " inválido");
+        }
+        return valorLimpio;
+    }
+//.toLowerCase()
+
+    private RolParticipante obtenerRolSeleccionado() {
+        String rolSeleccionado = this.selecciontipoparticipante.getSelectedItem().toString();
+        //System.out.println(rolSeleccionado);
+        switch (rolSeleccionado) {
+            case "Ponente" -> {
+                return RolParticipante.PONENTE;
+            }
+            case "Conferencista" -> {
+                return RolParticipante.CONFERENCISTA;
+            }
+            case "Asistente" -> {
+                return RolParticipante.ASISTENTE;
+            }
+            case "Moderador" -> {
+                return RolParticipante.MODERADOR;
+            }
+            case "Instructor" -> {
+                return RolParticipante.INSTRUCTOR;
+            }
+            default ->
+                throw new IllegalArgumentException("Rol seleccionado no válido");
+        }
+    }
+
+    private String construirDescripcion(RolParticipante rol) {
+        return switch (rol) {
+            case PONENTE ->
+                String.format("Institución: %s - Área: %s",
+                validarCampo(this.campoinstitucionponente.getText(), "Institución", "Nombre institución"),
+                validarCampo(this.campotemaespecialidad.getText(), "Área", "Área de especialidad"));
+            case INSTRUCTOR ->
+                String.format("Años experiencia: %s",
+                validarCampo(this.campoexp.getText(), "Experiencia", "Años experiencia"));
+            /*case MODERADOR -> String.format("Estilo moderación: %s",
+                validarCampo(txtEstilo.getText(), "Estilo", "Estilo de moderación"));*/
+            default ->
+                "Sin descripción adicional";
+        };
+    }
+
+    private void limpiarCampos() {
+        herramientasVentanas.campovacio(camponombre, "Nombre de la Persona", false);
+        herramientasVentanas.campovacio(campocedula, "V-XX.XXX.XX", false);
+        herramientasVentanas.campovacio(campocorreo, "Correo personal", false);
+        herramientasVentanas.campovacio(campotlf, "Nro. Personal", false);
+        herramientasVentanas.campovacio(campoempresa, "Nombre de la Empresa", false);
+        herramientasVentanas.campovacio(campocargoempresa, "Cargo en la Empresa", false);
+        herramientasVentanas.campovacio(campotemaconferencia, "De lo que quiere informar", false);
+        herramientasVentanas.campovacio(campotemaespecialidad, "Campo especializado", false);
+        herramientasVentanas.campovacio(campometodologiainst, "Metodo de enseñanza", false);
+        herramientasVentanas.campovacio(campoexp, "Cantidad de años", false);
+        herramientasVentanas.campovacio(campoinstitucionponente, "Institucion / Universidad", false);
+        herramientasVentanas.campovacio(campotemaponente, "De lo que quieres informar", false);
+        herramientasVentanas.campovacio(campoduracionponent, "Tiempo a utilizar", false);
+        // Limpiar otros campos específicos...
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -176,7 +282,7 @@ public class Participante extends javax.swing.JFrame {
         campotemaespecialidad = new javax.swing.JTextField();
         institucionponente = new javax.swing.JLabel();
         campoinstitucionponente = new javax.swing.JTextField();
-        seleccionEvt = new javax.swing.JComboBox<>();
+        comboEventos = new javax.swing.JComboBox<>();
         imagen = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -730,12 +836,12 @@ public class Participante extends javax.swing.JFrame {
             }
         });
 
-        seleccionEvt.setBackground(new java.awt.Color(255, 204, 204));
-        seleccionEvt.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        seleccionEvt.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        seleccionEvt.addActionListener(new java.awt.event.ActionListener() {
+        comboEventos.setBackground(new java.awt.Color(255, 204, 204));
+        comboEventos.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        comboEventos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        comboEventos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                seleccionEvtActionPerformed(evt);
+                comboEventosActionPerformed(evt);
             }
         });
 
@@ -746,7 +852,7 @@ public class Participante extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, derechacuerpoLayout.createSequentialGroup()
                 .addContainerGap(188, Short.MAX_VALUE)
                 .addGroup(derechacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(seleccionEvt, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboEventos, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(institucionponente, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(especialidad)
                     .addComponent(campotemaespecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -758,7 +864,7 @@ public class Participante extends javax.swing.JFrame {
         derechacuerpoLayout.setVerticalGroup(
             derechacuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(derechacuerpoLayout.createSequentialGroup()
-                .addComponent(seleccionEvt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(comboEventos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(65, 65, 65)
                 .addComponent(cargoempresa)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -855,35 +961,34 @@ public class Participante extends javax.swing.JFrame {
         // Ocultar todos los campos al inicio
         ocultar();
         // Mostrar los campos según la opción seleccionada
-        switch (opcionseleccionada){
+        switch (opcionseleccionada) {
             case "Conferencista":
-            campoempresa.setVisible(true);
-            empresa.setVisible(true);
-            cargoempresa.setVisible(true);
-            campocargoempresa.setVisible(true);
-            temaconferencia.setVisible(true);
-            campotemaconferencia.setVisible(true);
-            
-            break;
+                campoempresa.setVisible(true);
+                empresa.setVisible(true);
+                cargoempresa.setVisible(true);
+                campocargoempresa.setVisible(true);
+                temaconferencia.setVisible(true);
+                campotemaconferencia.setVisible(true);
+
+                break;
             case "Instructor":
-            especialidad.setVisible(true);
-            metodologiainst.setVisible(true);
-            experienciainst.setVisible(true);
-            campoexp.setVisible(true);
-            campometodologiainst.setVisible(true);
-            campotemaespecialidad.setVisible(true);
-            
+                especialidad.setVisible(true);
+                metodologiainst.setVisible(true);
+                experienciainst.setVisible(true);
+                campoexp.setVisible(true);
+                campometodologiainst.setVisible(true);
+                campotemaespecialidad.setVisible(true);
 
-            break;
+                break;
             case "Ponente":
-            temaponente.setVisible(true);
-            campotemaponente.setVisible(true);
-            duracionponente.setVisible(true);
-            campoduracionponent.setVisible(true);
-            institucionponente.setVisible(true);
-            campoinstitucionponente.setVisible(true);
+                temaponente.setVisible(true);
+                campotemaponente.setVisible(true);
+                duracionponente.setVisible(true);
+                campoduracionponent.setVisible(true);
+                institucionponente.setVisible(true);
+                campoinstitucionponente.setVisible(true);
 
-            break;
+                break;
 
         }
 
@@ -933,20 +1038,20 @@ public class Participante extends javax.swing.JFrame {
     }//GEN-LAST:event_camponombreActionPerformed
 
     private void camponombreMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_camponombreMousePressed
-       herramientasVentanas.validarCampoprincipal(camponombre, "Nombre de la Persona", campocedula, campotlf, campocorreo);
+        herramientasVentanas.validarCampoprincipal(camponombre, "Nombre de la Persona", campocedula, campotlf, campocorreo);
     }//GEN-LAST:event_camponombreMousePressed
     //Posiblemente haya una forma de mejorar esto, y no hacer puros if...
     private void campotlfMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campotlfMousePressed
-       herramientasVentanas.validarCampoprincipal(campotlf, "Nro. Personal", campocedula, camponombre, campocorreo); 
+        herramientasVentanas.validarCampoprincipal(campotlf, "Nro. Personal", campocedula, camponombre, campocorreo);
     }//GEN-LAST:event_campotlfMousePressed
 
     private void campocorreoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campocorreoMousePressed
-       herramientasVentanas.validarCampoprincipal(campocorreo, "Correo personal", campocedula, camponombre, campotlf);  
-       
+        herramientasVentanas.validarCampoprincipal(campocorreo, "Correo personal", campocedula, camponombre, campotlf);
+
     }//GEN-LAST:event_campocorreoMousePressed
 
     private void campocedulaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campocedulaMousePressed
-       herramientasVentanas.validarCampoprincipal(campocedula, "V-XX.XXX.XX", campotlf, camponombre, campocorreo); 
+        herramientasVentanas.validarCampoprincipal(campocedula, "V-XX.XXX.XX", campotlf, camponombre, campocorreo);
     }//GEN-LAST:event_campocedulaMousePressed
 
     private void campocorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campocorreoActionPerformed
@@ -954,39 +1059,39 @@ public class Participante extends javax.swing.JFrame {
     }//GEN-LAST:event_campocorreoActionPerformed
 
     private void campoempresaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoempresaMousePressed
-        validarcampoConferencista(campoempresa,"Nombre de la Empresa", campocargoempresa, campotemaconferencia);
+        validarcampoConferencista(campoempresa, "Nombre de la Empresa", campocargoempresa, campotemaconferencia);
     }//GEN-LAST:event_campoempresaMousePressed
 
     private void campocargoempresaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campocargoempresaMousePressed
-        validarcampoConferencista(campocargoempresa,"Cargo en la Empresa", campoempresa, campotemaconferencia);
+        validarcampoConferencista(campocargoempresa, "Cargo en la Empresa", campoempresa, campotemaconferencia);
     }//GEN-LAST:event_campocargoempresaMousePressed
 
     private void campotemaconferenciaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campotemaconferenciaMousePressed
-        validarcampoConferencista(campotemaconferencia,"De lo que quiere informar", campoempresa, campocargoempresa);
+        validarcampoConferencista(campotemaconferencia, "De lo que quiere informar", campoempresa, campocargoempresa);
     }//GEN-LAST:event_campotemaconferenciaMousePressed
 
     private void campotemaespecialidadMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campotemaespecialidadMousePressed
-        validarcampoInstructor(campotemaespecialidad,"Campo especializado", campometodologiainst, campoexp);
+        validarcampoInstructor(campotemaespecialidad, "Campo especializado", campometodologiainst, campoexp);
     }//GEN-LAST:event_campotemaespecialidadMousePressed
 
     private void campometodologiainstMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campometodologiainstMousePressed
-        validarcampoInstructor(campometodologiainst,"Metodo de enseñanza", campotemaespecialidad, campoexp);
+        validarcampoInstructor(campometodologiainst, "Metodo de enseñanza", campotemaespecialidad, campoexp);
     }//GEN-LAST:event_campometodologiainstMousePressed
 
     private void campoinstitucionponenteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoinstitucionponenteMousePressed
-        validarcampoPonente(campoinstitucionponente,"Institucion / Universidad", campotemaponente, campoduracionponent);
+        validarcampoPonente(campoinstitucionponente, "Institucion / Universidad", campotemaponente, campoduracionponent);
     }//GEN-LAST:event_campoinstitucionponenteMousePressed
 
     private void campoexpMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoexpMousePressed
-        validarcampoInstructor(campoexp,"Cantidad de años", campometodologiainst, campotemaespecialidad);
+        validarcampoInstructor(campoexp, "Cantidad de años", campometodologiainst, campotemaespecialidad);
     }//GEN-LAST:event_campoexpMousePressed
 
     private void campotemaponenteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campotemaponenteMousePressed
-        validarcampoPonente(campotemaponente,"De lo que quieres informar", campoinstitucionponente, campoduracionponent);
+        validarcampoPonente(campotemaponente, "De lo que quieres informar", campoinstitucionponente, campoduracionponent);
     }//GEN-LAST:event_campotemaponenteMousePressed
 
     private void campoduracionponentMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoduracionponentMousePressed
-        validarcampoPonente(campoduracionponent,"Tiempo a utilizar", campotemaponente, campoinstitucionponente);
+        validarcampoPonente(campoduracionponent, "Tiempo a utilizar", campotemaponente, campoinstitucionponente);
     }//GEN-LAST:event_campoduracionponentMousePressed
 
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
@@ -995,19 +1100,7 @@ public class Participante extends javax.swing.JFrame {
     }//GEN-LAST:event_salirActionPerformed
 
     private void LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarActionPerformed
-        herramientasVentanas.campovacio(camponombre, "Nombre de la Persona", false);
-        herramientasVentanas.campovacio(campocedula, "V-XX.XXX.XX", false);
-        herramientasVentanas.campovacio(campocorreo, "Correo personal", false);
-        herramientasVentanas.campovacio(campotlf, "Nro. Personal", false);
-        herramientasVentanas.campovacio(campoempresa, "Nombre de la Empresa", false);
-        herramientasVentanas.campovacio(campocargoempresa, "Cargo en la Empresa", false);
-        herramientasVentanas.campovacio(campotemaconferencia, "De lo que quiere informar", false);
-        herramientasVentanas.campovacio(campotemaespecialidad, "Campo especializado", false);
-        herramientasVentanas.campovacio(campometodologiainst, "Metodo de enseñanza", false);
-        herramientasVentanas.campovacio(campoexp, "Cantidad de años", false);
-        herramientasVentanas.campovacio(campoinstitucionponente, "Institucion / Universidad", false);
-        herramientasVentanas.campovacio(campotemaponente, "De lo que quieres informar", false);
-        herramientasVentanas.campovacio(campoduracionponent, "Tiempo a utilizar", false);
+        limpiarCampos();
     }//GEN-LAST:event_LimpiarActionPerformed
 
     private void salirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMousePressed
@@ -1039,16 +1132,83 @@ public class Participante extends javax.swing.JFrame {
     }//GEN-LAST:event_registrarMouseExited
 
     private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
-        //Aqui habria logica, si tuviera una
+        ParticipanteService participanteService = new ParticipanteService();
+        String patronCI = "^V-\\d{2}\\.\\d{3}\\.\\d{3}$";
+        String patronCorreo = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$";
+        String patronTlf = "^04(12|26|16|14|24)\\d{7}$";
+
+        try {
+            // Validación de campos básicos
+            String nombre = validarCampo(this.camponombre.getText(), "Nombre", "Nombre de la Persona");
+            String cedula = validarFormato(this.campocedula.getText(), patronCI, "Cédula", "V-XX.XXX.XXX");
+            String correo = validarFormato(this.campocorreo.getText(), patronCorreo, "Correo", "Correo personal");
+            String telefono = validarFormato(this.campotlf.getText(), patronTlf, "Teléfono", "Nro. Personal");
+
+            // Validación del rol
+            RolParticipante rol = obtenerRolSeleccionado();
+
+            // Validación del evento
+            //EventoComboBoxItem eventoItem = (EventoComboBoxItem) this.selecciontipoparticipante.getSelectedItem();
+            //if (eventoItem == null) {
+                
+            //}
+            // Uso para obtener el ID
+            EventoDTO eventoSeleccionado = obtenerEventoSeleccionado();
+            if (eventoSeleccionado == null) {
+                throw new IllegalArgumentException("Debe seleccionar un evento");
+                // Usar el ID...
+            }
+            //String idEvento = eventoItem.getId();
+            String idEvento = eventoSeleccionado.getID();
+            // Validación de campos específicos por rol
+            String tema = "-";
+            String descripcion = construirDescripcion(rol);
+
+            if (rol == RolParticipante.CONFERENCISTA) {
+                tema = validarCampo(this.campotemaconferencia.getText(), "Tema", "Ingrese el tema");
+            }
+            if (rol == RolParticipante.PONENTE) {
+                tema = validarCampo(this.campotemaponente.getText(), "Tema", "Ingrese el tema");
+            }
+
+            // Creación del DTO
+            ParticipanteDTO participante = new ParticipanteDTO(
+                    nombre,
+                    cedula,
+                    correo,
+                    telefono,
+                    rol,
+                    idEvento,
+                    true, // Asistencia
+                    tema,
+                    descripcion
+            );
+
+            // Enviar a servicio
+            participanteService.agregarParticipante(participante);
+
+            JOptionPane.showMessageDialog(this, "Participante registrado exitosamente!",
+                    "Éxito", JOptionPane.INFORMATION_MESSAGE);
+
+            limpiarCampos();
+
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(),
+                    "Error de validación", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error inesperado: " + e.getMessage(),
+                    "Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_registrarActionPerformed
 
     private void campocedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campocedulaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campocedulaActionPerformed
 
-    private void seleccionEvtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionEvtActionPerformed
+    private void comboEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboEventosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_seleccionEvtActionPerformed
+    }//GEN-LAST:event_comboEventosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1102,6 +1262,7 @@ public class Participante extends javax.swing.JFrame {
     private javax.swing.JTextField campotemaponente;
     private javax.swing.JTextField campotlf;
     private javax.swing.JLabel cargoempresa;
+    private javax.swing.JComboBox<EventoDTO> comboEventos;
     private javax.swing.JPanel cuerpo;
     private javax.swing.JPanel derechacuerpo;
     private javax.swing.JLabel duracionponente;
@@ -1122,7 +1283,6 @@ public class Participante extends javax.swing.JFrame {
     private javax.swing.JPanel padre;
     private javax.swing.JButton registrar;
     private javax.swing.JButton salir;
-    private javax.swing.JComboBox<String> seleccionEvt;
     private javax.swing.JComboBox<String> selecciontipoparticipante;
     private javax.swing.JSeparator separadorcedula;
     private javax.swing.JSeparator separadorcorreo;

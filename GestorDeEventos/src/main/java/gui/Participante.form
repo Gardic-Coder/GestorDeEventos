@@ -297,6 +297,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selecciontipoparticipanteActionPerformed"/>
               </Events>
               <AuxValues>
+                <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="Participante_selecciontipoparticipante"/>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
@@ -883,7 +884,7 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace pref="188" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="seleccionEvt" min="-2" pref="157" max="-2" attributes="0"/>
+                              <Component id="comboEventos" min="-2" pref="157" max="-2" attributes="0"/>
                               <Component id="institucionponente" min="-2" pref="161" max="-2" attributes="0"/>
                               <Component id="especialidad" min="-2" max="-2" attributes="0"/>
                               <Component id="campotemaespecialidad" min="-2" max="-2" attributes="0"/>
@@ -898,7 +899,7 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="seleccionEvt" min="-2" max="-2" attributes="0"/>
+                          <Component id="comboEventos" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                           <Component id="cargoempresa" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -1034,7 +1035,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoinstitucionponenteActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="seleccionEvt">
+                <Component class="javax.swing.JComboBox" name="comboEventos">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="cc" green="cc" red="ff" type="rgb"/>
@@ -1052,10 +1053,10 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="seleccionEvtActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboEventosActionPerformed"/>
                   </Events>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;EventoDTO&gt;"/>
                   </AuxValues>
                 </Component>
               </SubComponents>

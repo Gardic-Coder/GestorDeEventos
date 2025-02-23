@@ -13,7 +13,6 @@ public class ParticipanteService {
     EventoService eventoService = new EventoService();
 
     public void agregarParticipante(ParticipanteDTO participanteDTO) {
-        System.out.println("agregarParticipante saca");
         List<Evento> eventos = eventoService.cargarTodosLosEventos();
                 //EventoMapper.listFromDTO(eventoRepo.cargarEventos());
 
@@ -24,7 +23,6 @@ public class ParticipanteService {
         });
 
         List<EventoDTO> eventosDTO = EventoMapper.listToDTO(eventos);
-        System.out.println("agregarParticipante mete");
         eventoService.guardarTodo(eventosDTO);
 
     }

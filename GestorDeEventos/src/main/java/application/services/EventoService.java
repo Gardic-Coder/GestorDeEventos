@@ -25,13 +25,6 @@ public class EventoService {
                 .collect(Collectors.groupingBy(Participante::getEvento));
 
         // Asignar participantes a cada evento
-        /*eventos.forEach((Evento evento) -> {
-        Set<Participante> participantesEvento;
-        participantesEvento = new TreeSet<>(
-        participantesPorEvento.getOrDefault(evento.getID(), new ArrayList<>())
-        );
-        evento.setListaParticipantes(participantesEvento);
-        });*/
         eventos.forEach((Evento evento) -> {
             Set<Participante> participantesEvento = new TreeSet<>(new ParticipanteRolComparator()); // Pasa el Comparator aquí
             participantesEvento.addAll(participantesPorEvento.getOrDefault(evento.getID(), new ArrayList<>()));
@@ -55,20 +48,17 @@ public class EventoService {
 
     public void recibirEventoDTO(EventoDTO eventoDTO) {
         Evento nuevoEvento = EventoMapper.fromDTO(eventoDTO); // Conversion de DTO a Objeto de dominio.
-        System.out.println("recibirEventoDTO saca");
         List<Evento> eventos = cargarTodosLosEventos(); // Se carga la lista de eventos.
         
 
         eventos.add(nuevoEvento); // Se agrega el nuevo evento a la lista de eventos.
 
         List<EventoDTO> eventosDTO = EventoMapper.listToDTO(eventos);
-        System.out.println("recibirEventoDTO mete");
         guardarTodo(eventosDTO); // Se guarda la nueva lista.
         
     }
 
     public EventoDTO generarEventoID(EventoDTO eventoDTO) {
-        System.out.println("generarEventoID saca");
         List<Evento> eventos = cargarTodosLosEventos();
         
         //Evento.inicializarContador(eventos); // Inicializar contador
@@ -76,7 +66,6 @@ public class EventoService {
         eventoDTO = EventoMapper.toDTO(eventoNuevo);
         
         List<EventoDTO> eventosDTO = EventoMapper.listToDTO(eventos);
-        System.out.println("generarEventoID mete");
         guardarTodo(eventosDTO);
         
 
