@@ -5,6 +5,7 @@ package main.java.domain;
 import main.java.application.dto.RolParticipante;
 
 
+
 public class Participante { 
     private String nombre;
     private String cedula;

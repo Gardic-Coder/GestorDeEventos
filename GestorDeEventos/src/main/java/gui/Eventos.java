@@ -1,5 +1,6 @@
 package main.java.gui;
 
+import main.java.application.dto.RolParticipante;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.ZoneId;

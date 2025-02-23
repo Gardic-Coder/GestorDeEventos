@@ -1,14 +1,16 @@
 package main.java.application.services;
 
+import main.java.application.dto.RolParticipante;
 import java.util.ArrayList;
 import java.util.List;
 import main.java.application.dto.*;
 import main.java.domain.*;
 import main.java.persistence.*;
+//import main.java.application.dto.RolParticipante;
 
 public class ParticipanteService {
 
-    private final IEventoRepository eventoRepo = new EventoRepository();
+    //private final IEventoRepository eventoRepo = new EventoRepository();
     private final IParticipanteRepository participanteRepo = new ParticipanteRepository();
     EventoService eventoService = new EventoService();
 
@@ -30,7 +32,7 @@ public class ParticipanteService {
     public void eliminarParticipante(ParticipanteDTO participanteDTO) {
         Participante participante = ParticipanteMapper.fromDTO(participanteDTO);
 
-        if (participante.getRol() == main.java.application.dto.RolParticipante.MODERADOR) {
+        if (participante.getRol() == RolParticipante.MODERADOR) {
             // Eliminar el evento completo si es moderador
             eventoService.eliminarEvento(participante.getEvento());
         } else {
