@@ -17,6 +17,7 @@ public class ParticipanteRepository implements IParticipanteRepository{
         try (BufferedReader reader = new BufferedReader(new FileReader(ARCHIVO))) {
             String linea;
             while ((linea = reader.readLine()) != null) {
+                System.out.println("Sacando: " + linea);
                 String[] partes = linea.split("\\|");
                 ParticipanteDTO participante = new ParticipanteDTO(
                     partes[1], // nombre
@@ -54,6 +55,7 @@ public class ParticipanteRepository implements IParticipanteRepository{
                 );
                 writer.write(linea);
                 writer.newLine();
+                System.out.println("Metiendo: " + linea);
             }
         } catch (IOException e) {
             e.printStackTrace();
