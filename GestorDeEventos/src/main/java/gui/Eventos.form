@@ -141,6 +141,7 @@
                         <StringItem index="1" value="Eventos"/>
                       </StringArray>
                     </Property>
+                    <Property name="selectedIndex" type="int" value="1"/>
                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[138, 27]"/>
                     </Property>

@@ -267,6 +267,7 @@ public class MainWindow extends javax.swing.JFrame {
         creador.setVisible(true);
         creador.setLocationRelativeTo(null);
         this.dispose();
+        herramientasVentanas.cambiarColor(segundaopcion,false);
         
     }//GEN-LAST:event_segundaopcionActionPerformed
 
@@ -275,6 +276,7 @@ public class MainWindow extends javax.swing.JFrame {
         creadoreventos.setVisible(true);
         creadoreventos.setLocationRelativeTo(null);
         this.dispose();
+        herramientasVentanas.cambiarColor(primeraopcion,false);
     }//GEN-LAST:event_primeraopcionActionPerformed
 
     private void cuartaopcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cuartaopcionActionPerformed

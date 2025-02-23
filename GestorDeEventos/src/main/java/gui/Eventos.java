@@ -149,6 +149,7 @@ public class Eventos extends javax.swing.JFrame {
         ventana.setBackground(new java.awt.Color(255, 204, 204));
         ventana.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         ventana.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Moderador", "Eventos" }));
+        ventana.setSelectedIndex(1);
         ventana.setMinimumSize(new java.awt.Dimension(138, 27));
         ventana.setPreferredSize(new java.awt.Dimension(138, 27));
         ventana.addActionListener(new java.awt.event.ActionListener() {
