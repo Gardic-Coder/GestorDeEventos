@@ -1,5 +1,8 @@
 package main.java.gui;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.net.URL;
 import main.java.application.dto.RolParticipante;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -11,6 +14,13 @@ import main.java.application.services.EventoService;
 import main.java.application.services.ParticipanteService;
 
 public class Eventos extends javax.swing.JFrame {
+    
+    //Icono del JFrame, cargamos la imagen residente en nuestro proyecto (Logotipo)
+    @Override
+    public Image getIconImage() {
+        URL url = getClass().getClassLoader().getResource("Imagenes/mainWindow/seashell.png");
+        return Toolkit.getDefaultToolkit().getImage(url);
+    }
 
     //Elimina o vuelve a ingresar el texto predeterminado de los campos de textos, en caso de que esten vacios
     public void validarcampoModerador(JTextField campo, String textopredeterminado, JTextField... otrosCampos) {
@@ -152,6 +162,7 @@ public class Eventos extends javax.swing.JFrame {
         jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
         setUndecorated(true);
         setResizable(false);
 

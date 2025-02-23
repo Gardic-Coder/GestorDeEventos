@@ -2,6 +2,9 @@ package main.java.gui;
 
 import main.java.application.dto.RolParticipante;
 import java.awt.Component;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
@@ -15,6 +18,13 @@ import main.java.application.dto.*;
 import main.java.application.services.*;
 
 public class reportesMod extends javax.swing.JFrame {
+    
+    //Icono del JFrame, cargamos la imagen residente en nuestro proyecto (Logotipo)
+    @Override
+    public Image getIconImage() {
+        URL url = getClass().getClassLoader().getResource("Imagenes/mainWindow/seashell.png");
+        return Toolkit.getDefaultToolkit().getImage(url);
+    }
 
     private MainWindow principal;
 
@@ -249,6 +259,7 @@ public class reportesMod extends javax.swing.JFrame {
         horaFinal.setForeground(new java.awt.Color(255, 153, 153));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
         setUndecorated(true);
         setResizable(false);
 

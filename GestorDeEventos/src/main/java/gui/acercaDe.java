@@ -1,7 +1,18 @@
 package main.java.gui;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.net.URL;
+
 
 public class acercaDe extends javax.swing.JFrame {
+    
+    //Icono del JFrame, cargamos la imagen residente en nuestro proyecto (Logotipo)
+    @Override
+    public Image getIconImage() {
+        URL url = getClass().getClassLoader().getResource("Imagenes/mainWindow/seashell.png");
+        return Toolkit.getDefaultToolkit().getImage(url);
+    }
 
     private MainWindow principal; //Me permitra volver a la ventana principal (Referencia)
     
@@ -36,6 +47,7 @@ public class acercaDe extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
         setUndecorated(true);
         setResizable(false);
 
@@ -51,7 +63,7 @@ public class acercaDe extends javax.swing.JFrame {
         jLabel3.setText("Hecho en Apache Netbeans, usando el Lenguaje de Programacion Java (2025)");
 
         jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        jLabel4.setText("Version 0.2.8");
+        jLabel4.setText("Version 1.3.0");
 
         jLabel5.setFont(new java.awt.Font("Century Gothic", 3, 12)); // NOI18N
         jLabel5.setText("Desarrollado por Alejandro Gonzalez, Juan Garcia, Edgar Morales, Eliseo Meneses y Roxana Moreno");
