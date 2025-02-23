@@ -85,6 +85,7 @@ public class Eventos extends javax.swing.JFrame {
 
         horaComenzar = new com.raven.swing.TimePicker();
         horaFinal = new com.raven.swing.TimePicker();
+        jMenuItem1 = new javax.swing.JMenuItem();
         padre = new javax.swing.JPanel();
         header = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
@@ -146,6 +147,8 @@ public class Eventos extends javax.swing.JFrame {
         horaComenzar.setForeground(new java.awt.Color(255, 102, 102));
 
         horaFinal.setForeground(new java.awt.Color(255, 153, 153));
+
+        jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -1232,6 +1235,7 @@ public class Eventos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JButton limpiarEventos;
     private javax.swing.JButton limpiarMod;
