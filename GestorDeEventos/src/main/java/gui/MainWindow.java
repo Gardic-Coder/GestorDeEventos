@@ -327,7 +327,11 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_primeraopcionActionPerformed
 
     private void cuartaopcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cuartaopcionActionPerformed
-        // TODO add your handling code here:
+        reportesMod reportes = new reportesMod(this);
+        reportes.setVisible(true);
+        reportes.setLocationRelativeTo(null);
+        this.dispose();
+        herramientasVentanas.cambiarColor(cuartaopcion,false);
     }//GEN-LAST:event_cuartaopcionActionPerformed
 
     private void primeraopcionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_primeraopcionMouseEntered
