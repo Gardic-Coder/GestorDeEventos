@@ -346,7 +346,6 @@ public class Participante extends javax.swing.JFrame {
         camponombre.setBackground(new java.awt.Color(255, 228, 228));
         camponombre.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         camponombre.setForeground(java.awt.Color.gray);
-        camponombre.setText("Nombre de la Persona");
         camponombre.setToolTipText("");
         camponombre.setActionCommand("<Not Set>");
         camponombre.setBorder(javax.swing.BorderFactory.createCompoundBorder());
