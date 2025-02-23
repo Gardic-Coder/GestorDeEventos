@@ -1,8 +1,9 @@
 package main.java.gui;
+
 import java.awt.Color; //Defino colores personalizados (Tecnologia Hover)
 import java.awt.Image;
 import java.awt.Toolkit; //Permiten cargan el logotipo del proyecto (trabaja junto a Image)
-
+import java.net.URL;
 
 public class MainWindow extends javax.swing.JFrame {
 
@@ -10,14 +11,24 @@ public class MainWindow extends javax.swing.JFrame {
         initComponents();
         setTitle("Gestion de Eventos");
     }
-    
+
     //Icono del JFrame, cargamos la imagen residente en nuestro proyecto (Logotipo)
     @Override
-    public Image getIconImage (){
-        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/mainWindow/seashell.png"));
-        return retValue;       
+    public Image getIconImage() {
+        URL url = getClass().getClassLoader().getResource("Imagenes/mainWindow/seashell.png");
+        System.out.println("URL del recurso: " + url); // Verifica en consola
+        if (url == null) {
+            throw new RuntimeException("¡Recurso no encontrado!");
+        }
+        return Toolkit.getDefaultToolkit().getImage(url);
     }
-  
+
+    /*@Override
+    public Image getIconImage() {
+    Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes\\mainWindow\\seashell.png"));
+    return retValue;
+    }*/
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -296,27 +307,24 @@ public class MainWindow extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    
-    
-    
+
     private void terceraopcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_terceraopcionActionPerformed
         acercaDe info = new acercaDe(this);
         info.setVisible(true);
         info.setLocationRelativeTo(null);
         this.dispose();
-        herramientasVentanas.cambiarColor(terceraopcion,false);
+        herramientasVentanas.cambiarColor(terceraopcion, false);
 // TODO add your handling code here:
     }//GEN-LAST:event_terceraopcionActionPerformed
 
     private void segundaopcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_segundaopcionActionPerformed
-        
+
         Participante creador = new Participante(this);
         creador.setVisible(true);
         creador.setLocationRelativeTo(null);
         this.dispose();
-        herramientasVentanas.cambiarColor(segundaopcion,false);
-        
+        herramientasVentanas.cambiarColor(segundaopcion, false);
+
     }//GEN-LAST:event_segundaopcionActionPerformed
 
     private void primeraopcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_primeraopcionActionPerformed
@@ -324,7 +332,7 @@ public class MainWindow extends javax.swing.JFrame {
         creadoreventos.setVisible(true);
         creadoreventos.setLocationRelativeTo(null);
         this.dispose();
-        herramientasVentanas.cambiarColor(primeraopcion,false);
+        herramientasVentanas.cambiarColor(primeraopcion, false);
     }//GEN-LAST:event_primeraopcionActionPerformed
 
     private void cuartaopcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cuartaopcionActionPerformed
@@ -332,39 +340,39 @@ public class MainWindow extends javax.swing.JFrame {
         reportes.setVisible(true);
         reportes.setLocationRelativeTo(null);
         this.dispose();
-        herramientasVentanas.cambiarColor(cuartaopcion,false);
+        herramientasVentanas.cambiarColor(cuartaopcion, false);
     }//GEN-LAST:event_cuartaopcionActionPerformed
 
     private void primeraopcionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_primeraopcionMouseEntered
-        herramientasVentanas.cambiarColor(primeraopcion,true);
+        herramientasVentanas.cambiarColor(primeraopcion, true);
     }//GEN-LAST:event_primeraopcionMouseEntered
 
     private void primeraopcionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_primeraopcionMouseExited
-        herramientasVentanas.cambiarColor(primeraopcion,false);
+        herramientasVentanas.cambiarColor(primeraopcion, false);
     }//GEN-LAST:event_primeraopcionMouseExited
 
     private void segundaopcionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_segundaopcionMouseEntered
-        herramientasVentanas.cambiarColor(segundaopcion,true);
+        herramientasVentanas.cambiarColor(segundaopcion, true);
     }//GEN-LAST:event_segundaopcionMouseEntered
 
     private void segundaopcionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_segundaopcionMouseExited
-        herramientasVentanas.cambiarColor(segundaopcion,false);
+        herramientasVentanas.cambiarColor(segundaopcion, false);
     }//GEN-LAST:event_segundaopcionMouseExited
 
     private void terceraopcionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_terceraopcionMouseEntered
-        herramientasVentanas.cambiarColor(terceraopcion,true);
+        herramientasVentanas.cambiarColor(terceraopcion, true);
     }//GEN-LAST:event_terceraopcionMouseEntered
 
     private void terceraopcionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_terceraopcionMouseExited
-        herramientasVentanas.cambiarColor(terceraopcion,false);
+        herramientasVentanas.cambiarColor(terceraopcion, false);
     }//GEN-LAST:event_terceraopcionMouseExited
 
     private void cuartaopcionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cuartaopcionMouseEntered
-        herramientasVentanas.cambiarColor(cuartaopcion,true);
+        herramientasVentanas.cambiarColor(cuartaopcion, true);
     }//GEN-LAST:event_cuartaopcionMouseEntered
 
     private void cuartaopcionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cuartaopcionMouseExited
-        herramientasVentanas.cambiarColor(cuartaopcion,false);
+        herramientasVentanas.cambiarColor(cuartaopcion, false);
     }//GEN-LAST:event_cuartaopcionMouseExited
 
     private void segundaopcionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_segundaopcionMouseClicked
@@ -372,13 +380,13 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_segundaopcionMouseClicked
 
     private void salirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMouseEntered
-        salir.setBackground(new Color(255,0,0));
-        salir.setForeground(new Color(255,255,255));
+        salir.setBackground(new Color(255, 0, 0));
+        salir.setForeground(new Color(255, 255, 255));
     }//GEN-LAST:event_salirMouseEntered
 
     private void salirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMouseExited
-        salir.setBackground(new Color(255,204,204));
-        salir.setForeground(new Color(0,0,0));
+        salir.setBackground(new Color(255, 204, 204));
+        salir.setForeground(new Color(0, 0, 0));
     }//GEN-LAST:event_salirMouseExited
 
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
@@ -416,8 +424,7 @@ public class MainWindow extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MainWindow().setVisible(true);
-                
-       
+
             }
         });
     }
@@ -438,10 +445,5 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton segundaopcion;
     private javax.swing.JButton terceraopcion;
     // End of variables declaration//GEN-END:variables
-    
-
 
 }
-
-
-
