@@ -235,14 +235,12 @@ public class reportesMod extends javax.swing.JFrame {
         tablaPar = new javax.swing.JScrollPane();
         tablaParticipante = new javax.swing.JTable();
         crear2 = new javax.swing.JButton();
-        update2 = new javax.swing.JButton();
         delete2 = new javax.swing.JButton();
         Salir2 = new javax.swing.JButton();
         eventos = new javax.swing.JPanel();
         tablaEventos = new javax.swing.JScrollPane();
         tablaEvt = new javax.swing.JTable();
         crear = new javax.swing.JButton();
-        update = new javax.swing.JButton();
         delete = new javax.swing.JButton();
         salir = new javax.swing.JButton();
 
@@ -285,9 +283,9 @@ public class reportesMod extends javax.swing.JFrame {
             .addGroup(headerLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(titulo)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addComponent(tablas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addGap(41, 41, 41))
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -307,6 +305,8 @@ public class reportesMod extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 228, 228));
 
+        tablaParticipante.setBackground(new java.awt.Color(255, 238, 238));
+        tablaParticipante.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         tablaParticipante.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -340,29 +340,6 @@ public class reportesMod extends javax.swing.JFrame {
         crear2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 crear2ActionPerformed(evt);
-            }
-        });
-
-        update2.setBackground(new java.awt.Color(252, 186, 186));
-        update2.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        update2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/Imagenes/modificacion/circular-arrow.png"))); // NOI18N
-        update2.setText("Actualizar");
-        update2.setBorder(null);
-        update2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        update2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                update2MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                update2MouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                update2MousePressed(evt);
-            }
-        });
-        update2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                update2ActionPerformed(evt);
             }
         });
 
@@ -416,32 +393,35 @@ public class reportesMod extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(tablaPar, javax.swing.GroupLayout.PREFERRED_SIZE, 962, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(crear2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(120, 120, 120)
-                .addComponent(update2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(117, 117, 117)
-                .addComponent(Salir2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(delete2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(delete2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(Salir2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(crear2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(50, 50, 50))
+            .addComponent(tablaPar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 968, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addComponent(tablaPar, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(update2)
-                    .addComponent(crear2)
-                    .addComponent(delete2)
-                    .addComponent(Salir2))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addGap(12, 12, 12)
+                .addComponent(delete2)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(crear2)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Salir2)
+                        .addGap(33, 33, 33))))
         );
 
         javax.swing.GroupLayout participantesLayout = new javax.swing.GroupLayout(participantes);
@@ -461,6 +441,8 @@ public class reportesMod extends javax.swing.JFrame {
 
         eventos.setBackground(new java.awt.Color(255, 228, 228));
 
+        tablaEvt.setBackground(new java.awt.Color(255, 238, 238));
+        tablaEvt.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         tablaEvt.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -494,29 +476,6 @@ public class reportesMod extends javax.swing.JFrame {
         crear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 crearActionPerformed(evt);
-            }
-        });
-
-        update.setBackground(new java.awt.Color(252, 186, 186));
-        update.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        update.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/Imagenes/modificacion/circular-arrow.png"))); // NOI18N
-        update.setText("Actualizar");
-        update.setBorder(null);
-        update.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        update.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                updateMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                updateMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                updateMousePressed(evt);
-            }
-        });
-        update.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateActionPerformed(evt);
             }
         });
 
@@ -570,29 +529,31 @@ public class reportesMod extends javax.swing.JFrame {
         eventos.setLayout(eventosLayout);
         eventosLayout.setHorizontalGroup(
             eventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tablaEventos)
-            .addGroup(eventosLayout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(crear, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(98, 98, 98)
-                .addComponent(update, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(112, 112, 112)
+            .addComponent(tablaEventos, javax.swing.GroupLayout.DEFAULT_SIZE, 968, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, eventosLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
                 .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
-                .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(eventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(crear, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(delete, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47))
         );
         eventosLayout.setVerticalGroup(
             eventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(eventosLayout.createSequentialGroup()
                 .addComponent(tablaEventos, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
-                .addGroup(eventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(update)
-                    .addComponent(delete)
-                    .addComponent(crear)
-                    .addComponent(salir))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addGroup(eventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(eventosLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(delete)
+                        .addGap(18, 18, 18)
+                        .addComponent(crear)
+                        .addContainerGap(21, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, eventosLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(salir)
+                        .addGap(37, 37, 37))))
         );
 
         containerPrincipal.add(eventos, "card2");
@@ -634,22 +595,6 @@ public class reportesMod extends javax.swing.JFrame {
         this.dispose();
         herramientasVentanas.cambiarColor(crear, false);
     }//GEN-LAST:event_crearActionPerformed
-
-    private void updateMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseEntered
-        herramientasVentanas.cambiarColor(update, true);
-    }//GEN-LAST:event_updateMouseEntered
-
-    private void updateMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseExited
-        herramientasVentanas.cambiarColor(update, false);
-    }//GEN-LAST:event_updateMouseExited
-
-    private void updateMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_updateMousePressed
-
-    private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_updateActionPerformed
 
     private void deleteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseEntered
         herramientasVentanas.cambiarColor(delete, true);
@@ -735,22 +680,6 @@ public class reportesMod extends javax.swing.JFrame {
         herramientasVentanas.cambiarColor(crear, false);
     }//GEN-LAST:event_crear2ActionPerformed
 
-    private void update2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_update2MouseEntered
-        herramientasVentanas.cambiarColor(update2, true);
-    }//GEN-LAST:event_update2MouseEntered
-
-    private void update2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_update2MouseExited
-        herramientasVentanas.cambiarColor(update2, false);
-    }//GEN-LAST:event_update2MouseExited
-
-    private void update2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_update2MousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_update2MousePressed
-
-    private void update2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_update2ActionPerformed
-
     private void delete2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delete2MouseEntered
         herramientasVentanas.cambiarColor(delete2, true);
     }//GEN-LAST:event_delete2MouseEntered
@@ -821,7 +750,5 @@ public class reportesMod extends javax.swing.JFrame {
     private javax.swing.JTable tablaParticipante;
     private javax.swing.JComboBox<String> tablas;
     private javax.swing.JLabel titulo;
-    private javax.swing.JButton update;
-    private javax.swing.JButton update2;
     // End of variables declaration//GEN-END:variables
 }

@@ -81,9 +81,9 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Component id="titulo" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace pref="57" max="32767" attributes="0"/>
                       <Component id="tablas" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="80" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -192,21 +192,22 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="tablaPar" min="-2" pref="962" max="-2" attributes="0"/>
-                          </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                              <Component id="crear2" min="-2" pref="130" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
-                              <Component id="update2" min="-2" pref="130" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
-                              <Component id="Salir2" min="-2" pref="130" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="delete2" min="-2" pref="130" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="delete2" min="-2" pref="130" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                                      <Component id="Salir2" min="-2" pref="130" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="crear2" min="-2" pref="130" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="tablaPar" alignment="1" pref="968" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
@@ -214,14 +215,20 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                               <Component id="tablaPar" min="-2" pref="500" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="update2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="crear2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="delete2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="Salir2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                              <Component id="delete2" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="crear2" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="Salir2" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace pref="44" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -236,6 +243,12 @@
                       <SubComponents>
                         <Component class="javax.swing.JTable" name="tablaParticipante">
                           <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ee" green="ee" red="ff" type="rgb"/>
+                            </Property>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Century Gothic" size="12" style="1"/>
+                            </Property>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="4" rowCount="4">
                                 <Column editable="true" title="Title 1" type="java.lang.Object"/>
@@ -272,32 +285,6 @@
                         <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="crear2MouseExited"/>
                         <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="crear2MousePressed"/>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="crear2ActionPerformed"/>
-                      </Events>
-                    </Component>
-                    <Component class="javax.swing.JButton" name="update2">
-                      <Properties>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ba" green="ba" red="fc" type="rgb"/>
-                        </Property>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Dialog" size="16" style="1"/>
-                        </Property>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/main/resources/Imagenes/modificacion/circular-arrow.png"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="Actualizar"/>
-                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                          <Border info="null"/>
-                        </Property>
-                        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                          <Color id="Hand Cursor"/>
-                        </Property>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="update2MouseEntered"/>
-                        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="update2MouseExited"/>
-                        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="update2MousePressed"/>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="update2ActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="delete2">
@@ -371,17 +358,16 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="tablaEventos" alignment="0" max="32767" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                          <Component id="crear" min="-2" pref="130" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
-                          <Component id="update" min="-2" pref="130" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
+                      <Component id="tablaEventos" alignment="0" pref="968" max="32767" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                           <Component id="salir" min="-2" pref="130" max="-2" attributes="0"/>
-                          <EmptySpace pref="128" max="32767" attributes="0"/>
-                          <Component id="delete" min="-2" pref="130" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="crear" alignment="1" min="-2" pref="130" max="-2" attributes="0"/>
+                              <Component id="delete" alignment="1" min="-2" pref="130" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -389,14 +375,20 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="tablaEventos" min="-2" pref="500" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="update" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="delete" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="crear" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="salir" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="delete" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="crear" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="21" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="salir" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace pref="28" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -411,6 +403,12 @@
                   <SubComponents>
                     <Component class="javax.swing.JTable" name="tablaEvt">
                       <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ee" green="ee" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Century Gothic" size="12" style="1"/>
+                        </Property>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="4" rowCount="4">
                             <Column editable="true" title="Title 1" type="java.lang.Object"/>
@@ -447,32 +445,6 @@
                     <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="crearMouseExited"/>
                     <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="crearMousePressed"/>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="crearActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JButton" name="update">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ba" green="ba" red="fc" type="rgb"/>
-                    </Property>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Dialog" size="16" style="1"/>
-                    </Property>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/main/resources/Imagenes/modificacion/circular-arrow.png"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Actualizar"/>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="null"/>
-                    </Property>
-                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Hand Cursor"/>
-                    </Property>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="updateMouseEntered"/>
-                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="updateMouseExited"/>
-                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="updateMousePressed"/>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="delete">
