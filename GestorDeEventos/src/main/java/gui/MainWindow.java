@@ -1,7 +1,5 @@
 package main.java.gui;
 import java.awt.Color; //Defino colores personalizados (Tecnologia Hover)
-import java.awt.Image;
-import java.awt.Toolkit; //Permiten cargan el logotipo del proyecto (trabaja junto a Image)
 
 
 public class MainWindow extends javax.swing.JFrame {
@@ -9,13 +7,6 @@ public class MainWindow extends javax.swing.JFrame {
     public MainWindow() {
         initComponents();
         setTitle("Gestion de Eventos");
-    }
-    
-    //Icono del JFrame, cargamos la imagen residente en nuestro proyecto (Logotipo)
-    @Override
-    public Image getIconImage (){
-        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/mainWindow/seashell.png"));
-        return retValue;       
     }
   
     @SuppressWarnings("unchecked")
