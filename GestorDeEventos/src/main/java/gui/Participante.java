@@ -1,5 +1,6 @@
 package main.java.gui;
 
+import main.java.application.dto.RolParticipante;
 import java.awt.Component;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
@@ -137,8 +138,8 @@ public class Participante extends javax.swing.JFrame {
                     boolean cellHasFocus
             ) {
                 super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-                if (value instanceof EventoDTO) {
-                    setText(((EventoDTO) value).getNombre());
+                if (value instanceof EventoDTO eventoDTO) {
+                    setText(eventoDTO.getNombre());
                 }
                 return this;
             }
@@ -962,33 +963,30 @@ public class Participante extends javax.swing.JFrame {
         ocultar();
         // Mostrar los campos según la opción seleccionada
         switch (opcionseleccionada) {
-            case "Conferencista":
+            case "Conferencista" -> {
                 campoempresa.setVisible(true);
                 empresa.setVisible(true);
                 cargoempresa.setVisible(true);
                 campocargoempresa.setVisible(true);
                 temaconferencia.setVisible(true);
                 campotemaconferencia.setVisible(true);
-
-                break;
-            case "Instructor":
+            }
+            case "Instructor" -> {
                 especialidad.setVisible(true);
                 metodologiainst.setVisible(true);
                 experienciainst.setVisible(true);
                 campoexp.setVisible(true);
                 campometodologiainst.setVisible(true);
                 campotemaespecialidad.setVisible(true);
-
-                break;
-            case "Ponente":
+            }
+            case "Ponente" -> {
                 temaponente.setVisible(true);
                 campotemaponente.setVisible(true);
                 duracionponente.setVisible(true);
                 campoduracionponent.setVisible(true);
                 institucionponente.setVisible(true);
                 campoinstitucionponente.setVisible(true);
-
-                break;
+            }
 
         }
 
@@ -1238,10 +1236,8 @@ public class Participante extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Participante().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Participante().setVisible(true);
         });
     }
 

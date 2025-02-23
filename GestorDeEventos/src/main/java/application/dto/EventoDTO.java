@@ -43,7 +43,7 @@ public class EventoDTO {
         this.horaFinalizado = horaFinalizado;
         this.CapMax = CapMax;
         this.descripcion = descripcion;
-        this.listaParticipantes = listaParticipantes;
+        //this.listaParticipantes = listaParticipantes;
         this.ID = ID;
     }
 
