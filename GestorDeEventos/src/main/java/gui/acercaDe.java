@@ -64,7 +64,7 @@ public class acercaDe extends javax.swing.JFrame {
         jLabel5.setText("Desarrollado por Alejandro Gonzalez, Juan Garcia, Edgar Morales, Eliseo Meneses y Roxana Moreno");
 
         jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        jLabel6.setText("Librerias utilizadas: XD");
+        jLabel6.setText("Librerias utilizadas: Swing-time-picker ; jcalendar-0.8.1 ; TimingFramework-0.55");
 
         jSeparator1.setForeground(new java.awt.Color(255, 102, 102));
 
@@ -124,9 +124,10 @@ public class acercaDe extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, padreLayout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(29, 29, 29))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, padreLayout.createSequentialGroup()
+                    .addGroup(padreLayout.createSequentialGroup()
+                        .addGap(44, 44, 44)
                         .addComponent(jLabel6)
-                        .addGap(246, 246, 246))))
+                        .addContainerGap())))
         );
         padreLayout.setVerticalGroup(
             padreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

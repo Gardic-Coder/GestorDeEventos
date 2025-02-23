@@ -68,8 +68,6 @@ public class reportesMod extends javax.swing.JFrame {
         camponombreevt = new javax.swing.JTextField();
         lugarevt = new javax.swing.JLabel();
         campolugarevt = new javax.swing.JTextField();
-        capMax = new javax.swing.JLabel();
-        campocapMax = new javax.swing.JTextField();
         tipoEvt = new javax.swing.JLabel();
         eventosCombo = new javax.swing.JComboBox<>();
         evtFecha = new javax.swing.JLabel();
@@ -90,6 +88,8 @@ public class reportesMod extends javax.swing.JFrame {
         horaFinal.setForeground(new java.awt.Color(255, 153, 153));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
 
         padre.setBackground(new java.awt.Color(255, 228, 228));
         padre.setLayout(new java.awt.BorderLayout());
@@ -509,26 +509,6 @@ public class reportesMod extends javax.swing.JFrame {
             }
         });
 
-        capMax.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        capMax.setText("Capacidad de Participantes");
-
-        campocapMax.setBackground(new java.awt.Color(255, 204, 204));
-        campocapMax.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        campocapMax.setForeground(java.awt.Color.gray);
-        campocapMax.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        campocapMax.setMinimumSize(new java.awt.Dimension(200, 21));
-        campocapMax.setPreferredSize(new java.awt.Dimension(200, 21));
-        campocapMax.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                campocapMaxMousePressed(evt);
-            }
-        });
-        campocapMax.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campocapMaxActionPerformed(evt);
-            }
-        });
-
         tipoEvt.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
         tipoEvt.setText(" Tipo de Evento ");
 
@@ -621,52 +601,48 @@ public class reportesMod extends javax.swing.JFrame {
         menuLayout.setHorizontalGroup(
             menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuLayout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
+                .addGap(74, 74, 74)
+                .addComponent(lugarevt)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLayout.createSequentialGroup()
+                .addContainerGap(43, Short.MAX_VALUE)
                 .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(menuLayout.createSequentialGroup()
-                            .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(botonFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLayout.createSequentialGroup()
+                                .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(evtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(menuLayout.createSequentialGroup()
+                                        .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(tipoEvt, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(eventosCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(13, 13, 13)))
+                                .addGap(63, 63, 63))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(menuLayout.createSequentialGroup()
-                                    .addGap(45, 45, 45)
-                                    .addComponent(lugarevt))
+                                    .addGap(13, 13, 13)
+                                    .addComponent(calendario, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(91, 91, 91))
                                 .addGroup(menuLayout.createSequentialGroup()
-                                    .addGap(39, 39, 39)
-                                    .addComponent(nombreevt)))
-                            .addGap(58, 58, 58))
-                        .addGroup(menuLayout.createSequentialGroup()
-                            .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(capMax)
-                                .addGroup(menuLayout.createSequentialGroup()
-                                    .addGap(64, 64, 64)
-                                    .addComponent(calendario, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(menuLayout.createSequentialGroup()
-                                    .addGap(49, 49, 49)
-                                    .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(eventosCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tipoEvt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(menuLayout.createSequentialGroup()
-                                    .addGap(33, 33, 33)
+                                    .addComponent(horaComienzo)
+                                    .addGap(52, 52, 52)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLayout.createSequentialGroup()
+                                .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(camponombreevt, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(horaComienzo)
-                                        .addComponent(evtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(menuLayout.createSequentialGroup()
-                                    .addGap(57, 57, 57)
-                                    .addComponent(horaFinalizado))
-                                .addGroup(menuLayout.createSequentialGroup()
-                                    .addGap(18, 18, 18)
-                                    .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(botonFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(botonComienzo, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(campocapMax, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(menuLayout.createSequentialGroup()
-                                    .addGap(18, 18, 18)
-                                    .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(camponombreevt, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(campolugarevt, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGap(27, 27, 27)))
+                                        .addComponent(campolugarevt, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(botonComienzo, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(38, 38, 38))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLayout.createSequentialGroup()
+                        .addComponent(horaFinalizado)
+                        .addGap(72, 72, 72))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLayout.createSequentialGroup()
+                        .addComponent(nombreevt)
+                        .addGap(59, 59, 59))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLayout.createSequentialGroup()
                         .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(67, 67, 67))))
+                        .addGap(69, 69, 69))))
         );
         menuLayout.setVerticalGroup(
             menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -679,15 +655,11 @@ public class reportesMod extends javax.swing.JFrame {
                 .addComponent(lugarevt)
                 .addGap(12, 12, 12)
                 .addComponent(campolugarevt, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(capMax)
-                .addGap(18, 18, 18)
-                .addComponent(campocapMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
+                .addGap(50, 50, 50)
                 .addComponent(tipoEvt)
                 .addGap(18, 18, 18)
                 .addComponent(eventosCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(52, 52, 52)
                 .addComponent(evtFecha)
                 .addGap(18, 18, 18)
                 .addComponent(calendario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -699,9 +671,9 @@ public class reportesMod extends javax.swing.JFrame {
                 .addComponent(horaFinalizado)
                 .addGap(18, 18, 18)
                 .addComponent(botonFinalizar)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(salir)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addGap(16, 16, 16))
         );
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -851,14 +823,6 @@ public class reportesMod extends javax.swing.JFrame {
     private void campolugarevtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campolugarevtMousePressed
         
     }//GEN-LAST:event_campolugarevtMousePressed
-
-    private void campocapMaxMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campocapMaxMousePressed
-        
-    }//GEN-LAST:event_campocapMaxMousePressed
-
-    private void campocapMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campocapMaxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campocapMaxActionPerformed
 
     private void eventosComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventosComboActionPerformed
         // TODO add your handling code here:
@@ -1123,12 +1087,10 @@ public class reportesMod extends javax.swing.JFrame {
     private javax.swing.JTextField campoCorreo;
     private javax.swing.JTextField campoDescripcion;
     private javax.swing.JTextField campoTlf;
-    private javax.swing.JTextField campocapMax;
     private javax.swing.JTextField campocedula;
     private javax.swing.JTextField campolugarevt;
     private javax.swing.JTextField camponombre;
     private javax.swing.JTextField camponombreevt;
-    private javax.swing.JLabel capMax;
     private javax.swing.JLabel cedula;
     private javax.swing.JPanel containerPrincipal;
     private javax.swing.JLabel correo;
