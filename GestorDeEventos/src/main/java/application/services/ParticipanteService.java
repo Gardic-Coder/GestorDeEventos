@@ -30,7 +30,7 @@ public class ParticipanteService {
     public void eliminarParticipante(ParticipanteDTO participanteDTO) {
         Participante participante = ParticipanteMapper.fromDTO(participanteDTO);
 
-        if (participante.getRol() == RolParticipante.MODERADOR) {
+        if (participante.getRol() == main.java.application.dto.RolParticipante.MODERADOR) {
             // Eliminar el evento completo si es moderador
             eventoService.eliminarEvento(participante.getEvento());
         } else {
