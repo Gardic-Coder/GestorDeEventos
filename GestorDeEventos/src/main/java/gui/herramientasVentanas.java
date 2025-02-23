@@ -1,15 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package main.java.gui;
 import java.awt.Color; //Defino colores personalizados (Tecnologia Hover)
 import javax.swing.JButton; //Me permitira utilizar manualmente Jbutton
 import javax.swing.JTextField;
-/**
- *
- * @author Alejandrito
- */
+
 public class herramientasVentanas {
     public static void cambiarColor(JButton boton, boolean eventoentered){ //Una funcion que me permitira alterar los colores de un boton, dependiendo de la entrada o salida de un boton
         if (eventoentered){ //Si el mouse entro en el radio del boton

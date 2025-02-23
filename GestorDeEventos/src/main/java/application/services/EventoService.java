@@ -52,13 +52,16 @@ public class EventoService {
         
         eventos.add(nuevoEvento); // Se agrega el nuevo evento a la lista de eventos.
         
-        List<EventoDTO> eventosDTO = new ArrayList<>();
-        
-        eventos.forEach(evento -> {
-            eventosDTO.add(EventoMapper.toDTO(evento)); // Se convierten todos los elementos de la lista.
-        });
+        List<EventoDTO> eventosDTO = EventoMapper.listToDTO(eventos);
         
         guardarTodo(eventosDTO); // Se guarda la nueva lista.
+    }
+    
+    public EventoDTO generarEventoID(EventoDTO eventoDTO) {
+        Evento eventoNuevo = EventoMapper.fromDTO(eventoDTO);
+        eventoDTO = EventoMapper.toDTO(eventoNuevo);
+        
+        return eventoDTO;
     }
     
     public List<EventoDTO> listaDeEventoDTO() {

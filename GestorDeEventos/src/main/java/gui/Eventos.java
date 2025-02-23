@@ -1,13 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package main.java.gui;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.ZoneId;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JTextField; //Permite usar los campos de Texto
-/**
- *
- * @author Alejandrito
- */
+import main.java.application.dto.*;
+import main.java.application.services.EventoService;
+import main.java.application.services.ParticipanteService;
+
 public class Eventos extends javax.swing.JFrame {
 
     //Elimina o vuelve a ingresar el texto predeterminado de los campos de textos, en caso de que esten vacios
@@ -535,10 +536,11 @@ public class Eventos extends javax.swing.JFrame {
                     .addComponent(metodomoderar2)
                     .addComponent(metodomoderar8))
                 .addGap(18, 18, 18)
-                .addGroup(containerEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campoevnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(calendario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(containerEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(calendario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(containerEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(campoevnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(67, 67, 67)
                 .addGroup(containerEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(metodomoderar3)
@@ -1084,7 +1086,96 @@ public class Eventos extends javax.swing.JFrame {
     }//GEN-LAST:event_registrarEventosMouseExited
 
     private void registrarEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarEventosActionPerformed
-        // TODO add your handling code here:
+        EventoService eventoService = new EventoService();
+        ParticipanteService participanteService = new ParticipanteService();
+        String patronCI = "^V-\\d{2}\\.\\d{3}\\.\\d{3}$";
+        String patronCorreo = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$";
+        String patronTlf = "^04(12|26|16|14|24)\\d{7}$";
+        // Evento
+        
+        if(this.campoevnombre.getText().isEmpty() || 
+                this.campoevnombre.getText().equals("Ingrese el nombre del evento")) {
+            
+        }
+        if(this.campolugar.getText().isEmpty() || this.campolugar.getText().equals("Direccion")) {
+            
+        }
+        if(Integer.parseInt(this.campocapMax.getText()) <= 0) {
+            
+        }
+        TipoEvento tipo = null;
+        int opcion = this.jComboBox1.getSelectedIndex();
+        switch(opcion) {
+            case 0 -> tipo = TipoEvento.CONFERENCIA;
+            case 1 -> tipo = TipoEvento.INVESTIGACIONJOR;
+            case 2 -> tipo = TipoEvento.SEMINARIO;
+            case 3 -> tipo = TipoEvento.TALLER;
+        }
+        java.util.Date fechaSeleccionada = this.calendario.getDate();
+        LocalDate localDate = fechaSeleccionada.toInstant()
+            .atZone(ZoneId.systemDefault()) // Usar la zona horaria del sistema
+            .toLocalDate();
+        
+        var hora1 = this.horaComenzar.getSelectedDate();
+        LocalTime localTimeComienzo = hora1.toInstant().
+                atZone(ZoneId.systemDefault()).toLocalTime();
+        
+        var hora2 = this.horaFinal.getSelectedDate();
+        LocalTime localTimeFinal = hora2.toInstant().
+                atZone(ZoneId.systemDefault()).toLocalTime();
+        
+        EventoDTO eventoNuevo = new EventoDTO(this.campoevnombre.getText(), tipo, 
+                this.campolugar.getText(), localDate, localTimeComienzo, localTimeFinal, 
+                Integer.parseInt(this.campocapMax.getText()), 
+                this.campodescripcion.getText(), null);
+        
+        eventoNuevo = eventoService.generarEventoID(eventoNuevo);
+        eventoService.recibirEventoDTO(eventoNuevo);
+        
+        // Moderador
+        if(this.camponombre.getText().isEmpty() || 
+                this.camponombre.getText().equals("Nombre de la Persona")){
+            
+        }
+        
+        if(this.campocedula.getText().isEmpty() || 
+                this.campocedula.getText().equals("V-XX.XXX.XXX")) {
+            Pattern pattern = Pattern.compile(patronCI);
+            Matcher matcher = pattern.matcher(this.campocedula.getText());
+            if(!matcher.matches()) {
+                
+            }
+        }
+        
+        if(this.campocorreo.getText().isEmpty() || 
+                this.campocorreo.getText().equals("Correo personal")) {
+            Pattern pattern = Pattern.compile(patronCorreo);
+            Matcher matcher = pattern.matcher(this.campocorreo.getText());
+            if(!matcher.matches()) {
+                
+            }
+        }
+        
+        if(this.campotlf.getText().isEmpty() || 
+                this.campotlf.getText().equals("Nro. Personal")) {
+            Pattern pattern = Pattern.compile(patronTlf);
+            Matcher matcher = pattern.matcher(this.campotlf.getText());
+            if(!matcher.matches()) {
+                
+            }
+        }
+        
+        String descripcion = "Metodo: " + this.campometodo.getText() 
+                + ". " + this.campoexpint.getText() + " Años de experiencia. " +
+                "Experiencia previa: " + this.campoexp.getText() + ".";
+        
+        ParticipanteDTO moderador = new ParticipanteDTO(this.camponombre.getText(), 
+                this.campocedula.getText(), this.campocorreo.getText(), this.campotlf.getText(), 
+                RolParticipante.MODERADOR, eventoNuevo.getID(), true, "-", descripcion);
+        
+        
+        participanteService.agregarParticipante(moderador);
+// TODO add your handling code here:
     }//GEN-LAST:event_registrarEventosActionPerformed
 
     private void campoexpintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoexpintActionPerformed

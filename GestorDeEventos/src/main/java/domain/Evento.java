@@ -23,8 +23,7 @@ public class Evento {
     private static int contador = 0;
     
     public Evento(String nombre, TipoEvento tipo, String lugar, LocalDate fecha,
-            LocalTime horaComienzo, LocalTime horaFinalizado, int CapMax, String descripcion, 
-            Set<Participante> listaParticipantes){
+            LocalTime horaComienzo, LocalTime horaFinalizado, int CapMax, String descripcion){
         this.listaParticipantes = new TreeSet<>(new ParticipanteRolComparator());
         this.nombre = nombre;
         this.tipo = tipo;
@@ -34,7 +33,6 @@ public class Evento {
         this.horaFinalizado = horaFinalizado;
         this.CapMax = CapMax;
         this.descripcion = descripcion;
-        this.listaParticipantes = listaParticipantes;
         this.ID = crearID();
     }
     

@@ -43,8 +43,7 @@ public class EventoMapper {
                     dto.getHoraComienzo(), 
                     dto.getHoraFinalizado(), 
                     dto.getCapMax(), 
-                    dto.getDescripcion(),
-                    participantes);
+                    dto.getDescripcion());
             
         } else {
             return new Evento(

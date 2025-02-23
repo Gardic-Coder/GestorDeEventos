@@ -31,6 +31,21 @@ public class EventoDTO {
         this.listaParticipantes = listaParticipantes;
         this.ID = ID;
     }
+    
+    public EventoDTO(String nombre, TipoEvento tipo, String lugar, LocalDate fecha,
+            LocalTime horaComienzo, LocalTime horaFinalizado, int CapMax, String descripcion, 
+            String ID){
+        this.nombre = nombre;
+        this.tipo = tipo;
+        this.lugar = lugar;
+        this.fecha = fecha;
+        this.horaComienzo = horaComienzo;
+        this.horaFinalizado = horaFinalizado;
+        this.CapMax = CapMax;
+        this.descripcion = descripcion;
+        this.listaParticipantes = listaParticipantes;
+        this.ID = ID;
+    }
 
     public String getNombre() {
         return nombre;
