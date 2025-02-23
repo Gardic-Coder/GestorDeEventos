@@ -9,7 +9,7 @@ import main.java.persistence.*;
 
 public class ParticipanteService {
     private final IEventoRepository eventoRepo = new EventoRepository();
-    //private final IParticipanteRepository participanteRepo = new ParticipanteRepository();
+    private final IParticipanteRepository participanteRepo = new ParticipanteRepository();
     EventoService eventoService = new EventoService();
     
     public void agregarParticipante(ParticipanteDTO participanteDTO) {
@@ -37,4 +37,17 @@ public class ParticipanteService {
        
        eventoService.guardarTodo(eventosDTO);
     }
+    
+    public List<ParticipanteDTO> participantesDeEvento(String EventoID) {
+        List<ParticipanteDTO> participantes = new ArrayList<>();
+        
+        for(ParticipanteDTO participante : participanteRepo.cargarParticipantes()){
+            if(participante.getEvento().equals(EventoID)) {
+                participantes.add(participante);
+            }
+        }
+        
+        return participantes;
+    }
+    
 }

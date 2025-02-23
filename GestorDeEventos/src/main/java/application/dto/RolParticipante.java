@@ -1,4 +1,4 @@
-package main.java.domain;
+package main.java.application.dto;
 
 public enum RolParticipante {
     ASISTENTE(false, 5),

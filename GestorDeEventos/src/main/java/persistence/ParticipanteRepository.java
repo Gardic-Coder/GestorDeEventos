@@ -1,5 +1,6 @@
 package main.java.persistence;
 
+import main.java.application.dto.RolParticipante;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;

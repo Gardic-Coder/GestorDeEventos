@@ -1,15 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package main.java.gui;
 import javax.swing.JTextField; //Permite usar los campos de Texto
+import main.java.application.dto.*;
 
-/**
- *
- * @author Alejandrito
- */
+import com.github.lgooddatepicker.components.TimePicker;
+import com.github.lgooddatepicker.components.TimePickerSettings;
+import java.awt.FlowLayout;
+import java.time.LocalTime;
+
 public class Eventos extends javax.swing.JFrame {
+    private TimePicker timePicker; // Componente para seleccionar hora
 
     public void validarcampoModerador(JTextField campo, String textopredeterminado, JTextField... otrosCampos){ 
         if (campo.getText().equals(textopredeterminado)) {
@@ -37,12 +36,25 @@ public class Eventos extends javax.swing.JFrame {
             }
         }
     }
+
+    // Método para obtener la hora seleccionada
+    private void btnObtenerHoraActionPerformed(java.awt.event.ActionEvent evt) {
+        LocalTime hora = timePicker.getTime();
+        if (hora != null) {
+            System.out.println("Hora seleccionada: " + hora.getHour() + ":" + hora.getMinute());
+        }
+    }
     
     private MainWindow principal; //Me permitra volver a la ventana principal (Referencia)
     
     
     public Eventos() {
         initComponents();
+        
+        
+        
+        // Agregar el TimePicker a un JPanel (ej: panelHora)
+        panelHora.add(timePicker);
     }
     
      public Eventos(MainWindow principal) {
@@ -52,6 +64,22 @@ public class Eventos extends javax.swing.JFrame {
         campocedula.setName("campocedula");
         campotlf.setName("campotlf");
         campocorreo.setName("campocorreo");
+        
+        // Configurar el layout del panel (ej: FlowLayout)
+        panelHora.setLayout(new FlowLayout());
+        // Configurar el TimePicker
+        TimePickerSettings config = new TimePickerSettings();
+        config.setFormatForDisplayTime("HH:mm"); // Formato de 24 horas
+        timePicker = new TimePicker(config);
+        
+        
+        // Crear y agregar el TimePicker
+        //TimePicker timePicker = new TimePicker();
+        panelHora.add(timePicker);
+        
+        // Actualizar la interfaz
+        panelHora.revalidate();
+        panelHora.repaint();
     }
 
     /**
@@ -92,6 +120,7 @@ public class Eventos extends javax.swing.JFrame {
         campometodo5 = new javax.swing.JTextField();
         campohorafinalizado = new javax.swing.JTextField();
         campocapMax = new javax.swing.JTextField();
+        panelHora = new javax.swing.JPanel();
         containerMod = new javax.swing.JPanel();
         footer = new javax.swing.JPanel();
         salirMod = new javax.swing.JButton();
@@ -285,21 +314,17 @@ public class Eventos extends javax.swing.JFrame {
         titulo1.setLayout(titulo1Layout);
         titulo1Layout.setHorizontalGroup(
             titulo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-            .addGroup(titulo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(titulo1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(titulomoderador1)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(titulo1Layout.createSequentialGroup()
+                .addGap(0, 144, Short.MAX_VALUE)
+                .addComponent(titulomoderador1)
+                .addGap(0, 144, Short.MAX_VALUE))
         );
         titulo1Layout.setVerticalGroup(
             titulo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 69, Short.MAX_VALUE)
-            .addGroup(titulo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(titulo1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(titulomoderador1)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(titulo1Layout.createSequentialGroup()
+                .addGap(0, 15, Short.MAX_VALUE)
+                .addComponent(titulomoderador1)
+                .addGap(0, 14, Short.MAX_VALUE))
         );
 
         metodomoderar1.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
@@ -382,7 +407,6 @@ public class Eventos extends javax.swing.JFrame {
         campodescripcion.setText("Descripcion (No es obligatorio)");
         campodescripcion.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         campodescripcion.setMinimumSize(new java.awt.Dimension(200, 21));
-        campodescripcion.setPreferredSize(new java.awt.Dimension(200, 21));
         campodescripcion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 campodescripcionMousePressed(evt);
@@ -428,6 +452,17 @@ public class Eventos extends javax.swing.JFrame {
             }
         });
 
+        javax.swing.GroupLayout panelHoraLayout = new javax.swing.GroupLayout(panelHora);
+        panelHora.setLayout(panelHoraLayout);
+        panelHoraLayout.setHorizontalGroup(
+            panelHoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        panelHoraLayout.setVerticalGroup(
+            panelHoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout containerEventosLayout = new javax.swing.GroupLayout(containerEventos);
         containerEventos.setLayout(containerEventosLayout);
         containerEventosLayout.setHorizontalGroup(
@@ -437,21 +472,23 @@ public class Eventos extends javax.swing.JFrame {
             .addGroup(containerEventosLayout.createSequentialGroup()
                 .addGroup(containerEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(containerEventosLayout.createSequentialGroup()
+                        .addGap(96, 96, 96)
+                        .addComponent(metodomoderar3))
+                    .addGroup(containerEventosLayout.createSequentialGroup()
+                        .addGap(91, 91, 91)
+                        .addComponent(metodomoderar5)
+                        .addGap(90, 90, 90)
+                        .addComponent(panelHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(containerEventosLayout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addGroup(containerEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(campohoracomienzo, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
                             .addComponent(campolugar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(campoevnombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(containerEventosLayout.createSequentialGroup()
-                        .addGap(96, 96, 96)
-                        .addComponent(metodomoderar3))
-                    .addGroup(containerEventosLayout.createSequentialGroup()
-                        .addGap(91, 91, 91)
-                        .addComponent(metodomoderar5))
-                    .addGroup(containerEventosLayout.createSequentialGroup()
                         .addGap(83, 83, 83)
                         .addComponent(metodomoderar2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addGroup(containerEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, containerEventosLayout.createSequentialGroup()
                         .addComponent(campometodo5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -503,11 +540,16 @@ public class Eventos extends javax.swing.JFrame {
                         .addGroup(containerEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(campolugar, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(campocapMax, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(67, 67, 67)
-                        .addGroup(containerEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(metodomoderar5)
-                            .addComponent(metodomoderar6))
-                        .addGap(18, 18, 18)
+                        .addGroup(containerEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(containerEventosLayout.createSequentialGroup()
+                                .addGap(67, 67, 67)
+                                .addGroup(containerEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(metodomoderar5)
+                                    .addComponent(metodomoderar6)))
+                            .addGroup(containerEventosLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(panelHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(containerEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(campohoracomienzo, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(campohorafinalizado, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -515,8 +557,7 @@ public class Eventos extends javax.swing.JFrame {
                         .addComponent(metodomoderar7))
                     .addGroup(containerEventosLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(campometodo5, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(campometodo5, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(campodescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -759,9 +800,7 @@ public class Eventos extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(campocedula, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(118, 118, 118))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, superiorLayout.createSequentialGroup()
-                .addComponent(titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+            .addComponent(titulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         superiorLayout.setVerticalGroup(
             superiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -846,7 +885,6 @@ public class Eventos extends javax.swing.JFrame {
         campoexp.setText("Descripcion (No es obligatorio)");
         campoexp.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         campoexp.setMinimumSize(new java.awt.Dimension(200, 21));
-        campoexp.setPreferredSize(new java.awt.Dimension(200, 21));
         campoexp.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 campoexpMousePressed(evt);
@@ -900,7 +938,7 @@ public class Eventos extends javax.swing.JFrame {
                 .addComponent(experienciascantidad)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(campoexpint, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
                 .addComponent(footer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -918,7 +956,7 @@ public class Eventos extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(padre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(padre, javax.swing.GroupLayout.DEFAULT_SIZE, 844, Short.MAX_VALUE)
         );
 
         pack();
@@ -1039,11 +1077,29 @@ public class Eventos extends javax.swing.JFrame {
     }//GEN-LAST:event_registrarEventosMouseEntered
 
     private void registrarEventosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarEventosMouseExited
-       herramientasVentanas.cambiarColor(registrarEventos, false);
+        herramientasVentanas.cambiarColor(registrarEventos, false);
     }//GEN-LAST:event_registrarEventosMouseExited
 
     private void registrarEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarEventosActionPerformed
-        // TODO add your handling code here:
+        // Moderador
+        var nombre = this.camponombre.getText();
+        var cedula = this.campocedula.getText();
+        var correo = this.campocorreo.getText();
+        var telefono = this.campotlf.getText();
+        var rol = RolParticipante.MODERADOR;
+        var asistencia = true;
+        var tema = "-";
+        var descripcion = "Metodo: " + this.campometodo.getText() + 
+                ". Años de experiencia: " + this.campoexpint.getText() + "Experiencia: " +
+                this.campoexp.getText();
+        
+        // Evento
+        var nombreEvento = this.campoevnombre.getText();
+        var tipo = this.jComboBox1.getSelectedIndex();
+        var lugar = this.campolugar.getText();
+        //var capacidad = 
+        
+// TODO add your handling code here:
     }//GEN-LAST:event_registrarEventosActionPerformed
 
     private void campoexpintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoexpintActionPerformed
@@ -1186,6 +1242,7 @@ public class Eventos extends javax.swing.JFrame {
     private javax.swing.JLabel metodomoderar6;
     private javax.swing.JLabel metodomoderar7;
     private javax.swing.JPanel padre;
+    private javax.swing.JPanel panelHora;
     private javax.swing.JButton registrarEventos;
     private javax.swing.JButton registrarMod;
     private javax.swing.JButton salirMod;

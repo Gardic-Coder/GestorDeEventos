@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeSet;
 
-import main.java.domain.TipoEvento;
+import main.java.application.dto.TipoEvento;
 import main.java.application.dto.*;
 
 public class EventoRepository implements IEventoRepository{

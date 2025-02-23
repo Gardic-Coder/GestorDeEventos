@@ -15,7 +15,7 @@ public class EventoService {
     private final IEventoRepository eventoRepo = new EventoRepository();
     private final IParticipanteRepository participanteRepo = new ParticipanteRepository();
 
-    public List<Evento> cargarTodosLosEventos() {
+    List<Evento> cargarTodosLosEventos() {
         List<Evento> eventos = EventoMapper.listFromDTO(eventoRepo.cargarEventos());
         List<Participante> participantes = ParticipanteMapper.listaFromDTO(participanteRepo.cargarParticipantes());
 
@@ -36,7 +36,7 @@ public class EventoService {
         return eventos;
     }
 
-    public void guardarTodo(List<EventoDTO> eventos) {
+    void guardarTodo(List<EventoDTO> eventos) {
         // Extraer todos los participantes de todos los eventos
         List<ParticipanteDTO> participantes = eventos.stream()
             .flatMap(e -> e.getListaParticipantes().stream())

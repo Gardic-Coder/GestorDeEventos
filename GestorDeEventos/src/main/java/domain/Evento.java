@@ -1,5 +1,6 @@
 package main.java.domain;
 
+import main.java.application.dto.TipoEvento;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;

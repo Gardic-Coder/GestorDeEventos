@@ -1,4 +1,4 @@
-package main.java.domain;
+package main.java.application.dto;
 
 public enum TipoEvento {
     TALLER("Taller"),

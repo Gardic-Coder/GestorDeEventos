@@ -3,7 +3,6 @@ package main.java.application.dto;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Set;
-import main.java.domain.TipoEvento;
 
 public class EventoDTO {
     private String nombre;
