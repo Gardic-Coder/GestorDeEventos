@@ -33,7 +33,7 @@ public class reportesMod extends javax.swing.JFrame {
     private void cargarTablaEventos() {
         // Obtener datos del servicio
         EventoService eventoService = new EventoService();
-        List<EventoDTO> eventos = eventoService.listaDeEventoDTO();
+        List<EventoDTO> listaEventos = eventoService.listaDeEventoDTO();
 
         // Crear modelo de tabla
         DefaultTableModel model = new DefaultTableModel(
@@ -49,7 +49,7 @@ public class reportesMod extends javax.swing.JFrame {
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
 
         // Llenar la tabla
-        for (EventoDTO evento : eventos) {
+        for (EventoDTO evento : listaEventos) {
             model.addRow(new Object[]{
                 evento.getNombre(),
                 evento.getTipo().toString(),
@@ -74,12 +74,12 @@ public class reportesMod extends javax.swing.JFrame {
         ParticipanteService participanteService = new ParticipanteService();
         EventoService eventoService = new EventoService();
 
-        List<ParticipanteDTO> participantes = participanteService.listaParticipantes();
-        List<EventoDTO> eventos = eventoService.listaDeEventoDTO();
+        List<ParticipanteDTO> listaParticipantes = participanteService.listaParticipantes();
+        List<EventoDTO> listaEventos = eventoService.listaDeEventoDTO();
 
         // Crear mapa rápido para buscar eventos por ID
         Map<String, String> mapaEventos = new HashMap<>();
-        for (EventoDTO evento : eventos) {
+        for (EventoDTO evento : listaEventos) {
             mapaEventos.put(evento.getID(), evento.getNombre());
         }
 
@@ -97,7 +97,7 @@ public class reportesMod extends javax.swing.JFrame {
         tablaParticipante.setAutoCreateRowSorter(true);
 
         // Llenar la tabla
-        for (ParticipanteDTO participante : participantes) {
+        for (ParticipanteDTO participante : listaParticipantes) {
             String nombreEvento = mapaEventos.getOrDefault(participante.getEvento(), "Evento Desconocido");
 
             model.addRow(new Object[]{
@@ -117,8 +117,8 @@ public class reportesMod extends javax.swing.JFrame {
                     boolean isSelected, boolean hasFocus,
                     int row, int column
             ) {
-                if (value instanceof LocalDate) {
-                    value = ((LocalDate) value).format(formatter);
+                if (value instanceof LocalDate localDate) {
+                    value = localDate.format(formatter);
                 }
                 return super.getTableCellRendererComponent(
                         table, value, isSelected, hasFocus, row, column
@@ -135,11 +135,6 @@ public class reportesMod extends javax.swing.JFrame {
         tablaParticipante.getColumnModel().getColumn(2).setPreferredWidth(100); // Cédula
         tablaParticipante.getColumnModel().getColumn(3).setPreferredWidth(80);  // Rol
 
-        /*int filaSeleccionada = tablaEvt.getSelectedRow();
-        if (filaSeleccionada >= 0) {
-        String nombreEvento = (String) tablaEvt.getValueAt(filaSeleccionada, 0);
-        // Operaciones con el evento seleccionado...
-        }*/
     }
 
     private void eliminarEvento() {
@@ -799,10 +794,8 @@ public class reportesMod extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new reportesMod().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new reportesMod().setVisible(true);
         });
     }
 

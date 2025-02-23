@@ -30,14 +30,13 @@ public class herramientasVentanas {
         for (JTextField otroCampo : otrosCampos) { //Para los demas campos
             if (otroCampo.getText().isEmpty()) {//Si no estan vacios, no se alteran; en caso contrario, se les brinda su mensaje predeterminado
                 String mensaje = "";//En Java, la gestión de memoria para objetos como String se maneja automáticamente mediante el recolector de basura
-                if (otroCampo.getName().equals("camponombre")) {
-                    mensaje = "Nombre de la Persona";
-                } else if (otroCampo.getName().equals("campocedula")) {
-                    mensaje = "V-XX.XXX.XX";
-                } else if (otroCampo .getName().equals("campocorreo")) {
-                    mensaje = "Correo personal";
-                } else if (otroCampo.getName().equals("campotlf")){
-                    mensaje = "Nro. Personal";   
+                switch (otroCampo.getName()) {
+                    case "camponombre" -> mensaje = "Nombre de la Persona";
+                    case "campocedula" -> mensaje = "V-XX.XXX.XX";
+                    case "campocorreo" -> mensaje = "Correo personal";
+                    case "campotlf" -> mensaje = "Nro. Personal";
+                    default -> {
+                    }
                 }
                 herramientasVentanas.campovacio(otroCampo, mensaje, false);
             }

@@ -1421,6 +1421,10 @@ public class Eventos extends javax.swing.JFrame {
         herramientasVentanas.campovacio(campocedula, "V-XX.XXX.XX", false);
         herramientasVentanas.campovacio(campotlf, "Nro. Personal", false);
         herramientasVentanas.campovacio(campocorreo, "Correo personal", false);
+        herramientasVentanas.campovacio(campoevnombre, "Ingrese el nombre del evento", false);
+        herramientasVentanas.campovacio(campolugar, "Direccion", false);
+        herramientasVentanas.campovacio(campodescripcion, "Descripcion (No es obligatorio)", false);
+        herramientasVentanas.campovacio(campocapMax, "Participantes que asistiran", false);
     }//GEN-LAST:event_registrarEventosActionPerformed
 
     private void campoexpintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoexpintActionPerformed
@@ -1529,10 +1533,8 @@ public class Eventos extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Eventos().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Eventos().setVisible(true);
         });
     }
 
