@@ -36,14 +36,14 @@ public class reportesMod extends javax.swing.JFrame {
         participantes = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         tablaPar = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tablaParticipante = new javax.swing.JTable();
         crear2 = new javax.swing.JButton();
         update2 = new javax.swing.JButton();
         delete2 = new javax.swing.JButton();
         Salir2 = new javax.swing.JButton();
         eventos = new javax.swing.JPanel();
         tablaEventos = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaEvt = new javax.swing.JTable();
         crear = new javax.swing.JButton();
         update = new javax.swing.JButton();
         delete = new javax.swing.JButton();
@@ -110,7 +110,7 @@ public class reportesMod extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 228, 228));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tablaParticipante.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -121,7 +121,7 @@ public class reportesMod extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tablaPar.setViewportView(jTable2);
+        tablaPar.setViewportView(tablaParticipante);
 
         crear2.setBackground(new java.awt.Color(252, 186, 186));
         crear2.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
@@ -264,7 +264,7 @@ public class reportesMod extends javax.swing.JFrame {
 
         eventos.setBackground(new java.awt.Color(255, 228, 228));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaEvt.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -275,7 +275,7 @@ public class reportesMod extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tablaEventos.setViewportView(jTable1);
+        tablaEventos.setViewportView(tablaEvt);
 
         crear.setBackground(new java.awt.Color(252, 186, 186));
         crear.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
@@ -617,13 +617,13 @@ public class reportesMod extends javax.swing.JFrame {
     private com.raven.swing.TimePicker horaComenzar;
     private com.raven.swing.TimePicker horaFinal;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JPanel padre;
     private javax.swing.JPanel participantes;
     private javax.swing.JButton salir;
     private javax.swing.JScrollPane tablaEventos;
+    private javax.swing.JTable tablaEvt;
     private javax.swing.JScrollPane tablaPar;
+    private javax.swing.JTable tablaParticipante;
     private javax.swing.JComboBox<String> tablas;
     private javax.swing.JLabel titulo;
     private javax.swing.JButton update;
