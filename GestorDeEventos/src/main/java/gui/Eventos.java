@@ -1,9 +1,11 @@
 package main.java.gui;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField; //Permite usar los campos de Texto
 import main.java.application.dto.*;
 import main.java.application.services.EventoService;
@@ -12,7 +14,7 @@ import main.java.application.services.ParticipanteService;
 public class Eventos extends javax.swing.JFrame {
 
     //Elimina o vuelve a ingresar el texto predeterminado de los campos de textos, en caso de que esten vacios
-    public void validarcampoModerador(JTextField campo, String textopredeterminado, JTextField... otrosCampos){ 
+    public void validarcampoModerador(JTextField campo, String textopredeterminado, JTextField... otrosCampos) {
         if (campo.getText().equals(textopredeterminado)) {
             herramientasVentanas.campovacio(campo, "", true);
         }
@@ -31,19 +33,19 @@ public class Eventos extends javax.swing.JFrame {
                     mensaje = "Correo personal";
                 } else if (otroCampo == campotlf) {
                     mensaje = "Nro. Personal";
-                } else if (otroCampo == campoexp){
+                } else if (otroCampo == campoexp) {
                     mensaje = "Descripcion (No es obligatorio)";
                 }
                 herramientasVentanas.campovacio(otroCampo, mensaje, false);
             }
         }
     }
-    
-     public void validarcampoEvento(JTextField campo, String textopredeterminado, JTextField... otrosCampos){ 
+
+    public void validarcampoEvento(JTextField campo, String textopredeterminado, JTextField... otrosCampos) {
         if (campo.getText().equals(textopredeterminado)) {
             herramientasVentanas.campovacio(campo, "", true);
         }
-        
+
         for (JTextField otroCampo : otrosCampos) {
             if (otroCampo.getText().isEmpty()) {
                 String mensaje = "";
@@ -53,20 +55,19 @@ public class Eventos extends javax.swing.JFrame {
                     mensaje = "Direccion";
                 } else if (otroCampo == campocapMax) {
                     mensaje = "Participantes que asistiran";
-                } 
+                }
                 herramientasVentanas.campovacio(otroCampo, mensaje, false);
             }
         }
     }
-    
+
     private MainWindow principal; //Me permitra volver a la ventana principal (Referencia)
-    
-    
+
     public Eventos() {
         initComponents();
     }
-    
-     public Eventos(MainWindow principal) {
+
+    public Eventos(MainWindow principal) {
         initComponents();
         this.principal = principal;
         camponombre.setName("camponombre");
@@ -1010,11 +1011,175 @@ public class Eventos extends javax.swing.JFrame {
     }//GEN-LAST:event_registrarModMouseExited
 
     private void registrarModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarModActionPerformed
-        //Aqui habria logica, si tuviera una
+        EventoService eventoService = new EventoService();
+        ParticipanteService participanteService = new ParticipanteService();
+        String patronCI = "^V-\\d{2}\\.\\d{3}\\.\\d{3}$";
+        String patronCorreo = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$";
+        String patronTlf = "^04(12|26|16|14|24)\\d{7}$";
+
+        try {
+            // Validación del evento
+            if (campoevnombre.getText().isEmpty() || campoevnombre.getText().equals("Ingrese el nombre del evento")) {
+                throw new IllegalArgumentException("El nombre del evento es obligatorio");
+            }
+
+            if (campolugar.getText().isEmpty() || campolugar.getText().equals("Direccion")) {
+                throw new IllegalArgumentException("La dirección del evento es obligatoria");
+            }
+
+            int capacidad;
+            try {
+                capacidad = Integer.parseInt(campocapMax.getText());
+                if (capacidad <= 0) {
+                    throw new IllegalArgumentException("La capacidad máxima debe ser mayor a cero");
+                }
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException("La capacidad máxima debe ser un número válido");
+            }
+
+            // Validación de fechas y horas
+            java.util.Date fechaSeleccionada = calendario.getDate();
+            if (fechaSeleccionada == null) {
+                throw new IllegalArgumentException("Debe seleccionar una fecha para el evento");
+            }
+
+            if (horaComenzar.getSelectedDate() == null || horaFinal.getSelectedDate() == null) {
+                throw new IllegalArgumentException("Debe seleccionar horarios válidos");
+            }
+
+            // Conversiones de fecha/hora
+            LocalDate localDate = fechaSeleccionada.toInstant()
+                    .atZone(ZoneId.systemDefault())
+                    .toLocalDate();
+
+            LocalTime localTimeComienzo = horaComenzar.getSelectedDate().toInstant()
+                    .atZone(ZoneId.systemDefault())
+                    .toLocalTime();
+
+            LocalTime localTimeFinal = horaFinal.getSelectedDate().toInstant()
+                    .atZone(ZoneId.systemDefault())
+                    .toLocalTime();
+
+            // Validación tipo de evento
+            TipoEvento tipo = null;
+            int opcion = jComboBox1.getSelectedIndex();
+            switch (opcion) {
+                case 0 ->
+                    tipo = TipoEvento.CONFERENCIA;
+                case 1 ->
+                    tipo = TipoEvento.INVESTIGACIONJOR;
+                case 2 ->
+                    tipo = TipoEvento.SEMINARIO;
+                case 3 ->
+                    tipo = TipoEvento.TALLER;
+                default ->
+                    throw new IllegalArgumentException("Seleccione un tipo de evento válido");
+            }
+
+            // Creación del DTO del evento
+            EventoDTO eventoNuevo = new EventoDTO(
+                    campoevnombre.getText(),
+                    tipo,
+                    campolugar.getText(),
+                    localDate,
+                    localTimeComienzo,
+                    localTimeFinal,
+                    capacidad,
+                    campodescripcion.getText(),
+                    null
+            );
+
+            eventoNuevo = eventoService.generarEventoID(eventoNuevo);
+            eventoService.recibirEventoDTO(eventoNuevo);
+
+            // Validación del moderador
+            if (camponombre.getText().isEmpty() || camponombre.getText().equals("Nombre de la Persona")) {
+                throw new IllegalArgumentException("El nombre del moderador es obligatorio");
+            }
+
+            // Validación cédula
+            String cedula = campocedula.getText();
+            if (cedula.isEmpty() || cedula.equals("V-XX.XXX.XXX")) {
+                throw new IllegalArgumentException("La cédula es obligatoria");
+            }
+            if (!cedula.matches(patronCI)) {
+                throw new IllegalArgumentException("Formato de cédula inválido. Use V-XX.XXX.XXX");
+            }
+
+            // Validación correo
+            String correo = campocorreo.getText();
+            if (correo.isEmpty() || correo.equals("Correo personal")) {
+                throw new IllegalArgumentException("El correo electrónico es obligatorio");
+            }
+            if (!correo.matches(patronCorreo)) {
+                throw new IllegalArgumentException("Formato de correo electrónico inválido");
+            }
+
+            // Validación teléfono
+            String telefono = campotlf.getText();
+            if (telefono.isEmpty() || telefono.equals("Nro. Personal")) {
+                throw new IllegalArgumentException("El número de teléfono es obligatorio");
+            }
+            if (!telefono.matches(patronTlf)) {
+                throw new IllegalArgumentException("Formato de teléfono inválido. Use 04XX-XXXXXXX");
+            }
+
+            // Validación campos adicionales
+            if (campometodo.getText().isEmpty()
+                    || campoexpint.getText().isEmpty()
+                    || campoexp.getText().isEmpty()) {
+                throw new IllegalArgumentException("Complete todos los campos del moderador");
+            }
+
+            // Creación del DTO del participante
+            String descripcion = String.format("Metodo: %s. %s Años de experiencia. Experiencia previa: %s.",
+                    campometodo.getText(),
+                    campoexpint.getText(),
+                    campoexp.getText());
+
+            ParticipanteDTO moderador = new ParticipanteDTO(
+                    camponombre.getText(),
+                    cedula,
+                    correo,
+                    telefono,
+                    RolParticipante.MODERADOR,
+                    eventoNuevo.getID(),
+                    true,
+                    "-",
+                    descripcion
+            );
+
+            participanteService.agregarParticipante(moderador);
+
+            JOptionPane.showMessageDialog(this,
+                    "Registro exitoso!",
+                    "Éxito",
+                    JOptionPane.INFORMATION_MESSAGE);
+
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(this,
+                    e.getMessage(),
+                    "Error de validación",
+                    JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,
+                    "Error inesperado: " + e.getMessage(),
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
+
+        herramientasVentanas.campovacio(campometodo, "Practico, Teorico, etc...", false);
+        herramientasVentanas.campovacio(campoexp, "Descripcion (No es obligatorio)", false);
+        herramientasVentanas.campovacio(campoexpint, "X Años de Experiencia", false);
+        herramientasVentanas.campovacio(camponombre, "Nombre de la Persona", false);
+        herramientasVentanas.campovacio(campocedula, "V-XX.XXX.XX", false);
+        herramientasVentanas.campovacio(campotlf, "Nro. Personal", false);
+        herramientasVentanas.campovacio(campocorreo, "Correo personal", false);
     }//GEN-LAST:event_registrarModActionPerformed
 
     private void campocorreoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campocorreoMousePressed
-       herramientasVentanas.validarCampoprincipal(campocorreo, "Correo personal", campotlf, camponombre, campocedula);
+        herramientasVentanas.validarCampoprincipal(campocorreo, "Correo personal", campotlf, camponombre, campocedula);
     }//GEN-LAST:event_campocorreoMousePressed
 
     private void campocorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campocorreoActionPerformed
@@ -1030,7 +1195,7 @@ public class Eventos extends javax.swing.JFrame {
     }//GEN-LAST:event_camponombreActionPerformed
 
     private void campocedulaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campocedulaMousePressed
-        herramientasVentanas.validarCampoprincipal(campocedula, "V-XX.XXX.XX", campotlf, camponombre, campocorreo); 
+        herramientasVentanas.validarCampoprincipal(campocedula, "V-XX.XXX.XX", campotlf, camponombre, campocorreo);
 
     }//GEN-LAST:event_campocedulaMousePressed
 
@@ -1040,11 +1205,11 @@ public class Eventos extends javax.swing.JFrame {
     }//GEN-LAST:event_campotlfMousePressed
 
     private void campometodoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campometodoMousePressed
-        validarcampoModerador(campometodo,"Practico, Teorico, etc...", campoexpint, camponombre, campotlf, campocorreo, campocedula);
+        validarcampoModerador(campometodo, "Practico, Teorico, etc...", campoexpint, camponombre, campotlf, campocorreo, campocedula);
     }//GEN-LAST:event_campometodoMousePressed
 
     private void campoexpintMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoexpintMousePressed
-        validarcampoModerador(campoexpint,"X Años de Experiencia", campometodo, camponombre, campotlf, campocorreo, campocedula);
+        validarcampoModerador(campoexpint, "X Años de Experiencia", campometodo, camponombre, campotlf, campocorreo, campocedula);
     }//GEN-LAST:event_campoexpintMousePressed
 
     private void salireventosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salireventosMouseEntered
@@ -1075,7 +1240,7 @@ public class Eventos extends javax.swing.JFrame {
     private void limpiarEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarEventosActionPerformed
         herramientasVentanas.campovacio(campoevnombre, "Ingrese el nombre del evento", false);
         herramientasVentanas.campovacio(campolugar, "Direccion", false);
-        
+
         herramientasVentanas.campovacio(campodescripcion, "Descripcion (No es obligatorio)", false);
         herramientasVentanas.campovacio(campocapMax, "Participantes que asistiran", false);
     }//GEN-LAST:event_limpiarEventosActionPerformed
@@ -1085,7 +1250,7 @@ public class Eventos extends javax.swing.JFrame {
     }//GEN-LAST:event_registrarEventosMouseEntered
 
     private void registrarEventosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarEventosMouseExited
-       herramientasVentanas.cambiarColor(registrarEventos, false);
+        herramientasVentanas.cambiarColor(registrarEventos, false);
     }//GEN-LAST:event_registrarEventosMouseExited
 
     private void registrarEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarEventosActionPerformed
@@ -1094,91 +1259,166 @@ public class Eventos extends javax.swing.JFrame {
         String patronCI = "^V-\\d{2}\\.\\d{3}\\.\\d{3}$";
         String patronCorreo = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$";
         String patronTlf = "^04(12|26|16|14|24)\\d{7}$";
-        // Evento
-        
-        if(this.campoevnombre.getText().isEmpty() || 
-                this.campoevnombre.getText().equals("Ingrese el nombre del evento")) {
-            
-        }
-        if(this.campolugar.getText().isEmpty() || this.campolugar.getText().equals("Direccion")) {
-            
-        }
-        if(Integer.parseInt(this.campocapMax.getText()) <= 0) {
-            
-        }
-        TipoEvento tipo = null;
-        int opcion = this.jComboBox1.getSelectedIndex();
-        switch(opcion) {
-            case 0 -> tipo = TipoEvento.CONFERENCIA;
-            case 1 -> tipo = TipoEvento.INVESTIGACIONJOR;
-            case 2 -> tipo = TipoEvento.SEMINARIO;
-            case 3 -> tipo = TipoEvento.TALLER;
-        }
-        java.util.Date fechaSeleccionada = this.calendario.getDate();
-        LocalDate localDate = fechaSeleccionada.toInstant()
-            .atZone(ZoneId.systemDefault()) // Usar la zona horaria del sistema
-            .toLocalDate();
-        
-        var hora1 = this.horaComenzar.getSelectedDate();
-        LocalTime localTimeComienzo = hora1.toInstant().
-                atZone(ZoneId.systemDefault()).toLocalTime();
-        
-        var hora2 = this.horaFinal.getSelectedDate();
-        LocalTime localTimeFinal = hora2.toInstant().
-                atZone(ZoneId.systemDefault()).toLocalTime();
-        
-        EventoDTO eventoNuevo = new EventoDTO(this.campoevnombre.getText(), tipo, 
-                this.campolugar.getText(), localDate, localTimeComienzo, localTimeFinal, 
-                Integer.parseInt(this.campocapMax.getText()), 
-                this.campodescripcion.getText(), null);
-        
-        eventoNuevo = eventoService.generarEventoID(eventoNuevo);
-        eventoService.recibirEventoDTO(eventoNuevo);
-        
-        // Moderador
-        if(this.camponombre.getText().isEmpty() || 
-                this.camponombre.getText().equals("Nombre de la Persona")){
-            
-        }
-        
-        if(this.campocedula.getText().isEmpty() || 
-                this.campocedula.getText().equals("V-XX.XXX.XXX")) {
-            Pattern pattern = Pattern.compile(patronCI);
-            Matcher matcher = pattern.matcher(this.campocedula.getText());
-            if(!matcher.matches()) {
-                
+
+        try {
+            // Validación del evento
+            if (campoevnombre.getText().isEmpty() || campoevnombre.getText().equals("Ingrese el nombre del evento")) {
+                throw new IllegalArgumentException("El nombre del evento es obligatorio");
             }
-        }
-        
-        if(this.campocorreo.getText().isEmpty() || 
-                this.campocorreo.getText().equals("Correo personal")) {
-            Pattern pattern = Pattern.compile(patronCorreo);
-            Matcher matcher = pattern.matcher(this.campocorreo.getText());
-            if(!matcher.matches()) {
-                
+
+            if (campolugar.getText().isEmpty() || campolugar.getText().equals("Direccion")) {
+                throw new IllegalArgumentException("La dirección del evento es obligatoria");
             }
-        }
-        
-        if(this.campotlf.getText().isEmpty() || 
-                this.campotlf.getText().equals("Nro. Personal")) {
-            Pattern pattern = Pattern.compile(patronTlf);
-            Matcher matcher = pattern.matcher(this.campotlf.getText());
-            if(!matcher.matches()) {
-                
+
+            int capacidad;
+            try {
+                capacidad = Integer.parseInt(campocapMax.getText());
+                if (capacidad <= 0) {
+                    throw new IllegalArgumentException("La capacidad máxima debe ser mayor a cero");
+                }
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException("La capacidad máxima debe ser un número válido");
             }
+
+            // Validación de fechas y horas
+            java.util.Date fechaSeleccionada = calendario.getDate();
+            if (fechaSeleccionada == null) {
+                throw new IllegalArgumentException("Debe seleccionar una fecha para el evento");
+            }
+
+            if (horaComenzar.getSelectedDate() == null || horaFinal.getSelectedDate() == null) {
+                throw new IllegalArgumentException("Debe seleccionar horarios válidos");
+            }
+
+            // Conversiones de fecha/hora
+            LocalDate localDate = fechaSeleccionada.toInstant()
+                    .atZone(ZoneId.systemDefault())
+                    .toLocalDate();
+
+            LocalTime localTimeComienzo = horaComenzar.getSelectedDate().toInstant()
+                    .atZone(ZoneId.systemDefault())
+                    .toLocalTime();
+
+            LocalTime localTimeFinal = horaFinal.getSelectedDate().toInstant()
+                    .atZone(ZoneId.systemDefault())
+                    .toLocalTime();
+
+            // Validación tipo de evento
+            TipoEvento tipo = null;
+            int opcion = jComboBox1.getSelectedIndex();
+            switch (opcion) {
+                case 0 ->
+                    tipo = TipoEvento.CONFERENCIA;
+                case 1 ->
+                    tipo = TipoEvento.INVESTIGACIONJOR;
+                case 2 ->
+                    tipo = TipoEvento.SEMINARIO;
+                case 3 ->
+                    tipo = TipoEvento.TALLER;
+                default ->
+                    throw new IllegalArgumentException("Seleccione un tipo de evento válido");
+            }
+
+            // Creación del DTO del evento
+            EventoDTO eventoNuevo = new EventoDTO(
+                    campoevnombre.getText(),
+                    tipo,
+                    campolugar.getText(),
+                    localDate,
+                    localTimeComienzo,
+                    localTimeFinal,
+                    capacidad,
+                    campodescripcion.getText(),
+                    null
+            );
+
+            eventoNuevo = eventoService.generarEventoID(eventoNuevo);
+            eventoService.recibirEventoDTO(eventoNuevo);
+
+            // Validación del moderador
+            if (camponombre.getText().isEmpty() || camponombre.getText().equals("Nombre de la Persona")) {
+                throw new IllegalArgumentException("El nombre del moderador es obligatorio");
+            }
+
+            // Validación cédula
+            String cedula = campocedula.getText();
+            if (cedula.isEmpty() || cedula.equals("V-XX.XXX.XXX")) {
+                throw new IllegalArgumentException("La cédula es obligatoria");
+            }
+            if (!cedula.matches(patronCI)) {
+                throw new IllegalArgumentException("Formato de cédula inválido. Use V-XX.XXX.XXX");
+            }
+
+            // Validación correo
+            String correo = campocorreo.getText();
+            if (correo.isEmpty() || correo.equals("Correo personal")) {
+                throw new IllegalArgumentException("El correo electrónico es obligatorio");
+            }
+            if (!correo.matches(patronCorreo)) {
+                throw new IllegalArgumentException("Formato de correo electrónico inválido");
+            }
+
+            // Validación teléfono
+            String telefono = campotlf.getText();
+            if (telefono.isEmpty() || telefono.equals("Nro. Personal")) {
+                throw new IllegalArgumentException("El número de teléfono es obligatorio");
+            }
+            if (!telefono.matches(patronTlf)) {
+                throw new IllegalArgumentException("Formato de teléfono inválido. Use 04XX-XXXXXXX");
+            }
+
+            // Validación campos adicionales
+            if (campometodo.getText().isEmpty()
+                    || campoexpint.getText().isEmpty()
+                    || campoexp.getText().isEmpty()) {
+                throw new IllegalArgumentException("Complete todos los campos del moderador");
+            }
+
+            // Creación del DTO del participante
+            String descripcion = String.format("Metodo: %s. %s Años de experiencia. Experiencia previa: %s.",
+                    campometodo.getText(),
+                    campoexpint.getText(),
+                    campoexp.getText());
+
+            ParticipanteDTO moderador = new ParticipanteDTO(
+                    camponombre.getText(),
+                    cedula,
+                    correo,
+                    telefono,
+                    RolParticipante.MODERADOR,
+                    eventoNuevo.getID(),
+                    true,
+                    "-",
+                    descripcion
+            );
+
+            participanteService.agregarParticipante(moderador);
+
+            JOptionPane.showMessageDialog(this,
+                    "Registro exitoso!",
+                    "Éxito",
+                    JOptionPane.INFORMATION_MESSAGE);
+
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(this,
+                    e.getMessage(),
+                    "Error de validación",
+                    JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,
+                    "Error inesperado: " + e.getMessage(),
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
         }
         
-        String descripcion = "Metodo: " + this.campometodo.getText() 
-                + ". " + this.campoexpint.getText() + " Años de experiencia. " +
-                "Experiencia previa: " + this.campoexp.getText() + ".";
-        
-        ParticipanteDTO moderador = new ParticipanteDTO(this.camponombre.getText(), 
-                this.campocedula.getText(), this.campocorreo.getText(), this.campotlf.getText(), 
-                RolParticipante.MODERADOR, eventoNuevo.getID(), true, "-", descripcion);
-        
-        
-        participanteService.agregarParticipante(moderador);
-// TODO add your handling code here:
+        herramientasVentanas.campovacio(campometodo, "Practico, Teorico, etc...", false);
+        herramientasVentanas.campovacio(campoexp, "Descripcion (No es obligatorio)", false);
+        herramientasVentanas.campovacio(campoexpint, "X Años de Experiencia", false);
+        herramientasVentanas.campovacio(camponombre, "Nombre de la Persona", false);
+        herramientasVentanas.campovacio(campocedula, "V-XX.XXX.XX", false);
+        herramientasVentanas.campovacio(campotlf, "Nro. Personal", false);
+        herramientasVentanas.campovacio(campocorreo, "Correo personal", false);
     }//GEN-LAST:event_registrarEventosActionPerformed
 
     private void campoexpintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoexpintActionPerformed
@@ -1186,12 +1426,12 @@ public class Eventos extends javax.swing.JFrame {
     }//GEN-LAST:event_campoexpintActionPerformed
 
     private void ventanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ventanaActionPerformed
-        if(ventana.getSelectedIndex()==0){
+        if (ventana.getSelectedIndex() == 0) {
             containerCartas.removeAll();
             containerCartas.add(containerMod);
             containerCartas.repaint();
             containerCartas.revalidate();
-        }else{
+        } else {
             containerCartas.removeAll();
             containerCartas.add(containerEventos);
             containerCartas.repaint();
@@ -1204,23 +1444,23 @@ public class Eventos extends javax.swing.JFrame {
     }//GEN-LAST:event_campoexpActionPerformed
 
     private void campoexpMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoexpMousePressed
-        validarcampoModerador(campoexp,"Descripcion (No es obligatorio)", campoexpint, campometodo, camponombre, campotlf, campocorreo, campocedula);
+        validarcampoModerador(campoexp, "Descripcion (No es obligatorio)", campoexpint, campometodo, camponombre, campotlf, campocorreo, campocedula);
     }//GEN-LAST:event_campoexpMousePressed
 
     private void campoevnombreMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoevnombreMousePressed
-        validarcampoModerador(campoevnombre,"Ingrese el nombre del evento", campolugar, campodescripcion, campocapMax);
+        validarcampoModerador(campoevnombre, "Ingrese el nombre del evento", campolugar, campodescripcion, campocapMax);
     }//GEN-LAST:event_campoevnombreMousePressed
 
     private void campolugarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campolugarMousePressed
-        validarcampoModerador(campolugar,"Direccion", campoevnombre, campodescripcion, campocapMax);
+        validarcampoModerador(campolugar, "Direccion", campoevnombre, campodescripcion, campocapMax);
     }//GEN-LAST:event_campolugarMousePressed
 
     private void campodescripcionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campodescripcionMousePressed
-        validarcampoModerador(campodescripcion,"Descripcion (No es obligatorio)", campolugar, campoevnombre, campocapMax);
+        validarcampoModerador(campodescripcion, "Descripcion (No es obligatorio)", campolugar, campoevnombre, campocapMax);
     }//GEN-LAST:event_campodescripcionMousePressed
 
     private void campocapMaxMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campocapMaxMousePressed
-        validarcampoModerador(campocapMax,"Participantes que asistiran", campolugar, campodescripcion, campoevnombre);
+        validarcampoModerador(campocapMax, "Participantes que asistiran", campolugar, campodescripcion, campoevnombre);
     }//GEN-LAST:event_campocapMaxMousePressed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
@@ -1244,19 +1484,19 @@ public class Eventos extends javax.swing.JFrame {
     }//GEN-LAST:event_botonFinalizarActionPerformed
 
     private void botonComienzoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonComienzoMouseEntered
-       herramientasVentanas.cambiarColor(botonComienzo, true);
+        herramientasVentanas.cambiarColor(botonComienzo, true);
     }//GEN-LAST:event_botonComienzoMouseEntered
 
     private void botonComienzoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonComienzoMouseExited
-       herramientasVentanas.cambiarColor(botonComienzo, false);
+        herramientasVentanas.cambiarColor(botonComienzo, false);
     }//GEN-LAST:event_botonComienzoMouseExited
 
     private void botonFinalizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonFinalizarMouseEntered
-       herramientasVentanas.cambiarColor(botonFinalizar, true);
+        herramientasVentanas.cambiarColor(botonFinalizar, true);
     }//GEN-LAST:event_botonFinalizarMouseEntered
 
     private void botonFinalizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonFinalizarMouseExited
-       herramientasVentanas.cambiarColor(botonFinalizar, false);
+        herramientasVentanas.cambiarColor(botonFinalizar, false);
     }//GEN-LAST:event_botonFinalizarMouseExited
 
     /**
