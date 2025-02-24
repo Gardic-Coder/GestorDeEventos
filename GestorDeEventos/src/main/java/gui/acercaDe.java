@@ -5,7 +5,7 @@ import java.awt.Toolkit;
 import java.net.URL;
 
 
-public class acercaDe extends javax.swing.JFrame {
+public class AcercaDe extends javax.swing.JFrame {
     
     //Icono del JFrame, cargamos la imagen residente en nuestro proyecto (Logotipo)
     @Override
@@ -16,11 +16,11 @@ public class acercaDe extends javax.swing.JFrame {
 
     private MainWindow principal; //Me permitra volver a la ventana principal (Referencia)
     
-    public acercaDe() {
+    public AcercaDe() {
         initComponents();
     }
     
-    public acercaDe(MainWindow principal) {
+    public AcercaDe(MainWindow principal) {
         initComponents();
         this.principal=principal;
     }
@@ -174,11 +174,11 @@ public class acercaDe extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
-        herramientasVentanas.cambiarColor(jButton1, true);
+        HerramientasVentanas.cambiarColor(jButton1, true);
     }//GEN-LAST:event_jButton1MouseEntered
 
     private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
-        herramientasVentanas.cambiarColor(jButton1, false);
+        HerramientasVentanas.cambiarColor(jButton1, false);
     }//GEN-LAST:event_jButton1MouseExited
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -203,19 +203,20 @@ public class acercaDe extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(acercaDe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AcercaDe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(acercaDe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AcercaDe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(acercaDe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AcercaDe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(acercaDe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AcercaDe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new acercaDe().setVisible(true);
+            new AcercaDe().setVisible(true);
         });
     }
 
