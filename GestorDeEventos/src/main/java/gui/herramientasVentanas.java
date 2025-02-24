@@ -3,7 +3,7 @@ import java.awt.Color; //Defino colores personalizados (Tecnologia Hover)
 import javax.swing.JButton; //Me permitira utilizar manualmente Jbutton
 import javax.swing.JTextField;
 
-public class herramientasVentanas {
+public class HerramientasVentanas {
     public static void cambiarColor(JButton boton, boolean eventoentered){ //Una funcion que me permitira alterar los colores de un boton, dependiendo de la entrada o salida de un boton
         if (eventoentered){ //Si el mouse entro en el radio del boton
             boton.setBackground (new Color(255, 151, 151)); //Cambiar el color del fondo
@@ -25,7 +25,7 @@ public class herramientasVentanas {
     
     public static void validarCampoprincipal(JTextField campo, String textopredeterminado, JTextField... otrosCampos){
         if (campo.getText().equals(textopredeterminado)) { //El campo presionado, se verifica con su texto predeterminado
-            herramientasVentanas.campovacio(campo, "", true);
+            HerramientasVentanas.campovacio(campo, "", true);
         }
         for (JTextField otroCampo : otrosCampos) { //Para los demas campos
             if (otroCampo.getText().isEmpty()) {//Si no estan vacios, no se alteran; en caso contrario, se les brinda su mensaje predeterminado
@@ -38,7 +38,7 @@ public class herramientasVentanas {
                     default -> {
                     }
                 }
-                herramientasVentanas.campovacio(otroCampo, mensaje, false);
+                HerramientasVentanas.campovacio(otroCampo, mensaje, false);
             }
         }
     }
