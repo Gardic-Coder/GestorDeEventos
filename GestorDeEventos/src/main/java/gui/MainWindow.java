@@ -309,7 +309,7 @@ public class MainWindow extends javax.swing.JFrame {
 
 
     private void terceraopcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_terceraopcionActionPerformed
-        acercaDe info = new acercaDe(this);
+        AcercaDe info = new AcercaDe(this);
         info.setVisible(true);
         info.setLocationRelativeTo(null);
         this.dispose();
