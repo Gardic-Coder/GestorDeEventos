@@ -16,10 +16,6 @@ public class MainWindow extends javax.swing.JFrame {
     @Override
     public Image getIconImage() {
         URL url = getClass().getClassLoader().getResource("Imagenes/mainWindow/seashell.png");
-        System.out.println("URL del recurso: " + url); // Verifica en consola
-        if (url == null) {
-            throw new RuntimeException("¡Recurso no encontrado!");
-        }
         return Toolkit.getDefaultToolkit().getImage(url);
     }
 
@@ -62,7 +58,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Candara Light", 3, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(153, 0, 0));
-        jLabel3.setText("          Ver. 1.0 (Trabajo Finalizado)");
+        jLabel3.setText("          Ver. 1.3.0 (Trabajo Finalizado)");
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jLabel4.setFont(new java.awt.Font("Copperplate Gothic Bold", 3, 14)); // NOI18N
@@ -239,18 +235,15 @@ public class MainWindow extends javax.swing.JFrame {
             .addGroup(izquierdaprincipalLayout.createSequentialGroup()
                 .addGroup(izquierdaprincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(izquierdaprincipalLayout.createSequentialGroup()
-                        .addGroup(izquierdaprincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(izquierdaprincipalLayout.createSequentialGroup()
-                                .addGap(43, 43, 43)
-                                .addComponent(jLabel5))
-                            .addGroup(izquierdaprincipalLayout.createSequentialGroup()
-                                .addGap(48, 48, 48)
-                                .addComponent(jLabel6)))
-                        .addGap(0, 35, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, izquierdaprincipalLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, 0))
+                        .addGap(43, 43, 43)
+                        .addComponent(jLabel5))
+                    .addGroup(izquierdaprincipalLayout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(jLabel6)))
+                .addGap(0, 35, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, izquierdaprincipalLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         izquierdaprincipalLayout.setVerticalGroup(
             izquierdaprincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

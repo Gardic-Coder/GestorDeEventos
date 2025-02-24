@@ -2,6 +2,9 @@ package main.java.gui;
 
 import main.java.application.dto.RolParticipante;
 import java.awt.Component;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.net.URL;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListCellRenderer;
@@ -12,6 +15,13 @@ import main.java.application.dto.*;
 import main.java.application.services.*;
 
 public class Participante extends javax.swing.JFrame {
+    
+    //Icono del JFrame, cargamos la imagen residente en nuestro proyecto (Logotipo)
+    @Override
+    public Image getIconImage() {
+        URL url = getClass().getClassLoader().getResource("Imagenes/mainWindow/seashell.png");
+        return Toolkit.getDefaultToolkit().getImage(url);
+    }
 
     private MainWindow principal; //Me permitra volver a la ventana principal (Referencia)
 
@@ -288,6 +298,7 @@ public class Participante extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
         setUndecorated(true);
         setResizable(false);
 
