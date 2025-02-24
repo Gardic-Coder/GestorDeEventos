@@ -58,7 +58,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Candara Light", 3, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(153, 0, 0));
-        jLabel3.setText("          Ver. 1.3.0 (Trabajo Finalizado)");
+        jLabel3.setText("          Ver. 1.3.3 (Trabajo Finalizado)");
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jLabel4.setFont(new java.awt.Font("Copperplate Gothic Bold", 3, 14)); // NOI18N
