@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
-//Clase Abstracta de los Eventos; plantilla general de la cual saldran cada tipo de Evento
 public class Evento {
     private String nombre;
     private TipoEvento tipo;

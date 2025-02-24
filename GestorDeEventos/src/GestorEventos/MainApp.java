@@ -1,21 +1,12 @@
-
 package GestorEventos;
 import main.java.gui.MainWindow;
-/**
- *
- * @author juanm
- */
-public class MainApp {
-//Mensaje de Alejandro
-//MainWindows parece tener otro tipo de main, que se compila de manera predeterminada. No se si esta parte del codigo quedo obsoleta
 
-    /**
-     * @param args the command line arguments
-     */
+public class MainApp {
+    
     public static void main(String[] args) {
-         MainWindow paginainicial = new MainWindow();
-         paginainicial.setVisible(true);
-         paginainicial.setLocationRelativeTo(null);
-         
+        MainWindow paginainicial = new MainWindow();
+        paginainicial.setVisible(true);
+        paginainicial.setLocationRelativeTo(null);
+        
     }
 }
