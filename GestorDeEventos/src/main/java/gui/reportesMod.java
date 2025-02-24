@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
 import main.java.application.dto.*;
 import main.java.application.services.*;
 
-public class ReportesMod extends javax.swing.JFrame {
+public class reportesMod extends javax.swing.JFrame {
     
     //Icono del JFrame, cargamos la imagen residente en nuestro proyecto (Logotipo)
     @Override
@@ -28,13 +28,13 @@ public class ReportesMod extends javax.swing.JFrame {
 
     private MainWindow principal;
 
-    public ReportesMod() {
+    public reportesMod() {
         initComponents();
         cargarTablaEventos();
         cargarTablaParticipantes();
     }
 
-    public ReportesMod(MainWindow principal) {
+    public reportesMod(MainWindow principal) {
         initComponents();
         cargarTablaEventos();
         cargarTablaParticipantes();
@@ -588,11 +588,11 @@ public class ReportesMod extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void crearMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearMouseEntered
-        HerramientasVentanas.cambiarColor(crear, true);
+        herramientasVentanas.cambiarColor(crear, true);
     }//GEN-LAST:event_crearMouseEntered
 
     private void crearMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearMouseExited
-        HerramientasVentanas.cambiarColor(crear, false);
+        herramientasVentanas.cambiarColor(crear, false);
     }//GEN-LAST:event_crearMouseExited
 
     private void crearMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearMousePressed
@@ -604,15 +604,15 @@ public class ReportesMod extends javax.swing.JFrame {
         crearEvt.setVisible(true);
         crearEvt.setLocationRelativeTo(null);
         this.dispose();
-        HerramientasVentanas.cambiarColor(crear, false);
+        herramientasVentanas.cambiarColor(crear, false);
     }//GEN-LAST:event_crearActionPerformed
 
     private void deleteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseEntered
-        HerramientasVentanas.cambiarColor(delete, true);
+        herramientasVentanas.cambiarColor(delete, true);
     }//GEN-LAST:event_deleteMouseEntered
 
     private void deleteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseExited
-        HerramientasVentanas.cambiarColor(delete, false);
+        herramientasVentanas.cambiarColor(delete, false);
     }//GEN-LAST:event_deleteMouseExited
 
     private void deleteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMousePressed
@@ -624,11 +624,11 @@ public class ReportesMod extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteActionPerformed
 
     private void salirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMouseEntered
-        HerramientasVentanas.cambiarColor(salir, true);
+        herramientasVentanas.cambiarColor(salir, true);
     }//GEN-LAST:event_salirMouseEntered
 
     private void salirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMouseExited
-        HerramientasVentanas.cambiarColor(salir, false);
+        herramientasVentanas.cambiarColor(salir, false);
     }//GEN-LAST:event_salirMouseExited
 
     private void salirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMousePressed
@@ -641,11 +641,11 @@ public class ReportesMod extends javax.swing.JFrame {
     }//GEN-LAST:event_salirActionPerformed
 
     private void Salir2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Salir2MouseEntered
-        HerramientasVentanas.cambiarColor(Salir2, true);
+        herramientasVentanas.cambiarColor(Salir2, true);
     }//GEN-LAST:event_Salir2MouseEntered
 
     private void Salir2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Salir2MouseExited
-        HerramientasVentanas.cambiarColor(Salir2, false);
+        herramientasVentanas.cambiarColor(Salir2, false);
     }//GEN-LAST:event_Salir2MouseExited
 
     private void Salir2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Salir2MousePressed
@@ -672,11 +672,11 @@ public class ReportesMod extends javax.swing.JFrame {
     }//GEN-LAST:event_tablasActionPerformed
 
     private void crear2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crear2MouseEntered
-        HerramientasVentanas.cambiarColor(crear2, true);
+        herramientasVentanas.cambiarColor(crear2, true);
     }//GEN-LAST:event_crear2MouseEntered
 
     private void crear2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crear2MouseExited
-        HerramientasVentanas.cambiarColor(crear2, false);
+        herramientasVentanas.cambiarColor(crear2, false);
     }//GEN-LAST:event_crear2MouseExited
 
     private void crear2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crear2MousePressed
@@ -688,15 +688,15 @@ public class ReportesMod extends javax.swing.JFrame {
         crearPar.setVisible(true);
         crearPar.setLocationRelativeTo(null);
         this.dispose();
-        HerramientasVentanas.cambiarColor(crear, false);
+        herramientasVentanas.cambiarColor(crear, false);
     }//GEN-LAST:event_crear2ActionPerformed
 
     private void delete2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delete2MouseEntered
-        HerramientasVentanas.cambiarColor(delete2, true);
+        herramientasVentanas.cambiarColor(delete2, true);
     }//GEN-LAST:event_delete2MouseEntered
 
     private void delete2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delete2MouseExited
-        HerramientasVentanas.cambiarColor(delete2, false);
+        herramientasVentanas.cambiarColor(delete2, false);
     }//GEN-LAST:event_delete2MouseExited
 
     private void delete2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delete2MousePressed
@@ -724,20 +724,22 @@ public class ReportesMod extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ReportesMod.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(reportesMod.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ReportesMod.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(reportesMod.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ReportesMod.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(reportesMod.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ReportesMod.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(reportesMod.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new ReportesMod().setVisible(true);
+            new reportesMod().setVisible(true);
         });
     }
 

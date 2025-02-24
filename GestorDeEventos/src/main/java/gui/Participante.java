@@ -50,7 +50,7 @@ public class Participante extends javax.swing.JFrame {
     //Ocultar o no los campos de Conferencista
     public void validarcampoConferencista(JTextField campo, String textopredeterminado, JTextField... otrosCampos) {
         if (campo.getText().equals(textopredeterminado)) {
-            HerramientasVentanas.campovacio(campo, "", true);
+            herramientasVentanas.campovacio(campo, "", true);
         }
         for (JTextField otroCampo : otrosCampos) {
             if (otroCampo.getText().isEmpty()) {
@@ -62,7 +62,7 @@ public class Participante extends javax.swing.JFrame {
                 } else if (otroCampo == campotemaconferencia) {
                     mensaje = "De lo que quiere informar";
                 }
-                HerramientasVentanas.campovacio(otroCampo, mensaje, false);
+                herramientasVentanas.campovacio(otroCampo, mensaje, false);
             }
         }
     }
@@ -70,7 +70,7 @@ public class Participante extends javax.swing.JFrame {
     //Instructor
     public void validarcampoInstructor(JTextField campo, String textopredeterminado, JTextField... otrosCampos) {
         if (campo.getText().equals(textopredeterminado)) {
-            HerramientasVentanas.campovacio(campo, "", true);
+            herramientasVentanas.campovacio(campo, "", true);
         }
         for (JTextField otroCampo : otrosCampos) {
             if (otroCampo.getText().isEmpty()) {
@@ -82,7 +82,7 @@ public class Participante extends javax.swing.JFrame {
                 } else if (otroCampo == campoexp) {
                     mensaje = "Cantidad de años";
                 }
-                HerramientasVentanas.campovacio(otroCampo, mensaje, false);
+                herramientasVentanas.campovacio(otroCampo, mensaje, false);
             }
         }
     }
@@ -90,7 +90,7 @@ public class Participante extends javax.swing.JFrame {
     //Ponente
     public void validarcampoPonente(JTextField campo, String textopredeterminado, JTextField... otrosCampos) {
         if (campo.getText().equals(textopredeterminado)) {
-            HerramientasVentanas.campovacio(campo, "", true);
+            herramientasVentanas.campovacio(campo, "", true);
         }
         for (JTextField otroCampo : otrosCampos) {
             if (otroCampo.getText().isEmpty()) {
@@ -102,7 +102,7 @@ public class Participante extends javax.swing.JFrame {
                 } else if (otroCampo == campoduracionponent) {
                     mensaje = "Tiempo a utilizar";
                 }
-                HerramientasVentanas.campovacio(otroCampo, mensaje, false);
+                herramientasVentanas.campovacio(otroCampo, mensaje, false);
             }
         }
     }
@@ -226,19 +226,19 @@ public class Participante extends javax.swing.JFrame {
     }
 
     private void limpiarCampos() {
-        HerramientasVentanas.campovacio(camponombre, "Nombre de la Persona", false);
-        HerramientasVentanas.campovacio(campocedula, "V-XX.XXX.XX", false);
-        HerramientasVentanas.campovacio(campocorreo, "Correo personal", false);
-        HerramientasVentanas.campovacio(campotlf, "Nro. Personal", false);
-        HerramientasVentanas.campovacio(campoempresa, "Nombre de la Empresa", false);
-        HerramientasVentanas.campovacio(campocargoempresa, "Cargo en la Empresa", false);
-        HerramientasVentanas.campovacio(campotemaconferencia, "De lo que quiere informar", false);
-        HerramientasVentanas.campovacio(campotemaespecialidad, "Campo especializado", false);
-        HerramientasVentanas.campovacio(campometodologiainst, "Metodo de enseñanza", false);
-        HerramientasVentanas.campovacio(campoexp, "Cantidad de años", false);
-        HerramientasVentanas.campovacio(campoinstitucionponente, "Institucion / Universidad", false);
-        HerramientasVentanas.campovacio(campotemaponente, "De lo que quieres informar", false);
-        HerramientasVentanas.campovacio(campoduracionponent, "Tiempo a utilizar", false);
+        herramientasVentanas.campovacio(camponombre, "Nombre de la Persona", false);
+        herramientasVentanas.campovacio(campocedula, "V-XX.XXX.XX", false);
+        herramientasVentanas.campovacio(campocorreo, "Correo personal", false);
+        herramientasVentanas.campovacio(campotlf, "Nro. Personal", false);
+        herramientasVentanas.campovacio(campoempresa, "Nombre de la Empresa", false);
+        herramientasVentanas.campovacio(campocargoempresa, "Cargo en la Empresa", false);
+        herramientasVentanas.campovacio(campotemaconferencia, "De lo que quiere informar", false);
+        herramientasVentanas.campovacio(campotemaespecialidad, "Campo especializado", false);
+        herramientasVentanas.campovacio(campometodologiainst, "Metodo de enseñanza", false);
+        herramientasVentanas.campovacio(campoexp, "Cantidad de años", false);
+        herramientasVentanas.campovacio(campoinstitucionponente, "Institucion / Universidad", false);
+        herramientasVentanas.campovacio(campotemaponente, "De lo que quieres informar", false);
+        herramientasVentanas.campovacio(campoduracionponent, "Tiempo a utilizar", false);
         // Limpiar otros campos específicos...
     }
 
@@ -1047,20 +1047,20 @@ public class Participante extends javax.swing.JFrame {
     }//GEN-LAST:event_camponombreActionPerformed
 
     private void camponombreMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_camponombreMousePressed
-        HerramientasVentanas.validarCampoprincipal(camponombre, "Nombre de la Persona", campocedula, campotlf, campocorreo);
+        herramientasVentanas.validarCampoprincipal(camponombre, "Nombre de la Persona", campocedula, campotlf, campocorreo);
     }//GEN-LAST:event_camponombreMousePressed
     //Posiblemente haya una forma de mejorar esto, y no hacer puros if...
     private void campotlfMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campotlfMousePressed
-        HerramientasVentanas.validarCampoprincipal(campotlf, "Nro. Personal", campocedula, camponombre, campocorreo);
+        herramientasVentanas.validarCampoprincipal(campotlf, "Nro. Personal", campocedula, camponombre, campocorreo);
     }//GEN-LAST:event_campotlfMousePressed
 
     private void campocorreoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campocorreoMousePressed
-        HerramientasVentanas.validarCampoprincipal(campocorreo, "Correo personal", campocedula, camponombre, campotlf);
+        herramientasVentanas.validarCampoprincipal(campocorreo, "Correo personal", campocedula, camponombre, campotlf);
 
     }//GEN-LAST:event_campocorreoMousePressed
 
     private void campocedulaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campocedulaMousePressed
-        HerramientasVentanas.validarCampoprincipal(campocedula, "V-XX.XXX.XX", campotlf, camponombre, campocorreo);
+        herramientasVentanas.validarCampoprincipal(campocedula, "V-XX.XXX.XX", campotlf, camponombre, campocorreo);
     }//GEN-LAST:event_campocedulaMousePressed
 
     private void campocorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campocorreoActionPerformed
@@ -1117,27 +1117,27 @@ public class Participante extends javax.swing.JFrame {
     }//GEN-LAST:event_salirMousePressed
 
     private void salirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMouseEntered
-        HerramientasVentanas.cambiarColor(salir, true);
+        herramientasVentanas.cambiarColor(salir, true);
     }//GEN-LAST:event_salirMouseEntered
 
     private void salirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMouseExited
-        HerramientasVentanas.cambiarColor(salir, false);
+        herramientasVentanas.cambiarColor(salir, false);
     }//GEN-LAST:event_salirMouseExited
 
     private void LimpiarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LimpiarMouseEntered
-        HerramientasVentanas.cambiarColor(Limpiar, true);
+        herramientasVentanas.cambiarColor(Limpiar, true);
     }//GEN-LAST:event_LimpiarMouseEntered
 
     private void LimpiarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LimpiarMouseExited
-        HerramientasVentanas.cambiarColor(Limpiar, false);
+        herramientasVentanas.cambiarColor(Limpiar, false);
     }//GEN-LAST:event_LimpiarMouseExited
 
     private void registrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarMouseEntered
-        HerramientasVentanas.cambiarColor(registrar, true);
+        herramientasVentanas.cambiarColor(registrar, true);
     }//GEN-LAST:event_registrarMouseEntered
 
     private void registrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarMouseExited
-        HerramientasVentanas.cambiarColor(registrar, false);
+        herramientasVentanas.cambiarColor(registrar, false);
     }//GEN-LAST:event_registrarMouseExited
 
     private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
