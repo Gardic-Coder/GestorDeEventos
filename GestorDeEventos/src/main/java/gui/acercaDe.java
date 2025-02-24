@@ -63,7 +63,7 @@ public class AcercaDe extends javax.swing.JFrame {
         jLabel3.setText("Hecho en Apache Netbeans, usando el Lenguaje de Programacion Java (2025)");
 
         jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        jLabel4.setText("Version 1.3.0");
+        jLabel4.setText("Version 1.3.3");
 
         jLabel5.setFont(new java.awt.Font("Century Gothic", 3, 12)); // NOI18N
         jLabel5.setText("Desarrollado por Alejandro Gonzalez, Juan Garcia, Edgar Morales, Eliseo Meneses y Roxana Moreno");
